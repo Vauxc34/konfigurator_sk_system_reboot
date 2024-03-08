@@ -1,0 +1,911 @@
+[    
+{
+
+    "missing_menu_1": "Szerokość",
+    "missing_menu_2": "Wysokość",
+    "missing_menu_3": "Włącz widok z góry",
+    "missing_menu_3_1": "Wyłącz widok z góry",
+    "missing_menu_4": "Włącz przeciąganie",
+    "missing_menu_5": "Wyłącz przeciąganie",
+    "missing_menu_6": "Otwór ścienny",
+
+    "menu_1_1": "Rodzaj dachu",
+    "menu_1_2": "Jednospadowy",
+    "menu_1_3": "Dwuspadowy",
+    "menu_1_4": "Płaski",
+    
+    "menu_2_1": "Wymiary",
+    "menu_2_2": "Długość hali",
+    "menu_2_3": "Szerokość hali",
+    "menu_2_4": "Wysokość boku hali",
+    "menu_2_5": "Kąt nachylenia dachu",
+    "menu_2_6": "Wysokość fundamentu",
+    "menu_2_7": "Przód okapu",
+    "menu_2_8": "Tył okapu",
+    "menu_2_9": "Lewa strona okapu",
+    "menu_2_10": "Prawa strona okapu",
+    
+    "menu_2_21": "Materiały",
+    "menu_2_213": "Pokrycie dachu",
+    "menu_2_21_1":"Blacha trapezowa",
+    "menu_2_21_2":"Płyta warstwowa",
+    "menu_2_22": "Elewacja",
+    "menu_2_33": "Blacha trapezowa",
+    "menu_2_34": "Płyta warstwowa",
+    
+    "menu_3_1": "Akcesoria",
+    "menu_3_2": "OKNA",
+    "menu_3_2_1": "Okno jednoskrzydłowe",
+    "menu_3_2_2": "Okno dwuskrzydłowe",
+    "menu_3_2_3": "Okno trójskrzydłowe",
+    "menu_3_2_4": "Pasmo okienne",
+     
+    "menu_3_3": "DRZWI",
+    
+    "menu_3_3_1": "Drzwi jednoskrzydłowe",
+    "menu_3_3_2": "Pełne",
+    "menu_3_3_3": "Z szybą",
+    "menu_3_3_4": "Przeszklone",
+     
+    "menu_3_4": "Drzwi dwuskrzydłowe",
+    "menu_3_4_1": "Pełne",
+    "menu_3_4_2": "Z szybą",
+    "menu_3_4_3": "Przeszklone",
+     
+    "menu_3_5": "BRAMY",
+    
+    "menu_3_5_1": "Brama segmentowa pełna",
+    "menu_3_5_2": "Pełna",
+    "menu_3_5_3": "Z szybą",
+    "menu_3_5_4": "Przeszklona",
+    
+    "menu_3_6": "SCHODY",
+    
+    "menu_3_6_1": "Schody przemysłowe",
+    "menu_3_6_2": "Zewnętrzne",
+    "menu_3_6_3": "Wewnętrzne",
+     
+    
+    "menu_3_7_1": "Schody zabiegowe",
+    "menu_3_7_2": "Antresola ",
+    "menu_3_7_3": "Przód",
+    "menu_3_7_4": "Tył",
+    "menu_3_7_5": "Wyłącz",
+    
+    "menu_3_8_1": "ŚWIETLIKI",
+    "menu_3_8_2": "Pasmo świetlne",
+    
+    "menu_3_9_3": "Świetlik połaciowy",
+    
+    "menu_3_9_4": "Perspektywa",
+    "menu_3_9_5": "Wnętrze hali",
+    "menu_3_9_6": "Zadaszenie",
+    "menu_3_9_7": "Włącz widok z góry",
+    
+    "menu_4_1": "Paleta barw",
+    "menu_4_2": "Kolor łączeń narożnych",
+    "menu_4_3": "Kolor pokrycia dachu",
+    "menu_4_4": "Kolor elewacji",
+    "menu_4_5": "Kolor attyki",
+    "menu_4_6": "Kolor łączeń",
+    "menu_4_7": "Kolor ram okiennych",
+    "menu_4_8": "Kolor okien",
+    "menu_4_9": "Kolor drzwi",
+    "menu_4_10": "Kolor obróbki blacharskiej drzwi",
+    "menu_4_11": "Kolor bram",
+    "menu_4_12": "Kolor obróbki blacharskiej bram",
+    
+    "menu_5_1": "Złóż zamówienie",
+    "menu_5_2": "WYŚLIJ ZAPYTANIE",
+    "menu_5_3": "Firma*",
+    "menu_5_4": "Funkcja*",
+    "menu_5_5": "Imię i nazwisko*",
+    "menu_5_6": "Kraj*",
+    "menu_5_7": "Email*",
+    "menu_5_8": "Numer telefonu*",
+    "menu_5_9": "Wiadomość ",
+    "menu_5_10": "Kod pocztowy* ",
+    "menu_5_11": "NIP firmy* ",
+    "menu_5_12": "Przeznaczenie Budynku*",
+    "menu_5_13": "Adres budowy* ",
+    "menu_5_14": "Preferowany język kontaktu*",
+    "menu_5_15_1": "Polski",
+    "menu_5_15_2": "Niemiecki",
+    "menu_5_15_3": "Angielski",
+    "menu_5_15_4": "Francuski",
+    "menu_5_15_5": "Holenderski",
+    "menu_5_16_5": "Fiński",
+    "menu_5_17_5": "Hiszpański",
+    "menu_5_16": "Przewidywany początek budowy* ",
+    "menu_5_17": "Twój link do projektu ",
+    "menu_5_18": "Skopiuj ",
+    "menu_5_19": "Wyślij wiadomość",
+    "menu_5_20": "Wypełnij formularz",
+    "menu_5_21": "Wiadomość została wysłana",
+    "menu_3_10": "OTWORY"
+    
+},  
+{
+
+    "missing_menu_1": "Width",
+    "missing_menu_2": "Height",
+    "missing_menu_3": "Turn on top view",
+    "missing_menu_3_1": "Turn off top view",
+    "missing_menu_4": "Enable dragging",
+    "missing_menu_5": "Disable dragging",
+    "missing_menu_6": "Wall hole",
+  
+
+"menu_1_1": "Roof type",
+"menu_1_2": "Shed roof (Single-pitched)",
+"menu_1_3": "Gable roof (Double-pitched)",
+"menu_1_4": "Flat",
+
+
+"menu_2_1": "Dimensions",
+"menu_2_2": "Length of the hall",
+"menu_2_3": "Width of the hall",
+"menu_2_4": "Side height of the hall",
+"menu_2_5": "Roof pitch",
+"menu_2_6": "Foundation height",
+"menu_2_7": "Front eaves",
+"menu_2_8": "Rear eaves",
+"menu_2_9": "Left side eaves",
+"menu_2_10": "Right side eaves",
+
+"menu_2_21": "Materials",
+"menu_2_213": "Roof covering",
+"menu_2_21_1":"Trapezoidal sheet",
+"menu_2_21_2":"Sandwich panel",
+"menu_2_22": "Facade",
+"menu_2_33": "Trapezoidal sheet",
+"menu_2_34": "Sandwich panel",
+
+"menu_3_1": "Accessories",
+"menu_3_2": "WINDOWS",
+"menu_3_2_1": "Single-wing window",
+"menu_3_2_2": "Double-wing window",
+"menu_3_2_3": "Triple-wing window",
+"menu_3_2_4": "Window band",
+ 
+"menu_3_3": "DOORS",
+
+"menu_3_3_1": "Single-wing door",
+"menu_3_3_2": "Solid",
+"menu_3_3_3": "With glass",
+"menu_3_3_4": "Glazed",
+ 
+"menu_3_4": "Double-wing door",
+"menu_3_4_1": "Solid",
+"menu_3_4_2": "With glass",
+"menu_3_4_3": "Glazed",
+
+ 
+"menu_3_5": "GATES",
+
+"menu_3_5_1": "Full segmented gate",
+"menu_3_5_2": "Solid",
+"menu_3_5_3": "With glass",
+"menu_3_5_4": "Glazed",
+
+"menu_3_6": "STAIRS",
+
+"menu_3_6_1": "Industrial stairs",
+"menu_3_6_2": "External",
+"menu_3_6_3": "Internal",
+ 
+
+"menu_3_7_1": "Flight stairs",
+"menu_3_7_2": "Mezzanine",
+"menu_3_7_3": "Front",
+"menu_3_7_4": "Rear",
+"menu_3_7_5": "Disable",
+
+"menu_3_8_1": "SKYLIGHTS",
+"menu_3_8_2": "Light band",
+
+
+"menu_3_9_3": "Roof skylight",
+"menu_3_9_4": "Perspective",
+"menu_3_9_5": "Inside the hall",
+"menu_3_9_6": "Roofing",  
+"menu_3_9_7": "Enable top view",
+ 
+
+"menu_4_1": "Color palette",
+"menu_4_2": "Corner joints color",
+"menu_4_3": "Roof covering color",
+"menu_4_4": "Facade color",
+"menu_4_5": "Parapet color",
+"menu_4_6": "Joint color",
+"menu_4_7": "Window frame color",
+"menu_4_8": "Window color",
+"menu_4_9": "Door color",
+"menu_4_10": "Sheet metal door trim color",
+"menu_4_11": "Gate color",
+"menu_4_12": "Color of gate flashing",
+ 
+
+
+"menu_5_1": "Place an order",
+"menu_5_2": "SEND INQUIRY",
+"menu_5_3": "Company*",
+"menu_5_4": "Role*",
+"menu_5_5": "First and last name*",
+"menu_5_6": "Country*",
+"menu_5_7": "Email*",
+"menu_5_8": "Phone number*",
+"menu_5_9": "Message",
+"menu_5_10": "Postal code*",
+"menu_5_11": "Company tax number*",
+"menu_5_12": "Building purpose",
+"menu_5_13": "Construction site address*",
+"menu_5_14": "Preferred language of contact*",
+"menu_5_15_1": "Polish",
+"menu_5_15_2": "German",
+"menu_5_15_3": "English",
+"menu_5_15_4": "French",
+"menu_5_15_5": "Dutch",
+"menu_5_16_5": "Finnish",
+"menu_5_17_5": "Spanish",
+"menu_5_16": "Estimated construction start*",
+"menu_5_17": "Your link to the project",
+"menu_5_18": "Copy",
+"menu_5_19": "Send message",
+"menu_5_20": "Fill in the form",
+"menu_5_21": "The message has been sent",
+"menu_3_10": "HOLES"
+},
+{
+
+    
+    "missing_menu_1": "Breite",
+    "missing_menu_2": "Höhe",
+    "missing_menu_3": "Schalten Sie die Draufsicht ein",
+    "missing_menu_3_1": "Schalten Sie die Draufsicht aus",
+    "missing_menu_4": "Aktivieren Sie das Ziehen",
+    "missing_menu_5": "Deaktivieren Sie das Ziehen",
+    "missing_menu_6": "Wandloch",
+
+    "menu_1_1": "Dachtyp",
+    "menu_1_2": "Schleppdach (Einzelne Neigung)",
+    "menu_1_3": "Satteldach (Doppelte Neigung)",
+    "menu_1_4": "Flachdach",
+    
+    
+    "menu_2_1": "Abmessungen",
+    "menu_2_2": "Länge der Halle",
+    "menu_2_3": "Breite der Halle",
+    "menu_2_4": "Seitenhöhe der Halle",
+    "menu_2_5": "Dachneigung",
+    "menu_2_6": "Höhe der Fundamente",
+    "menu_2_7": "Vordere Dachüberstände",
+    "menu_2_8": "Hintere Dachüberstände",
+    "menu_2_9": "Linke Dachüberstände",
+    "menu_2_10": "Rechte Dachüberstände",
+     
+    
+    
+    "menu_2_21": "Materialien",
+    "menu_2_213": "Dachabdeckung",
+    "menu_2_21_1":"Dachabdeckung",
+    "menu_2_21_2":"Sandwichplatte",
+    "menu_2_22": "Fassade",
+    "menu_2_33": "Trapezblech",
+    "menu_2_34": "Sandwichplatte",
+    
+    
+    "menu_3_1": "Zubehör",
+    "menu_3_2": "FENSTER",
+    "menu_3_2_1": "Einflügeliges Fenster",
+    "menu_3_2_2": "Zweiflügeliges Fenster",
+    "menu_3_2_3": "Dreiflügeliges Fenster",
+    "menu_3_2_4": "Fensterband",
+     
+    "menu_3_3": "TÜREN",
+    
+    "menu_3_3_1": "Einflügelige Tür",
+    "menu_3_3_2": "Vollständig",
+    "menu_3_3_3": "Mit Glas",
+    "menu_3_3_4": "Verglast",
+     
+    "menu_3_4": "Zweiflügelige Tür",
+    "menu_3_4_1": "Vollständig",
+    "menu_3_4_2": "Mit Glas",
+    "menu_3_4_3": "Verglast",
+    
+     
+    "menu_3_5": "TORE",
+    
+    "menu_3_5_1": "Vollständiges Sektionaltor",
+    "menu_3_5_2": "Vollständig",
+    "menu_3_5_3": "Mit Glas",
+    "menu_3_5_4": "Verglast",
+    
+    "menu_3_6": "TREPPEN",
+    
+    "menu_3_6_1": "Industrielle Treppen",
+    "menu_3_6_2": "Außen",
+    "menu_3_6_3": "Innen",
+     
+    
+    "menu_3_7_1": "Gewendelte Treppen",
+    "menu_3_7_2": "Zwischengeschoss",
+    "menu_3_7_3": "Vorne",
+    "menu_3_7_4": "Hinten",
+    "menu_3_7_5": "Deaktivieren",
+    
+    "menu_3_8_1": "LICHTBÄNDER",
+    "menu_3_8_2": "Lichtband",
+    
+    
+    "menu_3_9_3": "Roof skylight",
+    
+    "menu_3_9_4": "Perspektive",
+    "menu_3_9_5": "Innenraum der Halle",
+    "menu_3_9_6": "Dach",
+    "menu_3_9_7": "Aktivieren Sie die Draufsicht",
+    
+ 
+     
+    
+    "menu_4_1": "Farbpalette",
+    "menu_4_2": "Farbe der Eckverbindungen",
+    "menu_4_3": "Farbe der Dachabdeckung",
+    "menu_4_4": "Fassadenfarbe",
+    "menu_4_5": "Farbe der Attika",
+    "menu_4_6": "Farbe der Verbindungen",
+    "menu_4_7": "Farbe der Fensterrahmen",
+    "menu_4_8": "Fensterfarbe",
+    "menu_4_9": "Türfarbe",
+    "menu_4_10": "Farbe der Blechtürumrandung",
+    "menu_4_11": "Torfarbe", 
+    "menu_4_12": "Tor blinkende Farbe",
+
+    "menu_5_1": "Bestellung aufgeben",
+    "menu_5_2": "ANFRAGE SENDEN",
+    "menu_5_3": "Firma*",
+    "menu_5_4": "Rolle*",
+    "menu_5_5": "Vor- und Nachname*",
+    "menu_5_6": "Land*",
+    "menu_5_7": "Email*",
+    "menu_5_8": "Telefonnummer",
+    "menu_5_9": "Nachricht",
+    "menu_5_10": "Postleitzahl*",
+    "menu_5_11": "Steueridentifikationsnummer des Unternehmens*",
+    "menu_5_12": "Zweck des Gebäudes",
+    "menu_5_13": "Adresse der Baustelle*",
+    "menu_5_14": "Bevorzugte Kontaktssprache*",
+    "menu_5_15_1": "Polnisch",
+    "menu_5_15_2": "Deutsch",
+    "menu_5_15_3": "Englisch",
+    "menu_5_15_4": "Französisch",
+    "menu_5_15_5": "Niederländisch",
+    "menu_5_16_5": "Finnisch",
+    "menu_5_17_5": "Spanisch",
+    "menu_5_16": "Voraussichtlicher Baubeginn*",
+    "menu_5_17": "Ihr Link zum Projekt",
+    "menu_5_18": "Kopieren",
+    "menu_5_19": "Nachricht senden",
+    "menu_5_20": "Formular ausfüllen",
+    "menu_5_21": "Die Nachricht wurde gesendet",
+    "menu_3_10": "Löcher"
+
+    
+    
+    
+},
+{
+
+        "missing_menu_1": "Šířka",
+        "missing_menu_2": "Výška",
+        "missing_menu_3": "Zapněte pohled shora",
+        "missing_menu_3_1": "Vypněte pohled shora",
+        "missing_menu_4": "Povolit přetahování",
+        "missing_menu_5": "Zakázat přetahování",
+        "missing_menu_6": "Otvor ve zdi",
+
+        "menu_1_1": "Typ střechy",
+        "menu_1_2": "Střecha jednoskloná (jednopultová)",
+        "menu_1_3": "Střecha dvouskloná (sedlová)",
+        "menu_1_4": "Plochá",
+        
+        
+        "menu_2_1": "Rozměry",
+        "menu_2_2": "Délka haly",
+        "menu_2_3": "Šířka haly",
+        "menu_2_4": "Boční výška haly",
+        "menu_2_5": "Sklop střechy",
+        "menu_2_6": "Výška základu",
+        "menu_2_7": "Přední okap",
+        "menu_2_8": "Zadní okap",
+        "menu_2_9": "Levý okap",
+        "menu_2_10": "Pravý okap",
+         
+        
+        
+        "menu_2_21": "Krytina střechy",
+        "menu_2_213": "Krytina střechy",
+        "menu_2_21_1":"Trapezový plech",
+        "menu_2_21_2":"Sendvičový panel",
+        "menu_2_22": "Fasáda",
+        "menu_2_33": "Trapezový plech",
+        "menu_2_34": "Sendvičový panel",
+        
+        
+        "menu_3_1": "Doplňky",
+        "menu_3_2": "OKNA",
+        "menu_3_2_1": "Okno jednokřídlové",
+        "menu_3_2_2": "Okno dvoukřídlové",
+        "menu_3_2_3": "Okno tříkřídlové",
+        "menu_3_2_4": "Pásová okna",
+         
+        "menu_3_3": "DVEŘE",
+        
+        "menu_3_3_1": "Dveře jednokřídlové",
+        "menu_3_3_2": "Pevné",
+        "menu_3_3_3": "Se sklem",
+        "menu_3_3_4": "Skleněné",
+         
+        "menu_3_4": "Dveře dvoukřídlové",
+        "menu_3_4_1": "Pevné",
+        "menu_3_4_2": "Se sklem",
+        "menu_3_4_3": "Skleněné",
+        
+         
+        "menu_3_5": "VRATA",
+        
+        "menu_3_5_1": "Celková sekční vrata",
+        "menu_3_5_2": "Pevná",
+        "menu_3_5_3": "Se sklem",
+        "menu_3_5_4": "Skleněná",
+        
+        "menu_3_6": "STAVEBNICE",
+        
+        "menu_3_6_1": "Průmyslové schody",
+        "menu_3_6_2": "Venkovní",
+        "menu_3_6_3": "Vnitřní",
+         
+        
+        "menu_3_7_1": "Schodiště zaběhové",
+        "menu_3_7_2": "Mezipatro",
+        "menu_3_7_3": "Přední",
+        "menu_3_7_4": "Zadní",
+        "menu_3_7_5": "Vypnout",
+        
+        "menu_3_8_1": "SVĚTLÍKY",
+        "menu_3_8_2": "Světelný pás",
+        
+        
+        "menu_3_9_3": "Střešní světlík",
+        
+        "menu_3_9_4": "Perspektiva",
+        "menu_3_9_5": "Uvnitř haly",
+        "menu_3_9_6": "Střešní krytina",
+        "menu_3_9_7": "Povolit pohled shora",
+        
+     
+         
+        
+        "menu_4_1": "Barevná paleta",
+        "menu_4_2": "Barva rohových spojů",
+        "menu_4_3": "Barva krytiny střechy",
+        "menu_4_4": "Barva fasády",
+        "menu_4_5": "Barva římsy",
+        "menu_4_6": "Barva spojů",
+        "menu_4_7": "Barva rámu oken",
+        "menu_4_8": "Barva oken",
+        "menu_4_9": "Barva dveří",
+        "menu_4_10": "Barva kování dveří",
+        "menu_4_11": "Barva vrat",  
+        "menu_4_12": "Blikací barva brány",
+
+        "menu_5_1": "Vytvořit objednávku",
+        "menu_5_2": "ZAŠLETE DOTAZ",
+        "menu_5_3": "Firma*",
+        "menu_5_4": "Role*",
+        "menu_5_5": "Jméno a příjmení*",
+        "menu_5_6": "Země*",
+        "menu_5_7": "Email*",
+        "menu_5_8": "Telefonní číslo*",
+        "menu_5_9": "Zpráva",
+        "menu_5_10": "PSČ",
+        "menu_5_11": "Daňové číslo firmy*",
+        "menu_5_12": "Účel budovy",
+        "menu_5_13": "Adresa stavby*",
+        "menu_5_14": "Preferovaný jazyk pro kontakt*",
+        "menu_5_15_1": "Polština",
+        "menu_5_15_2": "Němčina",
+        "menu_5_15_3": "Angličtina",
+        "menu_5_15_4": "Francouzština",
+        "menu_5_15_5": "Nizozemština",
+        "menu_5_16_5": "Finsko",
+        "menu_5_17_5": "Španělština",
+        "menu_5_16": "Odhadovaný začátek stavby*",
+        "menu_5_17": "Váš odkaz na projekt",
+        "menu_5_18": "Kopírovat",
+        "menu_5_19": "Poslat zprávu",
+        "menu_5_20": "Vyplňte formulář",
+        "menu_5_21": "Zpráva byla odeslána",
+        "menu_3_10": "Otvory" 
+        
+        
+},
+{
+
+    "missing_menu_1" : "Largeur",
+    "missing_menu_2" : "Hauteur",
+    "missing_menu_3" : "Activer la vue du dessus",
+    "missing_menu_3_1" : "Désactiver la vue du dessus",
+    "missing_menu_4" : "Activer le glissement",
+    "missing_menu_5" : "Désactiver le glissement",
+    "missing_menu_6" : "Trou de mur",
+
+    "menu_1_1" : "Type de toit",
+    "menu_1_2" : "Mono-pente",
+    "menu_1_3" : "Pignon",
+    "menu_1_4" : "Plat",
+    
+    "menu_2_1" : "Dimensions",
+    "menu_2_2" : "Longueur du hall",
+    "menu_2_3" : "Largeur du hall",
+    "menu_2_4" : "Hauteur du côté de la salle",
+    "menu_2_5" : "Angle d'inclinaison du toit",
+    "menu_2_6" : "Hauteur des fondations",
+    "menu_2_7" : "Front de l'avant-toit",
+    "menu_2_8" : "Arrière de l'auvent",
+    "menu_2_9" : "Côté gauche de la hotte",
+    "menu_2_10" : "Côté droit du capot",
+    
+    "menu_2_21" : "Matériaux",
+    "menu_2_213" : "Toiture",
+    "menu_2_21_1":"Blacha trapezowa",
+    "menu_2_21_2":"Płyta warstwowa",
+    "menu_2_22" : "Façade",
+    "menu_2_33" : "Tôle trapézoïdale",
+    "menu_2_34" : "Panneau sandwich",
+    
+    "menu_3_1" : "Accessoires",
+    "menu_3_2" : "WINDOWS",
+    "menu_3_2_1" : "Fenêtre à guillotine",
+    "menu_3_2_2" : "Fenêtre à guillotine",
+    "menu_3_2_3" : "Fenêtre à trois vantaux",
+    "menu_3_2_4" : "Bandeau de fenêtre",
+     
+    "menu_3_3" : "PORTES",
+    
+    "menu_3_3_1" : "Porte à un vantail",
+    "menu_3_3_2" : "Pleine",
+    "menu_3_3_3" : "Avec verre",
+    "menu_3_3_4" : "Vitré",
+     
+    "menu_3_4" : "Portes doubles",
+    "menu_3_4_1" : "Complet",
+    "menu_3_4_2" : "Avec verre",
+    "menu_3_4_3" : "Vitré",
+     
+    "menu_3_5" : "PORTE",
+    
+    "menu_3_5_1" : "Porte sectionnelle complète",
+    "menu_3_5_2" : "Pleine",
+    "menu_3_5_3" : "Avec verre",
+    "menu_3_5_4" : "Vitré",
+    
+    "menu_3_6" : "ESCALIERS",
+    
+    "menu_3_6_1" : "Escaliers industriels",
+    "menu_3_6_2" : "Extérieur",
+    "menu_3_6_3" : "Intérieur",
+     
+    
+    "menu_3_7_1" : "Interventions dans les escaliers",
+    "menu_3_7_2" : "Mezzanine",
+    "menu_3_7_3" : "Façade",
+    "menu_3_7_4" : "Arrière",
+    "menu_3_7_5" : "Off",
+    
+    "menu_3_8_1" : "FEUX",
+    "menu_3_8_2" : "BANDE LUMINEUSE",
+    
+    "menu_3_9_3" : "Puits de lumière en pente",
+    
+    "menu_3_9_4" : "Perspective",
+    "menu_3_9_5" : "Hall intérieur",
+    "menu_3_9_6" : "Toiture",
+    "menu_3_9_7" : "Permettre la vue de dessus",
+    
+    "menu_4_1" : "Palette de couleurs",
+    "menu_4_2" : "Couleur du joint d'angle",
+    "menu_4_3" : "Couleur de la couverture",
+    "menu_4_4" : "Couleur de la façade",
+    "menu_4_5" : "Couleur grenier",
+    "menu_4_6" : "Couleur des joints",
+    "menu_4_7" : "Couleur du cadre de la fenêtre",
+    "menu_4_8" : "Couleur de la fenêtre",
+    "menu_4_9" : "Couleur de la porte",
+    "menu_4_10" : "Couleur clignotante de la porte",
+    "menu_4_11" : "Couleur de la porte",
+    "menu_4_12": "Couleur clignotante de la porte",
+
+    "menu_5_1" : "Passer commande",
+    "menu_5_2" : "ENVOYER UNE DEMANDE",
+    "menu_5_3" : "Entreprise*",
+    "menu_5_4" : "Fonction*",
+    "menu_5_5" : "Nom*",
+    "menu_5_6" : "Pays*",
+    "menu_5_7" : "Email*",
+    "menu_5_8" : "Numéro de téléphone*",
+    "menu_5_9" : "Message",
+    "menu_5_10" : "Code postal*",
+    "menu_5_11" : "Numéro d'identification fiscale de l'entreprise* ",
+    "menu_5_12" : "Objet du bâtiment*",
+    "menu_5_13" : "Adresse du bâtiment*",
+    "menu_5_14" : "Langue de contact préférée*",
+    "menu_5_15_1" : "Polonais",
+    "menu_5_15_2" : "Allemand",
+    "menu_5_15_3" : "Anglais",
+    "menu_5_15_4" : "Français",
+    "menu_5_15_5" : "Néerlandais",
+    "menu_5_16_5" : "Finlandais",
+    "menu_5_17_5": "Espanjan",
+    "menu_5_16" : "Début prévu de la construction*",
+    "menu_5_17" : "Lien vers votre projet",
+    "menu_5_18" : "Copier",
+    "menu_5_19" : "Envoyer un message",
+    "menu_5_20" : "Remplir le formulaire",
+    "menu_5_21" : "Le message a été envoyé",
+    "menu_3_10": "Trous" 
+},
+{
+
+    "missing_menu_1": "Leveys",
+    "missing_menu_2": "Korkeus",
+    "missing_menu_3": "Ota käyttöön ylänäkymä",
+    "missing_menu_3_1": "Kytke pois päältä ylhäältä",
+    "missing_menu_4": "Ota raahaaminen käyttöön",
+    "missing_menu_5": "Poista raahaaminen käytöstä",
+    "missing_menu_6": "Seinäaukko",
+
+    "menu_1_1": "Kattotyyppi",
+    "menu_1_2": "Yksipuolinen",
+    "menu_1_3": "Gabled",
+    "menu_1_4": "Litteä",
+    
+    "menu_2_1": "Mitat",
+    "menu_2_2": "Hallin pituus",
+    "menu_2_3": "Hallin leveys",
+    "menu_2_4": "Hallin sivun korkeus",
+    "menu_2_5": "Katon kaltevuus",
+    "menu_2_6": "Perustuksen korkeus",
+    "menu_2_7": "Konepellin etuosa",
+    "menu_2_8": "Konepellin takaosa",
+    "menu_2_9": "Konepellin vasen puoli",
+    "menu_2_10": "Konepellin oikea puoli",
+    
+    "menu_2_21": "Materiaalit",
+    "menu_2_213": "Kattorakenteet",
+    "menu_2_21_1":"Puolisuunnikkaan muotoiset levyt",
+    "menu_2_21_2":"Sandwich-paneeli",
+    "menu_2_22": "Julkisivu",
+    "menu_2_33": "Puolisuunnikkaan muotoiset levyt",
+    "menu_2_34": "Sandwich-paneeli",
+    
+    "menu_3_1": "Tarvikkeet",
+    "menu_3_2": "IKKUNAT",
+    "menu_3_2_1": "Yksilehtinen ikkuna",
+    "menu_3_2_2": "Kaksilehtinen ikkuna",
+    "menu_3_2_3": "Kolmiruutuinen ikkuna",
+    "menu_3_2_4": "Ikkunavalikoima",
+     
+    "menu_3_3": "OVET",
+    
+    "menu_3_3_1": "Yksilehtiset ovet",
+    "menu_3_3_2": "Täydelliset",
+    "menu_3_3_3": "Lasilla",
+    "menu_3_3_4": "Lasitettu",
+     
+    "menu_3_4": "Kaksilehtiset ovet",
+    "menu_3_4_1": "Täysin",
+    "menu_3_4_2": "Lasilla",
+    "menu_3_4_3": "Lasitettu",
+     
+    "menu_3_5": "OVET",
+    
+    "menu_3_5_1": "Täyssektio-ovi",
+    "menu_3_5_2": "Täydellinen",
+    "menu_3_5_3": "Lasilla",
+    "menu_3_5_4": "Lasitettu",
+    
+    "menu_3_6": "PORTAAT",
+    
+    "menu_3_6_1": "Teolliset portaat",
+    "menu_3_6_2": "Ulkoinen",
+    "menu_3_6_3": "Sisäinen",
+     
+    
+    "menu_3_7_1": "Lukittavat portaat",
+    "menu_3_7_2": "Välipohjat ",
+    "menu_3_7_3": "Edessä",
+    "menu_3_7_4": "Takana",
+    "menu_3_7_5": "Kytke pois päältä",
+    
+    "menu_3_8_1": "VALOT",
+    "menu_3_8_2": "Valokaista",
+    
+    "menu_3_9_3": "Kattoikkuna",
+    
+    "menu_3_9_4": "Perspektiivi",
+    "menu_3_9_5": "Hallin sisätilat",
+    "menu_3_9_6": "Katto",
+    "menu_3_9_7": "Mahdollistaa ylhäältä katsottuna",
+    
+    "menu_4_1": "Väripaletti",
+    "menu_4_2": "Kulmaliitoksen väri",
+    "menu_4_3": "Katon väri",
+    "menu_4_4": "Julkisivun väri",
+    "menu_4_5": "Ullakon väri",
+    "menu_4_6": "Sauman väri",
+    "menu_4_7": "Ikkunan karmin väri",
+    "menu_4_8": "Ikkunan väri",
+    "menu_4_9": "Oven väri",
+    "menu_4_10": "Oven pellin väri",
+    "menu_4_11": "Oven väri",
+    "menu_4_12": "Portin vilkkuväri",
+
+    "menu_5_1": "Tee tilauksesi",
+    "menu_5_2": "LÄHETÄ TIEDUSTELU",
+    "menu_5_3": "Yritys*",
+    "menu_5_4": "Toiminto*",
+    "menu_5_5": "Nimi*",
+    "menu_5_6": "Maa*",
+    "menu_5_7": "Sähköposti*",
+    "menu_5_8": "Puhelinnumero*",
+    "menu_5_9": "Viesti ",
+    "menu_5_10": "Postinumero* ",
+    "menu_5_11": "Yrityksen NIP* ",
+    "menu_5_12": "Rakennuksen käyttötarkoitus*",
+    "menu_5_13": "Rakennuksen osoite* ",
+    "menu_5_14": "Yhteyshenkilön ensisijainen kieli*",
+    "menu_5_15_1": "Puola",
+    "menu_5_15_2": "Saksa",
+    "menu_5_15_3": "Englanti",
+    "menu_5_15_4": "Ranska",
+    "menu_5_15_5": "Hollanti",
+    "menu_5_16_5": "Suomalainen",
+    "menu_5_17_5": "Espanjan",
+    "menu_5_16": "Rakentamisen arvioitu aloitus* ",
+    "menu_5_17": "Hankkeen linkki ",
+    "menu_5_18": "Kopioi ",
+    "menu_5_19": "Lähetä viesti",
+    "menu_5_20": "Täytä lomake",
+    "menu_5_21": "Viestisi on lähetetty",
+    "menu_3_10": "OPTIONS"
+    
+},
+{
+
+    "missing_menu_1": "Anchura",
+    "missing_menu_2": "Altura",
+    "missing_menu_3": "Habilitar vista superior",
+    "missing_menu_3_1": "Desconectar vista superior",
+    "missing_menu_4": "Activar el arrastre",
+    "missing_menu_5": "Desactivar el arrastre",
+    "missing_menu_6": "Abertura en la pared",
+
+    "menu_1_1": "Tipo de tejado",
+    "menu_1_2": "Una cara",
+    "menu_1_3": "A dos aguas",
+    "menu_1_4": "Plano",
+    
+    "menu_2_1": "Dimensiones",
+    "menu_2_2": "Longitud de la sala",
+    "menu_2_3": "Anchura del vestíbulo",
+    "menu_2_4": "Altura del lateral de la nave",
+    "menu_2_5": "Inclinación del tejado",
+    "menu_2_6": "Altura de la cimentación",
+    "menu_2_7": "Parte delantera del capó",
+    "menu_2_8": "Parte trasera del capó",
+    "menu_2_9": "Lado izquierdo del capó",
+    "menu_2_10": "Lado derecho del capó",
+    
+    "menu_2_21": "Materiales",
+    "menu_2_213": "Tejados",
+    "menu_2_21_1":"Lona trapezoidal",
+    "menu_2_21_2":"Panel sándwich",
+    "menu_2_22": "Fachada",
+    "menu_2_33": "Lona trapezoidal",
+    "menu_2_34": "Panel sándwich",
+    
+    "menu_3_1": "Accesorios",
+    "menu_3_2": "VENTANAS",
+    "menu_3_2_1": "Ventana de una hoja",
+    "menu_3_2_2": "Ventana de dos batientes",
+    "menu_3_2_3": "Ventana de tres hojas",
+    "menu_3_2_4": "Banda de ventana",
+     
+    "menu_3_3": "PUERTAS",
+    
+    "menu_3_3_1": "Puertas de una hoja",
+    "menu_3_3_2": "Completo",
+    "menu_3_3_3": "Con cristal",
+    "menu_3_3_4": "Esmaltado",
+     
+    "menu_3_4": "Puertas de dos hojas",
+    "menu_3_4_1": "Completo",
+    "menu_3_4_2": "Con cristal",
+    "menu_3_4_3": "Esmaltado",
+     
+    "menu_3_5": "PUERTAS",
+    
+    "menu_3_5_1": "Puerta seccional completa",
+    "menu_3_5_2": "Completo",
+    "menu_3_5_3": "Con cristal",
+    "menu_3_5_4": "Esmaltado",
+    
+    "menu_3_6": "ESCALERAS",
+    
+    "menu_3_6_1": "Escaleras industriales",
+    "menu_3_6_2": "Exterior",
+    "menu_3_6_3": "Interno",
+     
+    
+    "menu_3_7_1": "Escaleras de enclavamiento",
+    "menu_3_7_2": "Entresuelo",
+    "menu_3_7_3": "Frente",
+    "menu_3_7_4": "Volver",
+    "menu_3_7_5": "Apagar",
+    
+    "menu_3_8_1": "LUCES",
+    "menu_3_8_2": "Banda luminosa",
+    
+    "menu_3_9_3": "Claraboya",
+    
+    "menu_3_9_4": "Perspectiva",
+    "menu_3_9_5": "Interior del vestíbulo",
+    "menu_3_9_6": "Marquesina",
+    "menu_3_9_7": "Habilitar vista superior",
+    
+    "menu_4_1": "Paleta de colores",
+    "menu_4_2": "Color de las juntas de las esquinas",
+    "menu_4_3": "Color del te",
+    "menu_4_4": "Color de la fachada",
+    "menu_4_5": "Color del áti",
+    "menu_4_6": "Color de las juntas",
+    "menu_4_7": "Color de los marcos de las ventanas",
+    "menu_4_8": "Color de las ventanas",
+    "menu_4_9": "Color de la puerta",
+    "menu_4_10": "Color del parpadeo de la puerta",
+    "menu_4_11": "Color de la puerta",
+    "menu_4_12": "Color intermitente de la puerta",
+
+    "menu_5_1": "Haga su pedido",
+    "menu_5_2": "ENVIAR CONSULTA",
+    "menu_5_3": "Empresa*",
+    "menu_5_4": "Función*",
+    "menu_5_5": "Nombre*",
+    "menu_5_6": "País*",
+    "menu_5_7": "Correo electrónico*",
+    "menu_5_8": "Número de teléfono*",
+    "menu_5_9": "Mensaje ",
+    "menu_5_10": "Código postal* ",
+    "menu_5_11": "NIF de la empresa* ",
+    "menu_5_12": "Finalidad del edificio*",
+    "menu_5_13": "Dirección de construcción* ",
+    "menu_5_14": "Lengua de contacto preferida*",
+    "menu_5_15_1": "Polaco",
+    "menu_5_15_2": "Alemán",
+    "menu_5_15_3": "Inglés",
+    "menu_5_15_4": "Francés",
+    "menu_5_15_5": "Holandés",
+    "menu_5_16_5": "En finés",
+    "menu_5_17_5": "Español",
+    "menu_5_16": "Inicio previsto de las obras* ",
+    "menu_5_17": "Su enlace al proyecto",
+    "menu_5_18": "Copia",
+    "menu_5_19": "Enviar un mensaje",
+    "menu_5_20": "Rellene el formulario",
+    "menu_5_21": "El mensaje fue enviado",
+    "menu_3_10": "PUERTAS ABIERTAS"
+    
+}
+]

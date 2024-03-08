@@ -1,0 +1,463 @@
+
+
+ANGIELSKI:
+Roof type:
+Shed roof (Single-pitched)
+Gable roof (Double-pitched)
+Flat
+
+Dimensions:
+Length of the hall
+Width of the hall
+Side height of the hall
+Roof pitch
+Foundation height
+Front eaves
+Rear eaves
+Left side eaves
+Right side eaves
+
+Materials:
+
+Roof covering:
+Trapezoidal sheet
+Sandwich panel 8-12cm
+
+Facade:
+Trapezoidal sheet
+Sandwich panel 8-12cm
+
+Accessories:
+WINDOWS
+Single-wing window
+Double-wing window
+Triple-wing window
+Window band:
+Height:
+
+DOORS
+Single-wing door
+Solid
+With glass
+Glazed
+
+Double-wing door:
+Solid
+With glass
+Glazed
+
+GATES
+Full segmented gate
+Solid
+With glass
+Glazed
+
+STAIRS
+Industrial stairs
+External
+Internal
+
+Flight stairs
+
+Mezzanine
+Front
+Rear
+Disable
+
+SKYLIGHTS
+Light band
+Width:
+
+Roof skylight
+
+Perspective:
+Inside the hall
+Roofing
+
+Enable top view
+
+Color palette:
+Corner joints color
+Roof covering color
+Facade color
+Parapet color
+Joint color
+Window frame color
+Window color
+Door color
+Sheet metal door trim color
+Gate color
+
+Place an order
+
+SEND INQUIRY
+Company*
+Role*
+First and last name*
+Country*
+Email*
+Phone number*
+Message
+Postal code*
+Company tax number*
+Building purpose
+Construction site address*
+Preferred language of contact*
+Polish, German, English, French, Dutch
+Estimated construction start*
+dd.mm.yyyy
+Your link to the project
+http://repo-sk-system-beta.vercel.app/
+Copy
+Send message
+
+Fill in the form
+The message has been sent
+
+
+NIEMIECKI:
+Dachtyp:
+Schleppdach (Einzelne Neigung)
+Satteldach (Doppelte Neigung)
+Flachdach
+
+Abmessungen:
+Länge der Halle
+Breite der Halle
+Seitenhöhe der Halle
+Dachneigung
+Höhe der Fundamente
+Vordere Dachüberstände
+Hintere Dachüberstände
+Linke Dachüberstände
+Rechte Dachüberstände
+
+Materialien:
+
+Dachabdeckung:
+Trapezblech
+Sandwichplatte 8-12cm
+
+Fassade:
+Trapezblech
+Sandwichplatte 8-12cm
+
+Zubehör:
+FENSTER
+Einflügeliges Fenster
+Zweiflügeliges Fenster
+Dreiflügeliges Fenster
+Fensterband:
+Höhe:
+
+TÜREN
+Einflügelige Tür
+Vollständig
+Mit Glas
+Verglast
+
+Zweiflügelige Tür:
+Vollständig
+Mit Glas
+Verglast
+
+TORE
+Vollständiges Sektionaltor
+Vollständig
+Mit Glas
+Verglast
+
+TREPPEN
+Industrielle Treppen
+Außen
+Innen
+
+Gewendelte Treppen
+
+Zwischengeschoss
+Vorne
+Hinten
+Deaktivieren
+
+LICHTBÄNDER
+Lichtband
+Breite:
+
+Dachlichtkuppel
+
+Perspektive:
+Innenraum der Halle
+Dach
+
+Aktivieren Sie die Draufsicht
+
+Farbpalette:
+Farbe der Eckverbindungen
+Farbe der Dachabdeckung
+Fassadenfarbe
+Farbe der Attika
+Farbe der Verbindungen
+Farbe der Fensterrahmen
+Fensterfarbe
+Türfarbe
+Farbe der Blechtürumrandung
+Torfarbe
+
+Bestellung aufgeben
+
+ANFRAGE SENDEN
+Firma*
+Rolle*
+Vor- und Nachname*
+Land*
+E-Mail*
+Telefonnummer*
+Nachricht
+Postleitzahl*
+Steueridentifikationsnummer des Unternehmens*
+Zweck des Gebäudes
+Adresse der Baustelle*
+Bevorzugte Kontaktssprache*
+Polnisch, Deutsch, Englisch, Französisch, Niederländisch
+Voraussichtlicher Baubeginn*
+TT.MM.JJJJ
+Ihr Link zum Projekt
+http://repo-sk-system-beta.vercel.app/
+Kopieren
+Nachricht senden
+
+Formular ausfüllen
+Die Nachricht wurde gesendet
+
+CZESKI:
+
+Typ střechy:
+Střecha jednoskloná (jednopultová)
+Střecha dvouskloná (sedlová)
+Plochá
+
+Rozměry:
+Délka haly
+Šířka haly
+Boční výška haly
+Sklop střechy
+Výška základu
+Přední okap
+Zadní okap
+Levý okap
+Pravý okap
+
+Materiály:
+
+Krytina střechy:
+Trapezový plech
+Sendvičový panel 8-12cm
+
+Fasáda:
+Trapezový plech
+Sendvičový panel 8-12cm
+
+Doplňky:
+OKNA
+Okno jednokřídlové
+Okno dvoukřídlové
+Okno tříkřídlové
+Pásová okna:
+Výška:
+
+DVEŘE
+Dveře jednokřídlové
+Pevné
+Se sklem
+Skleněné
+
+Dveře dvoukřídlové:
+Pevné
+Se sklem
+Skleněné
+
+VRATA
+Celková sekční vrata
+Pevná
+Se sklem
+Skleněná
+
+SCHODY
+Průmyslové schody
+Venkovní
+Vnitřní
+
+Schodiště zaběhové
+
+Mezipatro
+Přední
+Zadní
+Vypnout
+
+SVĚTLÍKY
+Světelný pás
+Šířka:
+
+Střešní světlík
+
+Perspektiva:
+Uvnitř haly
+Střešní krytina
+
+Povolit pohled shora
+
+Barevná paleta:
+Barva rohových spojů
+Barva krytiny střechy
+Barva fasády
+Barva římsy
+Barva spojů
+Barva rámu oken
+Barva oken
+Barva dveří
+Barva kování dveří
+Barva vrat
+
+Vytvořit objednávku
+
+ZAŠLETE DOTAZ
+Firma*
+Role*
+Jméno a příjmení*
+Země*
+Email*
+Telefonní číslo*
+Zpráva
+PSČ*
+Daňové číslo firmy*
+Účel budovy
+Adresa stavby*
+Preferovaný jazyk pro kontakt*
+Polština, němčina, angličtina, francouzština, nizozemština
+Odhadovaný začátek stavby*
+dd.mm.rrrr
+Váš odkaz na projekt
+http://repo-sk-system-beta.vercel.app/
+Kopírovat
+Poslat zprávu
+
+Vyplňte formulář
+Zpráva byla odeslána
+
+POLSKI:
+Rodzaj dachu:
+Jednospadowy
+Dwuspadowy
+Płaski
+
+Wymiary:
+Długość hali
+Szerokość hali
+Wysokość boku hali
+Kąt nachylenia dachu
+Wysokość fundamentu
+Przód okapu
+Tył okapu
+Lewa strona okapu
+Prawa strona okapu
+
+Materiały:
+
+Pokrycie dachu:
+Blacha trapezowa
+Płyta warstwowa 8-12cm
+
+Elewacja:
+Blacha trapezowa
+Płyta warstwowa 8-12cm
+
+Akcesoria:
+OKNA
+Okno jednoskrzydłowe
+Okno dwuskrzydłowe
+Okno trójskrzydłowe
+Pasmo okienne:
+Wysokość:
+
+DRZWI
+Drzwi jednoskrzydłowe
+Pełne
+Z szybą
+Przeszklone
+
+Drzwi dwuskrzydłowe:
+Pełne
+Z szybą
+Przeszklone
+
+BRAMY
+Brama segmentowa pełna
+Pełna
+Z szybą
+Przeszklona
+
+SCHODY
+Schody przemysłowe
+Zewnętrzne
+Wewnętrzne
+
+Schody zabiegowe
+
+Antresola 
+Przód
+Tył
+Wyłącz
+
+ŚWIETLIKI
+Pasmo świetlne 
+Szerokość:
+
+
+Świetlik połaciowy
+
+
+Perspektywa:
+Wnętrze hali
+Zadaszenie
+
+Włącz widok z góry
+
+
+Paleta barw:
+Kolor łączeń narożnych
+Kolor pokrycia dachu
+Kolor elewacji
+Kolor attyki
+Kolor łączeń
+Kolor ram okiennych
+Kolor okien
+Kolor drzwi
+Kolor obróbki blacharskiej drzwi
+Kolor bram
+
+Złóż zamówienie
+
+
+WYŚLIJ ZAPYTANIE
+Firma* 
+Funkcja* 
+Imię i nazwisko* 
+Kraj* 
+Email* 
+Numer telefonu* 
+Wiadomość 
+Kod pocztowy* 
+NIP firmy* 
+Przeznaczenie Budynku 
+Adres budowy* 
+Preferowany język kontaktu* 
+Polski, niemiecki, angielski, francuski, holenderski 
+Przewidywany początek budowy* 
+dd.mm.rrrr 
+Twój link do projektu 
+http://repo-sk-system-beta.vercel.app/ 
+Skopiuj 
+Wyślij wiadomość
+
+Wypełnij formularz
+Wiadomość została wysłana 
