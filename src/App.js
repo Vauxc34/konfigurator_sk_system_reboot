@@ -1466,7 +1466,45 @@ const modifiedUV1 = new Float32Array([
    const [isAntresolaPrzod, setIsAntresolaPrzod] = useState(false)
    const [isAntresolaTyl, setIsAntresolaTyl] = useState(false)
 
+   const [AntresolaFrontPartMoveX, setntresolaFrontPartMoveX] = useState(0)
+   const [AntresolaBackPartMoveX, setntresolaBackPartMoveX] = useState(0)
+
+   const [AntresolaLeftTopLeg, setAntresolaLeftTopLeg] = useState(0)
+   const [AntresolaLeftBottomLeg, setAntresolaLeftBottomLeg] = useState(0)
+   const [AntresolRightTopLeg, setAntresolRightTopLeg] = useState(0)
+   const [AntresolaRightBottomLeg, setAntresolaRightBottomLeg] = useState(0)
+
    const antresola = useLoader(GLTFLoader, 'antresole/antresola1.gltf')
+
+   // left top leg = antresola.scene.children[0].children[0].children[37].children[1]
+   // left bottom leg = antresola.scene.children[0].children[0].children[11].children[2]
+   // right bottom leg = antresola.scene.children[0].children[0].children[11].children[4]
+   
+
+   // centered leg front = antresola.scene.children[0].children[0].children[11].children[1]
+   // second centered leg front = antresola.scene.children[0].children[0].children[11].children[1]
+
+    // inside vertical bar first left = antresola.scene.children[0].children[0].children[8]
+    // inside vertical bar second left = antresola.scene.children[0].children[0].children[9]
+    // inside vertical bar third left = antresola.scene.children[0].children[0].children[7]
+    // inside vertical bar fifth left = antresola.scene.children[0].children[0].children[6]
+    // inside vertical bar sixth left = antresola.scene.children[0].children[0].children[5]
+
+     // inside vertical bar first right = antresola.scene.children[0].children[0].children[4]
+     // inside vertical bar second right = antresola.scene.children[0].children[0].children[3]
+     // inside vertical bar third right = antresola.scene.children[0].children[0].children[2]
+     // inside vertical bar fourth right = antresola.scene.children[0].children[0].children[1]
+     // inside vertical bar third right = antresola.scene.children[0].children[0].children[5]
+
+   // left bar first front = antresola.scene.children[0].children[0].children[11].children[0]
+   // centered bar second front = antresola.scene.children[0].children[0].children[11].children[5]
+   // centered bar third front = antresola.scene.children[0].children[0].children[11].children[6]
+
+   // antresola.scene.children[0].children[0].children[11 - front part antresola 
+   // antresola.scene.children[0].children[0].children[37] - back part antresola
+
+   //console.log(antresola.scene.children[0].children[0].children[37])
+
    antresola.scene.getObjectByName('3DGeom-159').visible = false
    antresola.scene.getObjectByName('3DGeom-160').visible = false
    antresola.scene.getObjectByName('3DGeom-161').visible = false
@@ -55888,9 +55926,9 @@ setFrameHalfVisible(false)
   //auto update skylight size
 }
 
-(() => {
+/*(() => {
   setSwietlikScale(swietlicScaleRange);
-}, [swietlicScaleRange])
+}, [swietlicScaleRange])*/
 
 useMemo(() => {
   HailLengthSetter(RangeSetterLengthtHail);
