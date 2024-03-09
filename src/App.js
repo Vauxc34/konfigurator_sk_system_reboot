@@ -1870,15 +1870,48 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScale1Z(8.038)
         setStairsFrontAntreMoveZ(40)
 
+      } else if (RangeSetterLengthtHail == 71) {
+
+        setAntresolaFrontPartMoveZ(-877)
+        setAntresolaFrontPartScaleZ(-8.115)
+        setAntresolaFrontPartScale1Z(8.115)
+        setStairsFrontAntreMoveZ(42.5)
+
+      } else if (RangeSetterLengthtHail == 72) {
+
+        setAntresolaFrontPartMoveZ(-910)
+        setAntresolaFrontPartScaleZ(-8.235)
+        setAntresolaFrontPartScale1Z(8.235)
+        setStairsFrontAntreMoveZ(43.25)
+
+      } else if (RangeSetterLengthtHail == 73) {
+
+        setAntresolaFrontPartMoveZ(-956)
+        setAntresolaFrontPartScaleZ(-8.402)
+        setAntresolaFrontPartScale1Z(8.402)
+        setStairsFrontAntreMoveZ(48.75)
+
+      } else if (RangeSetterLengthtHail == 74) {
+        
+        setAntresolaFrontPartMoveZ(-1006)
+        setAntresolaFrontPartScaleZ(-8.583)
+        setAntresolaFrontPartScale1Z(8.583)
+        setStairsFrontAntreMoveZ(56.5)
+
+      } else if (RangeSetterLengthtHail == 75) {
+         
+        setAntresolaFrontPartMoveZ(-1006)
+        setAntresolaFrontPartScaleZ(-8.583)
+        setAntresolaFrontPartScale1Z(8.583)
+        setStairsFrontAntreMoveZ(44.25)
+
       }
 
 
     }
 
     useEffect(() => {
-
       AntresolaPosSetter()
-
     })
 
     antresola.scene.children[0].children[0].children[11].position.y = AntresolaFrontPartMoveZ
