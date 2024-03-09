@@ -1463,18 +1463,442 @@ const modifiedUV1 = new Float32Array([
 
    /* antresola */
 
+   const stairs1 = useLoader(GLTFLoader, 'stairs/stairs1.gltf') 
+   const stairs2 = useLoader(GLTFLoader, 'stairs/stairs2.gltf') 
+   const antresolaStairsInside = stairs1.scene.clone()
+   const antresolaStairsInsideBack = stairs1.scene.clone()
+
+   let StairsAntre = useRef()
+   let StairsAntreB = useRef()
+
    const [isAntresolaPrzod, setIsAntresolaPrzod] = useState(false)
    const [isAntresolaTyl, setIsAntresolaTyl] = useState(false)
+ 
 
-   const [AntresolaFrontPartMoveX, setntresolaFrontPartMoveX] = useState(0)
-   const [AntresolaBackPartMoveX, setntresolaBackPartMoveX] = useState(0)
-
-   const [AntresolaLeftTopLeg, setAntresolaLeftTopLeg] = useState(0)
-   const [AntresolaLeftBottomLeg, setAntresolaLeftBottomLeg] = useState(0)
-   const [AntresolRightTopLeg, setAntresolRightTopLeg] = useState(0)
-   const [AntresolaRightBottomLeg, setAntresolaRightBottomLeg] = useState(0)
+ 
 
    const antresola = useLoader(GLTFLoader, 'antresole/antresola1.gltf')
+
+   const [AntresolaFrontPartMoveZ, setAntresolaFrontPartMoveZ] = useState(370)
+   const [AntresolaFrontPartScaleZ, setAntresolaFrontPartScaleZ] = useState(-3.603)
+   const [AntresolaFrontPartScale1Z, setAntresolaFrontPartScale1Z] = useState(3.610)
+   const [StairsFrontAntreMoveZ, setStairsFrontAntreMoveZ] = useState(54.5)
+
+    function AntresolaPosSetter() {
+
+             if (RangeSetterLengthtHail == 20) {
+
+
+        setAntresolaFrontPartMoveZ(680)
+        setAntresolaFrontPartScaleZ(-2.49)
+        setAntresolaFrontPartScale1Z(2.49)
+        setStairsFrontAntreMoveZ(55)
+     
+           
+      } else if (RangeSetterLengthtHail == 21) {
+
+
+        setAntresolaFrontPartMoveZ(655)
+        setAntresolaFrontPartScaleZ(-2.58)
+        setAntresolaFrontPartScale1Z(2.58)
+        setStairsFrontAntreMoveZ(52.75)
+     
+           
+      } else if (RangeSetterLengthtHail == 22) {
+
+
+        setAntresolaFrontPartMoveZ(630)
+        setAntresolaFrontPartScaleZ(-2.67)
+        setAntresolaFrontPartScale1Z(2.67)
+        setStairsFrontAntreMoveZ(50.5)
+     
+           
+      } else if (RangeSetterLengthtHail == 23) {
+
+
+        setAntresolaFrontPartMoveZ(607.5)
+        setAntresolaFrontPartScaleZ(-2.75)
+        setAntresolaFrontPartScale1Z(2.75)
+        setStairsFrontAntreMoveZ(47)
+     
+           
+      } else if (RangeSetterLengthtHail == 24) {
+
+
+        setAntresolaFrontPartMoveZ(565)
+        setAntresolaFrontPartScaleZ(-2.905)
+        setAntresolaFrontPartScale1Z(2.905)
+        setStairsFrontAntreMoveZ(51.5)
+     
+           
+      } else if (RangeSetterLengthtHail == 25) {
+
+
+        setAntresolaFrontPartMoveZ(530)
+        setAntresolaFrontPartScaleZ(-3.03)
+        setAntresolaFrontPartScale1Z(3.03)
+        setStairsFrontAntreMoveZ(52.85)
+     
+           
+      } else if (RangeSetterLengthtHail == 26) {
+
+
+        setAntresolaFrontPartMoveZ(530)
+        setAntresolaFrontPartScaleZ(-3.02)
+        setAntresolaFrontPartScale1Z(3.02)
+        setStairsFrontAntreMoveZ(40.75)
+     
+           
+      } else if (RangeSetterLengthtHail == 27) {
+
+
+        setAntresolaFrontPartMoveZ(505)
+        setAntresolaFrontPartScaleZ(-3.12)
+        setAntresolaFrontPartScale1Z(3.12)
+        setStairsFrontAntreMoveZ(38.5)
+     
+           
+      } else if (RangeSetterLengthtHail == 28) {
+
+
+        setAntresolaFrontPartMoveZ(460)
+        setAntresolaFrontPartScaleZ(-3.28)
+        setAntresolaFrontPartScale1Z(3.28)
+        setStairsFrontAntreMoveZ(44)
+     
+           
+      } else if (RangeSetterLengthtHail == 29) {
+
+
+        setAntresolaFrontPartMoveZ(430)
+        setAntresolaFrontPartScaleZ(-3.38)
+        setAntresolaFrontPartScale1Z(3.38)
+        setStairsFrontAntreMoveZ(43.5)
+     
+           
+      } else if (RangeSetterLengthtHail == 30) {
+
+
+        setAntresolaFrontPartMoveZ(370)
+        setAntresolaFrontPartScaleZ(-3.603)
+        setAntresolaFrontPartScale1Z(3.610)
+        setStairsFrontAntreMoveZ(54.5)
+     
+           
+      } else if (RangeSetterLengthtHail == 31) {
+
+        setAntresolaFrontPartMoveZ(370)
+        setAntresolaFrontPartScaleZ(-3.713)
+        setAntresolaFrontPartScale1Z(3.715)
+        setStairsFrontAntreMoveZ(54.5)
+     
+      } else if (RangeSetterLengthtHail == 32) {
+
+        setAntresolaFrontPartMoveZ(307.5)
+        setAntresolaFrontPartScaleZ(-3.835)
+        setAntresolaFrontPartScale1Z(3.836)
+        setStairsFrontAntreMoveZ(54.5)
+        
+     
+      } else if (RangeSetterLengthtHail == 33) {
+
+        setAntresolaFrontPartMoveZ(290.5)
+        setAntresolaFrontPartScaleZ(-3.898)
+        setAntresolaFrontPartScale1Z(3.896)
+        setStairsFrontAntreMoveZ(49)
+     
+      } else if (RangeSetterLengthtHail == 34) {
+
+        setAntresolaFrontPartMoveZ(262)
+        setAntresolaFrontPartScaleZ(-3.998)
+        setAntresolaFrontPartScale1Z(3.996)
+        setStairsFrontAntreMoveZ(48)
+        
+     
+      } else if (RangeSetterLengthtHail == 35) {
+
+        setAntresolaFrontPartMoveZ(231)
+        setAntresolaFrontPartScaleZ(-4.098)
+        setAntresolaFrontPartScale1Z(4.106)
+        setStairsFrontAntreMoveZ(48)        
+     
+      } else if (RangeSetterLengthtHail == 36) {
+
+        setAntresolaFrontPartMoveZ(215)
+        setAntresolaFrontPartScaleZ(-4.171)
+        setAntresolaFrontPartScale1Z(4.171)
+        setStairsFrontAntreMoveZ(42)  
+     
+      } else if (RangeSetterLengthtHail == 37) {
+
+        setAntresolaFrontPartMoveZ(189)
+        setAntresolaFrontPartScaleZ(-4.26)
+        setAntresolaFrontPartScale1Z(4.2625)
+        setStairsFrontAntreMoveZ(40)
+     
+      } else if (RangeSetterLengthtHail == 38) {
+
+        setAntresolaFrontPartMoveZ(137)
+        setAntresolaFrontPartScaleZ(-4.45)
+        setAntresolaFrontPartScale1Z(4.45)
+        setStairsFrontAntreMoveZ(48)
+        
+     
+      } else if (RangeSetterLengthtHail == 39) {
+
+        setAntresolaFrontPartMoveZ(102)
+        setAntresolaFrontPartScaleZ(-4.57)
+        setAntresolaFrontPartScale1Z(4.575)
+        setStairsFrontAntreMoveZ(50)
+     
+      } else if (RangeSetterLengthtHail == 40) {
+        
+        setAntresolaFrontPartMoveZ(102)
+        setAntresolaFrontPartScaleZ(-4.57)
+        setAntresolaFrontPartScale1Z(4.575)
+        setStairsFrontAntreMoveZ(37.5)
+     
+      } else if (RangeSetterLengthtHail == 41) {
+        
+        setAntresolaFrontPartMoveZ(71)
+        setAntresolaFrontPartScaleZ(-4.69)
+        setAntresolaFrontPartScale1Z(4.69)
+        setStairsFrontAntreMoveZ(37.5)
+     
+      } else if (RangeSetterLengthtHail == 42) {
+        
+        setAntresolaFrontPartMoveZ(34)
+        setAntresolaFrontPartScaleZ(-4.825)
+        setAntresolaFrontPartScale1Z(4.825)
+        setStairsFrontAntreMoveZ(40)
+     
+      } else if (RangeSetterLengthtHail == 43) {
+        
+        setAntresolaFrontPartMoveZ(-18.5)
+        setAntresolaFrontPartScaleZ(-5.015)
+        setAntresolaFrontPartScale1Z(5.015)
+        setStairsFrontAntreMoveZ(48)
+     
+      } else if (RangeSetterLengthtHail == 44) {
+        
+        setAntresolaFrontPartMoveZ(-59)
+        setAntresolaFrontPartScaleZ(-5.16)
+        setAntresolaFrontPartScale1Z(5.16)
+        setStairsFrontAntreMoveZ(52)
+     
+      } else if (RangeSetterLengthtHail == 45) {
+
+        setAntresolaFrontPartMoveZ(-112)
+        setAntresolaFrontPartScaleZ(-5.35)
+        setAntresolaFrontPartScale1Z(5.35)
+        setStairsFrontAntreMoveZ(60)
+   
+
+      } else if (RangeSetterLengthtHail == 46) {
+
+        setAntresolaFrontPartMoveZ(-120)
+        setAntresolaFrontPartScaleZ(-5.381)
+        setAntresolaFrontPartScale1Z(5.381)
+        setStairsFrontAntreMoveZ(51)
+
+      
+      } else if (RangeSetterLengthtHail == 47) {
+
+        setAntresolaFrontPartMoveZ(-138)
+        setAntresolaFrontPartScaleZ(-5.445)
+        setAntresolaFrontPartScale1Z(5.445)
+        setStairsFrontAntreMoveZ(46)
+
+      } else if (RangeSetterLengthtHail == 48) {
+
+        setAntresolaFrontPartMoveZ(-162.5)
+        setAntresolaFrontPartScaleZ(-5.535)
+        setAntresolaFrontPartScale1Z(5.535)
+        setStairsFrontAntreMoveZ(43.5)
+
+      } else if (RangeSetterLengthtHail == 49) {
+
+        setAntresolaFrontPartMoveZ(-192.5)
+        setAntresolaFrontPartScaleZ(-5.643)
+        setAntresolaFrontPartScale1Z(5.643)
+        setStairsFrontAntreMoveZ(43.5)
+
+      } else if (RangeSetterLengthtHail == 50) {
+
+        setAntresolaFrontPartMoveZ(-230)
+        setAntresolaFrontPartScaleZ(-5.778)
+        setAntresolaFrontPartScale1Z(5.778)
+        setStairsFrontAntreMoveZ(45.5)
+
+      } else if (RangeSetterLengthtHail == 51) {
+
+        setAntresolaFrontPartMoveZ(-255)
+        setAntresolaFrontPartScaleZ(-5.868)
+        setAntresolaFrontPartScale1Z(5.868)
+        setStairsFrontAntreMoveZ(43)
+
+      } else if (RangeSetterLengthtHail == 52) {
+
+        setAntresolaFrontPartMoveZ(-265)
+        setAntresolaFrontPartScaleZ(-5.905)
+        setAntresolaFrontPartScale1Z(5.905)
+        setStairsFrontAntreMoveZ(35)
+
+      } else if (RangeSetterLengthtHail == 53) {
+
+        setAntresolaFrontPartMoveZ(-310)
+        setAntresolaFrontPartScaleZ(-6.068)
+        setAntresolaFrontPartScale1Z(6.068)
+        setStairsFrontAntreMoveZ(40.25)
+
+      } else if (RangeSetterLengthtHail == 54) {
+
+        setAntresolaFrontPartMoveZ(-355)
+        setAntresolaFrontPartScaleZ(-6.23)
+        setAntresolaFrontPartScale1Z(6.23)
+        setStairsFrontAntreMoveZ(45.5)
+
+      } else if (RangeSetterLengthtHail == 55) {
+
+        setAntresolaFrontPartMoveZ(-380)
+        setAntresolaFrontPartScaleZ(-6.32)
+        setAntresolaFrontPartScale1Z(6.32)
+        setStairsFrontAntreMoveZ(43.5)
+
+      } else if (RangeSetterLengthtHail == 56) {
+
+        setAntresolaFrontPartMoveZ(-410)
+        setAntresolaFrontPartScaleZ(-6.43)
+        setAntresolaFrontPartScale1Z(6.43)
+        setStairsFrontAntreMoveZ(43.5)
+
+      } else if (RangeSetterLengthtHail == 57) {
+
+        setAntresolaFrontPartMoveZ(-420)
+        setAntresolaFrontPartScaleZ(-6.465)
+        setAntresolaFrontPartScale1Z(6.465)
+        setStairsFrontAntreMoveZ(34.5)
+
+      } else if (RangeSetterLengthtHail == 58) {
+
+        setAntresolaFrontPartMoveZ(-450)
+        setAntresolaFrontPartScaleZ(-6.573)
+        setAntresolaFrontPartScale1Z(6.573)
+        setStairsFrontAntreMoveZ(34)
+
+      } else if (RangeSetterLengthtHail == 59) {
+
+        setAntresolaFrontPartMoveZ(-490)
+        setAntresolaFrontPartScaleZ(-6.718)
+        setAntresolaFrontPartScale1Z(6.718)
+        setStairsFrontAntreMoveZ(38)
+
+      } else if (RangeSetterLengthtHail == 60) {
+
+        setAntresolaFrontPartMoveZ(-515)
+        setAntresolaFrontPartScaleZ(-6.808)
+        setAntresolaFrontPartScale1Z(6.808)
+        setStairsFrontAntreMoveZ(35.5)
+
+      } else if (RangeSetterLengthtHail == 61) {
+
+        setAntresolaFrontPartMoveZ(-553)
+        setAntresolaFrontPartScaleZ(-6.945)
+        setAntresolaFrontPartScale1Z(6.945)
+        setStairsFrontAntreMoveZ(37.85)
+
+      } else if (RangeSetterLengthtHail == 62) {
+
+        setAntresolaFrontPartMoveZ(-580)
+        setAntresolaFrontPartScaleZ(-7.042)
+        setAntresolaFrontPartScale1Z(7.042)
+        setStairsFrontAntreMoveZ(36.5)
+
+      } else if (RangeSetterLengthtHail == 63) {
+
+        setAntresolaFrontPartMoveZ(-580)
+        setAntresolaFrontPartScaleZ(-7.042)
+        setAntresolaFrontPartScale1Z(7.042)
+        setStairsFrontAntreMoveZ(24.5)
+
+      } else if (RangeSetterLengthtHail == 64) {
+
+        setAntresolaFrontPartMoveZ(-685)
+        setAntresolaFrontPartScaleZ(-7.42)
+        setAntresolaFrontPartScale1Z(7.42)
+        setStairsFrontAntreMoveZ(52.5)
+
+      } else if (RangeSetterLengthtHail == 65) {
+
+        setAntresolaFrontPartMoveZ(-685)
+        setAntresolaFrontPartScaleZ(-7.42)
+        setAntresolaFrontPartScale1Z(7.42)
+        setStairsFrontAntreMoveZ(40.85)
+
+      } else if (RangeSetterLengthtHail == 66) {
+
+        setAntresolaFrontPartMoveZ(-705)
+        setAntresolaFrontPartScaleZ(-7.496)
+        setAntresolaFrontPartScale1Z(7.496)
+        setStairsFrontAntreMoveZ(40.85)
+
+      } else if (RangeSetterLengthtHail == 67) {
+
+        setAntresolaFrontPartMoveZ(-725)
+        setAntresolaFrontPartScaleZ(-7.566)
+        setAntresolaFrontPartScale1Z(7.566)
+        setStairsFrontAntreMoveZ(32)
+
+      } else if (RangeSetterLengthtHail == 68) {
+
+        setAntresolaFrontPartMoveZ(-756)
+        setAntresolaFrontPartScaleZ(-7.68)
+        setAntresolaFrontPartScale1Z(7.68)
+        setStairsFrontAntreMoveZ(32)
+
+      } else if (RangeSetterLengthtHail == 69) {
+
+        setAntresolaFrontPartMoveZ(-798)
+        setAntresolaFrontPartScaleZ(-7.83)
+        setAntresolaFrontPartScale1Z(7.83)
+        setStairsFrontAntreMoveZ(36)
+
+      } else if (RangeSetterLengthtHail == 70) {
+
+        setAntresolaFrontPartMoveZ(-855)
+        setAntresolaFrontPartScaleZ(-8.038)
+        setAntresolaFrontPartScale1Z(8.038)
+        setStairsFrontAntreMoveZ(40)
+
+      }
+
+
+    }
+
+    useEffect(() => {
+
+      AntresolaPosSetter()
+
+    })
+
+    antresola.scene.children[0].children[0].children[11].position.y = AntresolaFrontPartMoveZ
+    antresola.scene.children[0].children[0].children[8].scale.z = AntresolaFrontPartScale1Z
+    antresola.scene.children[0].children[0].children[9].scale.z = AntresolaFrontPartScale1Z
+    antresola.scene.children[0].children[0].children[7].scale.z = AntresolaFrontPartScaleZ
+    antresola.scene.children[0].children[0].children[6].scale.z = AntresolaFrontPartScaleZ
+    antresola.scene.children[0].children[0].children[5].scale.z = AntresolaFrontPartScaleZ 
+    antresola.scene.children[0].children[0].children[1].scale.z = AntresolaFrontPartScaleZ
+    antresola.scene.children[0].children[0].children[3].scale.z = AntresolaFrontPartScaleZ
+    antresola.scene.children[0].children[0].children[4].scale.z = AntresolaFrontPartScaleZ
+    antresola.scene.children[0].children[0].children[10].scale.z = AntresolaFrontPartScale1Z
+    antresola.scene.children[0].children[0].children[2].scale.z = AntresolaFrontPartScaleZ
+
+    if(StairsAntre.current != undefined && StairsAntreB.current != undefined) {
+      StairsAntre.current.position.z = StairsFrontAntreMoveZ
+      StairsAntreB.current.position.z = -StairsFrontAntreMoveZ + 160
+    }
+
+    
 
    // left top leg = antresola.scene.children[0].children[0].children[37].children[1]
    // left bottom leg = antresola.scene.children[0].children[0].children[11].children[2]
@@ -1500,7 +1924,7 @@ const modifiedUV1 = new Float32Array([
    // centered bar second front = antresola.scene.children[0].children[0].children[11].children[5]
    // centered bar third front = antresola.scene.children[0].children[0].children[11].children[6]
 
-   // antresola.scene.children[0].children[0].children[11 - front part antresola 
+   // antresola.scene.children[0].children[0].children[11] - front part antresola 
    // antresola.scene.children[0].children[0].children[37] - back part antresola
 
    //console.log(antresola.scene.children[0].children[0].children[37])
@@ -1614,10 +2038,6 @@ const modifiedUV1 = new Float32Array([
     /* swietliki */
 
    /* stairs */
- 
-    const stairs1 = useLoader(GLTFLoader, 'stairs/stairs1.gltf') 
-    const stairs2 = useLoader(GLTFLoader, 'stairs/stairs2.gltf') 
-    const antresolaStairsInside = stairs1.scene.clone()
 
     const [SingleStairNumber, setSingleStairNumber] = useState(0)
     const [PolozenieStairs, setPolozenieStairs] = useState(0)
@@ -4020,12 +4440,12 @@ function ModelsAll() {
       {/* && ActualHailWidth == 24 */}
     <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaTyl == false ? isAntresolaPrzod : false} position={[0, 0, 0]} rotation={[0, 0, 0]}>
       <primitive object={antresola.scene} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 25, 4.9, ModelPosBack + 528]}></primitive>
-      <primitive object={antresolaStairsInside.clone()} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionBack, 9.25, ModelPosBack + 355]} rotation={[0, Math.PI/2, 0]}/>
+      <primitive object={antresolaStairsInside.clone()} ref={StairsAntre} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionBack, 9.25, ModelPosBack + 355]} rotation={[0, Math.PI/2, 0]}/>
     </group>
       {/* && ActualHailWidth == 24 */}
     <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaPrzod == false ? isAntresolaTyl : false} position={[0, 0, 0]} rotation={[0, Math.PI, 0]}>
       <primitive object={antresola.scene.clone()} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 90, 4.9, -ModelPosFront1 + 529 ]}></primitive>
-      <primitive object={antresolaStairsInside.clone()} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, -ModelPosFront1 + 355]} rotation={[0,Math.PI/2,0]}/>
+      <primitive object={antresolaStairsInsideBack.clone()} ref={StairsAntreB} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, ModelPosBack]} rotation={[0,Math.PI/2,0]}/>
     </group>
 
 {/* {FilteredStairs1Array.map(item =>  
