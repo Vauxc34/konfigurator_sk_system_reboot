@@ -1963,8 +1963,8 @@ const modifiedUV1 = new Float32Array([
     antresola.scene.children[0].children[0].children[2].scale.z = AntresolaFrontPartScaleZ
 
     if(StairsAntre.current != undefined && StairsAntreB.current != undefined) {
-      StairsAntre.current.position.z = StairsFrontAntreMoveZ
-      StairsAntreB.current.position.z = -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam
+      //StairsAntre.current.position.z = StairsFrontAntreMoveZ
+      //StairsAntreB.current.position.z = -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam
     }    
 
    // left top leg = antresola.scene.children[0].children[0].children[37].children[1]
@@ -4495,12 +4495,12 @@ function ModelsAll() {
       {/* && ActualHailWidth == 24 */}
     <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaTyl == false ? isAntresolaPrzod : false} position={[0, 0, 0]} rotation={[0, 0, 0]}>
       <primitive object={antresola.scene} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 25, 4.9, ModelPosBack + 528]}></primitive>
-      <primitive object={antresolaStairsInside.clone()} ref={StairsAntre} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionBack, 9.25, ModelPosBack + 355]} rotation={[0, Math.PI/2, 0]}/>
+      <primitive object={antresolaStairsInside.clone()} ref={StairsAntre} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionBack, 9.25, StairsFrontAntreMoveZ]} rotation={[0, Math.PI/2, 0]}/>
     </group>
       {/* && ActualHailWidth == 24 */}
     <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaPrzod == false ? isAntresolaTyl : false} position={[0, 0, 0]} rotation={[0, Math.PI, 0]}>
       <primitive object={antresola.scene.clone()} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 90, 4.9, -ModelPosFront1 + 529 ]}></primitive>
-      <primitive object={antresolaStairsInsideBack.clone()} ref={StairsAntreB} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, ModelPosBack]} rotation={[0,Math.PI/2,0]}/>
+      <primitive object={antresolaStairsInsideBack.clone()} ref={StairsAntreB} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam]} rotation={[0,Math.PI/2,0]}/>
     </group>
 
 {/* {FilteredStairs1Array.map(item =>  
