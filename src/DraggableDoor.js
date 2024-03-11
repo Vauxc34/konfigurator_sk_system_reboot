@@ -50,27 +50,377 @@ function DraggableWindow(props) {
     }
 
     const bind = useDrag(
-        ({ active, offset: [x, y] }) => {
+        ({event, active, offset: [x, y] }) => {
             setActiveDraggable(active)
             if(props.direction === 'front'){
                 if(props.frontSideBool){
                     const [, y, z] = position;
+
+                           if (props.type == 'door' && props.glassType == 'none') {
+
+                            /*const newItems = [
+                            ...props.Doors,
+                            ];
+
+                              newItems[0] = {
+                                ...newItems[0],
+                                x: position[0],
+                              };
+                              props.setDoors(newItems);   
+                              
+                              console.log(newItems)*/
+
+                    } else if (props.type == 'door' && props.glassType == "half") {
+
+                         
+                            /*const newItems = [
+                            ...props.Doors,
+                            ];
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                              };
+                              props.setDoors(newItems);   
+                              
+                              console.log(newItems)*/
+
+                              
+                              //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                    
+                            
+
+                    } else if (props.type == 'door' && props.glassType == "full") {
+
+                         
+                            const newItems = [
+                            ...props.Doors,
+                            ];
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                              };
+                              props.setDoors(newItems);   
+                              
+                              console.log(newItems)
+
+                              
+                              //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                    
+                            
+
+                    }    
+
                     setPosition([x / aspect, props.newposition.y + (props.ConstructionPosY - 2), props.ModelPos - sub - 2]);
                     props.setCameraMovement(!active);
                 }
             }else if (props.direction === 'back'){
                 if(props.backSideBool){
+
+                           if (props.obj == 'singleDoor' && props.GlassType == "none") {
+
+                        const newItems = [
+                            ...props.filteredData1,
+                            ...props.filteredData1,
+                            ...props.FilteredDataBack,
+                            ...props.FilteredDataBack1,
+                            ...props.FilteredDataRight,
+                            ...props.FilteredDataRight1,
+                            ...props.FilteredDataLeft,
+                            ...props.FilteredDataLeft1
+                            ];
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                              };
+                              props.setDoors(newItems);        
+
+                    } else if (props.obj == 'singleDoor' && props.GlassType == "half") {
+
+                         
+                        const newItems = [
+                            ...props.filteredData1,
+                            ...props.filteredData1,
+                            ...props.FilteredDataBack,
+                            ...props.FilteredDataBack1,
+                            ...props.FilteredDataRight,
+                            ...props.FilteredDataRight1,
+                            ...props.FilteredDataLeft,
+                            ...props.FilteredDataLeft1
+                            ];
+
+
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                              };
+
+                              props.setDoors(newItems);    
+
+                              
+                              //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                    
+                            
+
+                    } else if (props.obj == 'singleDoor' && props.GlassType == "full") {
+
+                         
+                        const newItems = [
+                            ...props.filteredData1,
+                            ...props.filteredData1,
+                            ...props.FilteredDataBack,
+                            ...props.FilteredDataBack1,
+                            ...props.FilteredDataRight,
+                            ...props.FilteredDataRight1,
+                            ...props.FilteredDataLeft,
+                            ...props.FilteredDataLeft1
+                            ];
+
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                              };
+                              
+                              props.setDoors(newItems);    
+
+                              
+                              //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                    
+                            
+
+                    }    
+
                     const [, , z] = position;
                     setPosition([-x / aspect, props.newposition.y + (props.ConstructionPosY - 2), props.ModelPos + sub + 1.5]);
                     props.setCameraMovement(!active);
                 }
             }else if (props.direction === 'left'){
                 if(props.leftSideBool){
+
+
+                    if (props.obj == '1_window') {
+
+
+                        const newItems = [
+                            ...props.FilteredWindowData1LEFT,
+                            ...props.FilteredWindowData2,
+                            ...props.FilteredWindowData3,
+                            ...props.FilteredWindowData4, 
+                            ...props.FilteredWindowData1,
+                            ...props.FilteredWindowData2BACK,
+                            ...props.FilteredWindowData3BACK,
+                            ...props.FilteredWindowData4BACK,
+                            ...props.FilteredWindowData1,
+                            ...props.FilteredWindowData2LEFT,
+                            ...props.FilteredWindowData3LEFT,
+                            ...props.FilteredWindowData4LEFT,
+                            ...props.FilteredWindowData1RIGHT,
+                            ...props.FilteredWindowData2RIGHT,
+                            ...props.FilteredWindowData3RIGHT,
+                            ...props.FilteredWindowData4RIGHT,
+                            ];
+
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                                y_2d: position[1] * 1.5,
+                              };
+                              props.setWindows(newItems);
+
+                        //props.setWindows(...FilteredWindowData1[0], { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+
+                         
+
+                    } else if (props.obj == '2_window') {
+
+                         
+                        const newItems = [
+                            ...props.FilteredWindowData2LEFT,
+                            ...props.FilteredWindowData1,
+                            ...props.FilteredWindowData3,
+                            ...props.FilteredWindowData4, 
+                            ...props.FilteredWindowData1BACK,
+                            ...props.FilteredWindowData2BACK,
+                            ...props.FilteredWindowData3BACK,
+                            ...props.FilteredWindowData4BACK,
+                            ...props.FilteredWindowData1LEFT,
+                            ...props.FilteredWindowData2,
+                            ...props.FilteredWindowData3LEFT,
+                            ...props.FilteredWindowData4LEFT,
+                            ...props.FilteredWindowData1RIGHT,
+                            ...props.FilteredWindowData2RIGHT,
+                            ...props.FilteredWindowData3RIGHT,
+                            ...props.FilteredWindowData4RIGHT,
+                            ];
+
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                                y_2d: position[1] * 1.5,
+                              };
+                              props.setWindows(newItems);
+
+                              
+                              //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                    
+                            
+
+                    } else if (props.obj == '3_window') {
+
+                         
+                        const newItems = [
+                            ...props.FilteredWindowData3LEFT,
+                            ...props.FilteredWindowData1,
+                            ...props.FilteredWindowData3,
+                            ...props.FilteredWindowData4, 
+                            ...props.FilteredWindowData1BACK,
+                            ...props.FilteredWindowData2BACK,
+                            ...props.FilteredWindowData3BACK,
+                            ...props.FilteredWindowData4BACK,
+                            ...props.FilteredWindowData1LEFT,
+                            ...props.FilteredWindowData2LEFT,
+                            ...props.FilteredWindowData3,
+                            ...props.FilteredWindowData4LEFT,
+                            ...props.FilteredWindowData1RIGHT,
+                            ...props.FilteredWindowData2RIGHT,
+                            ...props.FilteredWindowData3RIGHT,
+                            ...props.FilteredWindowData4RIGHT,
+                            ];
+
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                                y_2d: position[1] * 1.5,
+                              };
+                              props.setWindows(newItems);
+
+                    } else if (props.obj == '4_window') {
+
+                        const newItems = [
+                            ...props.FilteredWindowData4LEFT,
+                            ...props.FilteredWindowData1,
+                            ...props.FilteredWindowData2,
+                            ...props.FilteredWindowData3, 
+                            ...props.FilteredWindowData1BACK,
+                            ...props.FilteredWindowData2BACK,
+                            ...props.FilteredWindowData3BACK,
+                            ...props.FilteredWindowData4,
+                            ...props.FilteredWindowData1LEFT,
+                            ...props.FilteredWindowData2LEFT,
+                            ...props.FilteredWindowData3LEFT,
+                            ...props.FilteredWindowData4,
+                            ...props.FilteredWindowData1RIGHT,
+                            ...props.FilteredWindowData2RIGHT,
+                            ...props.FilteredWindowData3RIGHT,
+                            ...props.FilteredWindowData4RIGHT,
+                            ];
+
+                            newItems[0] = {
+                                ...newItems[0],
+                                x_2d: position[0],
+                                y_2d: position[1] * 1.5,
+                              };
+                              props.setWindows(newItems);
+
+                    }  
+
+
                     const [z, , ] = position;
                     setPosition([props.ModelPos + (sub - 6) + 2, props.newposition.y + (props.ConstructionPosY - 2), x / aspect]);
                     props.setCameraMovement(!active);
                 }
             }else if (props.direction === 'right'){
+
+                if (props.obj == 'singleDoor' && props.GlassType == "none") {
+
+                    const newItems = [
+                        ...props.filteredData1,
+                        ...props.filteredData1,
+                        ...props.FilteredDataBack,
+                        ...props.FilteredDataBack1,
+                        ...props.FilteredDataRight,
+                        ...props.FilteredDataRight1,
+                        ...props.FilteredDataLeft,
+                        ...props.FilteredDataLeft1
+                        ];
+
+                        newItems[0] = {
+                            ...newItems[0],
+                            x_2d: position[0],
+                          };
+                          props.setDoors(newItems);     
+
+                } else if (props.obj == 'singleDoor' && props.GlassType == "half") {
+
+                     
+                    const newItems = [
+                        ...props.filteredData1,
+                        ...props.filteredData1,
+                        ...props.FilteredDataBack,
+                        ...props.FilteredDataBack1,
+                        ...props.FilteredDataRight,
+                        ...props.FilteredDataRight1,
+                        ...props.FilteredDataLeft,
+                        ...props.FilteredDataLeft1
+                        ];
+
+
+
+                        newItems[0] = {
+                            ...newItems[0],
+                            x_2d: position[0],
+                          };
+                          props.setDoors(newItems);    
+
+                          
+                          //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                
+                        
+
+                } else if (props.obj == 'singleDoor' && props.GlassType == "full") {
+
+                     
+                    const newItems = [
+                        ...props.filteredData1,
+                        ...props.filteredData1,
+                        ...props.FilteredDataBack,
+                        ...props.FilteredDataBack1,
+                        ...props.FilteredDataRight,
+                        ...props.FilteredDataRight1,
+                        ...props.FilteredDataLeft,
+                        ...props.FilteredDataLeft1
+                        ];
+
+
+                        newItems[0] = {
+                            ...newItems[0],
+                            x_2d: position[0],
+                          };
+                          props.setDoors(newItems);    
+
+                          
+                          //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                
+                        
+
+                } 
+
+
                 if(props.rightSideBool){
                     const [z, , ] = position;
                     setPosition([props.ModelPos - (sub - 6) - 1.5, props.newposition.y + (props.ConstructionPosY - 2), -x / aspect]);
@@ -80,6 +430,22 @@ function DraggableWindow(props) {
         },
         { pointerEvents: true }
     );
+
+    function SetNew2DPos() {
+        const [, y, z] = position;
+
+        const newItems = [
+            ...props.Doors,
+            ];
+
+            newItems[0] = {
+                ...newItems[0],
+                x_2d: position[0],
+              };
+              props.setDoors(newItems);   
+              
+              console.log(newItems)
+    }
 
     useEffect(() => {
         if(props.direction === 'front'){
@@ -596,6 +962,7 @@ function DraggableWindow(props) {
             onPointerMissed={() => setShow(false)}
             position={position}
             rotation={rotation}
+            onPointerOut={SetNew2DPos}
             {...bind()}
         >
             <primitive ref={modelRef} object={(typeArray[typeIdx] == "half" ? props.glass_door : (typeArray[typeIdx] == "full" ? props.glass_full_door : props.door))} scale={[scale[0], scale[1], scale[2]]} >

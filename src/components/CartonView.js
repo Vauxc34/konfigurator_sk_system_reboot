@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Draggable, {DraggableCore} from 'react-draggable';
-import bgcCartonView from '../images/grass.jpg'
+import { useThree } from "@react-three/fiber";
 
 // react icons
 
@@ -13,6 +13,8 @@ import { BsHouseAdd } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 // react icons
+
+import bgcCartonView from '../images/grass.jpg'
 
 const CartonView = ({
   firstPositionWindow,
@@ -137,7 +139,6 @@ FilteredDataLeft,
 handleDragDoor1Left,
 }) => { 
 
-
   const [cartonViewRoof, setCartonViewRoof] = useState('polygon(0 35%, 100% 50%, 100% 100%, 0% 100%)')
   const [cartonViewRoof2, setCartonViewRoof2] = useState('polygon(0% 50%, 100% 35%, 100% 100%, 0% 100%)')
 
@@ -151,12 +152,7 @@ handleDragDoor1Left,
     } 
   }
 
-  useEffect(() =>
-  
-  CheckerCartonRoof()
-
-  )
-
+  useEffect(() =>CheckerCartonRoof())
 
   return (
      <>
@@ -216,8 +212,6 @@ swietlikScale == 8 ? '20%' : '35%'
   </div> : null}
 
   {Roof1 == true ? SwietlikiJednospadowy.map((item, index) => <>
-    
-
   <Draggable axis='x' bounds="parent" onDrag={handleDragSwietlik(index)}> 
     <div className='DragAreaSwietlik' style={{ width:  `160px` }}> 
     <div className="skylight1" style={{ display: Roof1 == false || SelectedView1 == "inside" ? 'none' : 'flex'}}>
@@ -291,7 +285,7 @@ swietlikScale == 8 ? '20%' : '35%'
 
   </>)})}
 
-  {FilteredStairs2Array.map((item, index) => {if(item.direction === 'front') return(<>
+  {FilteredStairs2Array.map((item, index) => { if(item.direction === 'front') return(<>
   <Draggable axis="x" onDrag={handleDragStairs2(index)}>
   <div className="stairs2_outside">
   <div className="DeleteItem" onClick={() => {
@@ -330,8 +324,8 @@ swietlikScale == 8 ? '20%' : '35%'
         </div>
     </div>
   
-    <Draggable onDrag={handleDrag(index)}>
-    <div className={`Window_type1_${item.windowHeight}`}  onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ top: `${ActualHeight * CartonHeightFixerWindows - 50}px` }}>
+    <Draggable onDrag={handleDrag(index)} positionOffset={{ x: item.x_2d ? `${item.x_2d * 2.2}px` : `0px`, y: item.y_2d ? `${-item.y_2d * 2.2}px` : `0px` }}>
+    <div className={`Window_type1_${item.windowHeight}`} id={item.no} onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ top: `${ActualHeight * CartonHeightFixerWindows - 50}px` }}>
 
       <div className='helperline-vertical' style={{ display: AccesoriesLineVisible2D  }}>
         <div className='box-additional'>
@@ -340,7 +334,6 @@ swietlikScale == 8 ? '20%' : '35%'
 
           <div className='line_additional'></div>
           <div className='line_additional2'></div>
-
 
           </div>
         <span id={`height_${item.windowHeight}`}>{item.windowHeight}</span>
@@ -384,7 +377,7 @@ swietlikScale == 8 ? '20%' : '35%'
 
         </div>
   </div>
-  <Draggable onDrag={handleDrag1(index)}>
+  <Draggable onDrag={handleDrag1(index)} positionOffset={{ x: item.x_2d ? `${item.x_2d * 1.8}px` : `0px`, y: item.y_2d ? `${-item.y_2d * 2}px` : `0px` }}>
   <div className={`Window_type2_${item.windowHeight}`}  onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ top: `${ActualHeight * CartonHeightFixerWindows - 50}px`}}>
 
     <div className='helperline-horizontal' style={{ width:  `${ActualHailWidth * 50}px`, marginTop: `-${item.y - 40}px`, top: `${CartonHeightLineSetter + CartonHeightFixerWindows }px` }}>
@@ -449,7 +442,7 @@ swietlikScale == 8 ? '20%' : '35%'
         </div>
     </div>
   
-  <Draggable onDrag={handleDrag2(index)}>
+  <Draggable onDrag={handleDrag2(index)} positionOffset={{ x: item.x_2d ? `${item.x_2d * 1.5}px` : `0px`, y: item.y_2d ? `${-item.y_2d * .5}px` : `0px` }}>
   <div className={`Window_type3_${item.windowHeight}`} onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ top: `${ActualHeight * CartonHeightFixerWindows}px` }}>
 
       <div className='helperline-vertical' style={{ display: AccesoriesLineVisible2D  }}>
@@ -514,7 +507,7 @@ swietlikScale == 8 ? '20%' : '35%'
         </div>
     </div>
   
-  <Draggable onDrag={handleDrag3(index)}>
+  <Draggable onDrag={handleDrag3(index)} positionOffset={{ x: item.x_2d ? `${item.x_2d * 2.2}px` : `0px`, y: item.y_2d ? `${-item.y_2d * .5}px` : `0px` }}>
   <div className={`Window_type4_${item.windowHeight}`}  onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ top: `${ActualHeight * CartonHeightFixerWindows - 50}px` }}>
 
     <div className='helperline-vertical'  style={{ display: AccesoriesLineVisible2D  }}>
@@ -564,13 +557,9 @@ swietlikScale == 8 ? '20%' : '35%'
         <div className='box-additional' style={{ marginLeft: `${item.x * 5}px`, marginRight: `-${item.x  / 3}px`  }}>
 
         <div className='line_container'>
-
 <div className='line_additional'></div>
 <div className='line_additional2'></div>
-
-
 </div>
-
         <span>113,5</span>
 
           <div className='line_container'> 
@@ -581,8 +570,13 @@ swietlikScale == 8 ? '20%' : '35%'
         </div>
     </div>
   
-  <Draggable  axis="x" onDrag={handleDragDoor1(index)}>
-  <div className="door1" onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ background:DoorColor1, borderColor: DoorObrobkaColor1}}>
+  <Draggable  axis="x" onDrag={handleDragDoor1(index)} /*positionOffset={{ x: `${item.x * 2}px`, y: 0 }}*/>
+  <div className="door1" 
+  onClick={() => { console.log(item.x_2d)}}
+  onMouseMove={AccesoryVisibleSetter} 
+  onMouseLeave={AccesoryVisibleOff} 
+  style={{ background:DoorColor1, borderColor: DoorObrobkaColor1}}
+  >
 
   <div className='helperline-vertical' style={{ display: AccesoriesLineVisible2D }}>
         <div className='box-additional'>
@@ -619,14 +613,11 @@ swietlikScale == 8 ? '20%' : '35%'
   {filteredData1.map((item, index) => {if(item.direction === 'front') return(<>
 
   <div className='helperline-horizontal' style={{ width:  `${ActualHailWidth * 50}px`, marginTop: `-${item.y - 40}px`, top: `${CartonHeightLineSetter + CartonHeightFixerWindows }px`, display: AccesoriesLineVisible2D  }}>
-        <div className='box-additional' style={{ marginLeft: `${item.x * 5}px`, marginRight: `-${item.x  / 3}px`  }}>
+    <div className='box-additional' style={{ marginLeft: `${item.x * 5}px`, marginRight: `-${item.x  / 3}px`  }}>
 
-        <div className='line_container'>
-
+    <div className='line_container'>
 <div className='line_additional'></div>
 <div className='line_additional2'></div>
-
-
 </div>
 
         <span>113,5</span>
@@ -640,9 +631,15 @@ swietlikScale == 8 ? '20%' : '35%'
   </div>
   
   <Draggable  axis="x" onDrag={handleDragDoor2(index)}>
-  <div className="door2"  onMouseMove={AccesoryVisibleSetter} onMouseLeave={AccesoryVisibleOff} style={{ background:DoorColor1, borderColor: DoorObrobkaColor1}}>
+  <div className="door2" 
 
-  <div className='helperline-vertical'  style={{ display: AccesoriesLineVisible2D  }}>
+  onMouseMove={AccesoryVisibleSetter} 
+  onMouseLeave={AccesoryVisibleOff} 
+  style={{ background:DoorColor1, borderColor: DoorObrobkaColor1}}>
+
+  <div className='helperline-vertical' 
+   style={{ display: AccesoriesLineVisible2D  }}
+   >
         <div className='box-additional'>
 
           <div className='line_container'>

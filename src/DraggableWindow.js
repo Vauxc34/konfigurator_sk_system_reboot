@@ -40,7 +40,7 @@ function DraggableWindow(props) {
     const y = props.y;
     
     useEffect(() => {
-        if(props.direction === 'front'){
+              if (props.direction === 'front'){
             setPosition([position[0], position[1], props.ModelPos - sub - subsub]);
         }else if(props.direction === 'back'){
             setPosition([position[0], position[1], props.ModelPos + sub + subsub]);
@@ -61,7 +61,7 @@ function DraggableWindow(props) {
 
     let circlePosition, circleRotation, xRotation, transparentPosition, transparentArgs, subsub;
     if(props.direction === 'front' || props.direction === 'back'){
-        if(props.obj === '1_window'){
+         if(props.obj === '1_window'){
             circlePosition = [0, 1.7, -0.09];
             circleRotation = [0, 3.2, 0];
             xRotation = [0, 0, 0];
@@ -75,7 +75,7 @@ function DraggableWindow(props) {
                 transparentPosition = [0.6, 0.9, -0.05];
                 glassRotation = [0, 0, 0];
             }
-        }else if(props.obj === '2_window'){
+        } else if(props.obj === '2_window'){
             circlePosition = [1.9, 2.2, 0.07];
             circleRotation = [0, 0, 0];
             xRotation = [0, 0, 0];
@@ -90,7 +90,7 @@ function DraggableWindow(props) {
                 glassRotation = [0, 0, 0];
                 subsub = 0;
             }
-        }else if(props.obj === '3_window'){
+        } else if(props.obj === '3_window'){
             circlePosition = [2.21, -0.02, -0.05];
             circleRotation = [0, -Math.PI / 2, 0];
             xRotation = [0, -Math.PI / 2, Math.PI / 4];
@@ -104,7 +104,7 @@ function DraggableWindow(props) {
                 transparentPosition = [1.13, 0.0385, -0.48];
                 glassRotation = [-Math.PI / 2, 0, 0];
             }
-        }else if(props.obj === '4_window'){
+        } else if(props.obj === '4_window'){
             circlePosition = [3.95, 1.65, 0.02];
             circleRotation = [0, 0, 0];
             xRotation = [0, 0, 0];
@@ -119,7 +119,7 @@ function DraggableWindow(props) {
             }
             transparentArgs = [3.2, 1.6, 0.04];
         }
-    }else{
+    } else{
         if(props.obj === '1_window'){
             circlePosition = [1.2, 1.7, 0.02];
             circleRotation = [0, 0, 0];
@@ -203,6 +203,9 @@ function DraggableWindow(props) {
                 if(props.direction === 'front'){
                     if(props.frontSideBool){
                         const [, , z] = position;
+
+                            
+
                         setPosition([x / aspect, -y / aspect, props.ModelPos - sub - subsub]);
                         props.setCameraMovement(!active);
                     }
@@ -287,7 +290,6 @@ function DraggableWindow(props) {
         document.addEventListener('pointermove', onPointerMove);
         document.addEventListener('pointerup', onPointerUp);
     }
-
 
     const changeXScale = (e) => {
         // Store the initial position of the mouse\
@@ -832,6 +834,141 @@ function DraggableWindow(props) {
                     }else{
                         canvas.style.cursor = 'grab';
                     }
+                }}
+                onPointerOut={() => {
+
+                    const [, , z] = position;
+
+                      if (props.obj == '1_window') {
+
+                                const newItems = [
+                                    ...props.FilteredWindowData1,
+                                    ...props.FilteredWindowData2,
+                                    ...props.FilteredWindowData3,
+                                    ...props.FilteredWindowData4, 
+                                    ...props.FilteredWindowData1BACK,
+                                    ...props.FilteredWindowData2BACK,
+                                    ...props.FilteredWindowData3BACK,
+                                    ...props.FilteredWindowData4BACK,
+                                    ...props.FilteredWindowData1LEFT,
+                                    ...props.FilteredWindowData2LEFT,
+                                    ...props.FilteredWindowData3LEFT,
+                                    ...props.FilteredWindowData4LEFT,
+                                    ...props.FilteredWindowData1RIGHT,
+                                    ...props.FilteredWindowData2RIGHT,
+                                    ...props.FilteredWindowData3RIGHT,
+                                    ...props.FilteredWindowData4RIGHT,
+                                    ];
+
+
+                                    newItems[0] = {
+                                        ...newItems[0],
+                                        x_2d: position[0],
+                                        y_2d: position[1] * .5,
+                                      };
+                                      props.setWindows(newItems);
+
+                                //props.setWindows(...FilteredWindowData1[0], { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+
+                                 
+
+                            } else if (props.obj == '2_window') {
+
+                                 
+                                const newItems = [
+                                    ...props.FilteredWindowData2,
+                                    ...props.FilteredWindowData1,
+                                    ...props.FilteredWindowData3,
+                                    ...props.FilteredWindowData4, 
+                                    ...props.FilteredWindowData1BACK,
+                                    ...props.FilteredWindowData2BACK,
+                                    ...props.FilteredWindowData3BACK,
+                                    ...props.FilteredWindowData4BACK,
+                                    ...props.FilteredWindowData1LEFT,
+                                    ...props.FilteredWindowData2LEFT,
+                                    ...props.FilteredWindowData3LEFT,
+                                    ...props.FilteredWindowData4LEFT,
+                                    ...props.FilteredWindowData1RIGHT,
+                                    ...props.FilteredWindowData2RIGHT,
+                                    ...props.FilteredWindowData3RIGHT,
+                                    ...props.FilteredWindowData4RIGHT,
+                                    ];
+
+
+                                    newItems[0] = {
+                                        ...newItems[0],
+                                        x_2d: position[0],
+                                        y_2d: position[1] * 1.5,
+                                      };
+                                      props.setWindows(newItems);
+ 
+                                      
+                                      //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
+
+                            
+                                    
+
+                            } else if (props.obj == '3_window') {
+
+                                 
+                                const newItems = [
+                                    ...props.FilteredWindowData3,
+                                    ...props.FilteredWindowData1,
+                                    ...props.FilteredWindowData3,
+                                    ...props.FilteredWindowData4, 
+                                    ...props.FilteredWindowData1BACK,
+                                    ...props.FilteredWindowData2BACK,
+                                    ...props.FilteredWindowData3BACK,
+                                    ...props.FilteredWindowData4BACK,
+                                    ...props.FilteredWindowData1LEFT,
+                                    ...props.FilteredWindowData2LEFT,
+                                    ...props.FilteredWindowData3LEFT,
+                                    ...props.FilteredWindowData4LEFT,
+                                    ...props.FilteredWindowData1RIGHT,
+                                    ...props.FilteredWindowData2RIGHT,
+                                    ...props.FilteredWindowData3RIGHT,
+                                    ...props.FilteredWindowData4RIGHT,
+                                    ];
+
+
+                                    newItems.slice(-1)[0] = {
+                                        ...newItems.slice(-1)[0],
+                                        x_2d: position[0],
+                                        y_2d: position[1] * 1.5,
+                                      };
+                                      props.setWindows(newItems);
+
+                            } else if (props.obj == '4_window') {
+
+                                const newItems = [
+                                    ...props.FilteredWindowData4,
+                                    ...props.FilteredWindowData1,
+                                    ...props.FilteredWindowData2,
+                                    ...props.FilteredWindowData3, 
+                                    ...props.FilteredWindowData1BACK,
+                                    ...props.FilteredWindowData2BACK,
+                                    ...props.FilteredWindowData3BACK,
+                                    ...props.FilteredWindowData4BACK,
+                                    ...props.FilteredWindowData1LEFT,
+                                    ...props.FilteredWindowData2LEFT,
+                                    ...props.FilteredWindowData3LEFT,
+                                    ...props.FilteredWindowData4LEFT,
+                                    ...props.FilteredWindowData1RIGHT,
+                                    ...props.FilteredWindowData2RIGHT,
+                                    ...props.FilteredWindowData3RIGHT,
+                                    ...props.FilteredWindowData4RIGHT,
+                                    ];
+
+                                    newItems.slice(-1)[0] = {
+                                        ...newItems.slice(-1)[0],
+                                        x_2d: position[0],
+                                        y_2d: position[1] * 1.5,
+                                      };
+                                      props.setWindows(newItems);
+
+                            }    
+
                 }}
                 onPointerLeave={() => { const canvas = document.querySelector('canvas'); canvas.style.cursor = null; }}
                 onClick={() => setShow(true)}

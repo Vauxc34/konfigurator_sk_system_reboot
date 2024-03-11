@@ -1426,7 +1426,7 @@ const modifiedUV1 = new Float32Array([
   /* filtered doors */
 
   const filteredData = Doors.filter((item) => item.orient == 'front' && item.obj == 'singleDoor');
-  const filteredData1 = Doors.filter((item) =>  item.orient == 'front' && item.obj == 'DoubleDoor'); 
+  const filteredData1 = Doors.filter((item) => item.orient == 'front' && item.obj == 'DoubleDoor'); 
  
   const FilteredDataBack = Doors.filter((item) => item.orient == 'back' && item.obj == "singleDoor" )
   const FilteredDataBack1 = Doors.filter((item) => item.orient == 'back' && item.obj == "DoubleDoor" )
@@ -1472,10 +1472,7 @@ const modifiedUV1 = new Float32Array([
    let StairsAntreB = useRef()
 
    const [isAntresolaPrzod, setIsAntresolaPrzod] = useState(false)
-   const [isAntresolaTyl, setIsAntresolaTyl] = useState(false)
- 
-
- 
+   const [isAntresolaTyl, setIsAntresolaTyl] = useState(false) 
 
    const antresola = useLoader(GLTFLoader, 'antresole/antresola1.gltf')
 
@@ -1483,6 +1480,7 @@ const modifiedUV1 = new Float32Array([
    const [AntresolaFrontPartScaleZ, setAntresolaFrontPartScaleZ] = useState(-3.603)
    const [AntresolaFrontPartScale1Z, setAntresolaFrontPartScale1Z] = useState(3.610)
    const [StairsFrontAntreMoveZ, setStairsFrontAntreMoveZ] = useState(54.5)
+   const [AntresolaBackFixParam, setAntresolaBackFixParam] = useState(1.2)
 
     function AntresolaPosSetter() {
 
@@ -1493,7 +1491,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-2.49)
         setAntresolaFrontPartScale1Z(2.49)
         setStairsFrontAntreMoveZ(55)
-     
+        setAntresolaBackFixParam(3.5)
            
       } else if (RangeSetterLengthtHail == 21) {
 
@@ -1502,7 +1500,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-2.58)
         setAntresolaFrontPartScale1Z(2.58)
         setStairsFrontAntreMoveZ(52.75)
-     
+        setAntresolaBackFixParam(-1.15)
            
       } else if (RangeSetterLengthtHail == 22) {
 
@@ -1511,6 +1509,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-2.67)
         setAntresolaFrontPartScale1Z(2.67)
         setStairsFrontAntreMoveZ(50.5)
+        setAntresolaBackFixParam(-5.75)
      
            
       } else if (RangeSetterLengthtHail == 23) {
@@ -1520,7 +1519,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-2.75)
         setAntresolaFrontPartScale1Z(2.75)
         setStairsFrontAntreMoveZ(47)
-     
+        setAntresolaBackFixParam(-12.5)
            
       } else if (RangeSetterLengthtHail == 24) {
 
@@ -1529,7 +1528,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-2.905)
         setAntresolaFrontPartScale1Z(2.905)
         setStairsFrontAntreMoveZ(51.5)
-     
+        setAntresolaBackFixParam(-3.5)
            
       } else if (RangeSetterLengthtHail == 25) {
 
@@ -1538,7 +1537,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.03)
         setAntresolaFrontPartScale1Z(3.03)
         setStairsFrontAntreMoveZ(52.85)
-     
+        setAntresolaBackFixParam(-0.85)
            
       } else if (RangeSetterLengthtHail == 26) {
 
@@ -1547,7 +1546,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.02)
         setAntresolaFrontPartScale1Z(3.02)
         setStairsFrontAntreMoveZ(40.75)
-     
+        setAntresolaBackFixParam(-24.85)
            
       } else if (RangeSetterLengthtHail == 27) {
 
@@ -1556,16 +1555,15 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.12)
         setAntresolaFrontPartScale1Z(3.12)
         setStairsFrontAntreMoveZ(38.5)
-     
+        setAntresolaBackFixParam(-29.45)
            
       } else if (RangeSetterLengthtHail == 28) {
-
 
         setAntresolaFrontPartMoveZ(460)
         setAntresolaFrontPartScaleZ(-3.28)
         setAntresolaFrontPartScale1Z(3.28)
         setStairsFrontAntreMoveZ(44)
-     
+        setAntresolaBackFixParam(-18.75)
            
       } else if (RangeSetterLengthtHail == 29) {
 
@@ -1574,23 +1572,23 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.38)
         setAntresolaFrontPartScale1Z(3.38)
         setStairsFrontAntreMoveZ(43.5)
-     
+        setAntresolaBackFixParam(19.65)
            
       } else if (RangeSetterLengthtHail == 30) {
-
 
         setAntresolaFrontPartMoveZ(370)
         setAntresolaFrontPartScaleZ(-3.603)
         setAntresolaFrontPartScale1Z(3.610)
         setStairsFrontAntreMoveZ(54.5)
-     
+        setAntresolaBackFixParam(2.45)
            
       } else if (RangeSetterLengthtHail == 31) {
 
         setAntresolaFrontPartMoveZ(370)
-        setAntresolaFrontPartScaleZ(-3.713)
-        setAntresolaFrontPartScale1Z(3.715)
+        setAntresolaFrontPartScaleZ(-3.61)
+        setAntresolaFrontPartScale1Z(3.61)
         setStairsFrontAntreMoveZ(54.5)
+        setAntresolaBackFixParam(-9.45)
      
       } else if (RangeSetterLengthtHail == 32) {
 
@@ -1598,7 +1596,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.835)
         setAntresolaFrontPartScale1Z(3.836)
         setStairsFrontAntreMoveZ(54.5)
-        
+        setAntresolaBackFixParam(2.45)
      
       } else if (RangeSetterLengthtHail == 33) {
 
@@ -1606,6 +1604,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.898)
         setAntresolaFrontPartScale1Z(3.896)
         setStairsFrontAntreMoveZ(49)
+        setAntresolaBackFixParam(-8.45) 
      
       } else if (RangeSetterLengthtHail == 34) {
 
@@ -1613,14 +1612,15 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-3.998)
         setAntresolaFrontPartScale1Z(3.996)
         setStairsFrontAntreMoveZ(48)
-        
+        setAntresolaBackFixParam(-10.65) 
      
       } else if (RangeSetterLengthtHail == 35) {
 
         setAntresolaFrontPartMoveZ(231)
         setAntresolaFrontPartScaleZ(-4.098)
         setAntresolaFrontPartScale1Z(4.106)
-        setStairsFrontAntreMoveZ(48)        
+        setStairsFrontAntreMoveZ(48) 
+        setAntresolaBackFixParam(-10.65)       
      
       } else if (RangeSetterLengthtHail == 36) {
 
@@ -1628,6 +1628,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.171)
         setAntresolaFrontPartScale1Z(4.171)
         setStairsFrontAntreMoveZ(42)  
+        setAntresolaBackFixParam(-22.45)
      
       } else if (RangeSetterLengthtHail == 37) {
 
@@ -1635,6 +1636,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.26)
         setAntresolaFrontPartScale1Z(4.2625)
         setStairsFrontAntreMoveZ(40)
+        setAntresolaBackFixParam(-26.45)
      
       } else if (RangeSetterLengthtHail == 38) {
 
@@ -1642,7 +1644,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.45)
         setAntresolaFrontPartScale1Z(4.45)
         setStairsFrontAntreMoveZ(48)
-        
+        setAntresolaBackFixParam(-10.4)
      
       } else if (RangeSetterLengthtHail == 39) {
 
@@ -1650,6 +1652,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.57)
         setAntresolaFrontPartScale1Z(4.575)
         setStairsFrontAntreMoveZ(50)
+        setAntresolaBackFixParam(-6.7)
      
       } else if (RangeSetterLengthtHail == 40) {
         
@@ -1657,6 +1660,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.57)
         setAntresolaFrontPartScale1Z(4.575)
         setStairsFrontAntreMoveZ(37.5)
+        setAntresolaBackFixParam(-31.55)
      
       } else if (RangeSetterLengthtHail == 41) {
         
@@ -1664,6 +1668,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.69)
         setAntresolaFrontPartScale1Z(4.69)
         setStairsFrontAntreMoveZ(37.5)
+        setAntresolaBackFixParam(-31.55)
      
       } else if (RangeSetterLengthtHail == 42) {
         
@@ -1671,6 +1676,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-4.825)
         setAntresolaFrontPartScale1Z(4.825)
         setStairsFrontAntreMoveZ(40)
+        setAntresolaBackFixParam(-26.55)
      
       } else if (RangeSetterLengthtHail == 43) {
         
@@ -1678,6 +1684,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.015)
         setAntresolaFrontPartScale1Z(5.015)
         setStairsFrontAntreMoveZ(48)
+        setAntresolaBackFixParam(-10.55)
      
       } else if (RangeSetterLengthtHail == 44) {
         
@@ -1685,6 +1692,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.16)
         setAntresolaFrontPartScale1Z(5.16)
         setStairsFrontAntreMoveZ(52)
+        setAntresolaBackFixParam(-2.8)
      
       } else if (RangeSetterLengthtHail == 45) {
 
@@ -1692,7 +1700,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.35)
         setAntresolaFrontPartScale1Z(5.35)
         setStairsFrontAntreMoveZ(60)
-   
+        setAntresolaBackFixParam(13.5)
 
       } else if (RangeSetterLengthtHail == 46) {
 
@@ -1700,7 +1708,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.381)
         setAntresolaFrontPartScale1Z(5.381)
         setStairsFrontAntreMoveZ(51)
-
+        setAntresolaBackFixParam(-4.25)
       
       } else if (RangeSetterLengthtHail == 47) {
 
@@ -1708,6 +1716,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.445)
         setAntresolaFrontPartScale1Z(5.445)
         setStairsFrontAntreMoveZ(46)
+        setAntresolaBackFixParam(-14.5)
 
       } else if (RangeSetterLengthtHail == 48) {
 
@@ -1715,6 +1724,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.535)
         setAntresolaFrontPartScale1Z(5.535)
         setStairsFrontAntreMoveZ(43.5)
+        setAntresolaBackFixParam(-19.5)
 
       } else if (RangeSetterLengthtHail == 49) {
 
@@ -1722,6 +1732,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.643)
         setAntresolaFrontPartScale1Z(5.643)
         setStairsFrontAntreMoveZ(43.5)
+        setAntresolaBackFixParam(-20)
 
       } else if (RangeSetterLengthtHail == 50) {
 
@@ -1729,6 +1740,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.778)
         setAntresolaFrontPartScale1Z(5.778)
         setStairsFrontAntreMoveZ(45.5)
+        setAntresolaBackFixParam(-15.5)
 
       } else if (RangeSetterLengthtHail == 51) {
 
@@ -1736,6 +1748,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.868)
         setAntresolaFrontPartScale1Z(5.868)
         setStairsFrontAntreMoveZ(43)
+        setAntresolaBackFixParam(-20.25)
 
       } else if (RangeSetterLengthtHail == 52) {
 
@@ -1743,6 +1756,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-5.905)
         setAntresolaFrontPartScale1Z(5.905)
         setStairsFrontAntreMoveZ(35)
+        setAntresolaBackFixParam(-36.5)
 
       } else if (RangeSetterLengthtHail == 53) {
 
@@ -1750,6 +1764,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.068)
         setAntresolaFrontPartScale1Z(6.068)
         setStairsFrontAntreMoveZ(40.25)
+        setAntresolaBackFixParam(-26)
 
       } else if (RangeSetterLengthtHail == 54) {
 
@@ -1757,6 +1772,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.23)
         setAntresolaFrontPartScale1Z(6.23)
         setStairsFrontAntreMoveZ(45.5)
+        setAntresolaBackFixParam(-15.35)
 
       } else if (RangeSetterLengthtHail == 55) {
 
@@ -1764,6 +1780,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.32)
         setAntresolaFrontPartScale1Z(6.32)
         setStairsFrontAntreMoveZ(43.5)
+        setAntresolaBackFixParam(-19.65)
 
       } else if (RangeSetterLengthtHail == 56) {
 
@@ -1771,6 +1788,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.43)
         setAntresolaFrontPartScale1Z(6.43)
         setStairsFrontAntreMoveZ(43.5)
+        setAntresolaBackFixParam(-20.35)
 
       } else if (RangeSetterLengthtHail == 57) {
 
@@ -1778,6 +1796,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.465)
         setAntresolaFrontPartScale1Z(6.465)
         setStairsFrontAntreMoveZ(34.5)
+        setAntresolaBackFixParam(-37.35)
 
       } else if (RangeSetterLengthtHail == 58) {
 
@@ -1785,6 +1804,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.573)
         setAntresolaFrontPartScale1Z(6.573)
         setStairsFrontAntreMoveZ(34)
+        setAntresolaBackFixParam(-38.25)
 
       } else if (RangeSetterLengthtHail == 59) {
 
@@ -1792,13 +1812,14 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.718)
         setAntresolaFrontPartScale1Z(6.718)
         setStairsFrontAntreMoveZ(38)
+        setAntresolaBackFixParam(-30.75)
 
       } else if (RangeSetterLengthtHail == 60) {
 
         setAntresolaFrontPartMoveZ(-515)
         setAntresolaFrontPartScaleZ(-6.808)
         setAntresolaFrontPartScale1Z(6.808)
-        setStairsFrontAntreMoveZ(35.5)
+        setAntresolaBackFixParam(-35.75)
 
       } else if (RangeSetterLengthtHail == 61) {
 
@@ -1806,6 +1827,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-6.945)
         setAntresolaFrontPartScale1Z(6.945)
         setStairsFrontAntreMoveZ(37.85)
+        //setAntresolaBackFixParam(-35.75)
 
       } else if (RangeSetterLengthtHail == 62) {
 
@@ -1813,6 +1835,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.042)
         setAntresolaFrontPartScale1Z(7.042)
         setStairsFrontAntreMoveZ(36.5)
+        setAntresolaBackFixParam(-33.75)
 
       } else if (RangeSetterLengthtHail == 63) {
 
@@ -1820,6 +1843,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.042)
         setAntresolaFrontPartScale1Z(7.042)
         setStairsFrontAntreMoveZ(24.5)
+        setAntresolaBackFixParam(-57.5)
 
       } else if (RangeSetterLengthtHail == 64) {
 
@@ -1827,6 +1851,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.42)
         setAntresolaFrontPartScale1Z(7.42)
         setStairsFrontAntreMoveZ(52.5)
+        setAntresolaBackFixParam(-1.5)
 
       } else if (RangeSetterLengthtHail == 65) {
 
@@ -1834,6 +1859,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.42)
         setAntresolaFrontPartScale1Z(7.42)
         setStairsFrontAntreMoveZ(40.85)
+        setAntresolaBackFixParam(-25)
 
       } else if (RangeSetterLengthtHail == 66) {
 
@@ -1841,6 +1867,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.496)
         setAntresolaFrontPartScale1Z(7.496)
         setStairsFrontAntreMoveZ(40.85)
+        setAntresolaBackFixParam(-29.25)
 
       } else if (RangeSetterLengthtHail == 67) {
 
@@ -1848,6 +1875,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.566)
         setAntresolaFrontPartScale1Z(7.566)
         setStairsFrontAntreMoveZ(32)
+        setAntresolaBackFixParam(-42.5)
 
       } else if (RangeSetterLengthtHail == 68) {
 
@@ -1855,6 +1883,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.68)
         setAntresolaFrontPartScale1Z(7.68)
         setStairsFrontAntreMoveZ(32)
+        setAntresolaBackFixParam(-42.5)
 
       } else if (RangeSetterLengthtHail == 69) {
 
@@ -1862,6 +1891,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-7.83)
         setAntresolaFrontPartScale1Z(7.83)
         setStairsFrontAntreMoveZ(36)
+        setAntresolaBackFixParam(-34.5)
 
       } else if (RangeSetterLengthtHail == 70) {
 
@@ -1869,6 +1899,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-8.038)
         setAntresolaFrontPartScale1Z(8.038)
         setStairsFrontAntreMoveZ(40)
+        setAntresolaBackFixParam(-21.5)
 
       } else if (RangeSetterLengthtHail == 71) {
 
@@ -1876,6 +1907,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-8.115)
         setAntresolaFrontPartScale1Z(8.115)
         setStairsFrontAntreMoveZ(42.5)
+        setAntresolaBackFixParam(-21.5)
 
       } else if (RangeSetterLengthtHail == 72) {
 
@@ -1883,6 +1915,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-8.235)
         setAntresolaFrontPartScale1Z(8.235)
         setStairsFrontAntreMoveZ(43.25)
+        setAntresolaBackFixParam(-20.5)
 
       } else if (RangeSetterLengthtHail == 73) {
 
@@ -1890,6 +1923,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-8.402)
         setAntresolaFrontPartScale1Z(8.402)
         setStairsFrontAntreMoveZ(48.75)
+        setAntresolaBackFixParam(-9)
 
       } else if (RangeSetterLengthtHail == 74) {
         
@@ -1897,6 +1931,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-8.583)
         setAntresolaFrontPartScale1Z(8.583)
         setStairsFrontAntreMoveZ(56.5)
+        setAntresolaBackFixParam(6)
 
       } else if (RangeSetterLengthtHail == 75) {
          
@@ -1904,6 +1939,7 @@ const modifiedUV1 = new Float32Array([
         setAntresolaFrontPartScaleZ(-8.583)
         setAntresolaFrontPartScale1Z(8.583)
         setStairsFrontAntreMoveZ(44.25)
+        setAntresolaBackFixParam(-18)
 
       }
 
@@ -1928,15 +1964,12 @@ const modifiedUV1 = new Float32Array([
 
     if(StairsAntre.current != undefined && StairsAntreB.current != undefined) {
       StairsAntre.current.position.z = StairsFrontAntreMoveZ
-      StairsAntreB.current.position.z = -StairsFrontAntreMoveZ + 160
-    }
-
-    
+      StairsAntreB.current.position.z = -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam
+    }    
 
    // left top leg = antresola.scene.children[0].children[0].children[37].children[1]
    // left bottom leg = antresola.scene.children[0].children[0].children[11].children[2]
    // right bottom leg = antresola.scene.children[0].children[0].children[11].children[4]
-   
 
    // centered leg front = antresola.scene.children[0].children[0].children[11].children[1]
    // second centered leg front = antresola.scene.children[0].children[0].children[11].children[1]
@@ -2435,12 +2468,14 @@ const modifiedUV1 = new Float32Array([
     const FilteredStairs2Array = Stairs.filter((item) => item.type == "stairs2" && item.env == "outside")
     const FilteredStairs2InsideArray = Stairs.filter((item) => item.type == "stairs2" && item.env == "inside")
    /* stairs */
+
  //WidthSetterLengthtHail == 11
   function AddDoor(e) {
     const cameraDirection = new THREE.Vector3(0, 0, -1);
     cameraDirection.applyQuaternion(camera.quaternion);
     let direction, newposition, newrotation;
-    if(cameraDirection.z > 0.9){
+
+          if(cameraDirection.z > 0.9){
       direction = 'back';
       newrotation = {x: 0, y: Math.PI, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
@@ -2532,7 +2567,7 @@ const modifiedUV1 = new Float32Array([
       direction = 'right';
       newposition = {x: FrontWall1 + 555, y: 15, z: FrontWall / 2};
       newrotation = {x: 0, y: Math.PI / 2, z: 0};
-      if(WidthSetterLengthtHail == 10){
+            if(WidthSetterLengthtHail == 10){
         newposition = {x: 488, y: 15, z: 0}; 
       }else if(WidthSetterLengthtHail == 11){
         newposition = {x: 505, y: 15, z: 0}; 
@@ -2587,50 +2622,50 @@ const modifiedUV1 = new Float32Array([
       }
     }
 
-    if(newposition === undefined){
+    if (newposition === undefined){
       return;
     }
   
-    if (e.getAttribute("type") == "singleDoor") {
+         if (e.getAttribute("type") == "singleDoor") {
       
-    Doors.push({ object: single_door.scene.clone(), second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), ConstructionPosY: ConstructionPosY, index: Math.floor(Math.random() * 1000), type: 'door', scale: [.3, .3, .1], elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none' })  
+    Doors.push({ object: single_door.scene.clone(), second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), ConstructionPosY: ConstructionPosY, index: Math.floor(Math.random() * 1000), type: 'door', scale: [.3, .3, .1], elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
     setDoors([...Doors])
      
   } else if (e.getAttribute("type") == "door_full1") {
     
-    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none' })  
+    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
    setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_glass1") {
      
-    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'lewo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'full' })  
+    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'lewo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'full', x_2d: 0 })  
     setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_half_glass1") {
     
-    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'prawo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'half' })  
+    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'prawo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'half', x_2d: 0 })  
     setDoors([...Doors])
   }  
   
   //
 
     else if (e.getAttribute("type") == "DoubleDoor") { 
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no:Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'front' })  
+    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no:Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'front', x_2d: 0 })  
    setDoors([...Doors])
  
   } else if (e.getAttribute("type") == "door_full2") {
      
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'none' })  
+    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
     setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_glass2") {
  
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'full' })  
+    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'full', x_2d: 0 })  
     setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_half_glass2") {
  
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'half' })  
+    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'half', x_2d: 0 })  
     setDoors([...Doors])
 
   } 
@@ -3235,11 +3270,10 @@ const modifiedUV1 = new Float32Array([
   }
   
   const FilteredWindowData1 = Windows.filter((item) => item.obj == "1_window" && item.orient == 'front')
-  const FilteredWindowData1In = Windows.filter((item) => item.obj == "1_window_inside" && item.orient == 'front')
-
   const FilteredWindowData2 = Windows.filter((item) => item.obj == "2_window" && item.orient == 'front')
   const FilteredWindowData3 = Windows.filter((item) => item.obj == "3_window" && item.orient == 'front')
   const FilteredWindowData4 = Windows.filter((item) => item.obj == "4_window" && item.orient == 'front')   
+
   /* */
 
   const FilteredWindowData1BACK = Windows.filter((item) => item.obj == "1_window" && item.orient == 'back') 
@@ -3426,32 +3460,27 @@ function AddWindow(e) {
   
 /* window 1 */
 
-if (e.getAttribute("size_")  == "1_window_1" && e.getAttribute("orient") == "front") {
+       if (e.getAttribute("size_")  == "1_window_1" && e.getAttribute("orient") == "front") {
       
       Windows.push(
-      { object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'front', windowHeight: '235' })
-      console.log(FilteredWindowData1In)
-      setWindows([...Windows]) 
-
-      //
-
+      { object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'front', windowHeight: '235', x_2d: 0, y_2d: 0 })
+      setWindows([...Windows])       
       
-      
-}else if (e.getAttribute("size_")  == "1_window_2" && e.getAttribute("orient") == "front") {
+} else if (e.getAttribute("size_")  == "1_window_2" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'front', windowHeight: '215' })
+    Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'front', windowHeight: '215', x_2d: 0, y_2d: 0 })
     setWindows([...Windows]) 
-}else if (e.getAttribute("size_")  == "1_window_3" && e.getAttribute("orient") == "front") {
+} else if (e.getAttribute("size_")  == "1_window_3" && e.getAttribute("orient") == "front") {
   
-  Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'front', windowHeight: '146' })
+  Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'front', windowHeight: '146', x_2d: 0, y_2d: 0 })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_")  == "1_window_4" && e.getAttribute("orient") == "front") {
   
-  Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'front', windowHeight: '126' })
+  Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'front', windowHeight: '126', x_2d: 0, y_2d: 0 })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_")  == "1_window_5" && e.getAttribute("orient") == "front") {
   
-  Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'front', windowHeight: '63' })
+  Windows.push({ object: window_1_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, direction: direction, newposition: newposition, newrotation: newrotation, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'front', windowHeight: '63', x_2d: 0, y_2d: 0 })
   setWindows([...Windows]) 
 
 
@@ -3459,23 +3488,23 @@ if (e.getAttribute("size_")  == "1_window_1" && e.getAttribute("orient") == "fro
 
        if (e.getAttribute("size_") == "1_window_1" && e.getAttribute("orient") == "back" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'back' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'back', x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_2" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_3" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_4" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_5" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 
 
@@ -3483,23 +3512,23 @@ setWindows([...Windows])
 
        if (e.getAttribute("size_") == "1_window_1" && e.getAttribute("orient") == "left" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'left' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'left', x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_2" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_3" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_4" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_5" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 
 
@@ -3507,23 +3536,23 @@ setWindows([...Windows])
 
        if (e.getAttribute("size_") == "1_window_1" && e.getAttribute("orient") == "right" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'right' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'right', x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_2" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_3" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_4" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "1_window_5" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 
 
@@ -3535,125 +3564,125 @@ setWindows([...Windows])
  
   else if (e.getAttribute("size_") == "2_window_1" && e.getAttribute("orient") == "front") {
         
-        Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'front', windowHeight: '63' })
+        Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'front', windowHeight: '63', x_2d: 0, y_2d: 0  })
         setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_2" && e.getAttribute("orient") == "front") {
       
-      Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'front', windowHeight: '126' })
+      Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'front', windowHeight: '126', x_2d: 0, y_2d: 0  })
       setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_3" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'front', windowHeight: '146' })
+    Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'front', windowHeight: '146', x_2d: 0, y_2d: 0  })
     setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_4" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'front', windowHeight: '215' })
+    Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'front', windowHeight: '215', x_2d: 0, y_2d: 0  })
     setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_5" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'front', windowHeight: '235' })
+    Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'front', windowHeight: '235', x_2d: 0, y_2d: 0  })
     setWindows([...Windows]) 
 
 } else if (e.getAttribute("size_") == "2_window_6" && e.getAttribute("orient") == "front") {
       
-      Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22, obj: "2_window", size: "2_window_6", orient: 'front',  windowHeight: '215' })
+      Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22, obj: "2_window", size: "2_window_6", orient: 'front',  windowHeight: '215', x_2d: 0, y_2d: 0  })
       setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_7" && e.getAttribute("orient") == "front") {
         
-        Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23, obj: "2_window", size: "2_window_7", orient: 'front',  windowHeight: '235' })
+        Windows.push({ object: window_2_front_.clone(), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23, obj: "2_window", size: "2_window_7", orient: 'front',  windowHeight: '235', x_2d: 0, y_2d: 0  })
         setWindows([...Windows])  
 } 
 
   else if (e.getAttribute("size_") == "2_window_1" && e.getAttribute("orient") == "back" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'back' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'back', x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_2" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_3" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_4" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_5" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 
 } else if (e.getAttribute("size_") == "2_window_6" && e.getAttribute("orient") == "back" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22,  obj: "2_window", size: "2_window_6", orient: 'back' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22,  obj: "2_window", size: "2_window_6", orient: 'back', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_7" && e.getAttribute("orient") == "back" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23,  obj: "2_window", size: "2_window_7", orient: 'back' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23,  obj: "2_window", size: "2_window_7", orient: 'back', x_2d: 0, y_2d: 0  })
   setWindows([...Windows])  
 } 
 
   else if (e.getAttribute("size_") == "2_window_1" && e.getAttribute("orient") == "left" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'left' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'left', x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_2" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_3" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_4" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_5" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 
 } else if (e.getAttribute("size_") == "2_window_6" && e.getAttribute("orient") == "left" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22,  obj: "2_window", size: "2_window_6", orient: 'left' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22,  obj: "2_window", size: "2_window_6", orient: 'left', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_7" && e.getAttribute("orient") == "left" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23,  obj: "2_window", size: "2_window_7", orient: 'left' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23,  obj: "2_window", size: "2_window_7", orient: 'left', x_2d: 0, y_2d: 0  })
   setWindows([...Windows])  
 } 
 
   else if (e.getAttribute("size_") == "2_window_1" && e.getAttribute("orient") == "right" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'right' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:12.85,  obj: "2_window", size: "2_window_1", orient: 'right', x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_2" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:16.85,  obj: "2_window", size: "2_window_2", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_3" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:19.85,  obj: "2_window", size: "2_window_3", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_4" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:19.5, scaleY:22,  obj: "2_window", size: "2_window_4", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_5" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:20.5,  obj: "2_window", size: "2_window_5", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 
 } else if (e.getAttribute("size_") == "2_window_6" && e.getAttribute("orient") == "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22,  obj: "2_window", size: "2_window_6", orient: 'right' })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:22,  obj: "2_window", size: "2_window_6", orient: 'right', x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "2_window_7" && e.getAttribute("orient") == "right" ) {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23,  obj: "2_window", size: "2_window_7", orient: 'right' })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25.5, scaleY:23,  obj: "2_window", size: "2_window_7", orient: 'right', x_2d: 0, y_2d: 0  })
   setWindows([...Windows])  
 } 
 
@@ -3664,92 +3693,92 @@ setWindows([...Windows])
 
   else if (e.getAttribute("size_") == "3_window_1" && e.getAttribute("orient") == "front") {
         
-        Windows.push({ object: window_3_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX: 30, scaleY: 30, obj: "3_window",orient:"front", windowHeight: '63' })
+        Windows.push({ object: window_3_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX: 30, scaleY: 30, obj: "3_window",orient:"front", windowHeight: '63', x_2d: 0, y_2d: 0  })
         setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_2" && e.getAttribute("orient") == "front") {
       
-      Windows.push({ object: window_3_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:40,  obj: "3_window",orient:"front", windowHeight: '126'  })
+      Windows.push({ object: window_3_front_.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:40,  obj: "3_window",orient:"front", windowHeight: '126', x_2d: 0, y_2d: 0   })
       setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_3" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_3_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:45,  obj: "3_window",orient:"front", windowHeight: '146'  })
+    Windows.push({ object: window_3_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:45,  obj: "3_window",orient:"front", windowHeight: '146', x_2d: 0, y_2d: 0   })
     setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_4" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_3_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:50,  obj: "3_window",orient:"front", windowHeight: '215' })
+    Windows.push({ object: window_3_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:50,  obj: "3_window",orient:"front", windowHeight: '215', x_2d: 0, y_2d: 0  })
     setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_5" && e.getAttribute("orient") == "front") {
     
-    Windows.push({ object: window_3_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:55,  obj: "3_window",orient:"front", windowHeight: '235'  })
+    Windows.push({ object: window_3_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:55,  obj: "3_window",orient:"front", windowHeight: '235', x_2d: 0, y_2d: 0  })
     setWindows([...Windows])   
 
 } 
 
   else if (e.getAttribute("size_") == "3_window_1" && e.getAttribute("orient") == "left") {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "3_window", size: "3_window_1", orient: "left" })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "3_window", size: "3_window_1", orient: "left", x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_2" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "3_window", size: "3_window_2", orient: "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "3_window", size: "3_window_2", orient: "left", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_3" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "3_window", size: "3_window_3", orient: "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "3_window", size: "3_window_3", orient: "left", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_4" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "3_window", size: "3_window_4", orient: "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "3_window", size: "3_window_4", orient: "left", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_5" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:35,  obj: "3_window", size: "3_window_5", orient: "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:35,  obj: "3_window", size: "3_window_5", orient: "left", x_2d: 0, y_2d: 0  })
 setWindows([...Windows])   
 
 } 
 
   else if (e.getAttribute("size_" ) == "3_window_1" && e.getAttribute("orient") ==  "right") {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "3_window", size: "3_window_1", orient: "right" })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "3_window", size: "3_window_1", orient: "right", x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_" ) == "3_window_2" && e.getAttribute("orient") ==  "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "3_window", size: "3_window_2", orient: "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "3_window", size: "3_window_2", orient: "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_" ) == "3_window_3" && e.getAttribute("orient") ==  "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "3_window", size: "3_window_3", orient: "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "3_window", size: "3_window_3", orient: "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_" ) == "3_window_4" && e.getAttribute("orient") ==  "right") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "3_window", size: "3_window_4", orient: "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "3_window", size: "3_window_4", orient: "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_" ) == "3_window_5" && e.getAttribute("orient") ==  "right" ) {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:35,  obj: "3_window", size: "3_window_5", orient: "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:35,  obj: "3_window", size: "3_window_5", orient: "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows])   
 
 } 
 
   else if (e.getAttribute("size_") == "3_window_1" && e.getAttribute("orient") == "back") {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "3_window", size: "3_window_1", orient: "back" })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "3_window", size: "3_window_1", orient: "back", x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_2" && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:40,  obj: "3_window", size: "3_window_2", orient: "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:40,  obj: "3_window", size: "3_window_2", orient: "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_3" && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:45,  obj: "3_window", size: "3_window_3", orient: "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:45,  obj: "3_window", size: "3_window_3", orient: "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "3_window_4"  && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:50,  obj: "3_window", size: "3_window_4", orient: "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:50,  obj: "3_window", size: "3_window_4", orient: "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_")  == "3_window_5" && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:55,  obj: "3_window", size: "3_window_5", orient: "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:55,  obj: "3_window", size: "3_window_5", orient: "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows])   
 
 } 
@@ -3761,73 +3790,73 @@ setWindows([...Windows])
 
        if (e.getAttribute("size_") == "4_window_1" && e.getAttribute("orient") == "front") {
   
-  Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", orient:"front", windowHeight: '126'   })
+  Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", orient:"front", windowHeight: '126', x_2d: 0, y_2d: 0    })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_2" && e.getAttribute("orient") == "front") {
 
-Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", orient:"front", windowHeight: '146'   })
+Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", orient:"front", windowHeight: '146' , x_2d: 0, y_2d: 0   })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_3" && e.getAttribute("orient") == "front") {
 
-Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", orient:"front", windowHeight: '215'   })
+Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", orient:"front", windowHeight: '215' , x_2d: 0, y_2d: 0   })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_4" && e.getAttribute("orient") == "front") {
 
-Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", orient:"front", windowHeight: '235'   })
+Windows.push({ object: window_4_front_.clone(),index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", orient:"front", windowHeight: '235' , x_2d: 0, y_2d: 0   })
 setWindows([...Windows]) 
 }  
 
        if (e.getAttribute("size_") == "4_window_1" && e.getAttribute("orient") == "back") {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", size: "4_window_1" ,orient:"back" })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", size: "4_window_1" ,orient:"back", x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_2" && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", size: "4_window_2" ,orient:  "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", size: "4_window_2" ,orient:  "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_3" && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", size: "4_window_3" ,orient:  "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", size: "4_window_3" ,orient:  "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_4" && e.getAttribute("orient") == "back") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", size: "4_window_4" ,orient: "back" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", size: "4_window_4" ,orient: "back", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 }  
 
        if (e.getAttribute("size_") == "4_window_1" && e.getAttribute("orient") == "right") {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", size: "4_window_1" ,orient:"right" })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", size: "4_window_1" ,orient:"right", x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_2" && e.getAttribute("orient") == "right") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", size: "4_window_2" ,orient:  "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", size: "4_window_2" ,orient:  "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_3" && e.getAttribute("orient") == "right") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", size: "4_window_3" ,orient:  "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", size: "4_window_3" ,orient:  "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_4" && e.getAttribute("orient") == "right") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", size: "4_window_4" ,orient: "right" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", size: "4_window_4" ,orient: "right", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 }  
 
        if (e.getAttribute("size_") == "4_window_1" && e.getAttribute("orient") == "left") {
   
-  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", size: "4_window_1" ,orient:"left" })
+  Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:10,  obj: "4_window", size: "4_window_1" ,orient:"left", x_2d: 0, y_2d: 0  })
   setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_2" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", size: "4_window_2" ,orient:  "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:20,  obj: "4_window", size: "4_window_2" ,orient:  "left", x_2d: 0, y_2d: 0  })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_3" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", size: "4_window_3" ,orient:  "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:25,  obj: "4_window", size: "4_window_3" ,orient:  "left" , x_2d: 0, y_2d: 0 })
 setWindows([...Windows]) 
 } else if (e.getAttribute("size_") == "4_window_4" && e.getAttribute("orient") == "left") {
 
-Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", size: "4_window_4" ,orient: "left" })
+Windows.push({ no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:30, scaleY:30,  obj: "4_window", size: "4_window_4" ,orient: "left", x_2d: 0, y_2d: 0 })
 setWindows([...Windows]) 
 }  
 
@@ -4067,13 +4096,6 @@ function ModelsAll() {
 
    var material1_window = new THREE.MeshBasicMaterial({color: WindowColorObroka1});
    var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
-
-   //window_1.scene.children[0].children[1].children[0].children[0].material = material1_window
-
-   //window_1_front_.children[0].children[1].children[0].children[0].material = material1_window
-   //window_1_back_.children[0].children[1].children[0].children[0].material = material1_window
-   //window_1_left_.children[0].children[1].children[0].children[0].material = material1_window
-   //window_1_right_.children[0].children[1].children[0].children[0].material = material1_window
    
    /* */ 
 
@@ -4510,8 +4532,7 @@ function ModelsAll() {
        
 )}
 
-    {/* doors */}
-
+  {/* doors */}
 
   {/*  back*/}
 
@@ -52187,9 +52208,7 @@ const FormVisibleCheck = () => {
   }
 }
 
-useEffect(() => {
-  FormVisibleCheck()
-})
+useEffect(() => { FormVisibleCheck() })
 
 /* actual numbers */
 
@@ -63645,6 +63664,7 @@ function AngleRoofSetter2() {
     setRoof_type_2param(-2.1)
 }
 } 
+
 useEffect(() => {
   AngleRoofSetter1()
 })
@@ -63653,11 +63673,6 @@ useEffect(() => {
   AngleRoofSetter1Additional()
 })
 
-/* 
-
-[Angle1Range, Roof1, Roof3, Roof2, WidthSetterLengthtHail, OkapRightActualValue, OkapLeftActualValue]
-
-*/
 useEffect(() => {
   AngleRoofSetter2()
 }, [Angle2Range, Roof2, Roof3, Roof2, WidthSetterLengthtHail, OkapRightActualValue, OkapLeftActualValue]) 
@@ -63906,11 +63921,13 @@ const ViewAreaCircle = (props) => (
 )
 
 /* windows */
+
 const handleDrag = (index) => (event, { deltaX, deltaY }) => {
   const changeAmount = Math.round(deltaX / 1.65);
   const changeAmount1 = Math.round(deltaY / 2.5);
-  console.log(changeAmount)
-  console.log(changeAmount1)
+  //console.log(changeAmount)
+  //console.log(changeAmount1)
+
   const newItems = [
   ...FilteredWindowData1,
   ...FilteredWindowData2,
@@ -63931,12 +63948,13 @@ const handleDrag = (index) => (event, { deltaX, deltaY }) => {
   ];
   newItems[index] = {
     ...newItems[index],
-    x: newItems[index].x + changeAmount,
-    y: newItems[index].y - changeAmount1 
+    x: newItems[index].x + changeAmount * 2,
+    y: newItems[index].y - changeAmount1 * 2,
+    x_2d: newItems[index].x_2d + changeAmount,
+    y_2d: newItems[index].y_2d - changeAmount1,
   };
   setWindows(newItems);
 };
-
 const handleDragEnd = (index, changeAmount, changeAmount1) => {
   setWindows(prevWindows => {
     const newWindows = [...prevWindows];
@@ -63951,6 +63969,7 @@ const handleDragEnd = (index, changeAmount, changeAmount1) => {
 const handleDrag1 = (index) => (event, { deltaX, deltaY }) => {
   const changeAmount = Math.round(deltaX / 1.65);
   const changeAmount1 = Math.round(deltaY / 2.5);
+
   const newItems = [
      ...FilteredWindowData2,
      ...FilteredWindowData1,
@@ -63972,9 +63991,12 @@ const handleDrag1 = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x + changeAmount,
-    y: newItems[index].y - changeAmount1 
+    y: newItems[index].y - changeAmount1,
+    x_2d: newItems[index].x_2d + changeAmount,
+    y_2d: newItems[index].y_2d - changeAmount1,
   };
   setWindows(newItems);
+ 
   
    
  
@@ -64418,6 +64440,14 @@ const handleDrag3right = (index) => (event, { deltaX, deltaY }) => {
 
 /* doors */
 
+/*let [NewDoorPos, setNewDoorPos] = useState(0)
+
+function DraggerCheckDoor(event, { deltaX, deltaY }) {
+  const changeAmount = Math.round(deltaX / 1.65);
+  setNewDoorPos(changeAmount)
+}*/
+
+
 const handleDragDoor1 = (index) => (event, { deltaX, deltaY }) => {
   const changeAmount = Math.round(deltaX / 1.65);
  
@@ -64433,13 +64463,20 @@ const handleDragDoor1 = (index) => (event, { deltaX, deltaY }) => {
   ];
   newItems[index] = {
     ...newItems[index],
-    x: newItems[index].x + changeAmount,
+    x: newItems[index].x + changeAmount, 
   };
-  setDoors(newItems);
   
-   
+  setDoors(newItems);
+
+  console.log(event)  
+  console.log(deltaX)  
  
 }; 
+
+
+ 
+
+
 const handleDragDoor2 = (index) => (event, { deltaX, deltaY }) => {
   const changeAmount = Math.round(deltaX / 1.65);
   const newItems = [
@@ -64455,6 +64492,7 @@ const handleDragDoor2 = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x + changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -64477,6 +64515,7 @@ const handleDragDoor1Back = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x + changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -64499,6 +64538,7 @@ const handleDragDoor2Back = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x + changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -64521,6 +64561,7 @@ const handleDragDoor1Left = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x + changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -64543,6 +64584,7 @@ const handleDragDoor2Left = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x + changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -64565,6 +64607,7 @@ const handleDragDoor1Right = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x - changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -64587,6 +64630,7 @@ const handleDragDoor2Right = (index) => (event, { deltaX, deltaY }) => {
   newItems[index] = {
     ...newItems[index],
     x: newItems[index].x - changeAmount,
+    x_2d: newItems[index].x_2d + changeAmount,
   };
   setDoors(newItems);
   
@@ -66778,7 +66822,7 @@ setTwoDView5('none')
     </div>
 
     <div style={{ display: twoDView2, flexDirection: 'column', height: '170vh' }}>
-    {/* <div className="configuration_option">
+    <div className="configuration_option">
       <h2>{translation[SettedLanguage].menu_3_2}</h2>
 
 
@@ -66897,6 +66941,8 @@ setTwoDView5('none')
       </div>
       
     </div>
+
+    {/*
 
     <div className="configuration_option">
 
@@ -67031,6 +67077,11 @@ setTwoDView5('none')
       
     </div>  
 
+
+  */}
+
+  {/*
+
     <div className="configuration_option">
     <h2>{translation[SettedLanguage].menu_3_3}</h2>
 
@@ -67072,7 +67123,7 @@ setTwoDView5('none')
 
     <div style={{ display: twoDView4, flexDirection: 'column', height: '170vh' }}>
 
-    {/* <div className="configuration_option">
+    {<div className="configuration_option">
       <h2>{translation[SettedLanguage].menu_3_2}</h2>
 
       <div className="option_block_acs">
@@ -67140,9 +67191,9 @@ setTwoDView5('none')
           </ul>
       </div>
       
-    </div>  
+    </div> }
     
-    <div className="configuration_option">
+    {/*<div className="configuration_option">
 
     <h2>{translation[SettedLanguage].menu_3_3}</h2>
 
@@ -67758,21 +67809,28 @@ THREE.ColorManagement.enabled = true
                   ModelPos = ModelPosRight1;
                 }
                 
-                return (<DraggableWindow idx={index} setWindows={setWindows} FilteredWindowData1={FilteredWindowData1} FilteredWindowData2={FilteredWindowData2} FilteredWindowData3={FilteredWindowData3} FilteredWindowData4={FilteredWindowData4} x={window.x} y={window.y} frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index} obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub} handleDeleteWindow={handleDeleteWindow} index={window.index} window={window.object} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
-              })}
-              {FilteredWindowData1In.map((window, index) => {
-                let ModelPos;
-                if(window.direction === 'front'){
-                  ModelPos = ModelPosFront1;
-                }else if(window.direction === 'back'){
-                  ModelPos = ModelPosBack;
-                }else if(window.direction === 'left'){
-                  ModelPos = ModelPosLeft1;
-                }else if(window.direction === 'right'){
-                  ModelPos = ModelPosRight1;
-                }
-                
-                return (<DraggableWindow idx={index} setWindows={setWindows}  FilteredWindowData1In={FilteredWindowData1In} x={window.x} y={window.y} frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index} obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub} handleDeleteWindow={handleDeleteWindow} index={window.index} window={window.object} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
+                return (
+                <DraggableWindow 
+                idx={index} 
+                Windows={Windows} 
+                setWindows={setWindows} 
+                FilteredWindowData1={FilteredWindowData1} 
+                FilteredWindowData2={FilteredWindowData2} 
+                FilteredWindowData3={FilteredWindowData3} 
+                FilteredWindowData4={FilteredWindowData4} 
+                FilteredWindowData1BACK={FilteredWindowData1BACK}
+                FilteredWindowData2BACK={FilteredWindowData2BACK}
+                FilteredWindowData3BACK={FilteredWindowData3BACK}
+                FilteredWindowData4BACK={FilteredWindowData4BACK}
+                FilteredWindowData1LEFT={FilteredWindowData1LEFT}
+                FilteredWindowData2LEFT={FilteredWindowData2LEFT}
+                FilteredWindowData3LEFT={FilteredWindowData3LEFT}
+                FilteredWindowData4LEFT={FilteredWindowData4LEFT}
+                FilteredWindowData1RIGHT={FilteredWindowData1RIGHT}
+                FilteredWindowData2RIGHT={FilteredWindowData2RIGHT}
+                FilteredWindowData3RIGHT={FilteredWindowData3RIGHT}
+                FilteredWindowData4RIGHT={FilteredWindowData4RIGHT}
+                x={window.x} y={window.y} frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index} obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub} handleDeleteWindow={handleDeleteWindow} index={window.index} window={window.object} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
               })}
               {FilteredWindowData2.map((window) => {
                 let ModelPos;
@@ -67786,7 +67844,26 @@ THREE.ColorManagement.enabled = true
                   ModelPos = ModelPosRight1;
                 }
 
-                return (<DraggableWindow frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index} obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub}  handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
+                return (<DraggableWindow frontSideBool={frontSideBool} 
+                  Windows={Windows} 
+                  setWindows={setWindows} 
+                  FilteredWindowData1={FilteredWindowData1} 
+                  FilteredWindowData2={FilteredWindowData2} 
+                  FilteredWindowData3={FilteredWindowData3} 
+                  FilteredWindowData4={FilteredWindowData4} 
+                FilteredWindowData1BACK={FilteredWindowData1BACK}
+                FilteredWindowData2BACK={FilteredWindowData2BACK}
+                FilteredWindowData3BACK={FilteredWindowData3BACK}
+                FilteredWindowData4BACK={FilteredWindowData4BACK}
+                FilteredWindowData1LEFT={FilteredWindowData1LEFT}
+                FilteredWindowData2LEFT={FilteredWindowData2LEFT}
+                FilteredWindowData3LEFT={FilteredWindowData3LEFT}
+                FilteredWindowData4LEFT={FilteredWindowData4LEFT}
+                FilteredWindowData1RIGHT={FilteredWindowData1RIGHT}
+                FilteredWindowData2RIGHT={FilteredWindowData2RIGHT}
+                FilteredWindowData3RIGHT={FilteredWindowData3RIGHT}
+                FilteredWindowData4RIGHT={FilteredWindowData4RIGHT}
+                  backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index} obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub}  handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
               })}
               {FilteredWindowData3.map((window) => {
                 let ModelPos;
@@ -67800,7 +67877,28 @@ THREE.ColorManagement.enabled = true
                   ModelPos = ModelPosRight1;
                 }
 
-                return (<DraggableWindow frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index}  obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub}  handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos}  scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
+                return (<DraggableWindow frontSideBool={frontSideBool} 
+                  Windows={Windows} 
+                  setWindows={setWindows} 
+                  FilteredWindowData1={FilteredWindowData1} 
+                  FilteredWindowData2={FilteredWindowData2} 
+                  FilteredWindowData3={FilteredWindowData3} 
+                  FilteredWindowData4={FilteredWindowData4} 
+                  
+                FilteredWindowData1BACK={FilteredWindowData1BACK}
+                FilteredWindowData2BACK={FilteredWindowData2BACK}
+                FilteredWindowData3BACK={FilteredWindowData3BACK}
+                FilteredWindowData4BACK={FilteredWindowData4BACK}
+                FilteredWindowData1LEFT={FilteredWindowData1LEFT}
+                FilteredWindowData2LEFT={FilteredWindowData2LEFT}
+                FilteredWindowData3LEFT={FilteredWindowData3LEFT}
+                FilteredWindowData4LEFT={FilteredWindowData4LEFT}
+                FilteredWindowData1RIGHT={FilteredWindowData1RIGHT}
+                FilteredWindowData2RIGHT={FilteredWindowData2RIGHT}
+                FilteredWindowData3RIGHT={FilteredWindowData3RIGHT}
+                FilteredWindowData4RIGHT={FilteredWindowData4RIGHT}
+                  
+                  backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index}  obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub}  handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos}  scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
               })}
               {FilteredWindowData4.map((window) => {
                 let ModelPos;
@@ -67813,7 +67911,26 @@ THREE.ColorManagement.enabled = true
                 }else if(window.direction === 'right'){
                   ModelPos = ModelPosRight1;
                 }
-                return (<DraggableWindow frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index}  obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub} handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)}
+                return (<DraggableWindow frontSideBool={frontSideBool} 
+                  Windows={Windows} 
+                  setWindows={setWindows} 
+                  FilteredWindowData1={FilteredWindowData1} 
+                  FilteredWindowData2={FilteredWindowData2} 
+                  FilteredWindowData3={FilteredWindowData3} 
+                  FilteredWindowData4={FilteredWindowData4} 
+                FilteredWindowData1BACK={FilteredWindowData1BACK}
+                FilteredWindowData2BACK={FilteredWindowData2BACK}
+                FilteredWindowData3BACK={FilteredWindowData3BACK}
+                FilteredWindowData4BACK={FilteredWindowData4BACK}
+                FilteredWindowData1LEFT={FilteredWindowData1LEFT}
+                FilteredWindowData2LEFT={FilteredWindowData2LEFT}
+                FilteredWindowData3LEFT={FilteredWindowData3LEFT}
+                FilteredWindowData4LEFT={FilteredWindowData4LEFT}
+                FilteredWindowData1RIGHT={FilteredWindowData1RIGHT}
+                FilteredWindowData2RIGHT={FilteredWindowData2RIGHT}
+                FilteredWindowData3RIGHT={FilteredWindowData3RIGHT}
+                FilteredWindowData4RIGHT={FilteredWindowData4RIGHT}
+                  backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index}  obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub} handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos} scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)}
               )}
               {filteredData.map((door) => {
                 let ModelPos;
@@ -67826,7 +67943,23 @@ THREE.ColorManagement.enabled = true
                 }else if(door.direction === 'right'){
                   ModelPos = ModelPosRight1;
                 }
-                return (<DraggableDoor meshPositionArray={meshPositionArray} frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={door.x} DoorColor1={DoorColor1} DoorObrobkaColor1={DoorObrobkaColor1} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} windowHeight={window.windowHeight} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} key={door.index}  handleDeleteDoor={handleDeleteDoor} elementPositionToSubSides={door.elementPositionToSubSides} elementPositionToSub={door.elementPositionToSub} index={door.index} ActualHailLenght={ActualHailLenght} ModelPos={ModelPos} glassType={door.GlassType} scaleX={door.scaleX} scaleY={door.scaleY} direction={door.direction} newposition={door.newposition} newrotation={door.newrotation} door={door.object} glass_door={door.second_object} glass_full_door={door.third_object} setCameraMovement={setCameraMovement} scale={door.scale} type={door.type}/>)
+                return (<DraggableDoor 
+                   meshPositionArray={meshPositionArray} 
+                   Doors={Doors}
+                   setDoors={setDoors}
+                   FilteredWindowData1={FilteredWindowData1}
+                   FilteredWindowData2={FilteredWindowData2} 
+                   FilteredWindowData3={FilteredWindowData3} 
+                   FilteredWindowData4={FilteredWindowData4} 
+                   filteredData={filteredData}
+                   filteredData1={filteredData1}
+                   FilteredDataBack={FilteredDataBack}
+                   FilteredDataBack1={FilteredDataBack1}
+                   FilteredDataRight={FilteredDataRight}
+                   FilteredDataRight1={FilteredDataRight1}
+                   FilteredDataLeft={FilteredDataLeft}
+                   FilteredDataLeft1={FilteredDataLeft1}
+                   frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={door.x} DoorColor1={DoorColor1} DoorObrobkaColor1={DoorObrobkaColor1} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} windowHeight={window.windowHeight} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} key={door.index}  handleDeleteDoor={handleDeleteDoor} elementPositionToSubSides={door.elementPositionToSubSides} elementPositionToSub={door.elementPositionToSub} index={door.index} ActualHailLenght={ActualHailLenght} ModelPos={ModelPos} glassType={door.GlassType} scaleX={door.scaleX} scaleY={door.scaleY} direction={door.direction} newposition={door.newposition} newrotation={door.newrotation} door={door.object} glass_door={door.second_object} glass_full_door={door.third_object} setCameraMovement={setCameraMovement} scale={door.scale} type={door.type}/>)
               })}
               {filteredData1.map((door) => {
                 let ModelPos;
@@ -67839,7 +67972,18 @@ THREE.ColorManagement.enabled = true
                 }else if(door.direction === 'right'){
                   ModelPos = ModelPosRight1;
                 }
-                return (<DraggableDoubleDoor frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={door.x} DoorColor1={DoorColor1} DoorObrobkaColor1={DoorObrobkaColor1} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} second_door={door.second_object} third_door={door.third_object} key={door.index} handleDeleteDoor={handleDeleteDoor} elementPositionToSubSides={door.elementPositionToSubSides} elementPositionToSub={door.elementPositionToSub} index={door.index} ModelPos={ModelPos} glassType={door.GlassType} scaleX={door.ScaleModelX} scaleY={door.ScaleModelY} direction={door.direction} newposition={door.newposition} newrotation={door.newrotation} door={door.object} door_type={'double_door'} setCameraMovement={setCameraMovement} scale={door.scale} type={door.type}/>)
+                return (<DraggableDoubleDoor 
+                  Doors={Doors}
+                  setDoors={setDoors}
+                  filteredData={filteredData}
+                  filteredData1={filteredData1}
+                  FilteredDataBack={FilteredDataBack}
+                  FilteredDataBack1={FilteredDataBack1}
+                  FilteredDataRight={FilteredDataRight}
+                  FilteredDataRight1={FilteredDataRight1}
+                  FilteredDataLeft={FilteredDataLeft}
+                  FilteredDataLeft1={FilteredDataLeft1}
+                  frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={door.x} DoorColor1={DoorColor1} DoorObrobkaColor1={DoorObrobkaColor1} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} second_door={door.second_object} third_door={door.third_object} key={door.index} handleDeleteDoor={handleDeleteDoor} elementPositionToSubSides={door.elementPositionToSubSides} elementPositionToSub={door.elementPositionToSub} index={door.index} ModelPos={ModelPos} glassType={door.GlassType} scaleX={door.ScaleModelX} scaleY={door.ScaleModelY} direction={door.direction} newposition={door.newposition} newrotation={door.newrotation} door={door.object} door_type={'double_door'} setCameraMovement={setCameraMovement} scale={door.scale} type={door.type}/>)
               })}
               {FilteredGate.map((gate) => {
                 let ModelPos;
