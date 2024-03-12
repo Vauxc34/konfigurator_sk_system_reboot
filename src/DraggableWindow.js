@@ -12,7 +12,7 @@ function DraggableWindow(props) {
 
     console.log(props)
 
-    props.window.scale.z = 50
+    //props.window.scale.z = 50
     //props.window.position.z = 60
 
     if (props.obj === "1_window") {
@@ -29,9 +29,9 @@ function DraggableWindow(props) {
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
-    if(props.direction === 'back' || props.direction === 'front'){
+          if (props.direction === 'back' || props.direction === 'front'){
         sub = props.elementPositionToSub;
-    }else if(props.direction === 'left' || props.direction === 'right' ){
+    }else if (props.direction === 'left' || props.direction === 'right' ){
         sub = props.elementPositionToSubSides;
     }
     let glassRotation;
@@ -57,15 +57,15 @@ function DraggableWindow(props) {
     useEffect(() => {
               if (props.direction === 'front'){
             setPosition([position[0], position[1], props.ModelPos - sub - subsub]);
-        }else if(props.direction === 'back'){
+        }else if (props.direction === 'back'){
             setPosition([position[0], position[1], props.ModelPos + sub + subsub]);
-        }else if(props.direction === 'left'){
+        }else if (props.direction === 'left'){
             if(props.obj === '4_window'){
                 setPosition([props.ModelPos - (sub + 3.5) - subsub, position[1] + props.y, position[2] + props.x]);
             }else{
                 setPosition([props.ModelPos - sub - subsub, position[1] + props.y, position[2] + props.x]);
             }
-        }else if(props.direction === 'right'){
+        }else if (props.direction === 'right'){
             if(props.obj === '4_window'){
                 setPosition([props.ModelPos + (sub + 3.5) + subsub, position[1] + props.y, position[2] + props.x]);
             }else{
@@ -332,7 +332,7 @@ function DraggableWindow(props) {
         document.addEventListener('pointerup', onPointerUp);
     }
     
-        useEffect(() => {
+    useEffect(() => {
             if(props.direction === 'front' || props.direction === 'back'){
                 if(props.WidthSetterLengthtHail == 10){
                     setLeftCorner(-121.8)
@@ -614,7 +614,7 @@ function DraggableWindow(props) {
                     setRightCorner(848.59)
                 }
             }
-        }, [props.WidthSetterLengthtHail, props.RangeSetterLengthtHail, position])
+    }, [props.WidthSetterLengthtHail, props.RangeSetterLengthtHail, position])
 
     useEffect(() => {
         if(props.direction === 'front'){
@@ -850,7 +850,6 @@ function DraggableWindow(props) {
                     }
                 }}
                 onPointerOut={() => {
-
                     /* 
                     
                     const [, , z] = position;
@@ -985,18 +984,14 @@ function DraggableWindow(props) {
 
                             }   
                     
-                    */
- 
-
-                }}
+                */}}
                 onPointerLeave={() => { const canvas = document.querySelector('canvas'); canvas.style.cursor = null; }}
                 onClick={() => setShow(true)}
                 onPointerMissed={() => setShow(false)}
                 renderOrder={0}
                 position={position}
                 rotation={rotation}
-                {...bind()}
-            >
+                {...bind()}>
                 <primitive ref={modelRef} object={props.window} scale={scale}>
                 {(show ? <group position={circlePosition} rotation={(props.obj === '3_window' ? [0, 0, 1.6] : [0, 0, 0.8])} onClick={() => props.handleDeleteWindow(props.index)}>
                     <mesh rotation={circleRotation}>
