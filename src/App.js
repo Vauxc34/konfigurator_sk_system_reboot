@@ -46080,8 +46080,6 @@ if(Angle1Range == 15) {
     setPurlinRootParam3(-.12) 
     setKlinWidth1(-472.05)
     setKlinWidth2(408.5)
-    
-    
     setLameleFrontBackAdditionalOffset(-306)
     setLameleFrontBackAdditionalOffset1(306)
 
@@ -46714,7 +46712,6 @@ setOkapRoofParam2WidthUpRight(-.36)
 
 
 }
-
 
          if (OkapLeftActualValue == 40 || OkapLeftActualValue == 39 || OkapLeftActualValue == 38) {
 
@@ -47365,7 +47362,6 @@ setOkapRoofParam2WidthUpRight(-.36)
 
 
   } 
-
 
   }  
 
