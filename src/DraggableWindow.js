@@ -10,7 +10,21 @@ const _ = require("lodash");
 
 function DraggableWindow(props) {
 
-    console.log(props.obj)
+    console.log(props)
+
+    props.window.scale.z = 50
+    //props.window.position.z = 60
+
+    if (props.obj === "1_window") {
+        /*props.window.scale.z = 65
+        props.window.position.z = 336.35*/
+    } else if (props.obj === "2_window") {
+        //props.window.scale.z = 50
+    } else if (props.obj === "3_window") {
+        
+    } else if (props.obj === "4_window") {
+        
+    }
 
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
@@ -25,6 +39,7 @@ function DraggableWindow(props) {
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
     const [scale, setScale] = useState((props.obj === '3_window' ? [props.scaleX, 155, props.scaleY] : (props.scaleX !== undefined ? [props.scaleX, props.scaleY, (props.obj === '1_window' ? 155 : (props.obj === '1_window_inside' ? 55 : (props.obj === '2_window' ? 65 : (props.obj === '4_window' ? 185 : 25))))] : props.scale)));
+
     const [show, setShow] = useState(false);
     const [draggable, setDraggable] = useState(true);
     const [deletedColor, setDeletedColor] = useState(false);
@@ -600,7 +615,6 @@ function DraggableWindow(props) {
                 }
             }
         }, [props.WidthSetterLengthtHail, props.RangeSetterLengthtHail, position])
-    
 
     useEffect(() => {
         if(props.direction === 'front'){
@@ -837,9 +851,11 @@ function DraggableWindow(props) {
                 }}
                 onPointerOut={() => {
 
+                    /* 
+                    
                     const [, , z] = position;
-
-                      if (props.obj == '1_window') {
+                    
+                                   if (props.obj == '1_window') {
 
                                 const newItems = [
                                     ...props.FilteredWindowData1,
@@ -967,7 +983,10 @@ function DraggableWindow(props) {
                                       };
                                       props.setWindows(newItems);
 
-                            }    
+                            }   
+                    
+                    */
+ 
 
                 }}
                 onPointerLeave={() => { const canvas = document.querySelector('canvas'); canvas.style.cursor = null; }}

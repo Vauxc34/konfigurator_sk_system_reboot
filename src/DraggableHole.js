@@ -17,7 +17,7 @@ function DraggableHole(props) {
     }
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos - 5] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
-    const [scale, setScale] = useState([40, 40, 114]);
+    const [scale, setScale] = useState([40, 40, 65]);
     const [show, setShow] = useState(false);
     const typeArray = ['none', 'half', 'full'];
     const [typeIdx, setTypeIdx] = useState(typeArray.indexOf(props.glassType));
@@ -26,6 +26,17 @@ function DraggableHole(props) {
     const [RightCorner, setRightCorner] = useState(194.1)
     const [deletedColor, setDeletedColor] = useState(false);
     const [activeDraggable, setActiveDraggable] = useState();
+
+           if (props.direction === 'front') {
+        props.hole.position.z = 256
+    } else if (props.direction === 'back') {
+        props.hole.position.z = 280
+    }
+
+    //props.hole.position.z = 256
+
+    //props.hole.position.z = 256
+    //props.hole.scale.z = 65
 
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
@@ -60,7 +71,6 @@ function DraggableHole(props) {
         },
         { pointerEvents: true }
     );
-    console.log(sub)
 
     useEffect(() => {
         if(props.direction === 'front'){
@@ -363,6 +373,10 @@ function DraggableHole(props) {
         setDraggable(false)
         const initialY = e.clientY;
         const onPointerMove = (e) => {
+
+            //props.hole.position.z = 256
+    //props.hole.scale.z = 65
+
             const deltaY = e.clientY - initialY;
             setScale([scale[0], scale[1] - deltaY, scale[2]])
             setPosition(position)
@@ -383,6 +397,7 @@ function DraggableHole(props) {
         const initialX = e.clientX;
         const onPointerMove = (e) => {
             const deltaX = e.clientX - initialX;
+
             setScale([scale[0] + deltaX, scale[1], scale[2]])
             if(props.direction === 'front' || props.direction === 'back'){
                 setPosition(position)
@@ -517,6 +532,8 @@ function DraggableHole(props) {
         }
     }, [typeIdx])
 
+ 
+
     return (
         <>
         {(show ? <MeasureBetweenPoints RangeSetterLengthtHail={props.RangeSetterLengthtHail} ModelPos={props.ModelPos + 70} direction={props.direction} type={props.type} size={props.size} obj={props.obj} windowHeight={props.windowHeight} WidthSetterLengthtHail={props.WidthSetterLengthtHail} box={box} position={position} pointA={new Vector3(LeftCorner, 0, 0)} pointB={new Vector3(RightCorner + 30, 5, 5)}/> : '')}
@@ -557,7 +574,7 @@ function DraggableHole(props) {
             <mesh 
                 onPointerDown={(e) => {changeYScale(e)}}
                 onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}}
-                scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={[2, 2.3, -5.28]}
+                scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={[2, 2.3, -5.31]}
             >
                 <shapeGeometry/>
                 <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
@@ -565,7 +582,7 @@ function DraggableHole(props) {
             : '')}
 
             {(show ? 
-            <mesh onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' || props.direction === 'back' ? [0.5, 1, -5.28] : [0.5, 1, -5.28])}>
+            <mesh onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' || props.direction === 'back' ? [0.5, 1, -5.31] : [0.5, 1, -5.31])}>
                 <shapeGeometry/>
                 <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
             </mesh> 

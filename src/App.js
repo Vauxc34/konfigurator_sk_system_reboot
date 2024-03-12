@@ -1384,7 +1384,6 @@ const modifiedUV1 = new Float32Array([
  
   }
 
-
   const [DoorPosZ, setDoorPosZ] = useState(0) 
   const [DoorPosXX, setDoorPosXX] = useState(-51.1) 
   const [DoorRotZ, setDoorRotZ] = useState(-Math.PI/ 1060) 
@@ -2974,7 +2973,7 @@ const modifiedUV1 = new Float32Array([
       newposition: newposition, 
       newrotation: newrotation,
       x:  0, 
-      z: 0, 
+      z: 256, 
       rotate: 0, 
       orient: 'front', 
       scaleX: 300, 
@@ -65195,9 +65194,13 @@ const [newDataHail, setNewDataHail] = useState('')
 const ActualLink = window.location.pathname  
 
 const DataReader = async (link) => {
-  const localState = []; 
+  
+const localState = []; 
   let newLink = link.split('/projekt=').join("")
-  let NewDataHail =  ActualDataHail.split('projekt=').join("")  
+  let NewDataHail = ActualDataHail.length > 1 ? ActualDataHail.split('projekt=').join("") : 'no-project'  
+
+  console.log(NewDataHail)
+
   const docRef = doc(db, "configurations", NewDataHail);
   const docSnap = await getDoc(docRef);  
   
@@ -65211,7 +65214,7 @@ const DataReader = async (link) => {
   
       /* roof type */ 
   
-           if(localState[0].Roof1 == true) {
+           if (localState[0].Roof1 == true) {
         setActualSelectedRoof1(SelectedRoof[0].imgSelect)
         setActualSelectedRoof2(SelectedRoof[1].img)
         setActualSelectedRoof3(SelectedRoof[2].img)
@@ -65241,16 +65244,12 @@ const DataReader = async (link) => {
       setAngle2Range(localState[0].AngleRoof2S)
       setTextureOutside(localState[0].ElevationTextureS) 
       setFrames(localState[0].FramesSetted)     
-      
       setOkapLeftActualValue(localState[0].OkapLeftSetted)
       setOkapRightActualValue(localState[0].OkapRightSetted)
       setActualOkapPrzodM(localState[0].OkapPrzodSetted)
       setActualOkapTylM(localState[0].OkapTylSetted)
-
       setIsAntresolaPrzod(localState[0].isAntresolaSettedPrzod)
       setIsAntresolaTyl(localState[0].isAntresolaSettedTyl)
-      
-  
   
       if (localState[0].LengthS == 10) { 
         setFrames([
@@ -65570,7 +65569,6 @@ useEffect(() => {
 }, [ActualDataHail, ActualLink]); 
 
 const WriteDataToBase = async () => {  
-
 const docRef = await addDoc(collection(db, "configurations"), { 
 AngleRoof1S: Angle1Range,
 UVChangeRoo1: UVChange,
@@ -65614,7 +65612,6 @@ WindowsSelected: Windows,
   setActualDataHail(docRef._key.path.segments[1])
   setNewDataHail(`http://repo-sk-system-beta.vercel.app/projekt=${docRef._key.path.segments[1]}`)
   navigator.clipboard.writeText(`http://repo-sk-system-beta.vercel.app/projekt=${docRef._key.path.segments[1]}`)
-
 } 
 
 const DeleteRecordFromDb = async () => {
@@ -65654,10 +65651,6 @@ window_1_front_.scale.z = 25;
 window_1_front_.position.x = -20;
 window_1_front_.position.y = 45;
 window_1_front_.position.z = ModelPosFront1;
-
- 
-
-
 
 window_1_back_.position.z = ModelPosBack - 1.2;
 
@@ -66793,7 +66786,6 @@ setAdditionalViewCartonSetter(AdditionalViewCartonSetter + 1)
 
 
 if(SetterViewCarton == 2 && AdditionalViewCartonSetter % 2) {
- 
 setViewCarton('flex')   
 setTwoDView1('flex')
 setTwoDView2('none')
@@ -67456,19 +67448,9 @@ setTwoDView5('none')
 }   
 
 /* optimalization things */
-const [HideGrass, setHideGrass] = useState(true)
-let Ram = navigator.deviceMemory
-const RamChecker = () => {
-      if (Ram == 4 || Ram < 4) {
-    setHideGrass(false)
-  } else {
-    setHideGrass(true)
-  }
-} 
-useEffect(() => {
-  RamChecker() 
-})
+ 
 THREE.ColorManagement.enabled = true
+
 /* optimalization things */
 
   return (
@@ -67633,7 +67615,7 @@ THREE.ColorManagement.enabled = true
               
               </label>
                 
-                <button onClick={FormSender}   class="noactive-step-btn"  >
+                <button onClick={FormSender}  class="noactive-step-btn"  >
        <span>{translation[SettedLanguage].menu_5_19}</span>
        <svg class="arrow-" viewBox="0 0 24 24">
          <path d="M22.6 11L15 3.4c-.5-.5-1.4-.5-1.9 0s-.5 1.4 0 1.9l5.3 5.3H2.3c-.7.1-1.3.7-1.3 1.4s.6 1.3 1.3 1.3h16.1l-5.3 5.3c-.5.5-.5 1.4 0 1.9s1.4.5 1.9 0l7.6-7.6c.3-.3.4-.6.4-1 0-.3-.1-.6-.4-.9z" class="st0">
@@ -67768,7 +67750,7 @@ THREE.ColorManagement.enabled = true
         <div id="docoption" style={{ height: '80vh', width: '500px', position: 'fixed', background: 'white', zIndex: -32, overflow: 'scroll', display: 'none' }}></div>
           <Cursor/>
           <Suspense fallback={<SuspenseLoading/>}>
-          <Canvas performance={{ min: 0.5 }} sRGB shadowMap={{ type: THREE.PCFSoftShadowMap }} gl={{ preserveDrawingBuffer: true }} onCreated={({ gl, camera, scene }) => { gl.domElement.style.touchAction = 'none';setCamera(camera); setScene(scene)}}
+          <Canvas performance={{ min: 0.5 }} sRGB shadowMap={{ type: THREE.PCFSoftShadowMap }} gl={{ preserveDrawingBuffer: true, pixelRatio: [1, 2] }} onCreated={({ gl, camera, scene }) => { gl.domElement.style.touchAction = 'none';setCamera(camera); setScene(scene)}}
           shadows shadowMapAutoUpdate frameloop="demand" camera={{ fov: 75, position: CameraAngles, far: 10000, near: .5,   }}> 
           <Environment files="new_skybox/flower_road_4k.hdr" background />
           <Shadow opacity={1}/>
