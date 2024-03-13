@@ -687,6 +687,7 @@ return <>
 </div>  
 
 <div className="configuration_option">
+
 <h2>{translation[SettedLanguage].menu_3_10}</h2>
 
 
@@ -694,7 +695,7 @@ return <>
 <div className="container_acs_img">
 <img src={Hole}></img>
 </div>
-<div className="label_down" onClick={(e) => {AddHole(e.target)}}>
+<div className="label_down" onClick={(e) => {AddHole(e.target)}} type={'front'}>
 <span>{translation[SettedLanguage].missing_menu_6}</span></div>
 </div>   
 </div>    
@@ -877,7 +878,7 @@ if(RangeSetterHeightHail <= 5) {
 setAdditionalViewCartonSetter(AdditionalViewCartonSetter + 1)
 
 
-if(SetterViewCarton == 2 && AdditionalViewCartonSetter % 2) {
+if (SetterViewCarton == 2 && AdditionalViewCartonSetter % 2) {
 setViewCarton('flex')   
 setTwoDView1('flex')
 setTwoDView2('none')
@@ -1078,6 +1079,23 @@ setTwoDView5('none')
 </div>     
  
 </div> */}
+
+
+<div className="configuration_option">
+
+  
+<h2>{translation[SettedLanguage].menu_3_10}</h2>
+
+
+<div className="option_block_acs" >
+<div className="container_acs_img">
+<img src={Hole}></img>
+</div>
+<div className="label_down" onClick={(e) => {AddHole(e.target)}} type={'back'}>
+<span type={'back'}>{translation[SettedLanguage].missing_menu_6}</span></div>
+</div>   
+</div>    
+  
 
 <div className="configuration_option">
 

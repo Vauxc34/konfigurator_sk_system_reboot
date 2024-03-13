@@ -2812,14 +2812,54 @@ const modifiedUV1 = new Float32Array([
   } 
 
   function AddHole(e) {
+
+    console.log(e)
+
     const cameraDirection = new THREE.Vector3(0, 0, -1);
     cameraDirection.applyQuaternion(camera.quaternion);
     let direction, newposition, newrotation;
-    if(cameraDirection.z > 0.9){
+
+    newposition = {x: 0, y: 15, z: 256};
+
+    setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: 'front', 
+      newposition: {x: 0, y: 15, z: 256}, 
+      newrotation: {x: 0, y: 0, z: 0},
+      x:  0, 
+      z: 0, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+
+    setHoles([...Holes])
+    
+
+    /*if(cameraDirection.z > 0.9){
       direction = 'back';
       newrotation = {x: 0, y: Math.PI, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
         newposition = {x: 0, y: 15, z: FrontWall - 45};
+
+
+
       }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
         newposition = {x: 0, y: 15, z: FrontWall - 45};
       }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
@@ -2835,17 +2875,198 @@ const modifiedUV1 = new Float32Array([
       direction = 'front';
       newrotation = {x: 0, y: 0, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
+
         newposition = {x: 0, y: 15, z: FrontWall + 15};
+
+        setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 256, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
+
       }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
         newposition = {x: 0, y: 15, z: FrontWall + 17};
+
+        setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 256, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
+
       }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
         newposition = {x: 0, y: 15, z: FrontWall + 22};
+
+        setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 256, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
+
       }else if(_.inRange(RangeSetterLengthtHail, 41, 53)){
         newposition = {x: 0, y: 15, z: FrontWall + 25};
+
+        setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 256, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
+
       }else if(_.inRange(RangeSetterLengthtHail, 53, 66)){
+
         newposition = {x: 0, y: 15, z: FrontWall + 32};
+
+        setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 256, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
+
       }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
         newposition = {x: 0, y: 15, z: FrontWall + 35};
+
+        setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 256, 
+      rotate: 0, 
+      orient: 'front', 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
       }
     }else if(cameraDirection.x > 0.9){
       direction = 'left';
@@ -2960,35 +3181,11 @@ const modifiedUV1 = new Float32Array([
       }else if(WidthSetterLengthtHail == 35){
         newposition = {x: 800, y: 15, z:0}; 
       }
-    }
-      setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
+    }*/
+
+    
+    
+    
   } 
 
   const FilteredGate = Gates.filter((item) => item.obj == 'gate_normal' )
@@ -5536,7 +5733,6 @@ const [FundamentNumber, setFundamentNumber] = useState(0)
 const [FundamentScale, setFundamentScale] = useState(0)
 const [ConstructionPosY, setConstructionPosY] = useState(0)
 const [FundamentParamY, setFundamentParamY] = useState(0)
-
 
 const FundamentSetter = () => {
         if (FundamentNumber == 0) {
@@ -51826,7 +52022,6 @@ rotation={[-Math.PI / 2, 1.57, 7.8515]}>
 </mesh>
 
 
-
 </group>
 
 
@@ -66268,7 +66463,8 @@ console.log(fulloption)
     const cameraDirection = new THREE.Vector3(0, 0, -1);
     cameraDirection.applyQuaternion(camera.quaternion);
     let direction, newposition, newrotation;
-    if(cameraDirection.z > 0.9){
+
+          if (cameraDirection.z > 0.9){
       direction = 'back';
       newrotation = {x: 0, y: Math.PI, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
@@ -66284,7 +66480,7 @@ console.log(fulloption)
       }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
         newposition = {x: 0, y: 15, z: FrontWall - 35};
       }
-    }else if(cameraDirection.z < -0.9){
+    }else if (cameraDirection.z < -0.9){
       direction = 'front';
       newrotation = {x: 0, y: 0, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
@@ -66300,7 +66496,7 @@ console.log(fulloption)
       }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
         newposition = {x: 0, y: 15, z: FrontWall + 35};
       }
-    }else if(cameraDirection.x > 0.9){
+    }else if (cameraDirection.x > 0.9){
       direction = 'left';
       newrotation = {x: 0, y: Math.PI / 2, z: 0};
       if(WidthSetterLengthtHail == 10){
@@ -66356,7 +66552,7 @@ console.log(fulloption)
       }else if(WidthSetterLengthtHail == 35){
         newposition = {x: -850, y: 15, z:0};
       }
-    }else if(cameraDirection.x < -0.9){
+    }else if (cameraDirection.x < -0.9){
       direction = 'right';
       newposition = {x: FrontWall1 + 555, y: 15, z: FrontWall / 2};
       newrotation = {x: 0, y: -Math.PI / 2, z: 0};
@@ -66423,54 +66619,6 @@ console.log(fulloption)
     
      <div style={{ display: twoDView2 == 'flex' || twoDView3 == 'flex' || twoDView4 == 'flex' || twoDView5 == 'flex' ? 'flex' : 'flex' , flexDirection: 'column', height: '300vh' }}>
     <div className="configuration_option">
-      {/*<h2>{translation[SettedLanguage].menu_3_2}</h2>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"1_window"}  src={WindowSingle}></img>
-       
-       
-        </div>
-        <div className="label_down">
-          <span>{MenuConfigurationAccesory.desc == "113,5 x 146 cm" ? translation[SettedLanguage].menu_3_2_1 : MenuConfigurationAccesory.desc}</span></div>
-          <Draggable ref={draggableRef} onStop={() => {
-            Windows.push(MenuConfigurationAccesory)
-            setWindows([...Windows])
-            if (draggableRef.current) {
-            draggableRef.current.setState({ x: 0, y: 0 });
-            }
-
-          }}>
-            <div size_={"1_window_5"} orient={"front"} className="element_moved"></div>
-          </Draggable>
-          <ul class="dropdown">
-            <li size_={"1_window_5"} orient={"front"}
-              onClick={() => {
-                setMenuConfigurationAccesory({ object: window_1_front_.clone(), direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:10,  obj: "1_window", size: "1_window_5", orient: 'front', desc: "113,5 x 63,5 cm" })
-              }}>
-              <a size_={"1_window_5"} orient={"front"}>113,5 x 63,5 cm</a></li>
-            <li size_={"1_window_4"} orient={"front"}
-             onClick={() => {
-              setMenuConfigurationAccesory({ object: window_1_front_.clone(), direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:15,  obj: "1_window", size: "1_window_4", orient: 'front', desc: "113,5 x 126 cm" })
-            }}>
-              <a size_={"1_window_4"} orient={"front"}>113,5 x 126 cm</a></li>
-            <li size_={"1_window_3"} orient={"front"} 
-            onClick={() => {
-              setMenuConfigurationAccesory({ object: window_1_front_.clone(), direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:20,  obj: "1_window", size: "1_window_3", orient: 'front', desc: "113,5 x 146 cm" })
-            }}>
-              <a size_={"1_window_3"} orient={"front"}>113,5 x 146 cm</a></li>
-            <li size_={"1_window_2"} orient={"front"}
-             onClick={() => {
-              setMenuConfigurationAccesory({ object: window_1_front_.clone(), direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x: 0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:30,  obj: "1_window", size: "1_window_2", orient: 'front', desc: "113,5 x 215 cm" })
-            }}>
-              <a size_={"1_window_2"} orient={"front"}>113,5 x 215 cm</a></li>
-            <li size_={"1_window_1"} orient={"front"} 
-            onClick={() => {
-              setMenuConfigurationAccesory({ object: window_1_front_.clone(), direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:0, y:0, z: DoorPosXX, rotate: DoorRotZ, scaleX:25, scaleY:35,  obj: "1_window", size: "1_window_1", orient: 'front', desc: "113,5 x 235 cm" })
-            }}>
-              <a size_={"1_window_1"} orient={"front"}>113,5 x 235 cm</a></li>
-          </ul>
-      </div> */}
 
       <div className="option_block_acs">
         <div className="container_acs_img">
@@ -66539,9 +66687,7 @@ console.log(fulloption)
       
     </div> 
 
-    <div className="configuration_option">
-
- 
+    <div className="configuration_option"> 
 
     <h2>{translation[SettedLanguage].menu_3_3}</h2>
 
@@ -66590,7 +66736,65 @@ console.log(fulloption)
         </ul>
     </div>  
 
-     <div className="configuration_option">
+
+    {twoDView1 == 'flex' ? <div className="configuration_option">
+    <h2>{translation[SettedLanguage].menu_3_10}</h2>
+
+  
+    <div className="option_block_acs" >
+    <div className="container_acs_img">
+    <img src={Hole}></img>
+    </div>
+    <div className="label_down" onClick={(e) => {AddHole(e.target)}} >
+    <span type={'front'}>{translation[SettedLanguage].missing_menu_6}front</span></div>
+    </div>   
+    </div> : twoDView2 == 'flex' ? <div className="configuration_option">
+    <h2>{translation[SettedLanguage].menu_3_10}</h2>
+
+  
+    <div className="option_block_acs" >
+    <div className="container_acs_img">
+    <img src={Hole}></img>
+    </div>
+    <div className="label_down" onClick={(e) => {AddHole(e.target)}} >
+    <span type={'back'}>{translation[SettedLanguage].missing_menu_6}back</span></div>
+    </div>   
+    </div> : twoDView3 == 'flex' ? <div className="configuration_option">
+    <h2>{translation[SettedLanguage].menu_3_10}</h2>
+
+  
+    <div className="option_block_acs" >
+    <div className="container_acs_img">
+    <img src={Hole}></img>
+    </div>
+    <div className="label_down" onClick={(e) => {AddHole(e.target)}} >
+    <span type={'front'}>{translation[SettedLanguage].missing_menu_6}front</span></div>
+    </div>   
+    </div> : twoDView4 == 'flex' ? <div className="configuration_option">
+    <h2>{translation[SettedLanguage].menu_3_10}</h2>
+
+  
+    <div className="option_block_acs" >
+    <div className="container_acs_img">
+    <img src={Hole}></img>
+    </div>
+    <div className="label_down" onClick={(e) => {AddHole(e.target)}} >
+    <span type={'right'}>{translation[SettedLanguage].missing_menu_6}right</span></div>
+    </div>   
+    </div> : twoDView5 == 'flex' ? <div className="configuration_option">
+    <h2>{translation[SettedLanguage].menu_3_10}</h2>
+
+  
+    <div className="option_block_acs" >
+    <div className="container_acs_img">
+    <img src={Hole}></img>
+    </div>
+    <div className="label_down" onClick={(e) => {AddHole(e.target)}} >
+    <span type={'left'}>{translation[SettedLanguage].missing_menu_6}left</span></div>
+    </div>   
+    </div> : null}
+
+    <div className="configuration_option">
     <h2>{translation[SettedLanguage].menu_3_10}</h2>
 
   
@@ -66599,9 +66803,9 @@ console.log(fulloption)
     <img src={Hole}></img>
     </div>
     <div className="label_down" onClick={(e) => {AddHole(e.target)}}>
-    <span>{translation[SettedLanguage].missing_menu_6}</span></div>
+    <span type={'front'}>{translation[SettedLanguage].missing_menu_6}</span></div>
     </div>   
-  </div>    
+    </div>    
       
     </div>  
 
@@ -66813,12 +67017,9 @@ setTwoDView5('none')
     <div className="configuration_option">
       <h2>{translation[SettedLanguage].menu_3_2}</h2>
 
-
-
       <div className="option_block_acs">
         <div className="container_acs_img">
         <img type={"1_window"}  src={WindowSingle}></img>
-       
        
         </div>
         <div className="label_down">
@@ -66930,58 +67131,9 @@ setTwoDView5('none')
       
     </div>
 
-    {/*
-
-    <div className="configuration_option">
-
-    <h2>{translation[SettedLanguage].menu_3_3}</h2>
-
-    <div className="option_block_acs"    >
-      <div className="container_acs_img">
-      <img type={"singleDoor"}  src={DoorSingle_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_3_1}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoor(e.target)}}>
-        <li type={"door_glass1"} orient={"front"}><a type={"door_glass1"} orient={"front"}>{translation[SettedLanguage].menu_3_3_4}</a></li>
-        <li type={"door_half_glass1"} orient={"front"}><a type={"door_half_glass1"} orient={"front"}>{translation[SettedLanguage].menu_3_3_3}</a></li>
-        <li type={"door_full1"} orient={"front"}><a type={"door_full1"} orient={"front"}>{translation[SettedLanguage].menu_3_3_2}</a></li>    
-        </ul>
-  </div>
-
-  <div className="option_block_acs">
-      <div className="container_acs_img">
-      <img type={"DoubleDoor"} src={DoorDouble_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_4}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoor(e.target)}}>
-        <li type={"door_glass2"} orient={"front"}><a type={"door_glass2"} orient={"front"}>{translation[SettedLanguage].menu_3_4_3}</a></li>
-        <li type={"door_half_glass2"} orient={"front"}><a type={"door_half_glass2"} orient={"front"}>{translation[SettedLanguage].menu_3_4_2}</a></li>
-        <li type={"door_full2"} orient={"front"}><a type={"door_full2"} orient={"front"}>{translation[SettedLanguage].menu_3_4_1}</a></li>    
-        </ul>
-  </div>
     </div>
 
-    <div   className="configuration_option">
-    <h2>{translation[SettedLanguage].menu_3_5}</h2>
-
-    <div className="option_block_acs">
-    <div className="container_acs_img">
-    <img type={"gate_normal"} src={GateOne}></img>
-    </div>
-    <div className="label_down">
-      <span>{translation[SettedLanguage].menu_3_5_1}</span></div>
-      <ul class="dropdown" onClick={(e) => {AddGate(e.target)}} >
-        <li type={"gate_glass"} orient={"front"}><a type={"gate_glass"} orient={"front"}>{translation[SettedLanguage].menu_3_5_4}</a></li>
-        <li type={"gate_half_glass"} orient={"front"}><a type={"gate_half_glass"} orient={"front"}>{translation[SettedLanguage].menu_3_5_3}</a></li>
-        <li type={"gate_full"} orient={"front"}><a type={"gate_full"} orient={"front"}>{translation[SettedLanguage].menu_3_5_2}</a></li>    
-        </ul>
-    </div>     
-      
-    </div> */}
+    <div style={{ display: twoDView3, flexDirection: 'column', height: '170vh' }}> 
 
     <div className="configuration_option">
  
@@ -66990,118 +67142,6 @@ setTwoDView5('none')
       </button>
 
     </div>
-
-    </div>
-
-    <div style={{ display: twoDView3, flexDirection: 'column', height: '170vh' }}> 
-
-    {/* <div className="configuration_option">
-      <h2>{translation[SettedLanguage].menu_3_2}</h2>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"1_window"}  src={WindowSingle}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_1}</span></div>
-          <ul class="dropdown"  onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"1_window_5"} orient={'back'}><a size_={"1_window_5"} orient={'back'}>113,5 x 63,5 cm</a></li>
-            <li size_={"1_window_4"} orient={'back'}><a size_={"1_window_4"} orient={'back'}>113,5 x 126 cm</a></li>
-            <li size_={"1_window_3"} orient={'back'}><a size_={"1_window_3"} orient={'back'}>113,5 x 146 cm</a></li>
-            <li size_={"1_window_2"} orient={'back'}><a size_={"1_window_2"} orient={'back'}>113,5 x 215 cm</a></li>
-            <li size_={"1_window_1"} orient={'back'}><a size_={"1_window_1"} orient={'back'}>113,5 x 235 cm</a></li>
-          </ul>
-      </div>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"2_window"} src={WindowDouble}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_2}</span></div>
-          <ul class="dropdown" onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"2_window_1"} orient={'back'}><a size_={"2_window_1"} orient={'back'}>213,5 x 63,5 cm</a></li>
-            <li size_={"2_window_2"} orient={'back'}><a size_={"2_window_2"} orient={'back'}>213,5 x 126 cm</a></li>
-            <li size_={"2_window_3"} orient={'back'}><a size_={"2_window_3"} orient={'back'}>213,5 x 146 cm</a></li>
-            <li size_={"2_window_4"} orient={'back'}><a size_={"2_window_4"} orient={'back'}>213,5 x 215 cm</a></li>
-            <li size_={"2_window_5"} orient={'back'}><a size_={"2_window_5"} orient={'back'}>213,5 x 235 cm</a></li>
-            <li size_={"2_window_6"} orient={'back'}><a size_={"2_window_6"} orient={'back'}>288,5 x 215 cm</a></li>
-            <li size_={"2_window_7"} orient={'back'}><a size_={"2_window_7"} orient={'back'}>288,5 x 235 cm</a></li>
-          </ul>
-      </div>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"3_window"} src={WindowTriple}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_3}</span></div>
-          <ul class="dropdown" onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"3_window_1"} orient={'back'}><a size_={"3_window_1"} orient={'back'}>310,5 x 63,5 cm</a></li>
-            <li size_={"3_window_2"} orient={'back'}><a size_={"3_window_2"} orient={'back'}>310,5 x 126 cm</a></li>
-            <li size_={"3_window_3"} orient={'back'}><a size_={"3_window_3"} orient={'back'}>310,5 x 146 cm</a></li>
-            <li size_={"3_window_4"} orient={'back'}><a size_={"3_window_4"} orient={'back'}>310,5 x 215 cm</a></li>
-            <li size_={"3_window_5"} orient={'back'}><a size_={"3_window_5"} orient={'back'}>310,5 x 235 cm</a></li>
-          </ul>
-      </div>
-
-      <div className="option_block_acs"  >
-        <div className="container_acs_img">
-        <img type={"4_window"}  src={WindowRow}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_4}</span></div>
-          <ul class="dropdown" onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"4_window_1"} orient={'back'}><a size_={"4_window_1"} orient={'back'}>{translation[SettedLanguage].missing_menu_2}: 126 cm</a></li>
-            <li size_={"4_window_2"} orient={'back'}><a size_={"4_window_2"} orient={'back'}>{translation[SettedLanguage].missing_menu_2}: 146 cm</a></li>
-            <li size_={"4_window_3"} orient={'back'}><a size_={"4_window_3"} orient={'back'}>{translation[SettedLanguage].missing_menu_2}: 215 cm</a></li>
-            <li size_={"4_window_4"} orient={'back'}><a size_={"4_window_4"} orient={'back'}>{translation[SettedLanguage].missing_menu_2}: 235 cm</a></li>
-          </ul>
-      </div>
-      
-    </div>  
-
-
-  */}
-
-  {/*
-
-    <div className="configuration_option">
-    <h2>{translation[SettedLanguage].menu_3_3}</h2>
-
-  <div className="option_block_acs">
-      <div className="container_acs_img">
-      <img type={"singleDoor"}  src={DoorSingle_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_3_1}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoorBack(e.target)}}>
-        <li type={"door_glass1"} orient={"back"}><a type={"door_glass1"} orient={"back"}>{translation[SettedLanguage].menu_3_3_4}</a></li>
-        <li type={"door_half_glass1"} orient={"back"}><a type={"door_half_glass1"} orient={"back"}>{translation[SettedLanguage].menu_3_3_3}</a></li>
-        <li type={"door_full1"} orient={"back"}><a type={"door_full1"} orient={"back"}>{translation[SettedLanguage].menu_3_3_2}</a></li>    
-        </ul>
-  </div>
-
-  <div className="option_block_acs">
-      <div className="container_acs_img">
-      <img type={"DoubleDoor"} src={DoorDouble_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_4}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoorBack(e.target)}}>
-        <li type={"door_glass2"} orient={"back"}><a type={"door_glass2"} orient={"back"}>{translation[SettedLanguage].menu_3_4_3}</a></li>
-        <li type={"door_half_glass2"} orient={"back"}><a type={"door_half_glass2"} orient={"back"}>{translation[SettedLanguage].menu_3_4_2}</a></li>
-        <li type={"door_full2"} orient={"back"}><a type={"door_full2"} orient={"back"}>{translation[SettedLanguage].menu_3_4_1}</a></li>    
-        </ul>
-  </div>
-  
-    </div> */}
 
     <div className="configuration_option">
       <button className="noactive-step-btn" style={{ margin: '.25em 0' }} onClick={toggleDraggable}>{isDraggable ? 'Wyłącz przeciąganie' : 'Włącz przeciąganie'}</button>
@@ -67180,142 +67220,6 @@ setTwoDView5('none')
       </div>
       
     </div> }
-    
-    {/*<div className="configuration_option">
-
-    <h2>{translation[SettedLanguage].menu_3_3}</h2>
-
-    <div className="option_block_acs">
-      <div className="container_acs_img">
-      <img type={"singleDoor"}  src={DoorSingle_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_3_1}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoorRight(e.target)}}>
-        <li type={"door_glass1"} orient={"right"}><a type={"door_glass1"} orient={"right"}>{translation[SettedLanguage].menu_3_3_4}</a></li>
-        <li type={"door_half_glass1"} orient={"right"}><a type={"door_half_glass1"} orient={"right"}>{translation[SettedLanguage].menu_3_3_3}</a></li>
-        <li type={"door_full1"} orient={"right"}><a type={"door_full1"} orient={"right"}>{translation[SettedLanguage].menu_3_3_2}</a></li> 
-        </ul>
-  </div>
-
-  <div className="option_block_acs">
-      <div className="container_acs_img">
-      <img type={"DoubleDoor"} src={DoorDouble_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_4}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoorRight(e.target)}}>
-        <li type={"door_glass2"} orient={"right"}><a type={"door_glass2"} orient={"right"}>{translation[SettedLanguage].menu_3_4_3}</a></li>
-        <li type={"door_half_glass2"} orient={"right"}><a type={"door_half_glass2"} orient={"right"}>{translation[SettedLanguage].menu_3_4_2}</a></li>
-        <li type={"door_full2"} orient={"right"}><a type={"door_full2"} orient={"right"}>{translation[SettedLanguage].menu_3_4_1}</a></li>    
-        </ul>
-  </div>
-    </div> 
-    </div>
-
-    <div style={{ display: twoDView5, flexDirection: 'column', height: '170vh' }}>
-    <div className="configuration_option">
-      <h2>{translation[SettedLanguage].menu_3_2}</h2>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"1_window"}  src={WindowSingle}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_1}</span></div>
-          <ul class="dropdown"  onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"1_window_5"} orient={"left"}><a size_={"1_window_5"} orient={'left'}>113,5 x 63,5 cm</a></li>
-            <li size_={"1_window_4"} orient={"left"}><a size_={"1_window_4"} orient={'left'}>113,5 x 126 cm</a></li>
-            <li size_={"1_window_3"} orient={"left"}><a size_={"1_window_3"} orient={'left'}>113,5 x 146 cm</a></li>
-            <li size_={"1_window_2"} orient={"left"}><a size_={"1_window_2"} orient={'left'}>113,5 x 215 cm</a></li>
-            <li size_={"1_window_1"} orient={"left"}><a size_={"1_window_1"} orient={'left'}>113,5 x 235 cm</a></li>
-          </ul>
-      </div>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"2_window"} src={WindowDouble}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_2}</span></div>
-          <ul class="dropdown" onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"2_window_1"} orient={"left"}><a size_={"2_window_1"} orient={'left'}>213,5 x 63,5 cm</a></li>
-            <li size_={"2_window_2"} orient={"left"}><a size_={"2_window_2"} orient={'left'}>213,5 x 126 cm</a></li>
-            <li size_={"2_window_3"} orient={"left"}><a size_={"2_window_3"} orient={'left'}>213,5 x 146 cm</a></li>
-            <li size_={"2_window_4"} orient={"left"}><a size_={"2_window_4"} orient={'left'}>213,5 x 215 cm</a></li>
-            <li size_={"2_window_5"} orient={"left"}><a size_={"2_window_5"} orient={'left'}>213,5 x 235 cm</a></li>
-            <li size_={"2_window_6"} orient={"left"}><a size_={"2_window_6"} orient={'left'}>288,5 x 215 cm</a></li>
-            <li size_={"2_window_7"} orient={"left"}><a size_={"2_window_7"} orient={'left'}>288,5 x 235 cm</a></li>
-          </ul>
-      </div>
-
-      <div className="option_block_acs">
-        <div className="container_acs_img">
-        <img type={"3_window"} src={WindowTriple}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_3}</span></div>
-          <ul class="dropdown" onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"3_window_1"} orient={"left"}><a size_={"3_window_1"} orient={'left'}>310,5 x 63,5 cm</a></li>
-            <li size_={"3_window_2"} orient={"left"}><a size_={"3_window_2"} orient={'left'}>310,5 x 126 cm</a></li>
-            <li size_={"3_window_3"} orient={"left"}><a size_={"3_window_3"} orient={'left'}>310,5 x 146 cm</a></li>
-            <li size_={"3_window_4"} orient={"left"}><a size_={"3_window_4"} orient={'left'}>310,5 x 215 cm</a></li>
-            <li size_={"3_window_5"} orient={"left"}><a size_={"3_window_5"} orient={'left'}>310,5 x 235 cm</a></li>
-          </ul>
-      </div>
-
-      <div className="option_block_acs"  >
-        <div className="container_acs_img">
-        <img type={"4_window"}  src={WindowRow}></img>
-
-        </div>
-        <div className="label_down">
-          <span>{translation[SettedLanguage].menu_3_2_4}</span></div>
-          <ul class="dropdown" onClick={(e) => {AddWindow(e.target)}}>
-            <li size_={"4_window_1"} orient={"left"}><a size_={"4_window_1"} orient={'left'}>{translation[SettedLanguage].missing_menu_2}: 126 cm</a></li>
-            <li size_={"4_window_2"} orient={"left"}><a size_={"4_window_2"} orient={'left'}>{translation[SettedLanguage].missing_menu_2}: 146 cm</a></li>
-            <li size_={"4_window_3"} orient={"left"}><a size_={"4_window_3"} orient={'left'}>{translation[SettedLanguage].missing_menu_2}: 215 cm</a></li>
-            <li size_={"4_window_4"} orient={"left"}><a size_={"4_window_4"} orient={'left'}>{translation[SettedLanguage].missing_menu_2}: 235 cm</a></li>
-          </ul>
-      </div>
-      
-    </div>   
-    
-    <div className="configuration_option">
-    <h2>{translation[SettedLanguage].menu_3_3}</h2>
-    <div className="option_block_acs" >
-      <div className="container_acs_img">
-      <img type={"singleDoor"}  src={DoorSingle_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_3_1}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoorLeft(e.target)}}>
-        <li type={"door_glass1"} orient={"left"}><a type={"door_glass1"} orient={"left"}>{translation[SettedLanguage].menu_3_3_4}</a></li>
-        <li type={"door_half_glass1"} orient={"left"}><a type={"door_half_glass1"} orient={"left"}>{translation[SettedLanguage].menu_3_3_3}</a></li>
-        <li type={"door_full1"} orient={"left"}><a type={"door_full1"} orient={"left"}>{translation[SettedLanguage].menu_3_3_2}</a></li>    
-        </ul>
-  </div>
-
-  <div className="option_block_acs" >
-      <div className="container_acs_img">
-      <img type={"DoubleDoor"} src={DoorDouble_}></img>
-
-      </div>
-      <div className="label_down">
-        <span>{translation[SettedLanguage].menu_3_4}</span></div>
-        <ul class="dropdown"  onClick={(e) => {AddDoorLeft(e.target)}}>
-        <li type={"door_glass2"} orient={"left"}><a type={"door_glass2"} orient={"left"}>{translation[SettedLanguage].menu_3_4_3}</a></li>
-        <li type={"door_half_glass2"} orient={"left"}><a type={"door_half_glass2"} orient={"left"}>{translation[SettedLanguage].menu_3_4_2}</a></li>
-        <li type={"door_full2"} orient={"left"}><a type={"door_full2"} orient={"left"}>{translation[SettedLanguage].menu_3_4_1}</a></li>    
-        </ul>
-  </div>
-    </div>  */}
 
     <div className="configuration_option">
  
@@ -67875,7 +67779,7 @@ THREE.ColorManagement.enabled = true
                 FilteredWindowData2RIGHT={FilteredWindowData2RIGHT}
                 FilteredWindowData3RIGHT={FilteredWindowData3RIGHT}
                 FilteredWindowData4RIGHT={FilteredWindowData4RIGHT}
-                  
+                ModelPosBack={ModelPosBack}
                   backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={window.x} y={window.y} WindowColorObroka1={WindowColorObroka1} WindowColorRama1={WindowColorRama1} RangeSetterLengthtHail={RangeSetterLengthtHail} size={window.size} windowHeight={window.windowHeight} WidthSetterLengthtHail={WidthSetterLengthtHail} HeightHall={HeightHall} key={window.index}  obj={window.obj} elementPositionToSubSides={window.elementPositionToSubSides} elementPositionToSub={window.elementPositionToSub}  handleDeleteWindow={handleDeleteWindow} index={window.index} ModelPos={ModelPos}  scaleX={window.scaleX} scaleY={window.scaleY} direction={window.direction} newposition={window.newposition} newrotation={window.newrotation} window={window.object} cameraMovement={cameraMovement} setCameraMovement={setCameraMovement}/>)
               })}
               {FilteredWindowData4.map((window) => {

@@ -10,6 +10,7 @@ function DraggableWindow(props) {
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
+    
     if(props.direction === 'back' || props.direction === 'front'){
         sub = props.elementPositionToSub;
     }else if(props.direction === 'left' || props.direction === 'right' ){
