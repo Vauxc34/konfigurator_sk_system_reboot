@@ -10,16 +10,98 @@ const _ = require("lodash");
 
 function DraggableWindow(props) {
 
-    console.log(props)
+    //console.log(props)
+ 
+    if (props.obj === "1_window" && props.direction === 'front') {
 
-    //props.window.scale.z = 50
-    //props.window.position.z = 60
+        props.window.scale.z = 65
+        props.window.children[0].position.z = -0.036
 
-    if (props.obj === "1_window") {
-        /*props.window.scale.z = 65
-        props.window.position.z = 336.35*/
-    } else if (props.obj === "2_window") {
-        //props.window.scale.z = 50
+        console.log(props.window) 
+
+    } else if (props.obj === "1_window" && props.direction === 'back') {
+
+        props.window.scale.z = 65
+        props.window.children[0].children[1].position.y = 0.0465
+ 
+    } else if (props.obj === "1_window" && props.direction === 'left') {
+
+        props.window.scale.z = 90
+        props.window.children[0].children[1].position.y = -0.135
+        props.window.rotation.y = -Math.PI
+ 
+    }  else if (props.obj === "1_window" && props.direction === 'right') {
+
+        props.window.scale.z = 90
+
+
+        console.log(props.window.rotation)
+
+        props.window.children[0].children[1].position.y = -0.132
+        props.window.rotation.y = -Math.PI
+ 
+    }
+    
+      else if (props.obj === "2_window" && props.direction === 'front') {
+
+        props.window.children[0].children[1].children[0].scale.y = .025
+        props.window.children[0].children[1].children[1].scale.y = .025
+        props.window.children[0].children[1].children[2].scale.y = .025
+        props.window.children[0].children[1].children[5].scale.y = .5
+
+        props.window.children[0].children[1].children[5].position.y = .6
+        props.window.children[0].children[1].children[0].position.y = -.035
+        props.window.children[0].children[1].children[1].position.y = -.035
+        
+        props.window.scale.z = 65
+
+    } else if (props.obj === "2_window" && props.direction === "back") {
+
+        props.window.scale.z = 65
+
+        props.window.children[0].children[1].children[0].scale.y = .025
+        props.window.children[0].children[1].children[1].scale.y = .025
+        props.window.children[0].children[1].children[2].scale.y = .025
+        props.window.children[0].children[1].children[3].scale.y = .025
+        props.window.children[0].children[1].children[5].scale.y = .5
+
+        props.window.children[0].children[1].children[5].position.y = 1.75
+        props.window.children[0].children[1].children[0].position.y = 1.1
+        props.window.children[0].children[1].children[1].position.y = 1.1
+
+    } else if (props.obj === "2_window" && props.direction === "left") {
+
+        props.window.scale.z = 65
+
+        props.window.children[0].children[1].children[0].scale.y = .025
+        props.window.children[0].children[1].children[1].scale.y = .025
+        props.window.children[0].children[1].children[2].scale.y = .025
+        props.window.children[0].children[1].children[5].scale.y = .5
+
+        props.window.children[0].children[1].children[0].position.y = -3.75
+        props.window.children[0].children[1].children[1].position.y = -3.75
+
+        props.window.rotation.y = -Math.PI
+
+        console.log(props.window)
+
+    } else if (props.obj === "2_window" && props.direction === "right") {
+
+        props.window.scale.z = 65
+
+        props.window.children[0].children[1].children[0].scale.y = .025
+        props.window.children[0].children[1].children[1].scale.y = .025
+        props.window.children[0].children[1].children[2].scale.y = .025
+        props.window.children[0].children[1].children[5].scale.y = .5
+
+        props.window.children[0].children[1].children[0].position.y = -2.75
+        props.window.children[0].children[1].children[1].position.y = -2.75
+        //props.window.children[0].children[1].children[5].position.y = .5
+
+        props.window.rotation.y = -Math.PI
+        
+        console.log(props.window)
+
     } else if (props.obj === "3_window" && props.direction === 'back') {
         
     
@@ -30,7 +112,7 @@ function DraggableWindow(props) {
         props.window.children[0].children[1].children[1].position.z = -.25
         props.window.children[0].children[1].children[2].scale.z = .75
 
-        console.log(props.window)
+       
 
     } else if (props.obj === "3_window" && props.direction === 'front') {
         
@@ -42,23 +124,25 @@ function DraggableWindow(props) {
         props.window.children[0].children[1].children[1].position.z = -.25
         props.window.children[0].children[1].children[2].scale.z = .75
 
-        console.log(props.window)
+       
 
     } else if (props.obj === "3_window" && props.direction === 'left') {
         
-        props.window.children[0].position.y = 0.049
+        props.window.children[0].position.y = -0.125
     
-        props.window.scale.y = 65
+        props.window.scale.y = 67
 
         props.window.children[0].children[1].children[1].position.z = .052
         props.window.children[0].children[1].children[2].scale.z = .75
 
-        console.log(props.window)
+        //console.log(props.window)
+
+        props.window.rotation.z = -Math.PI
 
     } else if (props.obj === "3_window" && props.direction === 'right') {
         
     
-        props.window.children[0].position.y = 0.049
+        props.window.children[0].position.y = -.126
 
         props.window.scale.y = 65
 
@@ -66,9 +150,19 @@ function DraggableWindow(props) {
         props.window.children[0].children[1].children[2].scale.z = .75
 
         console.log(props.window)
+        props.window.rotation.z = -Math.PI
 
-    } else if (props.obj === "4_window") {
-        
+    } else if (props.obj === "4_window" && props.direction === 'front') {
+
+        props.window.scale.z = 80
+        props.window.children[0].position.z = -0.0315
+
+    } else if (props.obj === "4_window" && props.direction === 'back') {
+
+        props.window.scale.z = 80
+        props.window.children[0].position.z = -0.0315
+
+        console.log(props.window)
     }
 
     const { size, viewport } = useThree();
@@ -130,12 +224,12 @@ function DraggableWindow(props) {
             xRotation = [0, 0, 0];
             subsub = 7.5;
             if(props.direction === 'front'){
-                transparentArgs = [1.2, 1.65, 0.0405];
-                transparentPosition = [0.6, 0.9, -0.025];
+                transparentArgs = [1.2, 1.65, 0.055];
+                transparentPosition = [0.625, 0.9, -0.085];
                 glassRotation = [0, 0, 0];
             }else if(props.direction === 'back'){
-                transparentArgs = [1.2, 1.65, 0.039];
-                transparentPosition = [0.6, 0.9, -0.05];
+                transparentArgs = [1.21, 1.65, 0.05];
+                transparentPosition = [0.625, 0.9, -0.095];
                 glassRotation = [0, 0, 0];
             }
         } else if(props.obj === '2_window'){
@@ -143,13 +237,13 @@ function DraggableWindow(props) {
             circleRotation = [0, 0, 0];
             xRotation = [0, 0, 0];
             if(props.direction === 'front'){
-                transparentArgs = [1.8, 2.1, 0.15];
+                transparentArgs = [1.8, 2.1, 0.06];
                 subsub = 2.5;
                 transparentPosition = [1, 1.1, -0.025];
                 glassRotation = [0, 0, 0];
             }else if(props.direction === 'back'){
                 transparentArgs = [1.8, 2.1, 0.1];
-                transparentPosition = [1, 1.1, -0.05];
+                transparentPosition = [1, 1.1, -0.075];
                 glassRotation = [0, 0, 0];
                 subsub = 0;
             }
@@ -157,14 +251,14 @@ function DraggableWindow(props) {
             circlePosition = [2.21, -0.02, -0.05];
             circleRotation = [0, -Math.PI / 2, 0];
             xRotation = [0, -Math.PI / 2, Math.PI / 4];
-            transparentArgs = [2.1, 0.76, 0.06];
+            transparentArgs = [2.1, 0.76, 0.08];
             if(props.direction === 'front'){
                 subsub = -1.5;
-                transparentPosition = [1.13, -0.555, -0.48];
+                transparentPosition = [1.13, 0.0915, -0.475];
                 glassRotation = [Math.PI / 2, 0, 0];
             }else if(props.direction === 'back'){
                 subsub = -1.5;
-                transparentPosition = [1.13, -0.555, -0.48];
+                transparentPosition = [1.13, 0.07, -.475];
                 glassRotation = [-Math.PI / 2, 0, 0];
             }
         } else if(props.obj === '4_window'){
@@ -174,7 +268,7 @@ function DraggableWindow(props) {
             if(props.direction === 'front'){
                 subsub = 0;
                 glassRotation = [0, 0, 0];
-                transparentPosition = [2.3, 0.8, -0.02];
+                transparentPosition = [2.3, 0.8, -0.05];
             }else if(props.direction === 'back'){
                 subsub = 0;
                 glassRotation = [0, 0, 0];
@@ -187,58 +281,43 @@ function DraggableWindow(props) {
             circlePosition = [1.2, 1.7, 0.02];
             circleRotation = [0, 0, 0];
             xRotation = [0, 0, 0];
-            transparentArgs = [1.2, 1.65, 0.04];
+            transparentArgs = [1.2, 1.65, .0765];
             subsub = 2.5;
             if(props.direction === 'left'){
-                transparentPosition = [0.6, 0.9, -0.05];
+                transparentPosition = [0.62, 0.87, 0.1];
                 glassRotation = [0, 0, 0];
             }else if(props.direction === 'right'){
-                transparentPosition = [0.6, 0.9, -0.05];
+                transparentPosition = [0.62, 0.87, 0.0975];
                 glassRotation = [0, 0, 0];
             }
-
-        else if(props.obj === '1_window_inside'){
-            circlePosition = [1.2, 1.7, 0.02];
-            circleRotation = [0, 0, 0];
-            xRotation = [0, 0, 0];
-            transparentArgs = [1.2, 1.65, 0.04];
-            subsub = 2.5;
-            if(props.direction === 'left'){
-                transparentPosition = [0.6, 0.9, -0.05];
-                glassRotation = [0, 0, 0];
-            }else if(props.direction === 'right'){
-                transparentPosition = [0.6, 0.9, -0.05];
-                glassRotation = [0, 0, 0];
-            }
-        }
         }else if(props.obj === '2_window'){
             circlePosition = [0, 2.2, -0.14];
             circleRotation = [0, Math.PI, 0];
             xRotation = [0, 0, 0];
             if(props.direction === 'left'){
                 subsub = -7.5;
-                transparentArgs = [1.8, 2.1, 0.105];
-                transparentPosition = [1, 1.1, -0.05];
+                transparentArgs = [1.8, 2.1, 0.095];
+                transparentPosition = [1, 1.1, 0.055];
                 glassRotation = [0, 0, 0];
             }else if(props.direction === 'right'){
                 subsub = -5.5;
-                transparentArgs = [1.8, 2.1, 0.105];
-                transparentPosition = [1, 1.1, -0.05];
+                transparentArgs = [1.8, 2.1, 0.095];
+                transparentPosition = [1, 1.1, 0.035];
                 glassRotation = [0, 0, 0];
             }
         }else if(props.obj === '3_window'){
             circlePosition = [0.05, 0.09, -0.05];
             circleRotation = [0, Math.PI / 2, 0];
             xRotation = [0, -Math.PI / 2, Math.PI / 4];
-            transparentArgs = [2.1, 0.76, 0.06];
+            transparentArgs = [2.1, 0.76, 0.08];
             if(props.direction === 'left'){
                 subsub = -10.5;
                 glassRotation = [-Math.PI / 2, 0, 0];
-                transparentPosition = [1.13, 0.0125, -0.48];
+                transparentPosition = [1.13, -0.092, -0.48];
             }else if(props.direction === 'right'){
                 subsub = -9.5;
                 glassRotation = [-Math.PI / 2, 0, 0];
-                transparentPosition = [1.13, 0.125, -0.48];
+                transparentPosition = [1.13, -0.095, -0.48];
             }
         }else if(props.obj === '4_window'){
             circlePosition = [0.65, 1.65, -0.09];
