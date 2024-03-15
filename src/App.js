@@ -2812,54 +2812,14 @@ const modifiedUV1 = new Float32Array([
   } 
 
   function AddHole(e) {
-
-    console.log(e)
-
     const cameraDirection = new THREE.Vector3(0, 0, -1);
     cameraDirection.applyQuaternion(camera.quaternion);
     let direction, newposition, newrotation;
-
-    newposition = {x: 0, y: 15, z: 256};
-
-    setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: 'front', 
-      newposition: {x: 0, y: 15, z: 256}, 
-      newrotation: {x: 0, y: 0, z: 0},
-      x:  0, 
-      z: 0, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-
-    setHoles([...Holes])
-    
-
-    /*if(cameraDirection.z > 0.9){
+    if(cameraDirection.z > 0.9){
       direction = 'back';
       newrotation = {x: 0, y: Math.PI, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
         newposition = {x: 0, y: 15, z: FrontWall - 45};
-
-
-
       }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
         newposition = {x: 0, y: 15, z: FrontWall - 45};
       }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
@@ -2875,198 +2835,17 @@ const modifiedUV1 = new Float32Array([
       direction = 'front';
       newrotation = {x: 0, y: 0, z: 0};
       if(_.inRange(RangeSetterLengthtHail, 0, 20)){
-
         newposition = {x: 0, y: 15, z: FrontWall + 15};
-
-        setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
-
       }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
         newposition = {x: 0, y: 15, z: FrontWall + 17};
-
-        setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
-
       }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
         newposition = {x: 0, y: 15, z: FrontWall + 22};
-
-        setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
-
       }else if(_.inRange(RangeSetterLengthtHail, 41, 53)){
         newposition = {x: 0, y: 15, z: FrontWall + 25};
-
-        setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
-
       }else if(_.inRange(RangeSetterLengthtHail, 53, 66)){
-
         newposition = {x: 0, y: 15, z: FrontWall + 32};
-
-        setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
-
       }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
         newposition = {x: 0, y: 15, z: FrontWall + 35};
-
-        setSingleHoleNumber(SingleHoleNumber + 1) 
-    Holes.push({ 
-      no: SingleHoleNumber, 
-      type: 'hole',
-      object: hole.scene.clone(),
-      index: Math.floor(Math.random() * 1000),
-      elementPositionToSub: elementPositionToSub, 
-      elementPositionToSubSides: elementPositionToSubSides, 
-      direction: direction, 
-      newposition: newposition, 
-      newrotation: newrotation,
-      x:  0, 
-      z: 256, 
-      rotate: 0, 
-      orient: 'front', 
-      scaleX: 300, 
-      scaleY: 300, 
-      scaleModelX: 2.7, 
-      ScaleModelY: 3,  
-      InteriorHoleX: 1.1,
-      InteriorHoleY: 1.8,
-      OffsetFrameAdditional:-2.25,
-      itemAdditionalX: 0,
-      itemAdditionalY: 0, 
-      scaleXDragModel: 0, 
-      scaleYDragModel: 85  
-    })
-    setHoles([...Holes])
       }
     }else if(cameraDirection.x > 0.9){
       direction = 'left';
@@ -3181,11 +2960,35 @@ const modifiedUV1 = new Float32Array([
       }else if(WidthSetterLengthtHail == 35){
         newposition = {x: 800, y: 15, z:0}; 
       }
-    }*/
-
-    
-    
-    
+    }
+      setSingleHoleNumber(SingleHoleNumber + 1) 
+    Holes.push({ 
+      no: SingleHoleNumber, 
+      type: 'hole',
+      object: hole.scene.clone(),
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub, 
+      elementPositionToSubSides: elementPositionToSubSides, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      x:  0, 
+      z: 0, 
+      rotate: 0, 
+      orient: direction, 
+      scaleX: 300, 
+      scaleY: 300, 
+      scaleModelX: 2.7, 
+      ScaleModelY: 3,  
+      InteriorHoleX: 1.1,
+      InteriorHoleY: 1.8,
+      OffsetFrameAdditional:-2.25,
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85  
+    })
+    setHoles([...Holes])
   } 
 
   const FilteredGate = Gates.filter((item) => item.obj == 'gate_normal' )

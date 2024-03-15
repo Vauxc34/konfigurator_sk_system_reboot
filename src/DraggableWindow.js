@@ -10,8 +10,6 @@ const _ = require("lodash");
 
 function DraggableWindow(props) {
 
-    //console.log(props)
- 
     if (props.obj === "1_window" && props.direction === 'front') {
 
         props.window.scale.z = 65
@@ -27,18 +25,18 @@ function DraggableWindow(props) {
     } else if (props.obj === "1_window" && props.direction === 'left') {
 
         props.window.scale.z = 90
+        props.window.children[0].position.x = -1.225
         props.window.children[0].children[1].position.y = -0.135
         props.window.rotation.y = -Math.PI
  
-    }  else if (props.obj === "1_window" && props.direction === 'right') {
+    } else if (props.obj === "1_window" && props.direction === 'right') {
 
         props.window.scale.z = 90
-
-
-        console.log(props.window.rotation)
-
+        props.window.children[0].position.x = -1.225 
         props.window.children[0].children[1].position.y = -0.132
         props.window.rotation.y = -Math.PI
+
+        console.log(props.window)
  
     }
     
@@ -72,6 +70,7 @@ function DraggableWindow(props) {
     } else if (props.obj === "2_window" && props.direction === "left") {
 
         props.window.scale.z = 65
+        props.window.children[0].children[1].position.x = -1.915
 
         props.window.children[0].children[1].children[0].scale.y = .025
         props.window.children[0].children[1].children[1].scale.y = .025
@@ -88,6 +87,8 @@ function DraggableWindow(props) {
     } else if (props.obj === "2_window" && props.direction === "right") {
 
         props.window.scale.z = 65
+        props.window.children[0].children[1].position.x = -1.915
+
 
         props.window.children[0].children[1].children[0].scale.y = .025
         props.window.children[0].children[1].children[1].scale.y = .025
@@ -102,7 +103,9 @@ function DraggableWindow(props) {
         
         console.log(props.window)
 
-    } else if (props.obj === "3_window" && props.direction === 'back') {
+    } 
+    
+      else if (props.obj === "3_window" && props.direction === 'back') {
         
     
         props.window.children[0].position.y = 0.042
@@ -128,6 +131,7 @@ function DraggableWindow(props) {
 
     } else if (props.obj === "3_window" && props.direction === 'left') {
         
+        props.window.children[0].position.x = -2.25
         props.window.children[0].position.y = -0.125
     
         props.window.scale.y = 67
@@ -142,6 +146,8 @@ function DraggableWindow(props) {
     } else if (props.obj === "3_window" && props.direction === 'right') {
         
     
+
+        props.window.children[0].position.x = -2.25
         props.window.children[0].position.y = -.126
 
         props.window.scale.y = 65
@@ -152,35 +158,51 @@ function DraggableWindow(props) {
         console.log(props.window)
         props.window.rotation.z = -Math.PI
 
-    } else if (props.obj === "4_window" && props.direction === 'front') {
+    } 
+    
+      else if (props.obj === "4_window" && props.direction === 'front') {
 
         props.window.scale.z = 80
-        props.window.children[0].position.z = -0.0315
+        props.window.children[0].position.z = -0.03025
 
     } else if (props.obj === "4_window" && props.direction === 'back') {
 
         props.window.scale.z = 80
-        props.window.children[0].position.z = -0.0315
+        props.window.children[0].position.z = -0.0215
 
         console.log(props.window)
+    } else if (props.obj === "4_window" && props.direction === 'left') {
+
+        props.window.scale.z = 80
+        props.window.children[0].position.z = 0.0715
+        props.window.children[0].position.x = -4.75
+      
+        props.window.rotation.y = -Math.PI
+
+        console.log(props)
+
+    } else if (props.obj === "4_window" && props.direction === 'right') {
+
+        props.window.scale.z = 80
+        props.window.children[0].position.z = 0.0635
+        props.window.children[0].position.x = -4.75
+        props.window.rotation.y = -Math.PI
+
     }
 
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
-
-          if (props.direction === 'back' || props.direction === 'front'){
+    if(props.direction === 'back' || props.direction === 'front'){
         sub = props.elementPositionToSub;
-    }else if (props.direction === 'left' || props.direction === 'right' ){
+    }else if(props.direction === 'left' || props.direction === 'right' ){
         sub = props.elementPositionToSubSides;
     }
-
     let glassRotation;
     
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
     const [scale, setScale] = useState((props.obj === '3_window' ? [props.scaleX, 155, props.scaleY] : (props.scaleX !== undefined ? [props.scaleX, props.scaleY, (props.obj === '1_window' ? 155 : (props.obj === '1_window_inside' ? 55 : (props.obj === '2_window' ? 65 : (props.obj === '4_window' ? 185 : 25))))] : props.scale)));
-
     const [show, setShow] = useState(false);
     const [draggable, setDraggable] = useState(true);
     const [deletedColor, setDeletedColor] = useState(false);
@@ -196,17 +218,17 @@ function DraggableWindow(props) {
     const y = props.y;
     
     useEffect(() => {
-              if (props.direction === 'front'){
+        if(props.direction === 'front'){
             setPosition([position[0], position[1], props.ModelPos - sub - subsub]);
-        }else if (props.direction === 'back'){
+        }else if(props.direction === 'back'){
             setPosition([position[0], position[1], props.ModelPos + sub + subsub]);
-        }else if (props.direction === 'left'){
+        }else if(props.direction === 'left'){
             if(props.obj === '4_window'){
                 setPosition([props.ModelPos - (sub + 3.5) - subsub, position[1] + props.y, position[2] + props.x]);
             }else{
                 setPosition([props.ModelPos - sub - subsub, position[1] + props.y, position[2] + props.x]);
             }
-        }else if (props.direction === 'right'){
+        }else if(props.direction === 'right'){
             if(props.obj === '4_window'){
                 setPosition([props.ModelPos + (sub + 3.5) + subsub, position[1] + props.y, position[2] + props.x]);
             }else{
@@ -216,127 +238,132 @@ function DraggableWindow(props) {
     }, [props.ModelPos]);
 
     let circlePosition, circleRotation, xRotation, transparentPosition, transparentArgs, subsub;
-
-        if (props.direction === 'front' || props.direction === 'back'){
-         if(props.obj === '1_window'){
-            circlePosition = [0, 1.7, -0.09];
-            circleRotation = [0, 3.2, 0];
-            xRotation = [0, 0, 0];
-            subsub = 7.5;
-            if(props.direction === 'front'){
-                transparentArgs = [1.2, 1.65, 0.055];
-                transparentPosition = [0.625, 0.9, -0.085];
-                glassRotation = [0, 0, 0];
-            }else if(props.direction === 'back'){
-                transparentArgs = [1.21, 1.65, 0.05];
-                transparentPosition = [0.625, 0.9, -0.095];
-                glassRotation = [0, 0, 0];
-            }
-        } else if(props.obj === '2_window'){
-            circlePosition = [1.9, 2.2, 0.07];
-            circleRotation = [0, 0, 0];
-            xRotation = [0, 0, 0];
-            if(props.direction === 'front'){
-                transparentArgs = [1.8, 2.1, 0.06];
-                subsub = 2.5;
-                transparentPosition = [1, 1.1, -0.025];
-                glassRotation = [0, 0, 0];
-            }else if(props.direction === 'back'){
-                transparentArgs = [1.8, 2.1, 0.1];
-                transparentPosition = [1, 1.1, -0.075];
-                glassRotation = [0, 0, 0];
-                subsub = 0;
-            }
-        } else if(props.obj === '3_window'){
-            circlePosition = [2.21, -0.02, -0.05];
-            circleRotation = [0, -Math.PI / 2, 0];
-            xRotation = [0, -Math.PI / 2, Math.PI / 4];
-            transparentArgs = [2.1, 0.76, 0.08];
-            if(props.direction === 'front'){
-                subsub = -1.5;
-                transparentPosition = [1.13, 0.0915, -0.475];
-                glassRotation = [Math.PI / 2, 0, 0];
-            }else if(props.direction === 'back'){
-                subsub = -1.5;
-                transparentPosition = [1.13, 0.07, -.475];
-                glassRotation = [-Math.PI / 2, 0, 0];
-            }
-        } else if(props.obj === '4_window'){
-            circlePosition = [3.95, 1.65, 0.02];
-            circleRotation = [0, 0, 0];
-            xRotation = [0, 0, 0];
-            if(props.direction === 'front'){
-                subsub = 0;
-                glassRotation = [0, 0, 0];
-                transparentPosition = [2.3, 0.8, -0.05];
-            }else if(props.direction === 'back'){
-                subsub = 0;
-                glassRotation = [0, 0, 0];
-                transparentPosition = [2.3, 0.8, -0.02];
-            }
-            transparentArgs = [3.2, 1.6, 0.04];
-        }
-    } else {
+     
+    
+    if (props.direction === 'front' || props.direction === 'back'){
         if(props.obj === '1_window'){
-            circlePosition = [1.2, 1.7, 0.02];
-            circleRotation = [0, 0, 0];
-            xRotation = [0, 0, 0];
-            transparentArgs = [1.2, 1.65, .0765];
-            subsub = 2.5;
-            if(props.direction === 'left'){
-                transparentPosition = [0.62, 0.87, 0.1];
-                glassRotation = [0, 0, 0];
-            }else if(props.direction === 'right'){
-                transparentPosition = [0.62, 0.87, 0.0975];
-                glassRotation = [0, 0, 0];
-            }
-        }else if(props.obj === '2_window'){
-            circlePosition = [0, 2.2, -0.14];
-            circleRotation = [0, Math.PI, 0];
-            xRotation = [0, 0, 0];
-            if(props.direction === 'left'){
-                subsub = -7.5;
-                transparentArgs = [1.8, 2.1, 0.095];
-                transparentPosition = [1, 1.1, 0.055];
-                glassRotation = [0, 0, 0];
-            }else if(props.direction === 'right'){
-                subsub = -5.5;
-                transparentArgs = [1.8, 2.1, 0.095];
-                transparentPosition = [1, 1.1, 0.035];
-                glassRotation = [0, 0, 0];
-            }
-        }else if(props.obj === '3_window'){
-            circlePosition = [0.05, 0.09, -0.05];
-            circleRotation = [0, Math.PI / 2, 0];
-            xRotation = [0, -Math.PI / 2, Math.PI / 4];
-            transparentArgs = [2.1, 0.76, 0.08];
-            if(props.direction === 'left'){
-                subsub = -10.5;
-                glassRotation = [-Math.PI / 2, 0, 0];
-                transparentPosition = [1.13, -0.092, -0.48];
-            }else if(props.direction === 'right'){
-                subsub = -9.5;
-                glassRotation = [-Math.PI / 2, 0, 0];
-                transparentPosition = [1.13, -0.095, -0.48];
-            }
-        }else if(props.obj === '4_window'){
-            circlePosition = [0.65, 1.65, -0.09];
-            circleRotation = [0, Math.PI, 0];
-            xRotation = [0, 0, 0];
-            transparentArgs = [3.2, 1.6, 0.04];
-            if(props.direction === 'left'){
-                transparentArgs = [3.2, 1.6, 0.032];
-                subsub = -10.5;
-                glassRotation = [0, 0, Math.PI];
-                transparentPosition = [2.3, 0.8, -0.0215];
-            }else if(props.direction === 'right'){
-                subsub = -9.5;
-                glassRotation = [0, Math.PI, 0];
-                transparentArgs = [3.2, 1.6, 0.03];
-                transparentPosition = [2.3, 0.8, -0.02];
-            }
-        }
-    }
+           circlePosition = [0, 1.7, -0.09];
+           circleRotation = [0, 3.2, 0];
+           xRotation = [0, 0, 0];
+           subsub = 7.5;
+           if(props.direction === 'front'){
+               transparentArgs = [1.2, 1.65, 0.055];
+               transparentPosition = [0.625, 0.9, -0.085];
+               glassRotation = [0, 0, 0];
+           }else if(props.direction === 'back'){
+               transparentArgs = [1.21, 1.65, 0.05];
+               transparentPosition = [0.625, 0.9, -0.095];
+               glassRotation = [0, 0, 0];
+           }
+       } else if(props.obj === '2_window'){
+           circlePosition = [1.9, 2.2, 0.07];
+           circleRotation = [0, 0, 0];
+           xRotation = [0, 0, 0];
+           if(props.direction === 'front'){
+               transparentArgs = [1.8, 2.1, 0.06];
+               subsub = 2.5;
+               transparentPosition = [1, 1.1, -0.025];
+               glassRotation = [0, 0, 0];
+           }else if(props.direction === 'back'){
+               transparentArgs = [1.8, 2.1, 0.1];
+               transparentPosition = [1, 1.1, -0.075];
+               glassRotation = [0, 0, 0];
+               subsub = 0;
+           }
+       } else if(props.obj === '3_window'){
+           circlePosition = [2.21, -0.02, -0.05];
+           circleRotation = [0, -Math.PI / 2, 0];
+           xRotation = [0, -Math.PI / 2, Math.PI / 4];
+           transparentArgs = [2.1, 0.76, 0.08];
+           if(props.direction === 'front'){
+               subsub = -1.5;
+               transparentPosition = [1.13, 0.0915, -0.475];
+               glassRotation = [Math.PI / 2, 0, 0];
+           }else if(props.direction === 'back'){
+               subsub = -1.5;
+               transparentPosition = [1.13, 0.07, -.475];
+               glassRotation = [-Math.PI / 2, 0, 0];
+           }
+       } else if(props.obj === '4_window'){
+           circlePosition = [3.95, 1.65, 0.02];
+           circleRotation = [0, 0, 0];
+           xRotation = [0, 0, 0];
+           if(props.direction === 'front'){
+               subsub = 0;
+               glassRotation = [0, 0, 0];
+               transparentPosition = [2.3, 0.8, -0.06];
+           }else if(props.direction === 'back'){
+               subsub = 0;
+               glassRotation = [0, 0, 0];
+               transparentPosition = [2.3, 0.8, -0.0515];
+           }
+           transparentArgs = [3.2, 1.6, 0.06];
+       }
+   } else {
+        if(props.obj === '1_window'){
+           circlePosition = [-1.2, 1.7, 0.02];
+           circleRotation = [0, Math.PI, 0];
+           xRotation = [0, 0, 0];
+           transparentArgs = [1.2, 1.65, .0765];
+           subsub = 2.5;
+           if(props.direction === 'left'){
+               transparentPosition = [-.58, 0.87, 0.1];
+               glassRotation = [0, 0, 0];
+           }else if(props.direction === 'right'){
+               transparentPosition = [-.58, 0.87, 0.0975];
+               glassRotation = [0, 0, 0];
+           }
+       } else if(props.obj === '2_window'){
+           circlePosition = [0, 2.2, 0.14];
+           circleRotation = [0, -Math.PI/38, 0];
+           xRotation = [0, 0, 0];
+           if(props.direction === 'left'){
+               subsub = -7.5;
+               transparentArgs = [1.8, 2.1, 0.095];
+               transparentPosition = [-1, 1.1, 0.055];
+
+               glassRotation = [0, 0, 0];
+           }else if(props.direction === 'right'){
+               subsub = -5.5;
+               transparentArgs = [1.8, 2.1, 0.095];
+               transparentPosition = [-.95, 1.1, 0.035];
+               glassRotation = [0, 0, 0];
+           }
+       } else if(props.obj === '3_window'){
+           circlePosition = [-0.06, -0.165, -0.075];
+           circleRotation = [0, -Math.PI / 2, 0];
+           xRotation = [0, -Math.PI / 2, Math.PI / 4];
+           transparentArgs = [2.1, 0.76, 0.08];
+           if(props.direction === 'left'){
+               subsub = -10.5;
+               glassRotation = [-Math.PI / 2, 0, 0];
+               transparentPosition = [-1.125, -0.092, -0.48];
+           }else if(props.direction === 'right'){
+               subsub = -9.5;
+               glassRotation = [-Math.PI / 2, 0, 0];
+               transparentPosition = [-1.145, -0.095, -0.48];
+           }
+       } else if(props.obj === '4_window'){
+           circlePosition = [-.88, 1.65, 0.09];
+           circleRotation = [0, Math.PI/32,  0];
+           xRotation = [0, 0, 0];
+           transparentArgs = [3.2, 1.6, 0.04];
+           if(props.direction === 'left'){
+               transparentArgs = [3.2, 1.6, 0.072];
+               subsub = -10.5;
+               glassRotation = [0, 0, Math.PI];
+               transparentPosition = [-2.45, 0.8, 0.0385];
+           }else if(props.direction === 'right'){
+               subsub = -9.5;
+               glassRotation = [0, Math.PI, 0];
+               transparentArgs = [3.2, 1.6, 0.06];
+               transparentPosition = [-2.45, 0.8, 0.0355];
+           }
+       }
+   }
+
+
+
 
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
@@ -345,9 +372,6 @@ function DraggableWindow(props) {
                 if(props.direction === 'front'){
                     if(props.frontSideBool){
                         const [, , z] = position;
-
-                            
-
                         setPosition([x / aspect, -y / aspect, props.ModelPos - sub - subsub]);
                         props.setCameraMovement(!active);
                     }
@@ -433,6 +457,7 @@ function DraggableWindow(props) {
         document.addEventListener('pointerup', onPointerUp);
     }
 
+
     const changeXScale = (e) => {
         // Store the initial position of the mouse\
         setDraggable(false)
@@ -459,7 +484,7 @@ function DraggableWindow(props) {
         document.addEventListener('pointerup', onPointerUp);
     }
     
-    useEffect(() => {
+        useEffect(() => {
             if(props.direction === 'front' || props.direction === 'back'){
                 if(props.WidthSetterLengthtHail == 10){
                     setLeftCorner(-121.8)
@@ -741,7 +766,8 @@ function DraggableWindow(props) {
                     setRightCorner(848.59)
                 }
             }
-    }, [props.WidthSetterLengthtHail, props.RangeSetterLengthtHail, position])
+        }, [props.WidthSetterLengthtHail, props.RangeSetterLengthtHail, position])
+    
 
     useEffect(() => {
         if(props.direction === 'front'){
@@ -963,12 +989,6 @@ function DraggableWindow(props) {
         }
     }, [props.WindowColorRama1, props.WindowColorObroka1]) 
 
-
-    let [positionToCheck, setPositionToCheck] = useState([1.13, 0.0185, -0.48]);
-
-
-    console.log(positionToCheck)
-
     return (
         <>
         
@@ -976,155 +996,20 @@ function DraggableWindow(props) {
             <mesh
                 onPointerEnter={(e) => { 
                     const canvas = document.querySelector('canvas'); 
-                        if (e.object.parent.type === 'Group'){
+                    if(e.object.parent.type === 'Group'){
                         canvas.style.cursor = 'pointer';
-                    } else {
+                    }else{
                         canvas.style.cursor = 'grab';
                     }
                 }}
-                onPointerOut={() => {
-                    /* 
-                    
-                    const [, , z] = position;
-                    
-                                   if (props.obj == '1_window') {
-
-                                const newItems = [
-                                    ...props.FilteredWindowData1,
-                                    ...props.FilteredWindowData2,
-                                    ...props.FilteredWindowData3,
-                                    ...props.FilteredWindowData4, 
-                                    ...props.FilteredWindowData1BACK,
-                                    ...props.FilteredWindowData2BACK,
-                                    ...props.FilteredWindowData3BACK,
-                                    ...props.FilteredWindowData4BACK,
-                                    ...props.FilteredWindowData1LEFT,
-                                    ...props.FilteredWindowData2LEFT,
-                                    ...props.FilteredWindowData3LEFT,
-                                    ...props.FilteredWindowData4LEFT,
-                                    ...props.FilteredWindowData1RIGHT,
-                                    ...props.FilteredWindowData2RIGHT,
-                                    ...props.FilteredWindowData3RIGHT,
-                                    ...props.FilteredWindowData4RIGHT,
-                                    ];
-
-
-                                    newItems[0] = {
-                                        ...newItems[0],
-                                        x_2d: position[0],
-                                        y_2d: position[1] * .5,
-                                      };
-                                      props.setWindows(newItems);
-
-                                //props.setWindows(...FilteredWindowData1[0], { x_2d: position[0], y_2d: position[1] * 1.5 });
-
-
-                                 
-
-                            } else if (props.obj == '2_window') {
-
-                                 
-                                const newItems = [
-                                    ...props.FilteredWindowData2,
-                                    ...props.FilteredWindowData1,
-                                    ...props.FilteredWindowData3,
-                                    ...props.FilteredWindowData4, 
-                                    ...props.FilteredWindowData1BACK,
-                                    ...props.FilteredWindowData2BACK,
-                                    ...props.FilteredWindowData3BACK,
-                                    ...props.FilteredWindowData4BACK,
-                                    ...props.FilteredWindowData1LEFT,
-                                    ...props.FilteredWindowData2LEFT,
-                                    ...props.FilteredWindowData3LEFT,
-                                    ...props.FilteredWindowData4LEFT,
-                                    ...props.FilteredWindowData1RIGHT,
-                                    ...props.FilteredWindowData2RIGHT,
-                                    ...props.FilteredWindowData3RIGHT,
-                                    ...props.FilteredWindowData4RIGHT,
-                                    ];
-
-
-                                    newItems[0] = {
-                                        ...newItems[0],
-                                        x_2d: position[0],
-                                        y_2d: position[1] * 1.5,
-                                      };
-                                      props.setWindows(newItems);
- 
-                                      
-                                      //props.setWindows(...FilteredWindowData2, { x_2d: position[0], y_2d: position[1] * 1.5 });
-
-                            
-                                    
-
-                            } else if (props.obj == '3_window') {
-
-                                 
-                                const newItems = [
-                                    ...props.FilteredWindowData3,
-                                    ...props.FilteredWindowData1,
-                                    ...props.FilteredWindowData3,
-                                    ...props.FilteredWindowData4, 
-                                    ...props.FilteredWindowData1BACK,
-                                    ...props.FilteredWindowData2BACK,
-                                    ...props.FilteredWindowData3BACK,
-                                    ...props.FilteredWindowData4BACK,
-                                    ...props.FilteredWindowData1LEFT,
-                                    ...props.FilteredWindowData2LEFT,
-                                    ...props.FilteredWindowData3LEFT,
-                                    ...props.FilteredWindowData4LEFT,
-                                    ...props.FilteredWindowData1RIGHT,
-                                    ...props.FilteredWindowData2RIGHT,
-                                    ...props.FilteredWindowData3RIGHT,
-                                    ...props.FilteredWindowData4RIGHT,
-                                    ];
-
-
-                                    newItems.slice(-1)[0] = {
-                                        ...newItems.slice(-1)[0],
-                                        x_2d: position[0],
-                                        y_2d: position[1] * 1.5,
-                                      };
-                                      props.setWindows(newItems);
-
-                            } else if (props.obj == '4_window') {
-
-                                const newItems = [
-                                    ...props.FilteredWindowData4,
-                                    ...props.FilteredWindowData1,
-                                    ...props.FilteredWindowData2,
-                                    ...props.FilteredWindowData3, 
-                                    ...props.FilteredWindowData1BACK,
-                                    ...props.FilteredWindowData2BACK,
-                                    ...props.FilteredWindowData3BACK,
-                                    ...props.FilteredWindowData4BACK,
-                                    ...props.FilteredWindowData1LEFT,
-                                    ...props.FilteredWindowData2LEFT,
-                                    ...props.FilteredWindowData3LEFT,
-                                    ...props.FilteredWindowData4LEFT,
-                                    ...props.FilteredWindowData1RIGHT,
-                                    ...props.FilteredWindowData2RIGHT,
-                                    ...props.FilteredWindowData3RIGHT,
-                                    ...props.FilteredWindowData4RIGHT,
-                                    ];
-
-                                    newItems.slice(-1)[0] = {
-                                        ...newItems.slice(-1)[0],
-                                        x_2d: position[0],
-                                        y_2d: position[1] * 1.5,
-                                      };
-                                      props.setWindows(newItems);
-
-                            }   
-                    
-                */}}
                 onPointerLeave={() => { const canvas = document.querySelector('canvas'); canvas.style.cursor = null; }}
                 onClick={() => setShow(true)}
                 onPointerMissed={() => setShow(false)}
                 renderOrder={0}
                 position={position}
                 rotation={rotation}
-                {...bind()}>
+                {...bind()}
+            >
                 <primitive ref={modelRef} object={props.window} scale={scale}>
                 {(show ? <group position={circlePosition} rotation={(props.obj === '3_window' ? [0, 0, 1.6] : [0, 0, 0.8])} onClick={() => props.handleDeleteWindow(props.index)}>
                     <mesh rotation={circleRotation}>

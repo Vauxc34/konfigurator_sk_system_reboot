@@ -28,15 +28,16 @@ function DraggableHole(props) {
     const [activeDraggable, setActiveDraggable] = useState();
 
            if (props.direction === 'front') {
-        props.hole.position.z = 256
+        props.hole.children[0].position.z = -3.935
     } else if (props.direction === 'back') {
-        props.hole.position.z = 280
+        props.hole.children[0].position.z = -3.945
+    } else if (props.direction === 'left') {
+        props.hole.children[0].position.z = -3.9535
+    } else if (props.direction === 'right') {
+        props.hole.children[0].position.z = -3.96
     }
 
-    //props.hole.position.z = 256
-
-    //props.hole.position.z = 256
-    //props.hole.scale.z = 65
+    console.log(props.hole)
 
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
@@ -555,7 +556,7 @@ function DraggableHole(props) {
         >
             <primitive ref={modelRef} object={props.hole} scale={scale} rotation={[0, Math.PI, 0]}>
             <group>
-                {(show ? <group name={'Group'} position={(props.direction === 'front' || props.direction === 'back' ? [0.8, 2.02, -5.3] : [0.8, 2.02, -5.3])} rotation={[0, Math.PI, 0.8]} onClick={() => props.handleDeleteHole(props.index)}>
+                {(show ? <group name={'Group'} position={(props.direction === 'front' ? [0.8, 2.02, -9.23] : props.direction === 'back' ? [0.8, 2.02, -9.23] : props.direction === 'left' ? [0.8, 2.02, -9.275]  :  [0.8, 2.02, -9.275])} rotation={[0, Math.PI, 0.8]} onClick={() => props.handleDeleteHole(props.index)}>
                 <mesh>
                     <circleBufferGeometry args={[0.15, 32]} /> {/* Ustaw odpowiednią średnicę i ilość segmentów */}
                     <meshBasicMaterial colorManagement={true} linear={false} color="red" />
@@ -574,7 +575,7 @@ function DraggableHole(props) {
             <mesh 
                 onPointerDown={(e) => {changeYScale(e)}}
                 onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}}
-                scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={[2, 2.3, -5.31]}
+                scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={[2, 2.3, -9.23]}
             >
                 <shapeGeometry/>
                 <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
@@ -582,15 +583,15 @@ function DraggableHole(props) {
             : '')}
 
             {(show ? 
-            <mesh onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' || props.direction === 'back' ? [0.5, 1, -5.31] : [0.5, 1, -5.31])}>
+            <mesh onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={[0.5, 1, -9.23]}>
                 <shapeGeometry/>
                 <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
             </mesh> 
             : '')}
 
             {/* transparent element */}
-            <mesh position={[2, 0.85, (props.direction === 'left' ? -5.24 : -5.26)]} rotation={[0, 0, 0]}>
-                <boxBufferGeometry attach="geometry" args={[2.4, 2.1, (props.direction === 'front' || props.direction === 'left' ? 0.06 : 0.05)]} />
+            <mesh position={[2, 0.85, (props.direction === 'left' ? -9.22 : props.direction === 'right' ? -9.23 : props.direction === 'front' ? -9.2 : props.direction === 'back' ? -9.21 : -9.21)]} rotation={[0, 0, 0]}>
+                <boxBufferGeometry attach="geometry" args={[2.4, 2.1, 0.06]} />
                 <meshBasicMaterial colorManagement={true} linear={false} color={deletedColor ? '#ea8064' : ''} side={THREE.DoubleSide} transparent={true} opacity={0}/>
             </mesh>
             </group>
