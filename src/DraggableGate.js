@@ -31,11 +31,9 @@ function DraggableWindow(props) {
     const [idxX, setIdxX] = useState(6);
     const [idxY, setIdxY] = useState(6);
 
-
     console.log(props)
 
-
-    if (props.direction === 'front') {
+           if (props.direction === 'front') {
         props.gate.children[6].position.z = -2.6195
         props.gate_half_glass.children[6].position.z = -2.6195
         props.third_object.children[6].position.z = -2.6195

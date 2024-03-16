@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import React, { useEffect, useState, useRef, Suspense, useMemo } from "react";
+import React, { useEffect, useState, useRef, Suspense, useMemo, lazy } from "react";
 import { Canvas, useThree, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -10,13 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
 import { Environment, Shadow } from "@react-three/drei";
 import { Euler, MathUtils, Box3 } from 'three';
-import DraggableWindow from './DraggableWindow';
-import DraggableDoor from './DraggableDoor';
-import DraggableDoubleDoor from './DraggableDoubleDoor';
-import DraggableGate from './DraggableGate';
-import DraggableStairs from './DraggableStairs';
-import DraggableSecondStairs from './DraggableSecondStairs';
-import DraggableHole from './DraggableHole';
+
 import Modal from './Modal';
 import Draggable from 'react-draggable';
 
@@ -78,13 +72,11 @@ import Loader from './images/copper-loader.gif'
 
 /* Carton View */
 
-import CartonView from "./components/CartonView";
 
 /* Carton View */
 
 /* models */
 
-import Hail from "./models/Hail";
 
 /* models */
 
@@ -99,6 +91,20 @@ import graph3Selected from './images/selectorImages/FlachdachSelect.png'
  
 /* images */
 const _ = require("lodash");  
+
+
+
+const Hail = React.lazy(() => import('./models/Hail'));
+const CartonView = React.lazy(() => import('./components/CartonView'))
+
+
+const DraggableWindow = React.lazy(() => import('./DraggableWindow'));
+const DraggableDoor = React.lazy(() => import('./DraggableDoor'));
+const DraggableDoubleDoor = React.lazy(() => import('./DraggableDoubleDoor'));
+const DraggableGate = React.lazy(() => import('./DraggableGate'));
+const DraggableStairs = React.lazy(() => import('./DraggableStairs'));
+const DraggableSecondStairs = React.lazy(() => import('./DraggableSecondStairs'));
+const DraggableHole = React.lazy(() => import('./DraggableHole'));
 
 function App() {   
 
@@ -1116,7 +1122,7 @@ overflow:visible;
   const [GateType, setGateType] = useState("gate_normal") 
 
   const [ModelPosFront, setModelPositionFront] = useState(120.95)
-  const [ModelPosFront1, setModelPositionFront1] = useState(121.5)
+  const [ModelPosFront1, setModelPositionFront1] = useState(121.5) //121.5
   const [ModelPosFront2, setModelPositionFront2] = useState(123)
   const [ModelPosFront3, setModelPositionFront3] = useState(123.5)
   const [ModelPosFront4, setModelPositionFront4] = useState(-449.05)
@@ -4562,70 +4568,6 @@ function ModelsAll() {
 </group>
 )}
 
-{/* windows 1 orientations */} 
-
-
-{FilteredWindowData1BACK.map(item => <group position={[item.x - 45, item.y  + 45,  0]} >
-<primitive object={window_1_back_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData1LEFT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_1_left_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData1RIGHT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_1_right_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{/* windows 1 orientations */}
-
-{/* windows 2 orientations */}
-
-{FilteredWindowData2BACK.map(item => <group position={[item.x - 10, item.y  + 45,  0]} >
-<primitive object={window_2_back_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData2LEFT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_2_left_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData2RIGHT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_2_right_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{/* windows 2 orientations */}
-
-{/* windows 3 orientations */}
-
-{FilteredWindowData3BACK.map(item => <group position={[item.x + 416, item.y  + 45,  0]} >
-<primitive object={window_3_back_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData3LEFT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_3_left_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData3RIGHT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_3_right_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{/* windows 3 orientations */}
-
-{/* windows 4 orientations */}  
-
-{FilteredWindowData4BACK.map(item => <group position={[item.x - 100, item.y  + 45,  0]} >
-<primitive object={window_4_back_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData4LEFT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_4_left_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{FilteredWindowData4RIGHT.map(item => <group position={[-45, item.y  + 45,  item.x]} >
-<primitive object={window_4_right_.clone()}  scale={[item.scaleX, item.scaleY, 25]} />
-</group>)}  
-
-{/* windows 4 orientations */}
 
 {/* windows */}
 
@@ -62094,7 +62036,6 @@ if(OkapLeftActualValue == 0) {
   }
 } 
 
-
 function AngleRoofSetter2() {
           if (Roof1 == true) {
     setRoof_type_2(AnglesRoof1[0].no )
@@ -66987,13 +66928,17 @@ THREE.ColorManagement.enabled = true
               {Holes.map((hole) => {
                 let ModelPos;
                 if(hole.direction === 'front'){
-                  ModelPos = ModelPosFront1;
+                  ModelPos = ModelPosFront1 + 4
+                  //hole.object.children[0].children[1].position.y = 3.935
                 }else if(hole.direction === 'back'){
-                  ModelPos = ModelPosBack;
+                  ModelPos = ModelPosBack
+                  //hole.object.children[0].children[1].position.y = -3.945
                 }else if(hole.direction === 'left'){
-                  ModelPos = ModelPosLeft1 - 70;
+                  ModelPos = ModelPosLeft1 - 70
+                  //hole.object.children[0].children[1].position.y = -3.9535
                 }else if(hole.direction === 'right'){
-                  ModelPos = ModelPosRight1 + 70;
+                  ModelPos = ModelPosRight1 + 70
+                  //hole.object.children[0].children[1].position.y = -3.96
                 }
 
                 return (<DraggableHole frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={hole.x} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} OtworColor={OtworColor} type={hole.type} elementPositionToSub={hole.elementPositionToSub} elementPositionToSubSides={hole.elementPositionToSubSides} key={hole.index} handleDeleteHole={handleDeleteHole} index={hole.index} ModelPos={ModelPos} direction={hole.direction} newposition={hole.newposition} hole={hole.object} newrotation={hole.newrotation} setCameraMovement={setCameraMovement}/>)

@@ -7,6 +7,9 @@ import MeasureBetweenPoints from './MeasureBetweenPoints';
 import { Vector3 } from 'three';
 
 function DraggableHole(props) {
+
+    //props.hole.children[0].children[1].position.y = 3.935
+
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
@@ -27,7 +30,8 @@ function DraggableHole(props) {
     const [deletedColor, setDeletedColor] = useState(false);
     const [activeDraggable, setActiveDraggable] = useState();
 
-           if (props.direction === 'front') {
+    
+    if (props.direction === 'front') {
         props.hole.children[0].position.z = -3.935
     } else if (props.direction === 'back') {
         props.hole.children[0].position.z = -3.945
@@ -36,8 +40,6 @@ function DraggableHole(props) {
     } else if (props.direction === 'right') {
         props.hole.children[0].position.z = -3.96
     }
-
-    console.log(props.hole)
 
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
@@ -512,6 +514,7 @@ function DraggableHole(props) {
 
     useEffect(() => {
         if(props.direction === 'front'){
+            
             setPosition([props.newposition.x + 50 + props.x, props.newposition.y, props.ModelPos - (sub + 230) - 8.5]);
         }else if(props.direction === 'back'){
             setPosition([props.newposition.x - 115 - props.x, props.newposition.y, props.ModelPos + (sub + 230) + 8.5]);
