@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import React, { useEffect, useState, useRef, Suspense, useMemo } from "react";
-import { useDrag } from 'react-use-gesture'
 import { Canvas, useThree, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -10,9 +9,7 @@ import { Stepper, Step, StepLabel, InputLabel, MenuItem, FormControl, Select } f
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
 import { Environment, Shadow } from "@react-three/drei";
-import { useControls, button } from 'leva'
-import { GridHelper, Euler, MathUtils, Box3 } from 'three';
-import { LineBasicMaterial, Vector3 } from 'three';
+import { Euler, MathUtils, Box3 } from 'three';
 import DraggableWindow from './DraggableWindow';
 import DraggableDoor from './DraggableDoor';
 import DraggableDoubleDoor from './DraggableDoubleDoor';
@@ -21,9 +18,7 @@ import DraggableStairs from './DraggableStairs';
 import DraggableSecondStairs from './DraggableSecondStairs';
 import DraggableHole from './DraggableHole';
 import Modal from './Modal';
-import { Stats } from '@react-three/drei'
-
-import Draggable, {DraggableCore} from 'react-draggable';
+import Draggable from 'react-draggable';
 
 // firebase
  
@@ -90,7 +85,6 @@ import CartonView from "./components/CartonView";
 /* models */
 
 import Hail from "./models/Hail";
-import Grass from "./models/Grass";
 
 /* models */
 
@@ -642,7 +636,6 @@ const OtworObrobkaColor = [
 
 var userLang = navigator.language || navigator.userLanguage; 
 const [SettedLanguage, setSettedLanguage] = useState(0)
-const [cameraPosition, setCameraPosition] = useState();
 const [upSideBool, setUpSideBool] = useState(true);
 const [frontSideBool, setFrontSideBool] = useState(true);
 const [backSideBool, setBackSideBool] = useState(true);
@@ -654,7 +647,7 @@ const [hailDimensions, setHailDimensions] = useState();
 
 const LanguageSetter = () => {
 
-  if (userLang == 'pl') {
+         if (userLang == 'pl') {
     setSettedLanguage(0)
   } else if (userLang == 'en') {
     setSettedLanguage(1)
@@ -1119,9 +1112,7 @@ overflow:visible;
   /* addons */ 
   
    /* front pos */ 
- 
-  const [DoorType, setDoorType] = useState("singleDoor")
-  const [WindowType, setWindowType] = useState("1_window")
+
   const [GateType, setGateType] = useState("gate_normal") 
 
   const [ModelPosFront, setModelPositionFront] = useState(120.95)
@@ -1273,23 +1264,6 @@ const modifiedUV1 = new Float32Array([
 ])
 
   /* */
-
-  const uvs1_basic_2 = new Float32Array([
-    0.0, -0.0, 0.0,  0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, -0.0, 0.0,  0, 0.0, 0.0, 0, 0.0, 0.0, 0.0, 0.0, 0.0,
-
-    // wall back?
-    
-    -1.0, -1.0, 1.0,  -1, -3.0, 1.0, -1, 1.0, 1.0, -1.0, 1.0, -.2,
-
-    // wall front?
-
-    -.5, -.2, -.5,  -1, -2, -1,  -.5, -1.025, -.5, .15, -2, .15,
-
-    // wall back?
-
-    -2.0, -2.0, -2.0,  -2, -2.0, 2.0, -2, 2.0, 2.0, -2.0, 2.0, 2.0,
-  ])
   
   const uvs_roof_base = new Float32Array([
             
@@ -2083,7 +2057,7 @@ const modifiedUV1 = new Float32Array([
  
           setSwietlikJednospadowyNumber(SwietlikJednospadowyNumber + 1) 
           
-          if (SwietlikJednospadowyNumber < 5) {
+                 if (SwietlikJednospadowyNumber < 5) {
 
           SwietlikiJednospadowy.push({ no: SwietlikJednospadowyNumber, x:  0,  obj:  "swietlik1"})  
           setSwietlikiJednospadowy([...SwietlikiJednospadowy])
@@ -2673,144 +2647,6 @@ const modifiedUV1 = new Float32Array([
 
   } 
 
-  function AddDoorBack(e) {
-    if(e.getAttribute("type") == "singleDoor") {
-  
-     Doors.push({ no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "singleDoor", orient: 'back' })  
-    setDoors([...Doors])
-  } else if (e.getAttribute("type") == "door_full1") {
-    
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'back', GlassType: 'none' })  
-   setDoors([...Doors])
-
-  } else if (e.getAttribute("type") == "door_glass1") {
-     
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'back', GlassType: 'full' })  
-    setDoors([...Doors])
-
-  } else if (e.getAttribute("type") == "door_half_glass1") {
-    
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'back', GlassType: 'half' })  
-    setDoors([...Doors])
-
-  }   
-  
-    else if (e.getAttribute("type") == "DoubleDoor") {
-    
-    Doors.push({ no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'back' })  
-   setDoors([...Doors])
-  } else if (e.getAttribute("type") == "door_full2") {
-     
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'back', GlassType: 'none' })  
-    setDoors([...Doors])
-
-  } else if (e.getAttribute("type") == "door_glass2") {
- 
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'back', GlassType: 'full' })  
-    setDoors([...Doors])
-
-  } else if (e.getAttribute("type") == "door_half_glass2") {
- 
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'back', GlassType: 'half' })  
-    setDoors([...Doors])
-
-  }  
-
-
-  } 
-
-  function AddDoorLeft(e) {
-
-
-       if(e.getAttribute("type") == "singleDoor") {
-    
-    Doors.push({ no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "singleDoor", orient: 'left' })  
-   setDoors([...Doors])
-} else if (e.getAttribute("type") == "door_full1") {
-    
-  Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'left', GlassType: 'none' })  
- setDoors([...Doors])
-
-} else if (e.getAttribute("type") == "door_glass1") {
-   
-  Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'left', GlassType: 'full' })  
-  setDoors([...Doors])
-
-} else if (e.getAttribute("type") == "door_half_glass1") {
-  
-  Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'left', GlassType: 'half' })  
-  setDoors([...Doors])
-
-}  
- 
- 
- //
-
-  else if (e.getAttribute("type") == "DoubleDoor") {
- 
-   Doors.push({ no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'left' })  
-  setDoors([...Doors])
-} else if (e.getAttribute("type") == "door_full2") {
-     
-  Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'left', GlassType: 'none' })  
-  setDoors([...Doors])
-
-} else if (e.getAttribute("type") == "door_glass2") {
-
-  Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'left', GlassType: 'full' })  
-  setDoors([...Doors])
-
-} else if (e.getAttribute("type") == "door_half_glass2") {
-
-  Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'left', GlassType: 'half' })  
-  setDoors([...Doors])
-
-}  
-
-  } 
-
-  function AddDoorRight(e) {
-         if(e.getAttribute("type") == "singleDoor") {
-   
-      Doors.push({ no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "singleDoor", orient: 'right' })  
-     setDoors([...Doors])
-  } else if (e.getAttribute("type") == "door_full1") {
-    
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'right', GlassType: 'none' })  
-   setDoors([...Doors])
-  
-  } else if (e.getAttribute("type") == "door_glass1") {
-     
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'right', GlassType: 'full' })  
-    setDoors([...Doors])
-  
-  } else if (e.getAttribute("type") == "door_half_glass1") {
-    
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'right', GlassType: 'half' })  
-    setDoors([...Doors])
-   
-  } else if (e.getAttribute("type") == "DoubleDoor") {
- 
-     Doors.push({ no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'right' })  
-    setDoors([...Doors])
-  } else if (e.getAttribute("type") == "door_full2") {
-     
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'right', GlassType: 'none' })  
-    setDoors([...Doors])
-  
-  } else if (e.getAttribute("type") == "door_glass2") {
-  
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'right', GlassType: 'full' })  
-    setDoors([...Doors])
-  
-  } else if (e.getAttribute("type") == "door_half_glass2") {
-  
-    Doors.push({ no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'right', GlassType: 'half' })  
-    setDoors([...Doors])
-  
-  }   
-  } 
-
   function AddHole(e) {
     const cameraDirection = new THREE.Vector3(0, 0, -1);
     cameraDirection.applyQuaternion(camera.quaternion);
@@ -2975,7 +2811,7 @@ const modifiedUV1 = new Float32Array([
       x:  0, 
       z: 0, 
       rotate: 0, 
-      orient: direction, 
+      orient: 'front', 
       scaleX: 300, 
       scaleY: 300, 
       scaleModelX: 2.7, 
@@ -3249,23 +3085,6 @@ const modifiedUV1 = new Float32Array([
       setGates([...Gates]) 
 
     } 
-  }
-
-  function AddGateNew(e) {  
-    if(e.getAttribute("orient") == "left") {
-      Gates.push({ no: SingleGateNumber, x:  PolozenieGate1, z: DoorPosXX, rotate: DoorRotZ,  obj: GateType, scaleModelX: 40, ScaleModelY: 40, scaleX: 400, scaleY: 600 }) 
-      setGates([...Gates]) 
-  }else if (e.getAttribute("orient") == "right") {
-    Gates.push({ no: SingleGateNumber, x:  PolozenieGate1, z: DoorPosXX, rotate: DoorRotZ,  obj: GateType, scaleModelX: 40, ScaleModelY: 40, scaleX: 400, scaleY: 600 }) 
-    setGates([...Gates]) 
-  }  else if (e.getAttribute("orient") == "front") {
-    Gates.push({ object: gate1.scene.clone(), second_object: gate_half_glass.scene.clone(), third_object: gate_full_glass.scene.clone(), type: 'gate', scale: [10, 10, 1], direction: 'front', newposition: {x: 0, y: 15, z: 5}, newrotation: {x: 0, y: 0, z: 0}, no: SingleGateNumber, x:  PolozenieGate1, z: DoorPosXX, rotate: DoorRotZ,  obj: GateType, scaleModelX: 40, ScaleModelY: 40, scaleX: 400, scaleY: 600 }) 
-    setGates([...Gates]) 
-  }  else if (e.getAttribute("orient") == "back") {
-    Gates.push({ no: SingleGateNumber, x:  PolozenieGate1, z: DoorPosXX, rotate: DoorRotZ,  obj: GateType, scaleModelX: 40, ScaleModelY: 40, scaleX: 400, scaleY: 600 }) 
-    setGates([...Gates]) 
-  } 
-
   }
   
   const FilteredWindowData1 = Windows.filter((item) => item.obj == "1_window" && item.orient == 'front')
@@ -4090,11 +3909,7 @@ function ModelsAll() {
    window_1_right_.rotation.y = -Math.PI/2;
 
    window_1_back_.rotation.y = Math.PI/1;
-
    window_1.scene.rotation.y = -Math.PI/ 1;
-
-   var material1_window = new THREE.MeshBasicMaterial({color: WindowColorObroka1});
-   var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
    
    /* */ 
 
@@ -4270,10 +4085,6 @@ function ModelsAll() {
           // window_4_right_.children[0].children[1].children[4].children[0].material = material1_window  
           
           /* */
-
-          const material_gate1 = new THREE.MeshBasicMaterial({ color: BramaColor });
-          const material_gate2 = new THREE.MeshBasicMaterial({ color: BramaColorObrobka });
-
          //gate1.scene.children[0].children[0].children[0].children[1].material = material_gate2;
 
           gate1.scene.scale.x = 40
@@ -5005,7 +4816,6 @@ function Grass_with_mat() {
   
 const [PlatiweAngle, setPlatwieAngle] = useState(0)
 const [PlatwieHeight1, setPlatwieHeight1]  = useState(0)
-const [PlatwieHeight1_, setPlatwieHeight1_]  = useState(0)
 
 /* */
 
@@ -5233,24 +5043,6 @@ const VisibleSetMen = () => {
     setMenuVisible_check(MenuVisible_check + 1)
     setMenuVisible('none')
   }
-}
-
-const DownloadThing = () => {
-    
-
-    const DataSnap = Date.now()
-
-  const gl = useThree((state) => state.gl)
-    useControls({
-      Zdjęcie: button(() => {
-        const link = document.createElement('a')
-        link.setAttribute('download', `Zdjęcie Hali - ${DataSnap}.png`)
-        link.setAttribute('href', gl.domElement.toDataURL('image/png').replace('image/png', 'image/octet-stream'))
-        link.click()
-      })
-    })
-  
-  
 }
 
    /* walls resizable */
@@ -49104,33 +48896,6 @@ const lamele_1_side_newest = new Float32Array([
   pacholek1_2 - .03, -1.0, pacholek2_2 + .1, pacholek1_2 - .03, -1.0, pacholek2_1 -.02, pacholek1_2 - .03, heightWalls +  UkrytyDach + JednospadowyDach, pacholek2_1 -.02, pacholek1_2 - .03, heightWalls +  UkrytyDach + JednospadowyDach, pacholek2_2 + .1,
 ])
 
-const normals = new Float32Array([
-  0, 1, 0, 
-0, 1, 0,
-0, 1, 0,
-0, 1, 0,
-0, 0, 1,
-0, 0, 1,
-0, 0, 1,
-0, 0, 1,
--1, 0, 0,
--1, 0, 0,
--1, 0, 0,
--1, 0, 0,
-1, 0, 0,
-1, 0, 0,
-1, 0, 0,
-1, 0, 0,
-0, -1, 0,
-0, -1, 0,
-0, -1, 0,
-0, -1, 0,
-0, 0, -1,
-0, 0, -1,
-0, 0, -1,
-0, 0, -1,
-]);
-
 const colors = new Float32Array([
   // Front face
   1, 1, 1,
@@ -49209,499 +48974,7 @@ const indices = new Uint16Array([
   16, 18, 19, // right
   20, 21, 22,
   20, 22, 23, // left
-]);  
-
-const clonedFrames = Frames.map((item, index) => {
-
-  const clonedFrame = gltf.scene.clone();  
-
-  DGeom_2.scale.x = 3
-  DGeom_2.scale.y = 2  
-
-  mesh_5.scale.x = 3
-  mesh_5.scale.y = 2 
- 
-  DGeom_3.scale.x = 3
-  DGeom_3.scale.y = 2
-  DGeom_3.scale.z = Frame2height + Frame2AngleHeight
-  
-  DGeom_6.scale.x = 3
-  DGeom_6.scale.y = 2
-  DGeom_6.scale.z = Frame2height + Frame2AngleHeight
-
-  mesh_5.rotation.z = Math.PI/2
-  DGeom_2.rotation.z = Math.PI/2
-  DGeom_3.rotation.z = Math.PI/2
-  DGeom_6.rotation.z = Math.PI/2
-
-gltf.scene.scale.x = 7
-gltf.scene.scale.y = 16
-gltf.scene.scale.z = 7.3
-
-gltf.scene.position.z = 3
-gltf.scene.rotation.y = Math.PI/2
-
-//DGeom_2.position.x = RozstawOffset
-//DGeom_6.position.x = RozstawOffset
-
-gltf.scene.position.z = .5      
-
-          if (RangeSetterHeightHail == 3 && Roof1 == true) {
-  
-
- 
-  mesh_5.scale.z = .74
-  DGeom_2.scale.z = .74
-  
- 
-   } else if (RangeSetterHeightHail == 3 && Roof2 == true ) {
- 
-      
-
-     mesh_5.scale.z = .7
-     DGeom_2.scale.z = .7
- 
- 
-   } else if (RangeSetterHeightHail == 3 && Roof3 == true) {
-    
-
-     mesh_5.scale.z = .46
-     DGeom_2.scale.z = .46
-      
- 
-   }      if (RangeSetterHeightHail == 4 && Roof1 == true) {
-    
-     mesh_5.scale.z = .99
-     DGeom_2.scale.z = .99
-
- 
-   } else if (RangeSetterHeightHail == 4 && Roof2 == true) {
-    
-
-     mesh_5.scale.z = .96
-     DGeom_2.scale.z = .96
-     
-   } else if (RangeSetterHeightHail == 4 && Roof3 == true) { 
-
-     mesh_5.scale.z = .71
-     DGeom_2.scale.z = .71
-      
- 
-   }      if (RangeSetterHeightHail == 5 && Roof1 == true) {
-    
-
-     mesh_5.scale.z = 1.24
-     DGeom_2.scale.z =1.24
-    
- 
-   } else if (RangeSetterHeightHail == 5 && Roof2 == true) {
-      
-
-     mesh_5.scale.z = 1.205
-     DGeom_2.scale.z = 1.205
-    
-     
- 
-   } else if (RangeSetterHeightHail == 5 && Roof3 == true) {
-   
-     
-
-     mesh_5.scale.z = .97
-     DGeom_2.scale.z = .97
-
- 
-   }      if (RangeSetterHeightHail == 6 && Roof1 == true) {
-    
-   
-     mesh_5.scale.z = 1.47
-     DGeom_2.scale.z = 1.47
-           
- 
-   } else if (RangeSetterHeightHail == 6 && Roof2 == true) {
-  
-
-     mesh_5.scale.z = 1.405
-     DGeom_2.scale.z = 1.405
-   
- 
-   } else if (RangeSetterHeightHail == 6 && Roof3 == true) {
-   
-
-     mesh_5.scale.z = 1.19
-     DGeom_2.scale.z = 1.19
-      
- 
-   }      if (RangeSetterHeightHail == 7 && Roof1 == true) {
-      
-     
-
-     mesh_5.scale.z = 1.705
-     DGeom_2.scale.z = 1.705
-
- 
-   } else if (RangeSetterHeightHail == 7 && Roof2 == true) {
-  
-   
-     mesh_5.scale.z = 1.625
-     DGeom_2.scale.z = 1.625
-     
-   } else if (RangeSetterHeightHail == 7 && Roof3 == true) {
-      
-
-       mesh_5.scale.z = 1.43 
-     DGeom_2.scale.z = 1.43
-      
- 
- 
-   }      if (RangeSetterHeightHail == 8 && Roof1 == true) { 
-     
-
-     mesh_5.scale.z = 1.96 
-     DGeom_2.scale.z = 1.96
-      
- 
- 
-   } else if (RangeSetterHeightHail == 8 && Roof2 == true) {
-  
-     
-     mesh_5.scale.z = 1.87
-     DGeom_2.scale.z = 1.87
-
- 
-   } else if (RangeSetterHeightHail == 8 && Roof3 == true) {
-    
- 
-     mesh_5.scale.z = 1.68
-     DGeom_2.scale.z = 1.68
- 
- 
-   }      if (RangeSetterHeightHail == 9 && Roof1 == true) {
-  
-
-
-     mesh_5.scale.z = 2.205
-     DGeom_2.scale.z = 2.205
-      
- 
-   } else if (RangeSetterHeightHail == 9 && Roof2 == true) {
-  
-
-     mesh_5.scale.z = 2.12
-     DGeom_2.scale.z = 2.12
-      
- 
-   } else if (RangeSetterHeightHail == 9 && Roof3 == true) {
-    
-
-     mesh_5.scale.z = 1.92
-     DGeom_2.scale.z = 1.92
-    
-    
- 
-   }      if (RangeSetterHeightHail == 10 && Roof1 == true) {
-      
-      
-     mesh_5.scale.z = 2.485
-     DGeom_2.scale.z = 2.485
- 
- 
- 
-   } else if (RangeSetterHeightHail == 10 && Roof2 == true) {
-  
-     mesh_5.scale.z = 2.405
-     DGeom_2.scale.z = 2.405
-     
- 
- 
-   } else if (RangeSetterHeightHail == 10 && Roof3 == true) {
-      
-     mesh_5.scale.z = 2.2
-     DGeom_2.scale.z = 2.2
-     
-      
- 
-       
-    
- 
-   }  
-
-       if(WidthSetterLengthtHail == 10) {
-    
- 
-DGeom_2.position.y = -301
-mesh_5.position.y = -301
-
-DGeom_6.position.y = 301
-DGeom_3.position.y = 301
-
-} else if(WidthSetterLengthtHail == 11) {
- 
-
-DGeom_2.position.y = -381
-mesh_5.position.y = -381
-
-DGeom_6.position.y = 381
-DGeom_3.position.y = 381
-  
-  
-} else if(WidthSetterLengthtHail == 12) {
-  
- 
-  
-DGeom_2.position.y = -447
-mesh_5.position.y = -447
-
-DGeom_6.position.y = 447
-DGeom_3.position.y = 447
-
-  
-} else if(WidthSetterLengthtHail == 13) {
-  
- 
-
-DGeom_2.position.y = -495
-mesh_5.position.y = -495
-
-DGeom_6.position.y = 495
-DGeom_3.position.y = 495
-
-
-  
-  
-} else if(WidthSetterLengthtHail == 14) {
-  
-  
-
-  DGeom_2.position.y = -576
-  mesh_5.position.y = -576
- 
-  DGeom_6.position.y = 576
-  DGeom_3.position.y = 576
-
-  
-
-} else if(WidthSetterLengthtHail == 15) {
-  
- 
-  DGeom_2.position.y = -657
-  mesh_5.position.y = -657
- 
-  DGeom_6.position.y = 657
-  DGeom_3.position.y = 657
-
-  
-} else if(WidthSetterLengthtHail == 16) {
-  
-   
- 
-  DGeom_2.position.y = -738
-  mesh_5.position.y = -738
- 
-  DGeom_6.position.y = 738
-  DGeom_3.position.y = 738
-
-
-} else if(WidthSetterLengthtHail == 17) {
-  
- 
- 
-  DGeom_2.position.y = -819
-  mesh_5.position.y = -819
- 
-  DGeom_6.position.y = 819
-  DGeom_3.position.y = 819
-
-  
-} else if(WidthSetterLengthtHail == 18) {
-  
-   
-     
- DGeom_2.position.y = -900
- mesh_5.position.y = -900
-
- DGeom_6.position.y = 900
- DGeom_3.position.y = 900
-
-
-} else if(WidthSetterLengthtHail == 19) {
-  
-  
-  
-    
- DGeom_2.position.y = -981
- mesh_5.position.y = -981
-
- DGeom_6.position.y = 981
- DGeom_3.position.y = 981
-
-} else if(WidthSetterLengthtHail == 20) {
-  
-  
-  
- DGeom_2.position.y = -1061
- mesh_5.position.y = -1061
-
- DGeom_6.position.y = 1061
- DGeom_3.position.y = 1061
-
-
-  
-} else if(WidthSetterLengthtHail == 21) {  
-  
-  DGeom_2.position.y = -1142
-  mesh_5.position.y = -1142
- 
-  DGeom_6.position.y = 1142
-  DGeom_3.position.y = 1142
-
-  
-} else if(WidthSetterLengthtHail == 22) {
-  
-  
-
-  DGeom_2.position.y = -1159
-  mesh_5.position.y = -1159
- 
-  DGeom_6.position.y = 1159
-  DGeom_3.position.y = 1159
-  
-} else if(WidthSetterLengthtHail == 23) {
-  
- 
- 
-    
- DGeom_2.position.y = -1256
- mesh_5.position.y = -1256
-
- DGeom_6.position.y = 1256
- DGeom_3.position.y = 1256
-
-} else if(WidthSetterLengthtHail == 24) {
- 
-  
-   
-  DGeom_2.position.y = -1320.5
-  mesh_5.position.y = -1320.5
-
-  DGeom_6.position.y = 1320.5
-  DGeom_3.position.y = 1320.5
-
-} else if(WidthSetterLengthtHail == 25) {
-  
-   
-  
-  DGeom_2.position.y = -1417.5
-  mesh_5.position.y = -1417.5
-
-  DGeom_6.position.y = 1417.5
-  DGeom_3.position.y = 1417.5
-
-  
-} else if(WidthSetterLengthtHail == 26) {
-  
- 
-  
-  DGeom_2.position.y = -1450
-  mesh_5.position.y = -1450
-
-  DGeom_6.position.y = 1450
-  DGeom_3.position.y = 1450
-
-} else if(WidthSetterLengthtHail == 27) {
-  
- 
-  DGeom_2.position.y = -1482.5
-  mesh_5.position.y = -1482.5
-
-  DGeom_6.position.y = 1482.5
-  DGeom_3.position.y = 1482.5
-  
-} else if(WidthSetterLengthtHail == 28) {
- 
- 
-  
-  
-  DGeom_2.position.y = -1515
-  mesh_5.position.y = -1515
-
-  DGeom_6.position.y = 1515
-  DGeom_3.position.y = 1515
-
-
-} else if(WidthSetterLengthtHail == 29) {
-  
- 
-    
- 
-
-  DGeom_2.position.y = -1547
-  mesh_5.position.y = -1547
-
-  DGeom_6.position.y = 1547
-  DGeom_3.position.y = 1547
-
- 
-} else if(WidthSetterLengthtHail == 30) {
- 
-     
-  DGeom_2.position.y = -1628
-  mesh_5.position.y = -1628
-
-  DGeom_6.position.y = 1628
-  DGeom_3.position.y = 1628
-
-} else if(WidthSetterLengthtHail == 31) { 
-    
-  DGeom_2.position.y = -1709
-  mesh_5.position.y = -1709
-
-  DGeom_6.position.y = 1709
-  DGeom_3.position.y = 1709
-  
-} else if(WidthSetterLengthtHail == 32) { 
-  
-  
-  DGeom_2.position.y = -1757.5
-  mesh_5.position.y = -1757.5
-
-  DGeom_6.position.y = 1757.5
-  DGeom_3.position.y = 1757.5
-
-
-} else if(WidthSetterLengthtHail == 33) {
-  
-
- 
-  DGeom_2.position.y = -1790
-  mesh_5.position.y = -1790
-
-  DGeom_6.position.y = 1790
-  DGeom_3.position.y = 1790
-  
-} else if(WidthSetterLengthtHail == 34) {
-  
- 
- 
-  DGeom_2.position.y = -1870.75
-  mesh_5.position.y = -1870.75
-
-  DGeom_6.position.y = 1870.75
-  DGeom_3.position.y = 1870.75
-
-} else if(WidthSetterLengthtHail == 35) {
-
-  
- 
-  DGeom_2.position.y = -1951.5
-  mesh_5.position.y = -1951.5
-
-  DGeom_6.position.y = 1951.5
-  DGeom_3.position.y = 1951.5
-
-} 
-
-  return clonedFrame;
-});  
+]);    
 
 /* new frames */
 
@@ -66540,7 +65813,7 @@ console.log(fulloption)
     </div>  
 
 
-    {twoDView1 == 'flex' ? <div className="configuration_option">
+    {/*twoDView1 == 'flex' ? <div className="configuration_option">
     <h2>{translation[SettedLanguage].menu_3_10}</h2>
 
   
@@ -66595,7 +65868,7 @@ console.log(fulloption)
     <div className="label_down" onClick={(e) => {AddHole(e.target)}} >
     <span type={'left'}>{translation[SettedLanguage].missing_menu_6}left</span></div>
     </div>   
-    </div> : null}
+  </div> : null*/}
 
     <div className="configuration_option">
     <h2>{translation[SettedLanguage].menu_3_10}</h2>

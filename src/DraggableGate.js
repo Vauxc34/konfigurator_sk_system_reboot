@@ -31,6 +31,41 @@ function DraggableWindow(props) {
     const [idxX, setIdxX] = useState(6);
     const [idxY, setIdxY] = useState(6);
 
+
+    console.log(props)
+
+
+    if (props.direction === 'front') {
+        props.gate.children[6].position.z = -2.6195
+        props.gate_half_glass.children[6].position.z = -2.6195
+        props.third_object.children[6].position.z = -2.6195
+        props.gate.children[6].scale.y = .5
+        props.gate_half_glass.children[6].scale.y = .5
+        props.third_object.children[6].scale.y = .5
+    } else if (props.direction === 'back') {
+        props.gate.children[6].position.z = -2.625
+        props.gate_half_glass.children[6].position.z = -2.625
+        props.third_object.children[6].position.z = -2.625
+        props.gate.children[6].scale.y = .5
+        props.gate_half_glass.children[6].scale.y = .5
+        props.third_object.children[6].scale.y = .5
+    } else if (props.direction === 'left') {
+        props.gate.children[6].position.z = -2.622
+        props.gate_half_glass.children[6].position.z = -2.622
+        props.third_object.children[6].position.z = -2.622
+        props.gate.children[6].scale.y = .5
+        props.gate_half_glass.children[6].scale.y = .5
+        props.third_object.children[6].scale.y = .5
+    } else if (props.direction === 'right') {
+        props.gate.children[6].position.z = -2.6245
+        props.gate_half_glass.children[6].position.z = -2.6245
+        props.third_object.children[6].position.z = -2.6245
+        props.gate.children[6].scale.y = .5
+        props.gate_half_glass.children[6].scale.y = .5
+        props.third_object.children[6].scale.y = .5
+    }
+
+
     const changeType = () => {
         if(typeIdx === 2){
             setTypeIdx(0);
@@ -379,11 +414,11 @@ function DraggableWindow(props) {
         const onPointerMove = (e) => {
             const deltaY = e.clientY - previousY;
 
-            if(deltaY > threshold){
+             if(deltaY > threshold){
                 indexY = Math.max(0, indexY - 1); // Zmniejsz index, ale nie mniej niż 0
                 previousY = e.clientY; // Aktualizuj previousY
                 setIdxY(indexY)
-            }else if(deltaY < -threshold){
+            } else if(deltaY < -threshold){
                 indexY = Math.min(10, indexY + 1); // Zwiększ index, ale nie więcej niż 3
                 previousY = e.clientY; // Aktualizuj previousY
                 setIdxY(indexY)
@@ -749,11 +784,10 @@ function DraggableWindow(props) {
                 </mesh> 
             : '')}
 
-            <mesh position={[2.05, 0.85, -5.2]} rotation={[0, 0, 0]}>
-                <planeBufferGeometry attach="geometry" args={[2.3, 2.1, 1]} />
+            <mesh position={[2.035, 0.85, props.direction === 'front' ? -5.235 : props.direction === 'back' ? -5.255 : props.direction === 'right' ?  -5.24 :  -5.235 ]} rotation={[0, 0, 0]}>
+                <boxBufferGeometry attach="geometry" args={[2.35, 2.1, .065]} />
                 <meshBasicMaterial colorManagement={true} linear={false} color={deletedColor ? '#ea8064' : ''} side={THREE.DoubleSide} transparent={true} opacity={0}/>
             </mesh>
-
 
             {typeArray[typeIdx] == "half" ? 
 

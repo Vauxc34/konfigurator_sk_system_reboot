@@ -15,7 +15,7 @@ function DraggableWindow(props) {
         props.window.scale.z = 65
         props.window.children[0].position.z = -0.036
 
-        console.log(props.window) 
+        //console.log(props.window) 
 
     } else if (props.obj === "1_window" && props.direction === 'back') {
 
@@ -36,7 +36,7 @@ function DraggableWindow(props) {
         props.window.children[0].children[1].position.y = -0.132
         props.window.rotation.y = -Math.PI
 
-        console.log(props.window)
+        //console.log(props.window)
  
     }
     
@@ -82,7 +82,7 @@ function DraggableWindow(props) {
 
         props.window.rotation.y = -Math.PI
 
-        console.log(props.window)
+        ///console.log(props.window)
 
     } else if (props.obj === "2_window" && props.direction === "right") {
 
@@ -101,7 +101,7 @@ function DraggableWindow(props) {
 
         props.window.rotation.y = -Math.PI
         
-        console.log(props.window)
+        //console.log(props.window)
 
     } 
     
@@ -155,7 +155,7 @@ function DraggableWindow(props) {
         props.window.children[0].children[1].children[1].position.y = .052
         props.window.children[0].children[1].children[2].scale.z = .75
 
-        console.log(props.window)
+        //console.log(props.window)
         props.window.rotation.z = -Math.PI
 
     } 
@@ -170,7 +170,7 @@ function DraggableWindow(props) {
         props.window.scale.z = 80
         props.window.children[0].position.z = -0.0215
 
-        console.log(props.window)
+        //console.log(props.window)
     } else if (props.obj === "4_window" && props.direction === 'left') {
 
         props.window.scale.z = 80
@@ -179,7 +179,7 @@ function DraggableWindow(props) {
       
         props.window.rotation.y = -Math.PI
 
-        console.log(props)
+        //console.log(props)
 
     } else if (props.obj === "4_window" && props.direction === 'right') {
 
@@ -362,9 +362,6 @@ function DraggableWindow(props) {
        }
    }
 
-
-
-
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
             setActiveDraggable(active)
@@ -447,6 +444,8 @@ function DraggableWindow(props) {
             setScale([scale[0], scl[index], 25]);
             setPosition(position)
         }
+
+        console.log(position)
 
         const onPointerUp = () => {
           document.removeEventListener('pointermove', onPointerMove);
@@ -1034,14 +1033,14 @@ function DraggableWindow(props) {
                     <mesh 
                         onPointerDown={(e) => {changeYScale(e)}}
                         onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}}
-                        scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [0, 0, 0] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={(props.direction === 'front' || props.direction === 'back' ? [2.26, 1.9, 0] : [2.26, 1.9, -0.05])}
+                        scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [0, 0, 0] : (props.direction === 'left' ? [Math.PI, Math.PI, -Math.PI] : props.direction === 'right' ? [Math.PI, Math.PI, -Math.PI] : [Math.PI, 0, Math.PI]))} position={(props.direction === 'front' || props.direction === 'back' ? [2.26, 1.9, 0] : props.direction === 'left' ?  [-2.46, 1.9, .095] : props.direction === 'right' ? [-2.46, 1.9, .095] : [-2.46, 1.9, -0.05])}
                     >
                         <shapeGeometry/>
                         <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
                     </mesh> 
                 : '')}
                 {(show && props.obj === '4_window' ? 
-                    <mesh renderOrder={1} onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [0, 0, -Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' || props.direction === 'back' ? [4.195, 0.9, 0] : [0.4, 0.9, -0.05])}>
+                    <mesh renderOrder={1} onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [0, 0, -Math.PI / 2] : (props.direction === 'left' ? [Math.PI, -Math.PI, Math.PI / 2] : props.direction === 'right' ? [Math.PI, Math.PI, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' || props.direction === 'back' ? [4.195, 0.9, 0] : props.direction === 'left' ? [-.585, 0.9, .09] : props.direction === 'right' ? [-.615, 0.9, .1] : [4.195, 0.9, 0])}>
                         <shapeGeometry/>
                         <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
                     </mesh> 
