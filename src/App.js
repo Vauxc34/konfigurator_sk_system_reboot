@@ -1376,28 +1376,7 @@ const modifiedUV1 = new Float32Array([
     const door_with_glass_full = useLoader(GLTFLoader, 'doors/door_with_glass_full/door_with_glass_full.gltf')
     const double_doors = useLoader(GLTFLoader, 'doors/1/scene.gltf') 
     const double_door_with_full_glass = useLoader(GLTFLoader, 'doors/double_door_with_full_glass/door_with_glass_full.gltf') 
-    const double_door_with_glass = useLoader(GLTFLoader, 'doors/double_door_with_glass/double_door_with_glass.gltf') 
-
-    /* back side doors */
-
-    const double_doors_back = useLoader(GLTFLoader, 'doors/1back/scene.gltf') 
-    const single_door_back = useLoader(GLTFLoader, 'doors/2back/scene.gltf')
-
-    /* back side doors */
-
-    /* left side doors */
-    
-    const double_doors_left = useLoader(GLTFLoader, 'doors/1left/scene.gltf') 
-    const single_door_left = useLoader(GLTFLoader, 'doors/2left/scene.gltf')
-
-    /* left side doors */
-  
-    /* right side doors */
-    
-    const double_doors_right = useLoader(GLTFLoader, 'doors/1right/scene.gltf') 
-    const single_door_right = useLoader(GLTFLoader, 'doors/2right/scene.gltf')
-
-    /* right side doors */
+    const double_door_with_glass = useLoader(GLTFLoader, 'doors/double_door_with_glass/double_door_with_glass.gltf')  
     
   /* filtered doors */
 
@@ -1922,10 +1901,6 @@ const modifiedUV1 = new Float32Array([
 
     }
 
-    useEffect(() => {
-      AntresolaPosSetter()
-    })
-
     antresola.scene.children[0].children[0].children[11].position.y = AntresolaFrontPartMoveZ
     antresola.scene.children[0].children[0].children[8].scale.z = AntresolaFrontPartScale1Z
     antresola.scene.children[0].children[0].children[9].scale.z = AntresolaFrontPartScale1Z
@@ -1937,11 +1912,6 @@ const modifiedUV1 = new Float32Array([
     antresola.scene.children[0].children[0].children[4].scale.z = AntresolaFrontPartScaleZ
     antresola.scene.children[0].children[0].children[10].scale.z = AntresolaFrontPartScale1Z
     antresola.scene.children[0].children[0].children[2].scale.z = AntresolaFrontPartScaleZ
-
-    if(StairsAntre.current != undefined && StairsAntreB.current != undefined) {
-      //StairsAntre.current.position.z = StairsFrontAntreMoveZ
-      //StairsAntreB.current.position.z = -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam
-    }    
 
    // left top leg = antresola.scene.children[0].children[0].children[37].children[1]
    // left bottom leg = antresola.scene.children[0].children[0].children[11].children[2]
@@ -2830,7 +2800,7 @@ const modifiedUV1 = new Float32Array([
     setHoles([...Holes])
   } 
 
-  const FilteredGate = Gates.filter((item) => item.obj == 'gate_normal' )
+  const FilteredGate = Gates.filter((item) => item.obj == 'gate_normal')
   const FilteredGateBack = Gates.filter((item) => item.obj == 'gate_normal' && item.orient == "back")
   const FilteredGateLeft = Gates.filter((item) => item.obj == 'gate_normal' && item.orient == "left")
   const FilteredGateRight = Gates.filter((item) => item.obj == 'gate_normal' && item.orient == "right")
@@ -3692,436 +3662,9 @@ const gate_full_glass = useLoader(GLTFLoader, "gates/gate_full_glass.gltf")
 const hole = useLoader(GLTFLoader, "holes/full_gate.gltf") 
 hole.scene.children[0].children[1].children[0].children[0].visible = false 
 
-function ModelsAll() { 
+const ModelsAll = React.memo(() => { 
 
-  /* doors */ 
-  
-  const texture = useTexture("doors/2/textures/all_white.jpg")
-  
-  single_door.scene.children[0].children[0].children[0].children[0].children[0].material.map = texture;
-  single_door.scene.children[0].children[0].children[0].children[0].children[1].material.map = texture;
-  double_doors.scene.scale.x = 30
-  double_doors.scene.scale.y = 30
-  double_doors.scene.scale.z = 30
-
-  double_doors.scene.position.z = ModelPosFront1
-  double_doors.scene.position.x = -60 + DoorPosZ 
-
-  double_door_with_full_glass.scene.scale.x = 30
-  double_door_with_full_glass.scene.scale.y = 30
-  double_door_with_full_glass.scene.scale.z = 30
-
-  double_door_with_full_glass.scene.position.z = ModelPosFront1
-  double_door_with_full_glass.scene.position.x = -60 + DoorPosZ 
-
-  double_door_with_glass.scene.scale.x = 30
-  double_door_with_glass.scene.scale.y = 30
-  double_door_with_glass.scene.scale.z = 30
-
-  double_door_with_glass.scene.position.z = ModelPosFront1
-  double_door_with_glass.scene.position.x = -60 + DoorPosZ 
-
-  single_door.scene.scale.x = .3
-  single_door.scene.scale.y = .3
-  single_door.scene.scale.z = .2
-
-  single_door.scene.position.z = ModelPosFront1 + .5
-  single_door.scene.position.x = -35 + DoorPosZ
-
-  //single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[1].material.map = texture;
-  //single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[2].material.map = texture;
-
-  single_door_with_glass.scene.scale.x = .3
-  single_door_with_glass.scene.scale.y = .3
-  single_door_with_glass.scene.scale.z = .2
-
-  single_door_with_glass.scene.position.z = ModelPosFront1 + .5
-  single_door_with_glass.scene.position.x = -35 + DoorPosZ
-
-
-  //door_with_glass_full.scene.children[0].children[0].children[0].children[0].children[1].material.map = texture;
-
-  door_with_glass_full.scene.scale.x = .3
-  door_with_glass_full.scene.scale.y = .3
-  door_with_glass_full.scene.scale.z = .2
-
-  door_with_glass_full.scene.position.z = ModelPosFront1 + .5
-  door_with_glass_full.scene.position.x = -35 + DoorPosZ
-
-  var material1 = new THREE.MeshBasicMaterial({color: DoorColor1});
-  var material2 = new THREE.MeshBasicMaterial({color: DoorObrobkaColor1});
-  var material3 = new THREE.MeshBasicMaterial({color: '#000000'});
-
-  single_door.scene.rotation.y = -Math.PI/ 1060
-
-  single_door.scene.children[0].children[0].children[0].children[0].children[2].children[1].material = material1 
-  single_door.scene.children[0].children[0].children[0].children[0].children[1].material = material2
-  single_door.scene.children[0].children[0].children[0].children[0].children[0].material = material3
-  single_door.scene.children[0].children[0].children[0].children[0].children[2].children[0].material = material3
-  single_door.scene.children[0].children[0].children[0].children[0].children[2].children[3].children[0].material = material3
-  single_door_with_glass.scene.rotation.y = -Math.PI/ 1060
-
-  single_door_with_glass.scene.rotation.y = -Math.PI/ 1060
-  // single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[1] = material2;
-  // single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[2] = material3;
-  // single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[0].children[1] = material3;
-  // single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[0].children[2] = material1;
-  // single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[0].children[0].children[0] = material3;
-  // single_door_with_glass.scene.children[0].children[0].children[0].children[0].children[0].children[3].children[0] = material3;
-
-  door_with_glass_full.scene.children[0].children[0].children[0].children[0].children[0].material = material3
-
-  /* */
-
-  single_door_back.scene.children[0].children[0].children[0].children[0].children[2].children[1].material = material1 
-  single_door_back.scene.children[0].children[0].children[0].children[0].children[1].material = material2
-  single_door_back.scene.children[0].children[0].children[0].children[0].children[0].material = material3
-  single_door_back.scene.children[0].children[0].children[0].children[0].children[2].children[0].material = material3
-  single_door_back.scene.children[0].children[0].children[0].children[0].children[2].children[3].children[0].material = material3
-
-  single_door_back.scene.scale.x = .3
-  single_door_back.scene.scale.y = .3
-  single_door_back.scene.scale.z = .2
-
-  single_door_back.scene.position.x = 33.5
-
-  /* */ 
-
-  single_door_left.scene.children[0].children[0].children[0].children[0].children[2].children[1].material = material1 
-  single_door_left.scene.children[0].children[0].children[0].children[0].children[1].material = material2
-  single_door_left.scene.children[0].children[0].children[0].children[0].children[0].material = material3
-  single_door_left.scene.children[0].children[0].children[0].children[0].children[2].children[0].material = material3
-  single_door_left.scene.children[0].children[0].children[0].children[0].children[2].children[3].children[0].material = material3
-
-  single_door_left.scene.scale.x = .3
-  single_door_left.scene.scale.y = .3
-  single_door_left.scene.scale.z = .2 
  
-  single_door_right.scene.children[0].children[0].children[0].children[0].children[2].children[1].material = material1 
-  single_door_right.scene.children[0].children[0].children[0].children[0].children[1].material = material2
-  single_door_right.scene.children[0].children[0].children[0].children[0].children[0].material = material3
-  single_door_right.scene.children[0].children[0].children[0].children[0].children[2].children[0].material = material3
-  single_door_right.scene.children[0].children[0].children[0].children[0].children[2].children[3].children[0].material = material3
-
-  single_door_right.scene.scale.x = .3
-  single_door_right.scene.scale.y = .3
-  single_door_right.scene.scale.z = .2
-
-  single_door_right.scene.position.x = 25
-
-  single_door_back.scene.rotation.y = -Math.PI/ 1060
-
-  /* double */
-
-  double_doors.scene.children[0].children[0].children[0].material = material2
-  double_doors.scene.children[0].children[0].children[1].material = material1
-  double_doors.scene.children[0].children[0].children[2].material = material3
-  double_doors.scene.children[0].children[0].children[3].material = material3
-  
-  // door_with_glass_full.scene.children[0].children[0].children[0].material = material2
-  // door_with_glass_full.scene.children[0].children[0].children[1].material = material1
-  // door_with_glass_full.scene.children[0].children[0].children[2].material = material3
-  // door_with_glass_full.scene.children[0].children[0].children[3].material = material3
-
-  double_doors_back.scene.children[0].children[0].children[0].material = material2
-  double_doors_back.scene.children[0].children[0].children[1].material = material1
-  double_doors_back.scene.children[0].children[0].children[2].material = material3
-  double_doors_back.scene.children[0].children[0].children[3].material = material3
-
-  double_doors_back.scene.scale.x = 30
-  double_doors_back.scene.scale.y = 30
-  double_doors_back.scene.scale.z = 30 
-
-  double_doors_back.scene.position.x = 10
-
-  /* */
-
-  double_doors_left.scene.children[0].children[0].children[0].material = material2
-  double_doors_left.scene.children[0].children[0].children[1].material = material1
-  double_doors_left.scene.children[0].children[0].children[2].material = material3
-  double_doors_left.scene.children[0].children[0].children[3].material = material3
-  
-  double_doors_left.scene.children[0].children[0].children[0].material = material2
-  double_doors_left.scene.children[0].children[0].children[1].material = material1
-  double_doors_left.scene.children[0].children[0].children[2].material = material3
-  double_doors_left.scene.children[0].children[0].children[3].material = material3
-
-  double_doors_left.scene.scale.x = 30
-  double_doors_left.scene.scale.y = 30
-  double_doors_left.scene.scale.z = 30
-
-  double_doors_left.scene.position.x = -50.5
-
-  /* */
-
-  double_doors_right.scene.children[0].children[0].children[0].material = material2
-  double_doors_right.scene.children[0].children[0].children[1].material = material1
-  double_doors_right.scene.children[0].children[0].children[2].material = material3
-  double_doors_right.scene.children[0].children[0].children[3].material = material3
-  
-  double_doors_right.scene.children[0].children[0].children[0].material = material2
-  double_doors_right.scene.children[0].children[0].children[1].material = material1
-  double_doors_right.scene.children[0].children[0].children[2].material = material3
-  double_doors_right.scene.children[0].children[0].children[3].material = material3
-
-  double_doors_right.scene.scale.x = 30
-  double_doors_right.scene.scale.y = 30
-  double_doors_right.scene.scale.z = 30
-
-  double_doors_right.scene.position.x = 0.5
-
-  /* double */   
-
-   /* doors */
-
-   const window_1 = useLoader(GLTFLoader, "window_models/1_windows/1_windows.gltf");
-   const window_1_front_ = window_1.scene.clone(); 
-
-   const window_1_back_ = window_1.scene.clone();
-   const window_1_left_ = window_1.scene.clone();
-   const window_1_right_ = window_1.scene.clone();
-
-   window_1_front_.scale.x = 25;
-   window_1_front_.scale.y = 25;
-   window_1_front_.scale.z = 25;
-
-   window_1_front_.position.x = -20;
-   window_1_front_.position.y = 45;
-   window_1_front_.position.z = ModelPosFront1;
- 
-
-   window_1_back_.position.z = ModelPosBack - 1.2;
-
-   window_1_back_.scale.x = 25;
-   window_1_back_.scale.y = 25;
-   window_1_back_.scale.z = 25;
-
-   window_1_left_.position.x = ModelPosLeft1 + 44;
-   
-   window_1_left_.scale.x = 25;
-   window_1_left_.scale.y = 25;
-   window_1_left_.scale.z = 25;
-
-   window_1_right_.position.x = ModelPosRight1 + 46;
-
-   window_1_right_.scale.x = 25;
-   window_1_right_.scale.y = 25;
-   window_1_right_.scale.z = 25;
-
-   window_1_left_.rotation.y = Math.PI/ 2;
-   window_1_right_.rotation.y = -Math.PI/2;
-
-   window_1_back_.rotation.y = Math.PI/1;
-   window_1.scene.rotation.y = -Math.PI/ 1;
-   
-   /* */ 
-
-      const window_2 = useLoader(GLTFLoader, "window_models/2_windows/2_windows.gltf")
-      const window_2_front_ = window_2.scene.clone()
-      const window_2_back_ = window_2.scene.clone()
-      const window_2_left_ = window_2.scene.clone()
-      const window_2_right_ = window_2.scene.clone()
-
-      window_2_front_.scale.x = 19.5
-      window_2_front_.scale.y = 19.85
-      window_2_front_.scale.z = 5
-    
-      window_2_front_.position.x = -55.25
-      window_2_front_.position.y = 40
-      window_2_front_.position.z = ModelPosFront3
-
-      window_2_back_.position.z = ModelPosBack - 4.75 
-
-      window_2_back_.scale.x = 19.5
-      window_2_back_.scale.y = 19.85
-      window_2_back_.scale.z = 5
-
-      window_2_left_.position.x = ModelPosLeft1 + 44
-
-      window_2_left_.scale.x = 19.5
-      window_2_left_.scale.y = 19.85
-      window_2_left_.scale.z = 5
-
-      window_2_right_.position.x = ModelPosRight1 + 47
-
-      window_2_right_.scale.x = 19.5
-      window_2_right_.scale.y = 19.85
-      window_2_right_.scale.z = 5
-    
-      window_2_left_.rotation.y = Math.PI/ 2
-      window_2_right_.rotation.y = -Math.PI/2
-
-      window_2_back_.rotation.y = Math.PI/-1  
-
-      /*window_2.scene.children[0].children[0].children[1].children[0].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[1].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[3].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[4].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[5].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[6].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[7].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[8].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[9].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[10].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[11].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[12].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[13].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[14].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[15].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[16].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[17].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[18].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[19].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[20].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[21].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[22].material = material1_window;
-      window_2.scene.children[0].children[0].children[1].children[23].material = material1_window;*/
-
-
-      // window_2_front_.children[0].children[0].children[1].material = material1_window
-      // window_2_back_.children[0].children[1].children[1].material = material1_window
-      // window_2_left_.children[0].children[1].children[1].material = material1_window
-      // window_2_right_.children[0].children[1].children[1].material = material1_window
-
-      /* */
-
-          const window_3 = useLoader(GLTFLoader, "window_models/3_windows/3_windows.gltf") 
-          const window_3_front_ = window_3.scene.clone()
-          const window_3_back_ = window_3.scene.clone()
-          const window_3_left_ = window_3.scene.clone()
-          const window_3_right_ = window_3.scene.clone()
-   
-          window_3_front_.scale.x = 30
-          window_3_front_.scale.y = 20
-          window_3_front_.scale.z = 30
-       
-          window_3_front_.position.x = -67.5
-          window_3_front_.position.y = 78.5
-          window_3_front_.position.z = ModelPosFront2 
-
-          window_3_back_.position.x = ModelPosBack 
-
-          window_3_back_.position.z = ModelPosBack - 1.2
-
-          window_3_back_.scale.x = 30
-          window_3_back_.scale.y = 20
-          window_3_back_.scale.z = 30
-
-          window_3_left_.position.x = ModelPosLeft1 + 44
-
-          window_3_left_.scale.x = 30
-          window_3_left_.scale.y = 20
-          window_3_left_.scale.z = 30
-
-          window_3_right_.position.x = ModelPosRight1 + 47
-
-          window_3_right_.scale.x = 30
-          window_3_right_.scale.y = 20
-          window_3_right_.scale.z = 30
-       
-          window_3_left_.rotation.z = Math.PI/ 2
-          window_3_right_.rotation.z = Math.PI/2
-          window_3_back_.rotation.y = Math.PI/1
-
-          window_3.scene.rotation.x = -Math.PI/ 2
-
-          //window_3.scene.children[0].children[1].children[0].children[0].material = material1_window 
-
-          /*window_3_front_.children[0].children[1].children[0].children[0].material = material1_window 
-          window_3_back_.children[0].children[1].children[0].children[0].material = material1_window 
-          window_3_left_.children[0].children[1].children[0].children[0].material = material1_window 
-          window_3_right_.children[0].children[1].children[0].children[0].material = material1_window */
-
-          /* */ 
-
-          const window_4 = useLoader(GLTFLoader, "window_models/4_windows/4_windows.gltf") 
-          const window_4_front_ = window_4.scene.clone()
-          const window_4_back_ = window_4.scene.clone()
-          const window_4_left_ = window_4.scene.clone()
-          const window_4_right_ = window_4.scene.clone()
-
-          window_4_back_.position.z = ModelPosBack - 1.2
-          window_4_left_.position.x = ModelPosLeft1 + 44
-          window_4_right_.position.x = ModelPosRight1 + 46
-        
-          window_4_left_.rotation.y = Math.PI/ 2
-          window_4_right_.rotation.y = -Math.PI/2 
-          window_1_back_.rotation.y = Math.PI/1
-   
-          window_4_front_.scale.x = 30
-          window_4_front_.scale.y = 20
-          window_4_front_.scale.z = 30
-
-          window_4_front_.position.x = -104.65
-          window_4_front_.position.y = 47.5
-          window_4_front_.position.z = ModelPosFront3 - .15
-           
-          window_4_front_.rotation.y = -Math.PI/ 270
-
-          //window_4.scene.children[0].children[0].children[8].children[0].material = material2_window
-
-
-          /* */
-
-          // window_4_front_.children[0].children[1].children[3].children[0].material = material2_window 
-          // window_4_front_.children[0].children[1].children[1].children[0].material = material2_window 
-          // window_4_front_.children[0].children[1].children[5].children[0].material = material2_window
-          // window_4_front_.children[0].children[1].children[7].children[0].material = material2_window
-          // window_4_front_.children[0].children[1].children[4].children[0].material = material1_window  
-
-          // window_4_back_.children[0].children[1].children[3].children[0].material = material2_window 
-          // window_4_back_.children[0].children[1].children[1].children[0].material = material2_window 
-          // window_4_back_.children[0].children[1].children[5].children[0].material = material2_window
-          // window_4_back_.children[0].children[1].children[7].children[0].material = material2_window
-          // window_4_back_.children[0].children[1].children[4].children[0].material = material1_window  
-          
-          // window_4_left_.children[0].children[1].children[3].children[0].material = material2_window 
-          // window_4_left_.children[0].children[1].children[1].children[0].material = material2_window 
-          // window_4_left_.children[0].children[1].children[5].children[0].material = material2_window
-          // window_4_left_.children[0].children[1].children[7].children[0].material = material2_window
-          // window_4_left_.children[0].children[1].children[4].children[0].material = material1_window  
-
-          // window_4_right_.children[0].children[1].children[3].children[0].material = material2_window 
-          // window_4_right_.children[0].children[1].children[1].children[0].material = material2_window 
-          // window_4_right_.children[0].children[1].children[5].children[0].material = material2_window
-          // window_4_right_.children[0].children[1].children[7].children[0].material = material2_window
-          // window_4_right_.children[0].children[1].children[4].children[0].material = material1_window  
-          
-          /* */
-         //gate1.scene.children[0].children[0].children[0].children[1].material = material_gate2;
-
-          gate1.scene.scale.x = 40
-          gate1.scene.scale.y = 40
-          gate1.scene.scale.z = 114
-
-          gate1.scene.position.x = 50
-          gate1.scene.position.y = 0
-          gate1.scene.position.z = ModelPosFront4 - 20.55
-
-          gate1.scene.rotation.y = Math.PI/1
-          //gate_half_glass.scene.children[2].children[0].children[0].children[1].material = material_gate2
-          gate_half_glass.scene.scale.x = 40
-          gate_half_glass.scene.scale.y = 40
-          gate_half_glass.scene.scale.z = 114
-
-          gate_half_glass.scene.position.x = 50
-          gate_half_glass.scene.position.y = 0
-          gate_half_glass.scene.position.z = ModelPosFront4 - 20.55
-
-          gate_half_glass.scene.rotation.y = Math.PI/1
-
-          gate_full_glass.scene.scale.x = 40
-          gate_full_glass.scene.scale.y = 40
-          gate_full_glass.scene.scale.z = 114
-
-          gate_full_glass.scene.position.x = 50
-          gate_full_glass.scene.position.y = 0
-          gate_full_glass.scene.position.z = ModelPosFront4 - 20.55
-
-          gate_full_glass.scene.rotation.y = Math.PI/1
-
-          /* stairs */
-
           /* stairs */ 
 
           swietlik.scene.children[0].children[1].children[0].children[0].visible = false
@@ -4129,106 +3672,11 @@ function ModelsAll() {
           swietlik1.children[0].children[1].children[0].children[1].position.z = -14.5
           swietlik1.children[0].children[1].children[0].children[1].scale.z = 2.6
 
-          // function FilteredFunction() {
-          //   const { size, viewport } = useThree();
-          //   const aspect = size.width / viewport.width;
-
-          //   const [elements, setElements] = useState(
-          //     FilteredWindowData1.map((item, index) => ({
-          //       position: [0, 0, 0], // Początkowa pozycja dla każdego elementu
-          //       id: index, // Unikalne ID dla każdego elementu
-          //     }))
-          //   );
-
-          //   const bind = useDrag(({ offset: [x, y] }) => {
-          //   setElements((prevElements) =>
-          //     prevElements.map((element, i) =>
-          //       i === element.id
-          //         ? {
-          //             ...element,
-          //             position: [x / aspect, -y / aspect, element.position[2]],
-          //           }
-          //         : element
-          //     )
-          //   );
-          // }, { pointerEvents: true })
-
-          //   // const bind = useDrag(
-          //   //   ({ offset: [x, y] }) => {
-          //   //     const [, , z] = position;
-          //   //     setPosition([x / aspect, -y / aspect, z]);
-          //   //   },
-          //   //   { pointerEvents: true }
-          //   // );
-
-          //   const MouseEnter = () => {
-          //     setCameraMovement(false);
-          //     console.log('enter');
-          //   }
-
-          //   const MouseLeave = () => {
-          //     setCameraMovement(true);
-          //   }
-
-          //   const response = elements.map(element => {
-          //     return (
-          //       <mesh
-          //         key={element.id}
-          //         position={element.position}
-          //         {...bind()}
-
-          //         onPointerOver={(e) => MouseEnter()}
-          //         onPointerOut={(e) => MouseLeave()}
-          //       >
-          //         <primitive object={window_1_front_.clone()}/>
-          //       </mesh>
-          //     )
-          //   })
-
-          //   return response;
-          // }
+          
 
           //    
           const [swietlik1Scale, setSwietlik1Scale] = useState();
-
-          const changeYScale = (e) => {
-            console.log('working')
-            // Store the initial position of the mouse\
-            const initialY = e.clientY;
-            const onPointerMove = (e) => {
-                const deltaY = e.clientY - initialY;
-                //setDltaY(deltaY);
-                setSwietlik1Scale([swietlik1Scale[0] + deltaY, swietlik1Scale[1], swietlik1Scale[2]])
-            };
-    
-            const onPointerUp = () => {
-              document.removeEventListener('pointermove', onPointerMove);
-              document.removeEventListener('pointerup', onPointerUp);
-            };
-    
-            document.addEventListener('pointermove', onPointerMove);
-            document.addEventListener('pointerup', onPointerUp);
-        }
-    
-        const changeXScale = (e) => {
-          console.log('working')
-            // Store the initial position of the mouse\
-            const initialX = e.clientX;
-            const onPointerMove = (e) => {
-                const deltaX = e.clientX - initialX;
-                //setDltaX(deltaX);
-                setSwietlik1Scale([swietlik1Scale[0] + deltaX, swietlik1Scale[1], swietlik1Scale[2]])
-            };
-    
-            const onPointerUp = () => {
-              document.removeEventListener('pointermove', onPointerMove);
-              document.removeEventListener('pointerup', onPointerUp);
-            };
-    
-            document.addEventListener('pointermove', onPointerMove);
-            document.addEventListener('pointerup', onPointerUp);
-        }
-        const [show, setShow] = useState(false);
+  
   return <group position={[0, 7.45, 0]}>
     <group visible={Roof2 == true ? isSwietlik : false} position={[0, 0, 0]} rotation={[0, Math.PI/2, 0]}>
       <primitive object={swietlik.scene} scale={[10 + swietlikScale, 5, 10 + swietlikWidth]} rotation={[.05, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof1PosY + 73   - FundamentParamY, -13 + swietlikWidth + (swietlikWidth >= 6 ? 5 : 0)]}>
@@ -4299,7 +3747,6 @@ function ModelsAll() {
     </mesh>  */}
     </primitive>
     </group>
-
     <group visible={Roof2 == true ? isSwietlik : false} position={[0, roof2ZdobienieAngle + 6.5 - FundamentParamY -110.5, 0]} rotation={[0, Math.PI/2, 0]}>
       <primitive object={swietlik1} scale={[10 + swietlikScale, 8, 10 + swietlikWidth]} rotation={[0, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY + 123.5, -16.5 + swietlikWidth + (swietlikWidth >= 6 ? 5 : 0)]}>
         
@@ -4314,426 +3761,11 @@ function ModelsAll() {
     <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaPrzod == false ? isAntresolaTyl : false} position={[0, 0, 0]} rotation={[0, Math.PI, 0]}>
       <primitive object={antresola.scene.clone()} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 90, 4.9, -ModelPosFront1 + 529 ]}></primitive>
       <primitive object={antresolaStairsInsideBack.clone()} ref={StairsAntreB} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam]} rotation={[0,Math.PI/2,0]}/>
-    </group>
-
-{/* {FilteredStairs1Array.map(item =>  
-    
-    <group visible={StairsVisible} position={[item.x, 0, 135]}>
-      <primitive object={stairs1.scene.clone()} scale={35} rotation={[0, Math.PI/2, 0]} position={[-17, .15, 20 + ModelPosFront1]}></primitive>
-      <primitive  position={[-35, 85.45, ModelPosFront1 - 134.85]} object={single_door.scene.clone()} /> 
-    </group>
-)} */}
-
-{FilteredStairs1InsideArray.map(item =>  
-    <group visible={StairsVisible} position={[item.x  - 70, 4.5,  70]} rotation={[0 , Math.PI, 0]}>
-      <primitive object={stairs1.scene.clone()} scale={35} rotation={[0, Math.PI/2, 0]} position={[-17, .15, 228 - ModelPosFront1]}></primitive>
-      <primitive  position={[-35, 85.45, 71.5 - ModelPosFront1]} object={single_door.scene.clone()} /> 
-      </group>
-)}    
-
-{/* {FilteredStairs2Array.map(item =>  <group visible={StairsVisible} position={[item.x + 20, 0, ModelPosFront1 + 52]}>
-    <primitive object={stairs2.scene.clone()} scale={[50,35, 35]} position={[-94.85, .15,  19]}></primitive>
-    <primitive  position={[-116, 96.5, -51]} object={single_door.scene.clone()} /> 
-    </group>
-       
-)} */}
-
-{FilteredStairs2InsideArray.map(item =>  <group visible={StairsVisible} rotation={[0 , Math.PI, 0]} position={[item.x - 40, 0, ModelPosFront1 - 52.75]}>
-    <primitive object={stairs2.scene.clone()} scale={[50,35, 35]} position={[-95.25, 5.35, 20]}></primitive>
-    <primitive  position={[-116, 101.75, -51]} object={single_door.scene.clone()} /> 
-    </group>
-       
-)}
-
-  {/* doors */}
-
-  {/*  back*/}
-
-{FilteredDataBack.map(item => 
-
-
-
-
-<group  rotation={[ 0 , Math.PI/1, 0]} position={[item.x, 0,  ModelPosBack]}>
-<primitive   object={single_door_back.scene.clone()} /> 
-{item.GlassType == "half" ?
-<mesh renderOrder={0} position={[33.28,46.25,  3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh> : null}
-{item.GlassType == "full" ?
-<mesh renderOrder={0} position={[31.48,30.5, 3]} >
-<boxBufferGeometry args={[19, 54.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh> : null}
-</group> 
-
-)}
-
-{FilteredDataBack1.map(item => 
-  
-
-<group rotation={[ 0 , Math.PI/1, 0]} position={[item.x, 0,  ModelPosBack]}>
-<primitive   object={double_doors_back.scene.clone()} /> 
-
-
-{item.GlassType == "half" ? <>
-
-<mesh renderOrder={0} position={[47.6, 47.5, 3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-<mesh renderOrder={0} position={[23.4, 47.5, 3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-
-</> : null}
-
-{item.GlassType == "full" ?
-
-<>
-
-
-<mesh renderOrder={0} position={[49.5, 31, 3]} >
-<boxBufferGeometry args={[17.15, 56.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-<mesh renderOrder={0}  position={[21.5, 31, 3]} >
-<boxBufferGeometry args={[17.15, 56.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-</>
-
-: null}
-
-
-
-
-</group>
-  
- 
-
-)}
- 
-  {/* left*/}
-
-{FilteredDataLeft.map(item => 
-
-
-<group rotation={[ 0 , -Math.PI/2, 0]} position={[ModelPosLeft1, 0,  item.x]}>
-         <primitive   object={single_door_left.scene.clone()} /> 
-
-         {item.GlassType == "half" ?
-         
-         
-<mesh renderOrder={0} position={[-.28,46.25,  3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-         
-         : null}
-
-
-{item.GlassType == "full" ?
-
-
-<mesh renderOrder={0} position={[-1.945,30.5, 3]} >
-<boxBufferGeometry args={[19, 54.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-: null}
-
-
-
-
-</group>
-
-)}
-
-{FilteredDataLeft1.map(item => 
-
-<group  rotation={[ 0 , -Math.PI/2, 0]}  position={[ModelPosLeft2, 0,  item.x]}>
-         <primitive object={double_doors_left.scene.clone()} />
-
-
-         {item.GlassType == "half" ?
-          <>
-          
-          <mesh renderOrder={0} position={[-37.2, 47.5, 3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-        </mesh>
-
-        <mesh renderOrder={0} position={[-12.75, 47.5, 3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-        </mesh>
-
-          </>
-
-         : null}
-
-         {item.GlassType == "full" ?
-        <>
-        
-        <mesh   renderOrder={0} position={[-39, 31, 3]} >
-        <boxBufferGeometry args={[17.15, 56.5, .1]}    />
-        <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-        </mesh>
-
-        <mesh   renderOrder={0}  position={[-10.9, 31, 3]} >
-        <boxBufferGeometry args={[17.15, 56.5, .1]}    />
-        <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-        </mesh>
-
-        </> : null}
-
-</group>
-)}
- 
-{/* right*/}
-
-{FilteredDataRight.map(item =>
-  <group rotation={[ 0 , Math.PI/2, 0]} position={[ModelPosRight1, 0,  item.x]}>
-  <primitive object={single_door_right.scene.clone()} /> 
-
-  {item.GlassType == "half" ?
-<mesh  renderOrder={0} position={[25.3,46.25,  3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
- 
-  
-  : null}
-
-
-  {item.GlassType == "full" ? 
-<mesh renderOrder={0} position={[22.945,30.5, 3]} >
-<boxBufferGeometry args={[19, 54.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh> : null}
-
-
-</group>
-
-)}
- 
-{FilteredDataRight1.map(item =>
-  <group  rotation={[ 0 , Math.PI/2, 0]} position={[ModelPosRight1, 0,  item.x]}>
-  <primitive object={double_doors_right.scene.clone()} /> 
-
-  {item.GlassType == "half" ? 
-  
-<>
-  
-<mesh renderOrder={0} position={[38.2, 47.5, 3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-<mesh renderOrder={0} position={[13.75, 47.5, 3]} >
-<boxBufferGeometry args={[22, 24.5, .1]}    />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-</>
-
-  : null}
-
-{item.GlassType == "full" ? 
-<>
-
-<mesh renderOrder={0} position={[40, 31, 3]} >
-  <boxBufferGeometry args={[17.15, 56.5, .1]}    />
-  <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-<mesh renderOrder={0}  position={[11.9, 31, 3]} >
-  <boxBufferGeometry args={[17.15, 56.5, .1]}    />
-  <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>
-
-</> : null}
-
-</group>
-)}
-
-
-{/* windows */}
-
-{/* gates */}
- {/* {FilteredGate.map(item => <group position={[item.x  + item.itemAdditionalX, 0, 0]}>
-
-  <primitive object={gate1.scene.clone()} scale={[item.scaleModelX, item.ScaleModelY , 113.95]} />
-
-  {item.GlassType == "half" ? 
-  
-  <>
-   
- <group position={[-2 - item.itemAdditionalX * 2.2, 0, 0]}>
-
-
- <mesh renderOrder={0} position={[-60,30.5,  ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>  
- 
-<mesh renderOrder={0} position={[-30,30.5, ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>   
-
-<mesh renderOrder={0} position={[0,30.5, ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>   
-
- </group>
-
- <group position={[-2 - item.itemAdditionalX * 2.2, 10, 0]}>
-
-
- <mesh renderOrder={0} position={[-60,30.5,  ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>  
- 
-<mesh renderOrder={0} position={[-30,30.5, ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>   
-
-<mesh renderOrder={0} position={[0,30.5, ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>   
-
- </group>   
-
- </>
-
-  : null}
-
-
-  {item.GlassType == "full" ? 
-  
-  <>
-   
-  <group position={[-2 - item.itemAdditionalX * 2.2, -15, 0]}>
- 
-  <mesh renderOrder={0} position={[-60,30.5,  ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>  
-  
- <mesh renderOrder={0} position={[-30,30.5, ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>   
- 
- <mesh renderOrder={0} position={[0,30.5, ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>   
- 
+    </group> 
   </group>
+})
  
-  <group position={[-2 - item.itemAdditionalX * 2.2, 0, 0]}>
- 
- 
-  <mesh renderOrder={0} position={[-60,30.5,  ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>  
-  
- <mesh renderOrder={0} position={[-30,30.5, ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>   
- 
- <mesh renderOrder={0} position={[0,30.5, ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>   
- 
-  </group>   
- 
-<group position={[-2 - item.itemAdditionalX * 2.2, 15, 0]}>
- 
- 
-  <mesh renderOrder={0} position={[-60,30.5,  ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>  
-  
- <mesh renderOrder={0} position={[-30,30.5, ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>   
- 
- <mesh renderOrder={0} position={[0,30.5, ModelPosFront1 + 1.5]} >
- <boxBufferGeometry args={[25, 10, .1]} />
- <meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
- </mesh>   
- 
-  </group> 
-
-  <group position={[-2 - item.itemAdditionalX * 2.2, 30, 0]}>
- 
- 
- <mesh renderOrder={0} position={[-60,30.5,  ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>  
- 
-<mesh renderOrder={0} position={[-30,30.5, ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>   
-
-<mesh renderOrder={0} position={[0,30.5, ModelPosFront1 + 1.5]} >
-<boxBufferGeometry args={[25, 10, .1]} />
-<meshBasicMaterial color={'#4375e0'} side={THREE.DoubleSide} opacity={.4} transparent={true} />
-</mesh>   
-
- </group> 
-  </>
-
-  : null} 
-
- </group>)}  */}
- 
- {FilteredGateBack.map(item => <group position={[item.x  + item.itemAdditionalX, 0, 0]}>
-
-<primitive object={gate1.scene.clone()} scale={[item.scaleModelX, item.ScaleModelY , 113.95]} />
-
- </group>)} 
-
- {FilteredGateLeft.map(item => <group position={[item.x  + item.itemAdditionalX, 0, 0]}>
-
-<primitive object={gate1.scene.clone()} scale={[item.scaleModelX, item.ScaleModelY , 113.95]} />
-
- </group>)} 
-
- {FilteredGateRight.map(item => <group position={[item.x  + item.itemAdditionalX, 0, 0]}>
-
-<primitive object={gate1.scene.clone()} scale={[item.scaleModelX, item.ScaleModelY , 113.95]} />
-
- </group>)}
-
-{/* gates */}
- 
-  </group>
-} 
- 
-function Grass_with_mat() {
+const Grass_with_mat = React.memo(() => {
  
   const colorMap = useLoader(TextureLoader, "260f.jpg");
 
@@ -4749,7 +3781,7 @@ function Grass_with_mat() {
       </mesh>
     </>
   );
-} 
+})
 
 /* */
   
@@ -5299,7 +4331,12 @@ const FundamentSetter = () => {
 useEffect(() => {
   FundamentSetter()
 }) 
- 
+
+useMemo(() => {
+  FundamentSetter(FundamentNumber)
+}, []) 
+
+
 /* fundament */  
 
 /* width hail */
@@ -5310,6 +4347,7 @@ const [stairsWidth, setStairsWidth] = useState(26.5)
 const [stairsPositionBack, setStairsPositionBack] = useState(50)
 const [stairsPositionFront, setStairsPositionFront] = useState(115)
 const [WidthSetterLengthtHail, setWidthSetterLengthtHail] = useState(15)
+
 function WidthConnectionSetter() {
            if(WidthSetterLengthtHail == 10) {
     
@@ -12567,10 +11605,6 @@ setLameleAngleFix1_5(-.35)
 
     }  
 }
-
-useEffect(() => {
-  WidthConnectionSetter()
-})
 
 function WidthHailSetter() {   
          if(WidthSetterLengthtHail == 10) {
@@ -47097,10 +46131,6 @@ setOkapRoofParam2WidthUpRight(-.36)
 
 }   
 
-useEffect(() => {
-   WidthHailSetter() 
-})
-
        if (WidthSetterLengthtHail == 10 || WidthSetterLengthtHail == 11  ) {
       
   purlinPartee.scene.children[0].children[0].visible = false
@@ -48685,10 +47715,6 @@ const heightSetter = () => {
   } 
 }
 
-useEffect(() => {
-heightSetter()
-}, [heightSetter]) 
-
 /* height setter */
 
 
@@ -50012,9 +49038,7 @@ useEffect(() => {
 }, [meshPosition1, meshPosition2, meshPosition3, meshPosition4, meshPosition5, meshPosition6, meshPosition7, meshPosition8, meshPosition9, meshPosition10, meshPosition11, meshPosition12, meshPosition13, meshPosition14, meshPosition15, meshPosition16, meshPosition17, meshPosition18, meshPosition19, meshPosition20, meshPosition21, meshPosition22, meshPosition23, meshPosition24, meshPosition25, meshPosition26, meshPosition27, meshPosition28, meshPosition29, meshPosition30, meshPositionArray])
 /* */ 
 
-function Frame() {     
-
-  
+const Frame = React.memo(() => {     
 
  let KlinTexture = useTexture("frame_roof/Textures/frame__.jpg")
 
@@ -51075,9 +50099,7 @@ rotation={[-Math.PI / 2, 1.57, 7.8515]}>
 
 </group>
     
-}  
-
-//console.log(RozstawOffset)
+})
 
 const KlinNewRozstawFixer = () => {
 
@@ -51103,7 +50125,7 @@ const KlinNewRozstawFixer = () => {
 } else if (RozstawOffset == 150) {
   setRozstawKlinOffsetMultipler(.1775)
   setRozstawKlinOffsetMultipler1(-.176)
-}  else if (RozstawOffset == 155) {
+} else if (RozstawOffset == 155) {
   setRozstawKlinOffsetMultipler(.1775)
   setRozstawKlinOffsetMultipler1(-.176)
 } else if (RozstawOffset == 145) {
@@ -51143,8 +50165,12 @@ const KlinNewRozstawFixer = () => {
 }
 
 useEffect(() => {
-  KlinNewRozstawFixer()
+  KlinNewRozstawFixer(RozstawOffset)
 })
+
+useMemo(() => {
+  KlinNewRozstawFixer(RozstawOffset)
+}, [])
 
 const TypeBuildingSelector1 = () => {
               setRoof1(true); 
@@ -55607,12 +54633,6 @@ setFrameHalfVisible(false)
   setSwietlikScale(swietlicScaleRange);
 }, [swietlicScaleRange])*/
 
-useMemo(() => {
-  HailLengthSetter(RangeSetterLengthtHail);
-}, []);
- 
-/* tester functions */
-
 /* length hail */
 
 /* cokol height */
@@ -56777,12 +55797,53 @@ setOkapRightHider(-2.5)
 }
 
 useEffect(() => {
+  WidthHailSetter() 
+})
+
+useMemo(() => {
+ WidthHailSetter(WidthSetterLengthtHail) 
+}, [])
+
+useEffect(() => {
+  WidthConnectionSetter()
+})
+
+useMemo(() => {
+  WidthConnectionSetter(WidthSetterLengthtHail)
+}, [])
+
+useEffect(() => {
   OkapLeftSetter()
 }) 
 
 useEffect(() => {
   OkapRightSetter()
 })
+
+useMemo(() => {
+  HailLengthSetter(RangeSetterLengthtHail);
+}, []);
+
+useEffect(() => {
+  HailLengthSetter();
+});
+
+useMemo(() => {
+  AntresolaPosSetter(RangeSetterLengthtHail)
+}, [])
+
+useEffect(() => {
+  AntresolaPosSetter()
+})
+
+useEffect(() => {
+  heightSetter()
+  }, [heightSetter])
+  
+  
+  useMemo(() => {
+    heightSetter(RangeSetterHeightHail)
+    }, []) 
 
 /* okapy */
  
@@ -57107,52 +56168,6 @@ function arrayFrameChanger(e) {
   }   
 
 } 
-
-const Cursor =  () => {
-  const [position, setPosition] = useState({x: 0, y: 0});
-  
-      useEffect(() => {
-          addEventListeners();
-          return () => removeEventListeners();
-      });
-  
-      const addEventListeners = () => {
-          document.addEventListener("mousemove", onMouseMove);
-      };
-  
-      const removeEventListeners = () => {
-          document.removeEventListener("mousemove", onMouseMove);
-      };
-  
-      const onMouseMove = (e) => {
-          setPosition({x: e.pageX, y: e.pageY});         
-      };    
-
-      console.log(window)
-  
-      return (
-        
-        <div>
-          <div style={{
-              transform: `translate(${position.x}px, ${position.y}px)`  }} className="cursor">
-                <img style={{  
-                  position: 'fixed', 
-                  zIndex: -999, 
-                  height: '20px', 
-                  width: '40px',     
-                  left: '-1vw', 
-                  bottom: '48.5vh', 
-                  cursor: 'none'
-                  }} src={CursorImg}></img>
-              </div>
-          <div style={{
-              transform: `translate(${position.x}px, ${position.y}px)`}} className="cursor-follower">
-              
-              </div>
-        </div>
-      
-      )
-}
 
 /* new device functions */
 
@@ -62882,9 +61897,6 @@ useEffect(() => {
 useEffect(() => {
   AngleRoofSetter2()
 }, [Angle2Range, Roof2, Roof3, Roof2, WidthSetterLengthtHail, OkapRightActualValue, OkapLeftActualValue]) 
-useEffect(() => {
-   HailLengthSetter() 
-})
 
 /* new device functions */
 
@@ -62939,6 +61951,10 @@ function CartonHeightWindowsSetter() {
 useEffect(() => {
   CartonHeightWindowsSetter()
 })
+
+useMemo(() => {
+  CartonHeightWindowsSetter(ActualHeight)
+}, [])
 
 const toggleDraggable = () => {
   setIsDraggable(!isDraggable);
@@ -63677,12 +62693,7 @@ const handleDragDoor1 = (index) => (event, { deltaX, deltaY }) => {
   console.log(event)  
   console.log(deltaX)  
  
-}; 
-
-
- 
-
-
+};   
 const handleDragDoor2 = (index) => (event, { deltaX, deltaY }) => {
   const changeAmount = Math.round(deltaX / 1.65);
   const newItems = [
@@ -64213,7 +63224,6 @@ const handleDragHoleSides = (index) => (event, { deltaX, deltaY }) => {
  
 };
 
-
 /* hole */
 
 /* stairs */
@@ -64515,14 +63525,6 @@ window_1_back_.rotation.y = Math.PI/1;
 
 window_1.scene.rotation.y = -Math.PI/ 1;
 
-var material1_window = new THREE.MeshBasicMaterial({color: WindowColorObroka1});
-var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
-
-//window_1.scene.children[0].children[1].children[0].children[0].material = material1_window;
-
-//window_1_front_.children[0].children[1].children[0].children[0].material = material1_window;
-//window_1_front_inside.children[0].children[1].children[0].children[0].material = material1_window;
-
   const window_2 = useLoader(GLTFLoader, "window_models/2_windows/2_windows.gltf")
   const window_2_front_ = window_2.scene.clone()
   const window_2_back_ = window_2.scene.clone()
@@ -64559,37 +63561,7 @@ var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
   window_2_right_.rotation.y = -Math.PI/2
 
   window_2_back_.rotation.y = Math.PI/-1  
-
-  /*window_2.scene.children[0].children[0].children[1].children[0].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[1].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[3].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[4].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[5].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[6].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[7].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[8].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[9].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[10].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[11].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[12].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[13].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[14].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[15].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[16].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[17].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[18].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[19].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[20].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[21].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[22].material = material1_window;
-  window_2.scene.children[0].children[0].children[1].children[23].material = material1_window;*/
-
-
-  // window_2_front_.children[0].children[1].children[1].material = material1_window
-  // window_2_back_.children[0].children[1].children[1].material = material1_window
-  // window_2_left_.children[0].children[1].children[1].material = material1_window
-  // window_2_right_.children[0].children[1].children[1].material = material1_window
-
+ 
   /* */
 
   const window_3 = useLoader(GLTFLoader, "window_models/3_windows/3_windows.gltf") 
@@ -64631,13 +63603,7 @@ var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
   window_3_back_.rotation.y = Math.PI/1
 
   window_3.scene.rotation.x = -Math.PI/ 2
-
-  /*window_3.scene.children[0].children[1].children[0].children[0].material = material1_window 
-
-  window_3_front_.children[0].children[1].children[0].children[0].material = material1_window 
-  window_3_back_.children[0].children[1].children[0].children[0].material = material1_window 
-  window_3_left_.children[0].children[1].children[0].children[0].material = material1_window 
-  window_3_right_.children[0].children[1].children[0].children[0].material = material1_window */
+ 
 
   /* */ 
 
@@ -64647,6 +63613,7 @@ var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
   const window_4_left_ = window_4.scene.clone()
   const window_4_right_ = window_4.scene.clone()
 
+  
   window_4_back_.position.z = ModelPosBack - 1.2
   window_4_left_.position.x = ModelPosLeft1 + 44
   window_4_right_.position.x = ModelPosRight1 + 46
@@ -64665,34 +63632,98 @@ var material2_window = new THREE.MeshBasicMaterial({color: WindowColorRama1});
     
   window_4_front_.rotation.y = -Math.PI/ 270
 
-  //window_4.scene.children[0].children[0].children[8].children[0].material = material2_window
 
-
-  /* */
-
-  // window_4_front_.children[0].children[1].children[3].children[0].material = material2_window 
-  // window_4_front_.children[0].children[1].children[1].children[0].material = material2_window 
-  // window_4_front_.children[0].children[1].children[5].children[0].material = material2_window
-  // window_4_front_.children[0].children[1].children[7].children[0].material = material2_window
-  // window_4_front_.children[0].children[1].children[4].children[0].material = material1_window  
-
-  // window_4_back_.children[0].children[1].children[3].children[0].material = material2_window 
-  // window_4_back_.children[0].children[1].children[1].children[0].material = material2_window 
-  // window_4_back_.children[0].children[1].children[5].children[0].material = material2_window
-  // window_4_back_.children[0].children[1].children[7].children[0].material = material2_window
-  // window_4_back_.children[0].children[1].children[4].children[0].material = material1_window  
+   /* doors */ 
   
-  // window_4_left_.children[0].children[1].children[3].children[0].material = material2_window 
-  // window_4_left_.children[0].children[1].children[1].children[0].material = material2_window 
-  // window_4_left_.children[0].children[1].children[5].children[0].material = material2_window
-  // window_4_left_.children[0].children[1].children[7].children[0].material = material2_window
-  // window_4_left_.children[0].children[1].children[4].children[0].material = material1_window  
-
-  // window_4_right_.children[0].children[1].children[3].children[0].material = material2_window 
-  // window_4_right_.children[0].children[1].children[1].children[0].material = material2_window 
-  // window_4_right_.children[0].children[1].children[5].children[0].material = material2_window
-  // window_4_right_.children[0].children[1].children[7].children[0].material = material2_window
-  // window_4_right_.children[0].children[1].children[4].children[0].material = material1_window  
+   const texture = useLoader(THREE.TextureLoader, "doors/2/textures/all_white.jpg");
+  
+   single_door.scene.children[0].children[0].children[0].children[0].children[0].material.map = texture;
+   single_door.scene.children[0].children[0].children[0].children[0].children[1].material.map = texture;
+   double_doors.scene.scale.x = 30
+   double_doors.scene.scale.y = 30
+   double_doors.scene.scale.z = 30
+ 
+   double_doors.scene.position.z = ModelPosFront1
+   double_doors.scene.position.x = -60 + DoorPosZ 
+ 
+   double_door_with_full_glass.scene.scale.x = 30
+   double_door_with_full_glass.scene.scale.y = 30
+   double_door_with_full_glass.scene.scale.z = 30
+ 
+   double_door_with_full_glass.scene.position.z = ModelPosFront1
+   double_door_with_full_glass.scene.position.x = -60 + DoorPosZ 
+ 
+   double_door_with_glass.scene.scale.x = 30
+   double_door_with_glass.scene.scale.y = 30
+   double_door_with_glass.scene.scale.z = 30
+ 
+   double_door_with_glass.scene.position.z = ModelPosFront1
+   double_door_with_glass.scene.position.x = -60 + DoorPosZ 
+ 
+   single_door.scene.scale.x = .3
+   single_door.scene.scale.y = .3
+   single_door.scene.scale.z = .2
+ 
+   single_door.scene.position.z = ModelPosFront1 + .5
+   single_door.scene.position.x = -35 + DoorPosZ 
+ 
+   single_door_with_glass.scene.scale.x = .3
+   single_door_with_glass.scene.scale.y = .3
+   single_door_with_glass.scene.scale.z = .2
+ 
+   single_door_with_glass.scene.position.z = ModelPosFront1 + .5
+   single_door_with_glass.scene.position.x = -35 + DoorPosZ
+  
+   door_with_glass_full.scene.scale.x = .3
+   door_with_glass_full.scene.scale.y = .3
+   door_with_glass_full.scene.scale.z = .2
+ 
+   door_with_glass_full.scene.position.z = ModelPosFront1 + .5
+   door_with_glass_full.scene.position.x = -35 + DoorPosZ
+ 
+    
+   single_door.scene.rotation.y = -Math.PI/ 1060
+  
+   single_door_with_glass.scene.rotation.y = -Math.PI/ 1060
+ 
+   single_door_with_glass.scene.rotation.y = -Math.PI/ 1060  
+ 
+   /* */
+ 
+  
+           gate1.scene.scale.x = 40
+           gate1.scene.scale.y = 40
+           gate1.scene.scale.z = 114
+ 
+           gate1.scene.position.x = 50
+           gate1.scene.position.y = 0
+           gate1.scene.position.z = ModelPosFront4 - 20.55
+ 
+           gate1.scene.rotation.y = Math.PI/1
+           
+           gate_half_glass.scene.scale.x = 40
+           gate_half_glass.scene.scale.y = 40
+           gate_half_glass.scene.scale.z = 114
+ 
+           gate_half_glass.scene.position.x = 50
+           gate_half_glass.scene.position.y = 0
+           gate_half_glass.scene.position.z = ModelPosFront4 - 20.55
+ 
+           gate_half_glass.scene.rotation.y = Math.PI/1
+ 
+           gate_full_glass.scene.scale.x = 40
+           gate_full_glass.scene.scale.y = 40
+           gate_full_glass.scene.scale.z = 114
+ 
+           gate_full_glass.scene.position.x = 50
+           gate_full_glass.scene.position.y = 0
+           gate_full_glass.scene.position.z = ModelPosFront4 - 20.55
+ 
+           gate_full_glass.scene.rotation.y = Math.PI/1
+ 
+           /* stairs */
+ 
+ 
 
 const [MenuConfigurationAccesory, setMenuConfigurationAccesory] = useState({
   desc: "113,5 x 146 cm",
@@ -65992,7 +65023,7 @@ setTwoDView5('none')
  
     </>
   } else if(step == 5) {}   
-}   
+}
 
 /* optimalization things */
  
@@ -66295,7 +65326,7 @@ THREE.ColorManagement.enabled = true
         handleDragDoor1Left={handleDragDoor1Left}
         /> 
         <div id="docoption" style={{ height: '80vh', width: '500px', position: 'fixed', background: 'white', zIndex: -32, overflow: 'scroll', display: 'none' }}></div>
-          <Cursor/>
+ 
           <Suspense fallback={<SuspenseLoading/>}>
           <Canvas performance={{ min: 0.5 }} sRGB shadowMap={{ type: THREE.PCFSoftShadowMap }} gl={{ preserveDrawingBuffer: true, pixelRatio: [1, 2] }} onCreated={({ gl, camera, scene }) => { gl.domElement.style.touchAction = 'none';setCamera(camera); setScene(scene)}}
           shadows shadowMapAutoUpdate frameloop="demand" camera={{ fov: 75, position: CameraAngles, far: 10000, near: .5,   }}> 

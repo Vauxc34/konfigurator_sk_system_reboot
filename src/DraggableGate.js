@@ -271,7 +271,7 @@ const DraggableWindow = React.memo((props) =>  {
             }else if(props.RangeSetterLengthtHail == 37){
                 setLeftCorner(-517.13)
                 setRightCorner(391.55)
-            }else if(props.RangeSetterLengthtHail == 38){
+            }else if(props.RangeLengthtHail == 38){
                 setLeftCorner(-528.89)
                 setRightCorner(402.68)
             }else if(props.RangeSetterLengthtHail == 39){
