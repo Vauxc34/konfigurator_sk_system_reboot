@@ -1371,12 +1371,12 @@ const modifiedUV1 = new Float32Array([
 
   const [Holes, setHoles] = useState([])
 
-    const single_door = useLoader(GLTFLoader, 'doors/2/scene.gltf')
-    const single_door_with_glass = useLoader(GLTFLoader, 'doors/door_with_glass/door_with_glass.gltf')
-    const door_with_glass_full = useLoader(GLTFLoader, 'doors/door_with_glass_full/door_with_glass_full.gltf')
-    const double_doors = useLoader(GLTFLoader, 'doors/1/scene.gltf') 
-    const double_door_with_full_glass = useLoader(GLTFLoader, 'doors/double_door_with_full_glass/door_with_glass_full.gltf') 
-    const double_door_with_glass = useLoader(GLTFLoader, 'doors/double_door_with_glass/double_door_with_glass.gltf')  
+    const single_door = useLoader(GLTFLoader, 'doors/2/scene.glb')
+    const single_door_with_glass = useLoader(GLTFLoader, 'doors/door_with_glass/door_with_glass.glb')
+    const door_with_glass_full = useLoader(GLTFLoader, 'doors/door_with_glass_full/door_with_glass_full.glb')
+    const double_doors = useLoader(GLTFLoader, 'doors/1/scene.glb') 
+    const double_door_with_full_glass = useLoader(GLTFLoader, 'doors/double_door_with_full_glass/door_with_glass_full.glb') 
+    const double_door_with_glass = useLoader(GLTFLoader, 'doors/double_door_with_glass/double_door_with_glass.glb')  
     
   /* filtered doors */
 
@@ -1418,8 +1418,8 @@ const modifiedUV1 = new Float32Array([
 
    /* antresola */
 
-   const stairs1 = useLoader(GLTFLoader, 'stairs/stairs1.gltf') 
-   const stairs2 = useLoader(GLTFLoader, 'stairs/stairs2.gltf') 
+   const stairs1 = useLoader(GLTFLoader, 'stairs/stairs1.glb') 
+   const stairs2 = useLoader(GLTFLoader, 'stairs/stairs2.glb') 
    const antresolaStairsInside = useMemo(() => stairs1.scene.clone())
    const antresolaStairsInsideBack = useMemo(() => stairs1.scene.clone())
 
@@ -1429,7 +1429,7 @@ const modifiedUV1 = new Float32Array([
    const [isAntresolaPrzod, setIsAntresolaPrzod] = useState(false)
    const [isAntresolaTyl, setIsAntresolaTyl] = useState(false) 
 
-   const antresola = useLoader(GLTFLoader, 'antresole/antresola1.gltf')
+   const antresola = useLoader(GLTFLoader, 'antresole/antresola1.glb')
 
    const [AntresolaFrontPartMoveZ, setAntresolaFrontPartMoveZ] = useState(370)
    const [AntresolaFrontPartScaleZ, setAntresolaFrontPartScaleZ] = useState(-3.603)
@@ -2043,8 +2043,8 @@ const modifiedUV1 = new Float32Array([
     
     } 
 
-    const swietlik = useLoader(GLTFLoader, 'swietliki/swietlik1.gltf')
-    const swietlik2 = useLoader(GLTFLoader, 'roof_1swietlik/roof1_swietlik.gltf')
+    const swietlik = useLoader(GLTFLoader, 'swietliki/swietlik1.glb')
+    const swietlik2 = useLoader(GLTFLoader, 'roof_1swietlik/roof1_swietlik.glb')
     const swietlik1 = useMemo(() => swietlik.scene.clone())
 
     /* swietliki */
@@ -3656,10 +3656,10 @@ setWindows([...Windows])
 
 } 
 
-const gate1 = useLoader(GLTFLoader, "gates/full_gate.gltf") 
-const gate_half_glass = useLoader(GLTFLoader, "gates/gate_half_glass.gltf") 
-const gate_full_glass = useLoader(GLTFLoader, "gates/gate_full_glass.gltf") 
-const hole = useLoader(GLTFLoader, "holes/full_gate.gltf") 
+const gate1 = useLoader(GLTFLoader, "gates/full_gate.glb") 
+const gate_half_glass = useLoader(GLTFLoader, "gates/gate_half_glass.glb") 
+const gate_full_glass = useLoader(GLTFLoader, "gates/gate_full_glass.glb") 
+const hole = useLoader(GLTFLoader, "holes/full_gate.glb") 
 hole.scene.children[0].children[1].children[0].children[0].visible = false 
 
 const ModelsAll = React.memo(() => { 
@@ -3812,7 +3812,7 @@ const [Rama1PosX, setRama1PosX] = useState(107.5)
 const [Rama1Posy, setRama1Posy] = useState(-66.15)
 const [Rama1PosZ, setRama1PosZ] = useState(-197.5)
 const [Rama1Rotate, setRama1Rotate] = useState(.324)
-const purlin1_new = useLoader(GLTFLoader, 'frame_roof/purlin_new_1.gltf') 
+const purlin1_new = useLoader(GLTFLoader, 'frame_roof/purlin_new_1.glb') 
 
 /* */
 
@@ -3869,14 +3869,14 @@ const [subRightHeight, setSubRightHeight] = useState(1)
 const [LeftPlateHeight, setLeftPlateHeight] = useState(11.5)
 const [Frame2height, setFrame2height] = useState(1.25)
 const [Frame2AngleHeight, setFrame2AngleHeight] = useState(0) 
-const purlinPartee = useLoader(GLTFLoader, "frame_roof/tes_frame.gltf")
+const purlinPartee = useLoader(GLTFLoader, "frame_roof/tes_frame.glb")
 purlinPartee.scene.getObjectByName('mesh_0').material.envMapIntensity = 0 
 purlinPartee.scene.getObjectByName('mesh_0').material.color.b = 0.617
 purlinPartee.scene.getObjectByName('mesh_0').material.color.g = 0.6176
 purlinPartee.scene.getObjectByName('mesh_0').material.color.r = 0.6176  
 
 const PurlinParte22 = purlinPartee.scene.clone()
-const purlinPart1 = useLoader(GLTFLoader, "frame_roof/tes_frame11.gltf")
+const purlinPart1 = useLoader(GLTFLoader, "frame_roof/tes_frame11.glb")
 const purlin1_2 = purlinPart1.scene.clone()
 const purlin1_3 = purlinPart1.scene.clone()   
 
@@ -47729,8 +47729,8 @@ const [Klin12_1Angle, setKlin12_1Angle] = useState(0)
 
 /* klin jednospadowy */
 
-const gltf = useLoader(GLTFLoader, 'frame_roof/frame__partial.gltf')
-const LastAndFirstFrame = useLoader(GLTFLoader, 'frame_roof/frame__partial___.gltf') 
+const gltf = useLoader(GLTFLoader, 'frame_roof/frame__partial.glb')
+const LastAndFirstFrame = useLoader(GLTFLoader, 'frame_roof/frame__partial___.glb') 
 const mesh_5 = gltf.scene.getObjectByName('mesh_5')
 const DGeom_2 = gltf.scene.getObjectByName('3DGeom-2')
 const DGeom_3 = gltf.scene.getObjectByName('3DGeom-3')
@@ -49042,9 +49042,9 @@ const Frame = React.memo(() => {
 
  let KlinTexture = useTexture("frame_roof/Textures/frame__.jpg")
 
- const gltf1 = useLoader(GLTFLoader, 'frame_roof/frame__up_1.gltf')
- const post1 = useLoader(GLTFLoader, 'frame_roof/post_frame_1.gltf')
- const purlinPart = useLoader(GLTFLoader, "frame_roof/purlin_part.gltf")
+ const gltf1 = useLoader(GLTFLoader, 'frame_roof/frame__up_1.glb')
+ const post1 = useLoader(GLTFLoader, 'frame_roof/post_frame_1.glb')
+ const purlinPart = useLoader(GLTFLoader, "frame_roof/purlin_part.glb")
  
  purlinPart.scene.scale.x = 10
  purlinPart.scene.scale.y = 30
@@ -49073,8 +49073,8 @@ const Frame = React.memo(() => {
  purlin5_1.scale.y = 10
  purlin5_1.scale.z = 9.6
 
- const rama1 = useLoader(GLTFLoader, "rama_okienna/1/Purlins1Full.gltf")
- const rama2 = useLoader(GLTFLoader, "rama_okienna/Purlins2.gltf")
+ const rama1 = useLoader(GLTFLoader, "rama_okienna/1/Purlins1Full.glb")
+ const rama2 = useLoader(GLTFLoader, "rama_okienna/Purlins2.glb")
 
  purlin1_2.children[0].children[2].visible = false
  purlin1_2.children[0].children[1].children[2].visible = false
@@ -63485,7 +63485,7 @@ useEffect(() => {
 
 const draggableRef = useRef(null);
 
-const window_1 = useLoader(GLTFLoader, "window_models/1_windows/1_windows.gltf");
+const window_1 = useLoader(GLTFLoader, "window_models/1_windows/1_windows.glb");
 const window_1_front_ = window_1.scene.clone(); 
 
 const window_1_back_ = window_1.scene.clone();
@@ -63525,7 +63525,7 @@ window_1_back_.rotation.y = Math.PI/1;
 
 window_1.scene.rotation.y = -Math.PI/ 1;
 
-  const window_2 = useLoader(GLTFLoader, "window_models/2_windows/2_windows.gltf")
+  const window_2 = useLoader(GLTFLoader, "window_models/2_windows/2_windows.glb")
   const window_2_front_ = window_2.scene.clone()
   const window_2_back_ = window_2.scene.clone()
   const window_2_left_ = window_2.scene.clone()
@@ -63564,7 +63564,7 @@ window_1.scene.rotation.y = -Math.PI/ 1;
  
   /* */
 
-  const window_3 = useLoader(GLTFLoader, "window_models/3_windows/3_windows.gltf") 
+  const window_3 = useLoader(GLTFLoader, "window_models/3_windows/3_windows.glb") 
   const window_3_front_ = window_3.scene.clone()
   const window_3_back_ = window_3.scene.clone()
   const window_3_left_ = window_3.scene.clone()
@@ -63607,7 +63607,7 @@ window_1.scene.rotation.y = -Math.PI/ 1;
 
   /* */ 
 
-  const window_4 = useLoader(GLTFLoader, "window_models/4_windows/4_windows.gltf") 
+  const window_4 = useLoader(GLTFLoader, "window_models/4_windows/4_windows.glb") 
   const window_4_front_ = window_4.scene.clone()
   const window_4_back_ = window_4.scene.clone()
   const window_4_left_ = window_4.scene.clone()
