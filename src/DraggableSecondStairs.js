@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture';
@@ -6,7 +6,7 @@ import { useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
 import { Vector3 } from 'three';
 
-function DraggableStairs(props) {
+const DraggableStairs = React.memo((props) => {
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
@@ -500,6 +500,6 @@ function DraggableStairs(props) {
     </mesh>
     </>
     )
-}
+})
 
-  export default DraggableStairs;
+export default DraggableStairs;

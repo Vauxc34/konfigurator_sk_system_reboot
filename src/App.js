@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef, Suspense, useMemo, lazy } from "rea
 import { Canvas, useThree, useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { useTexture } from '@react-three/drei'
+import { useTexture, useGLTF } from '@react-three/drei'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Stepper, Step, StepLabel, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import { ToastContainer, toast } from "react-toastify";
@@ -92,35 +92,32 @@ import graph3Selected from './images/selectorImages/FlachdachSelect.png'
 /* images */
 const _ = require("lodash");  
 
+const Hail = lazy(() => import('./models/Hail'));
+const CartonView = lazy(() => import('./components/CartonView'))
+const DraggableWindow = lazy(() => import('./DraggableWindow'));
+const DraggableDoor = lazy(() => import('./DraggableDoor'));
+const DraggableDoubleDoor = lazy(() => import('./DraggableDoubleDoor'));
+const DraggableGate = lazy(() => import('./DraggableGate'));
+const DraggableStairs = lazy(() => import('./DraggableStairs'));
+const DraggableSecondStairs = lazy(() => import('./DraggableSecondStairs'));
+const DraggableHole = lazy(() => import('./DraggableHole'));
 
+const App = React.memo(() => {   
 
-const Hail = React.lazy(() => import('./models/Hail'));
-const CartonView = React.lazy(() => import('./components/CartonView'))
-
-
-const DraggableWindow = React.lazy(() => import('./DraggableWindow'));
-const DraggableDoor = React.lazy(() => import('./DraggableDoor'));
-const DraggableDoubleDoor = React.lazy(() => import('./DraggableDoubleDoor'));
-const DraggableGate = React.lazy(() => import('./DraggableGate'));
-const DraggableStairs = React.lazy(() => import('./DraggableStairs'));
-const DraggableSecondStairs = React.lazy(() => import('./DraggableSecondStairs'));
-const DraggableHole = React.lazy(() => import('./DraggableHole'));
-
-function App() {   
-
-const firebaseConfig = { 
+/*const firebaseConfig = { 
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain:  process.env.REACT_APP_AUTH_DOM,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID 
-};
+};*/
+
 const [cameraMovement, setCameraMovement] = useState(true);
 const [camera, setCamera] = useState();
 const [scene, setScene] = useState();
-const Aplication__ = initializeApp(firebaseConfig);
-const db = getFirestore(Aplication__) 
+//const Aplication__ = initializeApp(firebaseConfig);
+//const db = getFirestore(Aplication__) 
 const [open, setOpen] = useState(false);
 const [modalMessage, setModalMessage] = useState();
 /* arrays */  
@@ -1444,8 +1441,8 @@ const modifiedUV1 = new Float32Array([
 
    const stairs1 = useLoader(GLTFLoader, 'stairs/stairs1.gltf') 
    const stairs2 = useLoader(GLTFLoader, 'stairs/stairs2.gltf') 
-   const antresolaStairsInside = stairs1.scene.clone()
-   const antresolaStairsInsideBack = stairs1.scene.clone()
+   const antresolaStairsInside = useMemo(() => stairs1.scene.clone())
+   const antresolaStairsInsideBack = useMemo(() => stairs1.scene.clone())
 
    let StairsAntre = useRef()
    let StairsAntreB = useRef()
@@ -2078,7 +2075,7 @@ const modifiedUV1 = new Float32Array([
 
     const swietlik = useLoader(GLTFLoader, 'swietliki/swietlik1.gltf')
     const swietlik2 = useLoader(GLTFLoader, 'roof_1swietlik/roof1_swietlik.gltf')
-    const swietlik1 = swietlik.scene.clone()
+    const swietlik1 = useMemo(() => swietlik.scene.clone())
 
     /* swietliki */
 
@@ -48708,7 +48705,7 @@ const [Klin12_1Angle, setKlin12_1Angle] = useState(0)
 
 const gltf = useLoader(GLTFLoader, 'frame_roof/frame__partial.gltf')
 const LastAndFirstFrame = useLoader(GLTFLoader, 'frame_roof/frame__partial___.gltf') 
-const mesh_5  = gltf.scene.getObjectByName('mesh_5')
+const mesh_5 = gltf.scene.getObjectByName('mesh_5')
 const DGeom_2 = gltf.scene.getObjectByName('3DGeom-2')
 const DGeom_3 = gltf.scene.getObjectByName('3DGeom-3')
 const DGeom_4 = gltf.scene.getObjectByName('3DGeom-4').visible = false
@@ -48940,7 +48937,7 @@ const [Frame6Visible, setFrame6Visible] = useState(true)
 const [Frame7Visible, setFrame7Visible] = useState(true) 
 const [FrameHalfVisible, setFrameHalfVisible] = useState(false)
 
-  const clonedFrameD = gltf.scene.clone();  
+  const clonedFrameD = useMemo(() => gltf.scene.clone())
 
   DGeom_2.scale.x = 3
   DGeom_2.scale.y = 2  
@@ -49430,7 +49427,7 @@ DGeom_3.position.y = 495
 
 }  
 
-const clonedFrameDD = gltf.scene.clone();  
+const clonedFrameDD =  useMemo(() => gltf.scene.clone());  
 
 const mesh_5____  = clonedFrameDD.getObjectByName('mesh_5').visible = false
 const DGeom_2____ = clonedFrameDD.getObjectByName('3DGeom-2')
@@ -50032,7 +50029,7 @@ function Frame() {
  purlinPart.scene.position.y = 150
  purlinPart.scene.position.z = 109.5
 
- const texture1 = useLoader(THREE.TextureLoader, "asphalt_lighter_texture/Asphalt020L_1K_Color.jpg");
+ const texture1 =  useTexture("asphalt_lighter_texture/Asphalt020L_1K_Color.jpg");
  texture1.wrapS = THREE.RepeatWrapping;
  texture1.wrapT = THREE.RepeatWrapping;
  texture1.repeat.set(16,  16); 
@@ -57117,7 +57114,7 @@ const Cursor =  () => {
       useEffect(() => {
           addEventListeners();
           return () => removeEventListeners();
-      }, []);
+      });
   
       const addEventListeners = () => {
           document.addEventListener("mousemove", onMouseMove);
@@ -57130,6 +57127,8 @@ const Cursor =  () => {
       const onMouseMove = (e) => {
           setPosition({x: e.pageX, y: e.pageY});         
       };    
+
+      console.log(window)
   
       return (
         
@@ -64401,382 +64400,13 @@ const [ActualDataHail, setActualDataHail] = useState(window.location.pathname.sp
 const [newDataHail, setNewDataHail] = useState('')
 const ActualLink = window.location.pathname  
 
-const DataReader = async (link) => {
-  
-const localState = []; 
-  let newLink = link.split('/projekt=').join("")
-  let NewDataHail = ActualDataHail.length > 1 ? ActualDataHail.split('projekt=').join("") : 'no-project'  
 
-  console.log(NewDataHail)
 
-  const docRef = doc(db, "configurations", NewDataHail);
-  const docSnap = await getDoc(docRef);  
-  
-        if (ActualDataHail.length > 1 && docSnap.exists()) {
-      console.log(docSnap);
-      localState.push(docSnap.data());
-      console.log(localState);
-    } else {
-      console.log("No such document!");
-    } if (NewDataHail == newLink) {
-  
-      /* roof type */ 
-  
-           if (localState[0].Roof1 == true) {
-        setActualSelectedRoof1(SelectedRoof[0].imgSelect)
-        setActualSelectedRoof2(SelectedRoof[1].img)
-        setActualSelectedRoof3(SelectedRoof[2].img)
-    } else if (localState[0].Roof2 == true) {
-        setActualSelectedRoof1(SelectedRoof[0].img)
-        setActualSelectedRoof2(SelectedRoof[1].imgSelect)
-        setActualSelectedRoof3(SelectedRoof[2].img)
-    } else if (localState[0].Roof3 == true) {
-      setActualSelectedRoof1(SelectedRoof[0].img)
-      setActualSelectedRoof2(SelectedRoof[1].img)
-      setActualSelectedRoof3(SelectedRoof[2].imgSelect)
-    }
-    
-      setRoof1(localState[0].Roof1)
-      setRoof2(localState[0].Roof2)
-      setRoof3(localState[0].Roof3)
-  
-      /* roof type */
-  
-      /* measurement */
-  
-      setRangeSetterLengthtHail(localState[0].LengthS);
-      setWidthSetterLengthtHail(localState[0].WidthS)
-      setRangeSetterHeightHail(localState[0].HeightS)
-      setFundamentNumber(localState[0].SubstructureS)
-      setAngle1Range(localState[0].AngleRoof1S)
-      setAngle2Range(localState[0].AngleRoof2S)
-      setTextureOutside(localState[0].ElevationTextureS) 
-      setFrames(localState[0].FramesSetted)     
-      setOkapLeftActualValue(localState[0].OkapLeftSetted)
-      setOkapRightActualValue(localState[0].OkapRightSetted)
-      setActualOkapPrzodM(localState[0].OkapPrzodSetted)
-      setActualOkapTylM(localState[0].OkapTylSetted)
-      setIsAntresolaPrzod(localState[0].isAntresolaSettedPrzod)
-      setIsAntresolaTyl(localState[0].isAntresolaSettedTyl)
-  
-      if (localState[0].LengthS == 10) { 
-        setFrames([
-          {no: 0, pos: 20,  x1lamele: 89.5, OffsetXX :0, OffSetXX1: 0,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},  
-        ]) 
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0) 
-        setLameleOffset(161.5)
-      }  else if (localState[0].LengthS < 15) {
-        setFrames([
-          {no: 0, pos: 23, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2  },  
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        setLameleOffset(161.5)
-         
-      }  else if (
-        localState[0].LengthS == 15 || 
-        localState[0].LengthS == 16 || 
-        localState[0].LengthS == 17 || 
-        localState[0].LengthS == 18 || 
-        localState[0].LengthS == 19) {
-        setFrames([
-          {no: 0, pos: 100, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2  },  
-          {no: 0, pos: -60, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2  },   
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        setLameleOffset(161.5)
-        
-      }  else if (
-        localState[0].LengthS == 20 || 
-        localState[0].LengthS == 21 || 
-        localState[0].LengthS == 22 || 
-        localState[0].LengthS == 23 || 
-        localState[0].LengthS == 24 || 
-        localState[0].LengthS == 25 || 
-        localState[0].LengthS == 26 || 
-        localState[0].LengthS == 27 || 
-        localState[0].LengthS == 28 || 
-        localState[0].LengthS == 29) {
-        setFrames([
-          {no: 0, pos: -140, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},
-          {no: 1, pos: 10, x1lamele: 10,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},  
-          {no: 0, pos: 170, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},  
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0)
-        setLameleOffset(281.5)
-      }  else if (
-        localState[0].LengthS == 30 ||
-        localState[0].LengthS == 31 ||
-        localState[0].LengthS == 32 ||
-        localState[0].LengthS == 33 ||
-        localState[0].LengthS == 34 ||
-        localState[0].LengthS == 35 ||
-        localState[0].LengthS == 36 ||
-        localState[0].LengthS == 37 ||
-        localState[0].LengthS == 38 ||
-        localState[0].LengthS == 39  ) {
-        setFrames([
-          {no: 0, pos: -205, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},
-          {no: 1, pos: 5, x1lamele: 10,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 2, pos: 235, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},  
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0)
-        setLameleOffset(401.5)
-      }  else if (
-        localState[0].LengthS == 40 ||
-        localState[0].LengthS == 41 ||
-        localState[0].LengthS == 42 ||
-        localState[0].LengthS == 43 ||
-        localState[0].LengthS == 44 ||
-        localState[0].LengthS == 45 ||
-        localState[0].LengthS == 46 ||
-        localState[0].LengthS == 47 ||
-        localState[0].LengthS == 48 ||
-        localState[0].LengthS == 49  ) {
-        setFrames([
-          {no: 0, pos: -345.5, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},
-          {no: 1, pos: -180.5, x1lamele: 10,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 2, pos: 10, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 3, pos: 220.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 4, pos: 385.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0)
-        setLameleOffset(521.5)
-      }  else if (
-        localState[0].LengthS == 50 ||
-        localState[0].LengthS == 51 ||
-        localState[0].LengthS == 52 ||
-        localState[0].LengthS == 53 ||
-        localState[0].LengthS == 54 ||
-        localState[0].LengthS == 55 ||
-        localState[0].LengthS == 56 ||
-        localState[0].LengthS == 57 ||
-        localState[0].LengthS == 58 ||
-        localState[0].LengthS == 59  ) {
-        setFrames([
-          {no: 0, pos: -432.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 1, pos: -240, x1lamele: 10,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 2, pos: 30, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 3, pos: 270.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 4, pos: 493.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0)
-        setLameleOffset(641.5)
-      } else if (
-        localState[0].LengthS == 60 ||
-        localState[0].LengthS == 61 ||
-        localState[0].LengthS == 62 ||
-        localState[0].LengthS == 63 ||
-        localState[0].LengthS == 64 ||
-        localState[0].LengthS == 65 ||
-        localState[0].LengthS == 66 ||
-        localState[0].LengthS == 67 ||
-        localState[0].LengthS == 68 ||
-        localState[0].LengthS == 69  ) {
-        setFrames([
-          {no: 0, pos: -591.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 1, pos: -310, x1lamele: 10,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 2, pos: -100, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 3, pos:  170, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 4, pos: 420, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 5, pos: 623.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0)
-        setLameleOffset(761.5)
-      } else if (
-        localState[0].LengthS == 70 ||
-        localState[0].LengthS == 71 ||
-        localState[0].LengthS == 72 ||
-        localState[0].LengthS == 73 ||
-        localState[0].LengthS == 74 ||
-        localState[0].LengthS == 75 ) {
-        setFrames([
-          {no: 0, pos: -720.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 1, pos: -510, x1lamele: 10,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 2, pos: -250, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 3, pos:  0, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 4, pos: 220, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2}, 
-          {no: 5, pos: 500, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},
-          {no: 6, pos: 738.5, x1lamele: 230,  frameRoofLast: 0, OffsetLeft: Frame1_1, OffsetRight: Frame1_2},
-        ])
-    
-        setRozstaw(2)
-        setMaxRozstaw(2)
-        setMinRozstaw(1)
-        setActualRozstaw(4)
-        //setRozstawOffset(0)
-        setRozstawFrameUp(0)
-        setLameleOffset(881.5)
-      }    
-  
-      /* roof 1 */
-  
-      if (localState[0].Roof1 == true && localState[0].ElevationTextureS == 'courugated_metal/Profiled-Sheet-Metal-Architextures.jpg' ) {
-        setUVSsett(modifiedUV2)
-        setUVSsett1(modifiedUV2)
-        setUVSsett2(uvs)
-        setUVSsett2Roof(uvs_roof_base_2)
-        setTextureRepeating({ no: 1.8, no2: 4})
-        setWallWithModifiedUV(false)
-        setWallWithoutModifiedUV(true)
-        setWallWithoutModifiedUV1(false)
-      }  else if (localState[0].Roof1 == true && localState[0].ElevationTextureS == 
-      "basic/plain_poziomo_basic__.jpg" ||  
-      "basic/plain_poziomo_basic1.jpg" ||
-      "basic/plain_poziomo_basic2.jpg" ||
-      "basic/plain_poziomo_basic3.jpg") {
-        setWallWithModifiedUV(true)
-        setWallWithoutModifiedUV(false)
-        setWallWithoutModifiedUV1(false)
-      } 
-  
-      /* roof 1 */
-      
-      /* roof 2 */ 
-        
-    
-      if (localState[0].Roof2 == true && localState[0].ElevationTextureS == 'courugated_metal/Profiled-Sheet-Metal-Architextures.jpg' ) {
-        setUVSsett(modifiedUV2)
-        setUVSsett1(modifiedUV2)
-        setUVSsett2(uvs)
-        setUVSsett2Roof(uvs_roof_base_2)
-        setTextureRepeating({ no: 1.8, no2: 4})
-        setWallWithModifiedUV(false)
-        setWallWithoutModifiedUV(true)
-        setWallWithoutModifiedUV1(false)
-      }  else if (localState[0].Roof2 == true && localState[0].ElevationTextureS  == 
-      "basic/plain_poziomo_basic__.jpg" ||  
-      "basic/plain_poziomo_basic1.jpg" ||
-      "basic/plain_poziomo_basic2.jpg" ||
-      "basic/plain_poziomo_basic3.jpg") {
-        setWallWithModifiedUV(false)
-        setWallWithoutModifiedUV(true)
-        setWallWithoutModifiedUV1(false)
-      } 
-  
-      /* roof 2 */ 
-  
-      /* roof 3 */
-  
-      if (localState[0].Roof3 == true && localState[0].ElevationTextureS == 'courugated_metal/Profiled-Sheet-Metal-Architextures.jpg' ) {    
-  
-      setUVSsett(modifiedUV2)
-      setUVSsett1(modifiedUV2)
-      setUVSsett2(uvs)
-      setUVSsett2Roof(uvs_roof_base_2)
-      setTextureRepeating({ no: 1.8, no2: 4})
-      setWallWithModifiedUV(false)
-      setWallWithoutModifiedUV(true)
-      setWallWithoutModifiedUV1(false)
-   
-      } else if (localState[0].Roof3 == true && localState[0].ElevationTextureS == 
-          "basic/plain_poziomo_basic__.jpg" ||  
-          "basic/plain_poziomo_basic1.jpg" ||
-          "basic/plain_poziomo_basic2.jpg" ||
-          "basic/plain_poziomo_basic3.jpg") {
-            setWallWithModifiedUV(true)
-            setWallWithoutModifiedUV(false)
-            setWallWithoutModifiedUV1(true)
-      }
-        
-    /* roof 3 */  
-    
-    setWallWithModifiedUV(localState[0].settedWithModifiedUV)
-    setWallWithoutModifiedUV(localState[0].settedWithoutModifiedUV)
-    setWallWithoutModifiedUV1(localState[0].settedWallWithoutModifiedUV1)
-    setTextureOutsideBrightness(localState[0].BrightnessWallSetted)
-
-    /* measurement */
-  
-    /* colors */ 
-  
-   setSelectedColorBrobka(localState[0].TreatmentColor);  
-   setBrobkiColor(localState[0].TreatmentColor)
-   setSelectedRoofColor(localState[0].RoofColor);  
-   setRoofColor(localState[0].RoofColor)
-   setSelectedColorElevation(localState[0].FascadeColor);  
-   setElevationColor(localState[0].FascadeColor)
-   setSelectedColorAttyka(localState[0].AtticaColor);  
-   setAttykaColor(localState[0].AtticaColor)
-   setSelectedConnectionColor(localState[0].JointColor);  
-   setKolorLaczenia(localState[0].JointColor);   
-   setSelectedWindowRama(localState[0].WindowFrameColor);  
-   setWindowColorObroka1(localState[0].WindowFrameColor)
-   setWindowColorRama1(localState[0].WindowColor)
-   setSelectedWindowColor(localState[0].WindowColor);  
-   setSelectedColorDoor(localState[0].DoorColor);  
-   setDoorColor1(localState[0].DoorColor);  
-   setSelectedColorDoorBrobka(localState[0].DoorFrameColor);  
-   setDoorObrobkaColor1(localState[0].DoorFrameColor);  
-   setSelectedColorGate(localState[0].GateColor);  
-   setBramaColor(localState[0].GateColor)
-   setBramaColorObrobka(localState[0].GateColorObrobka)   
-   
-  /* colors */  
-   
-  /* accesories */
-  
-   setWindows(localState[0].WindowsSelected)
-   setDoors(localState[0].DoorsSelected)
-   setGates(localState[0].GateSelected)
-   setStairs(localState[0].StairsSelected)
-   setHoles(localState[0].HoelsSelected)
-  
-  /* accesories */
-      
-  /* colors */  
-  
-  
-    }  
-};
-
-useEffect(() => {
+/*useEffect(() => {
   DataReader(ActualLink);
-}, [ActualDataHail, ActualLink]); 
+}, [ActualDataHail, ActualLink]); */
 
-const WriteDataToBase = async () => {  
+/*const WriteDataToBase = async () => {  
 const docRef = await addDoc(collection(db, "configurations"), { 
 AngleRoof1S: Angle1Range,
 UVChangeRoo1: UVChange,
@@ -64820,9 +64450,9 @@ WindowsSelected: Windows,
   setActualDataHail(docRef._key.path.segments[1])
   setNewDataHail(`http://repo-sk-system-beta.vercel.app/projekt=${docRef._key.path.segments[1]}`)
   navigator.clipboard.writeText(`http://repo-sk-system-beta.vercel.app/projekt=${docRef._key.path.segments[1]}`)
-} 
+} */
 
-const DeleteRecordFromDb = async () => {
+/*const DeleteRecordFromDb = async () => {
   const queryDate = new Date();
   queryDate.setDate(queryDate.getDate() - 90); // Subtrakcja 90 dni
 
@@ -64837,7 +64467,7 @@ const DeleteRecordFromDb = async () => {
 
 useEffect(() => { 
   DeleteRecordFromDb() 
-}, [])
+}, [])*/
 
 /* firebase */
 
@@ -66524,7 +66154,7 @@ THREE.ColorManagement.enabled = true
 
               <div className="generated_link_box">
               <input type="text" placeholder={`https://konfigurator-hal-sk-system.vercel.app/${ActualDataHail}`} value={newDataHail}/>
-              <button onClick={WriteDataToBase} className="noactive-step-btn"
+              <button /*onClick={WriteDataToBase}*/ className="noactive-step-btn"
               style={{ margin: '0px 0px 0px 6px', padding: '10px 20px' }}
               ><AiOutlineCopy/>{translation[SettedLanguage].menu_5_18}</button>
               </div>
@@ -67186,7 +66816,7 @@ THREE.ColorManagement.enabled = true
       <ToastContainer/>
     </>
   )
-};
+});
   
 
 export default App;

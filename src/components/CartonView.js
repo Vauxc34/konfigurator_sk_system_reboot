@@ -16,7 +16,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 
 import bgcCartonView from '../images/grass.jpg'
 
-const CartonView = ({
+const CartonView = React.memo(({
   firstPositionWindow,
   handleDragStairs1Sides,
   handleDragStairs2Sides,
@@ -2479,6 +2479,6 @@ setWindows(updatedWindows);
 </Draggable>
      </>
   )
-}
+})
 
 export default CartonView

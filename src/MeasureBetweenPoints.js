@@ -4,7 +4,7 @@ import { Line, Text } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { Vector3 } from 'three';
 
-const MeasureBetweenPoints = ({ idxX, idxY, scaleX, scaleY, ModelPos, direction, modelRef, dltaX, type, size, obj, windowHeight, RangeSetterLengthtHail, WidthSetterLengthtHail, box, position, pointA, pointB }) => {
+const MeasureBetweenPoints = React.memo(({ idxX, idxY, scaleX, scaleY, ModelPos, direction, modelRef, dltaX, type, size, obj, windowHeight, RangeSetterLengthtHail, WidthSetterLengthtHail, box, position, pointA, pointB }) => {
     // Oblicz odległość
     const currentDltaX = dltaX;
     const distance = pointA.distanceTo(pointB);
@@ -1574,6 +1574,6 @@ const MeasureBetweenPoints = ({ idxX, idxY, scaleX, scaleY, ModelPos, direction,
             </Text>
         </group>
     );
-};
+})
 
 export default MeasureBetweenPoints;

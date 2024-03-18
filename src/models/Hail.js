@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import * as THREE from "three";
 import { Canvas, useThree, useLoader,  useFrame } from "@react-three/fiber";
  
-const Hail = ({
+const Hail = React.memo(({
     RangeSetterLengthtHail,
     setAllConnctionPositions,
     InsideColor,
@@ -231,8 +231,7 @@ const Hail = ({
     widthWalls, 
     widthWalls2,
     FrontWall1,
-    FrontWall1param
-    }) => {
+    FrontWall1param}) => {
         const texture = useLoader(THREE.TextureLoader, textureOutside);
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
@@ -16595,6 +16594,6 @@ attach={'uv'}
 
 
   )
-}
+})
 
 export default Hail

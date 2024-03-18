@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useDrag } from 'react-use-gesture';
 import { useThree } from "@react-three/fiber";
@@ -8,7 +8,7 @@ import Draggable, {DraggableCore} from 'react-draggable';
 import { Vector3 } from 'three';
 const _ = require("lodash");  
 
-function DraggableWindow(props) {
+const DraggableWindow = React.memo((props) => {
 
     if (props.obj === "1_window" && props.direction === 'front') {
 
@@ -1049,6 +1049,6 @@ function DraggableWindow(props) {
             </mesh>
         </>
     )
-}
+})
 
 export default DraggableWindow;

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture';
@@ -6,7 +6,7 @@ import { useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
 import { Vector3 } from 'three';
 
-function DraggableWindow(props) {
+const DraggableWindow = React.memo((props) =>  {
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
@@ -663,6 +663,6 @@ function DraggableWindow(props) {
         </mesh>
         </>
     )
-}
+})
 
-  export default DraggableWindow;
+export default DraggableWindow;

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture';
@@ -6,7 +6,11 @@ import { useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
 import { Vector3 } from 'three';
 
-function DraggableHole(props) {
+const DraggableHole = React.memo((props) => { 
+
+
+
+
 
     //props.hole.children[0].children[1].position.y = 3.935
 
@@ -31,7 +35,7 @@ function DraggableHole(props) {
     const [activeDraggable, setActiveDraggable] = useState();
 
     
-    if (props.direction === 'front') {
+           if (props.direction === 'front') {
         props.hole.children[0].position.z = -3.935
     } else if (props.direction === 'back') {
         props.hole.children[0].position.z = -3.945
@@ -601,7 +605,6 @@ function DraggableHole(props) {
             </primitive>
         </mesh>
         </>
-    )
-}
+    )})
 
 export default DraggableHole;
