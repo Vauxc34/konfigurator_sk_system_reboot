@@ -5,8 +5,13 @@ import { useDrag } from 'react-use-gesture';
 import { useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
 import { Vector3 } from 'three';
+import { folder, useControls } from 'leva'
 
 const DraggableWindow = React.memo((props) =>  {
+
+    const typeArray = ['none', 'half', 'full'];
+    const [typeIdx, setTypeIdx] = useState(typeArray.indexOf(props.glassType));
+
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
@@ -14,30 +19,99 @@ const DraggableWindow = React.memo((props) =>  {
         sub = props.elementPositionToSub;
     }else if(props.direction === 'left' || props.direction === 'right'){
         sub = props.elementPositionToSubSides;
+    } 
+
+    /*const { transparentArgs, transparentPosition, newPosY, newScaleY, newPosZ } = useControls('TRANS', {
+
+        change: folder({
+            transparentArgs: [1.7, 2.04, .11], //right/back z - .15 // 
+            transparentPosition: [.85, 1.02, .18],
+            newPosY: 0,
+            newScaleY: 1, 
+        })
+
+    })*/
+
+           if (props.direction === 'front' && typeArray[typeIdx] === 'none') {
+        props.door.children[0].position.z = -.01
+        props.door.children[0].scale.y = .8
+        console.log(props.door.children[0])
+    } else if (props.direction === 'front' && typeArray[typeIdx] === 'half') {
+          props.third_door.children[0].position.z = 0  
+          props.third_door.children[0].scale.y = .6  
+          //props.third_door.children[1].children[3].position.z = .17
+          //props.third_door.children[1].children[4].position.z = .17
+
+        //console.log(props.third_door.children[1][4])
+
+        //console.log(props.third_door.children[1].children[3].position.z = .17)
+    } else if (props.direction === 'front' && typeArray[typeIdx] === 'full') {
+        props.second_door.children[3].position.z = 0
+        props.second_door.children[3].scale.y = .6
+        console.log(props.second_door)
+    }
+    
+           if (props.direction === 'back' && typeArray[typeIdx] === 'none') {
+        props.door.children[0].position.z = .01
+        props.door.children[0].scale.y = .8
+        console.log(props.door.children[0])
+    } else if (props.direction === 'back' && typeArray[typeIdx] === 'half') {
+          props.third_door.children[0].position.z = .01  
+          props.third_door.children[0].scale.y = .6  
+          //props.third_door.children[1].children[3].position.z = .17
+          //props.third_door.children[1].children[4].position.z = .17
+
+        //console.log(props.third_door.children[1][4])
+
+        //console.log(props.third_door.children[1].children[3].position.z = .17)
+    } else if (props.direction === 'back' && typeArray[typeIdx] === 'full') {
+        props.second_door.children[3].position.z = .01 
+        props.second_door.children[3].scale.y = .6
+        console.log(props.second_door)
     }
 
-    if (props.direction === 'back') {
-        //props.door.children[0].position.y = -5.85
-        //props.door.children[0].scale.y = .65
+           if (props.direction === 'left' && typeArray[typeIdx] === 'none') {
+        props.door.children[0].position.z = -0.07
+        props.door.children[0].scale.y = .8
         console.log(props.door.children[0])
-    } else if (props.direction === 'front' ) {
-        //props.door.children[0].position.z = 0.077
-        //props.door.children[0].scale.y = .5
-        console.log(props)
-    } else if (props.direction === 'left' ) {
-        //props.door.children[0].children[0].position.y = 12
-        //props.door.children[0].children[0].scale.z = .55
-    } else if (props.direction === 'right' ) {
-        //props.door.children[0].children[0].position.y = 4.5
-        //props.door.children[0].children[0].scale.z = .55
+    } else if (props.direction === 'left' && typeArray[typeIdx] === 'half') {
+          props.third_door.children[0].position.z = -0.017  
+          props.third_door.children[0].scale.y = .6  
+          //props.third_door.children[1].children[3].position.z = .17
+          //props.third_door.children[1].children[4].position.z = .17
+
+        //console.log(props.third_door.children[1][4])
+
+        //console.log(props.third_door.children[1].children[3].position.z = .17)
+    } else if (props.direction === 'left' && typeArray[typeIdx] === 'full') {
+        props.second_door.children[3].position.z = 0.0075 
+        props.second_door.children[3].scale.y = .6
+        console.log(props.second_door)
+    }
+
+           if (props.direction === 'right' && typeArray[typeIdx] === 'none') {
+        props.door.children[0].position.z = -.01
+        props.door.children[0].scale.y = .8
+        console.log(props.door.children[0])
+    } else if (props.direction === 'right' && typeArray[typeIdx] === 'half') {
+          props.third_door.children[0].position.z = 0  
+          props.third_door.children[0].scale.y = .6  
+          //props.third_door.children[1].children[3].position.z = .17
+          //props.third_door.children[1].children[4].position.z = .17
+
+        //console.log(props.third_door.children[1][4])
+
+        //console.log(props.third_door.children[1].children[3].position.z = .17)
+    } else if (props.direction === 'right' && typeArray[typeIdx] === 'full') {
+        props.second_door.children[3].position.z = 0
+        props.second_door.children[3].scale.y = .6
+        console.log(props.second_door)
     }
 
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
     const [scale, setScale] = useState(props.scaleX !== undefined ? [props.scaleX, props.scaleY, 25] : props.scale);
     const [show, setShow] = useState(false);
-    const typeArray = ['none', 'half', 'full'];
-    const [typeIdx, setTypeIdx] = useState(typeArray.indexOf(props.glassType));
     const [LeftCorner, setLeftCorner] = useState(-188.2)
     const [RightCorner, setRightCorner] = useState(194.1)
     const [deletedColor, setDeletedColor] = useState(false);
@@ -595,7 +669,8 @@ const DraggableWindow = React.memo((props) =>  {
     }, [props.x, props.y])
 
     return (
-        <>            
+        <>   
+
         {(show ? <MeasureBetweenPoints RangeSetterLengthtHail={props.RangeSetterLengthtHail} ModelPos={props.ModelPos} direction={props.direction} type={props.door_type} size={props.size} obj={props.obj} windowHeight={props.windowHeight} WidthSetterLengthtHail={props.WidthSetterLengthtHail} box={box} position={position} pointA={new Vector3(LeftCorner, 0, 0)} pointB={new Vector3(RightCorner + 30, 5, 5)}/> : '')}
         <mesh
             onPointerEnter={(e) => { 
@@ -645,12 +720,12 @@ const DraggableWindow = React.memo((props) =>  {
                     </mesh>
                 </group> : '')}
 
-                 {/* transparent element 
-                 <mesh position={[0, 32.5, 14.95]}  >
-                    <boxBufferGeometry side={THREE.DoubleSide} attach="geometry" args={[135, 135, 135]} />
-                    <meshPhysicalMaterial colorManagement={true} linear={false} side={THREE.DoubleSide} color={deletedColor ? '#ea8064' : "#ffffff"} transparent={false} opacity={1} roughness={0} metalness={0.5} transmission={1} ior={2.33}/>
+                 {/* transparent element */}
+                 <mesh position={[.85, 1.02, .18]}  >
+                    <boxBufferGeometry side={THREE.DoubleSide} attach="geometry" args={[1.7, 2.04, props.direction === 'front' && 'left' ? .11 : props.direction === 'back' && 'right' ?  .15 : .15]} />
+                    <meshPhysicalMaterial colorManagement={true} linear={false} side={THREE.DoubleSide} color={deletedColor ? '#ea8064' : "#ffffff"} transparent={true} opacity={0} roughness={0} metalness={0.5} transmission={1} ior={2.33}/>
                 </mesh>
-                */}
+                
 
                 {typeArray[typeIdx] == "half" ?
                 <>
