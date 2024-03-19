@@ -16,18 +16,18 @@ const DraggableWindow = React.memo((props) =>  {
         sub = props.elementPositionToSubSides;
     }
 
-    if (props.direction === 'back' && typeArray[typeIdx] === 'none') {
+    if (props.direction === 'back') {
         //props.door.children[0].position.y = -5.85
         //props.door.children[0].scale.y = .65
         console.log(props.door.children[0])
-    } else if (props.direction === 'front'  && typeArray[typeIdx] === 'none') {
+    } else if (props.direction === 'front' ) {
         //props.door.children[0].position.z = 0.077
         //props.door.children[0].scale.y = .5
         console.log(props)
-    } else if (props.direction === 'left'  && typeArray[typeIdx] === 'none') {
+    } else if (props.direction === 'left' ) {
         //props.door.children[0].children[0].position.y = 12
         //props.door.children[0].children[0].scale.z = .55
-    } else if (props.direction === 'right'  && typeArray[typeIdx] === 'none') {
+    } else if (props.direction === 'right' ) {
         //props.door.children[0].children[0].position.y = 4.5
         //props.door.children[0].children[0].scale.z = .55
     }
