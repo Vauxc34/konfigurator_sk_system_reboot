@@ -10,6 +10,29 @@ const DraggableWindow = React.memo((props) =>  {
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
+
+    console.log(props)
+
+
+   // let transparentArgs, transparentPosition, glassRotation
+
+    if (props.direction === 'back') {
+        props.door.children[0].position.y = -5.85
+        props.door.children[0].scale.y = .65
+        //console.log(props.door.children[0])
+    } else if (props.direction === 'front') {
+        props.door.children[0].position.y = -7.5
+        props.door.children[0].scale.y = .65
+        //console.log(props.door.children[0])
+    } else if (props.direction === 'left') {
+        props.door.children[0].children[0].position.y = 12
+        props.door.children[0].children[0].scale.z = .55
+    } else if (props.direction === 'right') {
+        props.door.children[0].children[0].position.y = 4.5
+        props.door.children[0].children[0].scale.z = .55
+    }
+
+
     
     if(props.direction === 'back' || props.direction === 'front'){
         sub = props.elementPositionToSub;
@@ -998,6 +1021,12 @@ const DraggableWindow = React.memo((props) =>  {
                     </mesh>
                 </group>
                 : '')}
+
+                {/* transparent element */}
+                <mesh position={[0, props.direction === 'front' ? 96.5 : props.direction === 'back' ? 101 : 102.5, -4.95]}  >
+                    <boxBufferGeometry side={THREE.DoubleSide} attach="geometry" args={[93.5, 205, 35]} />
+                    <meshPhysicalMaterial colorManagement={true} linear={false} side={THREE.DoubleSide} color={deletedColor ? '#ea8064' : "#ffffff"} transparent={true} opacity={0} roughness={0} metalness={0.5} transmission={1} ior={2.33}/>
+                </mesh>
 
                 {typeArray[typeIdx] == "half" ? <mesh visible={true} position={[-0.5, 153, -10]} >
                     <boxBufferGeometry args={[66.2, 70.5, (props.direction === 'left' ? 60 : 50)]}/>

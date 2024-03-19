@@ -10,7 +10,7 @@ const _ = require("lodash");
 
 const DraggableWindow = React.memo((props) => {
 
-    if (props.obj === "1_window" && props.direction === 'front') {
+           if (props.obj === "1_window" && props.direction === 'front') {
 
         props.window.scale.z = 65
         props.window.children[0].position.z = -0.036

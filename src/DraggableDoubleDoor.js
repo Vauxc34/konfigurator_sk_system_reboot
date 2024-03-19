@@ -16,6 +16,22 @@ const DraggableWindow = React.memo((props) =>  {
         sub = props.elementPositionToSubSides;
     }
 
+    if (props.direction === 'back' && typeArray[typeIdx] === 'none') {
+        //props.door.children[0].position.y = -5.85
+        //props.door.children[0].scale.y = .65
+        console.log(props.door.children[0])
+    } else if (props.direction === 'front'  && typeArray[typeIdx] === 'none') {
+        //props.door.children[0].position.z = 0.077
+        //props.door.children[0].scale.y = .5
+        console.log(props)
+    } else if (props.direction === 'left'  && typeArray[typeIdx] === 'none') {
+        //props.door.children[0].children[0].position.y = 12
+        //props.door.children[0].children[0].scale.z = .55
+    } else if (props.direction === 'right'  && typeArray[typeIdx] === 'none') {
+        //props.door.children[0].children[0].position.y = 4.5
+        //props.door.children[0].children[0].scale.z = .55
+    }
+
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
     const [scale, setScale] = useState(props.scaleX !== undefined ? [props.scaleX, props.scaleY, 25] : props.scale);
@@ -628,6 +644,13 @@ const DraggableWindow = React.memo((props) =>  {
                         <meshBasicMaterial color="white" />
                     </mesh>
                 </group> : '')}
+
+                 {/* transparent element 
+                 <mesh position={[0, 32.5, 14.95]}  >
+                    <boxBufferGeometry side={THREE.DoubleSide} attach="geometry" args={[135, 135, 135]} />
+                    <meshPhysicalMaterial colorManagement={true} linear={false} side={THREE.DoubleSide} color={deletedColor ? '#ea8064' : "#ffffff"} transparent={false} opacity={1} roughness={0} metalness={0.5} transmission={1} ior={2.33}/>
+                </mesh>
+                */}
 
                 {typeArray[typeIdx] == "half" ?
                 <>

@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
 import { Environment, Shadow } from "@react-three/drei";
 import { Euler, MathUtils, Box3 } from 'three';
-
 import Modal from './Modal';
 import Draggable from 'react-draggable';
 
@@ -1448,8 +1447,6 @@ const modifiedUV1 = new Float32Array([
     const filtered = Doors.filter((door) => door.index !== idx);
     setDoors(filtered);
   }; 
-
-  
 
    /* antresola */
 
@@ -65176,10 +65173,31 @@ THREE.ColorManagement.enabled = true
 
 /* optimalization things */
 
+
+const cursorRef = useRef()
+
+useEffect(() => {
+
+  document.addEventListener("mousemove", (event) => {
+
+    const { clientX, clientY } = event
+    const mouseX = clientX - cursorRef.current.clientWidth/2
+    const mouseY = clientY - cursorRef.current.clientHeight/2
+    cursorRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
+  
+  })
+
+}, [])
+
+
   return (
+    
     <> 
-      
       <header>
+
+      
+      
+
     <div   className="header-inner-left ng-tns-c70-0">
     <div className="header-logo ng-tns-c70-0">
     <img src="https://konfigurator.sksystem.eu/static/media/base_logo_transparent_background.5179eaf7cd7db518c97d.png" class="logo ng-tns-c70-0"/>
@@ -65263,6 +65281,7 @@ THREE.ColorManagement.enabled = true
       </div>
       </header>
       <div className="wrapper" style={{ overflow: 'hidden' }}>
+
       <div className="blackerscreen" style={{ display:FormVisible }}></div> 
       <div className='form_cont' style={{ display: FormVisible }}  > 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -65470,6 +65489,9 @@ THREE.ColorManagement.enabled = true
         FilteredDataLeft={FilteredDataLeft}
         handleDragDoor1Left={handleDragDoor1Left}
         /> 
+        <div className='NewCursor' ref={cursorRef}>
+          <img className="imgItselfCur" src={CursorImg}></img>
+        </div>
         <div id="docoption" style={{ height: '80vh', width: '500px', position: 'fixed', background: 'white', zIndex: -32, overflow: 'scroll', display: 'none' }}></div>
  
           <Suspense fallback={<SuspenseLoading/>}>
