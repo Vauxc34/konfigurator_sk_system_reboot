@@ -2956,7 +2956,7 @@ const modifiedUV1 = new Float32Array([
     Holes.push({ 
       no: SingleHoleNumber, 
       type: 'hole',
-      object: hole.scene.clone(),
+      object: HoleModel.clone(),
       index: Math.floor(Math.random() * 1000),
       elementPositionToSub: elementPositionToSub, 
       elementPositionToSubSides: elementPositionToSubSides, 
@@ -2992,255 +2992,6 @@ const modifiedUV1 = new Float32Array([
     const filtered = Gates.filter((gate) => gate.index !== idx);
     setGates(filtered);
   }; 
-
-  function AddGate(e) {  
-    const cameraDirection = new THREE.Vector3(0, 0, -1);
-    cameraDirection.applyQuaternion(camera.quaternion);
-    let direction, newposition, newrotation;
-    if(cameraDirection.z > 0.9){
-      direction = 'back';
-      newrotation = {x: 0, y: Math.PI, z: 0};
-      if(_.inRange(RangeSetterLengthtHail, 0, 20)){
-        newposition = {x: 0, y: 15, z: FrontWall - 45};
-      }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
-        newposition = {x: 0, y: 15, z: FrontWall - 45};
-      }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
-        newposition = {x: 0, y: 15, z: FrontWall - 40};
-      }else if(_.inRange(RangeSetterLengthtHail, 41, 53)){
-        newposition = {x: 0, y: 15, z: FrontWall - 35};
-      }else if(_.inRange(RangeSetterLengthtHail, 53, 66)){
-        newposition = {x: 0, y: 15, z: FrontWall - 35};
-      }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
-        newposition = {x: 0, y: 15, z: FrontWall - 35};
-      }
-    }else if(cameraDirection.z < -0.9){
-      direction = 'front';
-      newrotation = {x: 0, y: 0, z: 0};
-      if(_.inRange(RangeSetterLengthtHail, 0, 20)){
-        newposition = {x: 0, y: 15, z: FrontWall + 15};
-      }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
-        newposition = {x: 0, y: 15, z: FrontWall + 17};
-      }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
-        newposition = {x: 0, y: 15, z: FrontWall + 22};
-      }else if(_.inRange(RangeSetterLengthtHail, 41, 53)){
-        newposition = {x: 0, y: 15, z: FrontWall + 25};
-      }else if(_.inRange(RangeSetterLengthtHail, 53, 66)){
-        newposition = {x: 0, y: 15, z: FrontWall + 32};
-      }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
-        newposition = {x: 0, y: 15, z: FrontWall + 35};
-      }
-    }else if(cameraDirection.x > 0.9){
-      direction = 'left';
-      newrotation = {x: 0, y: -Math.PI / 2, z: 0};
-      if(WidthSetterLengthtHail == 10){
-        newposition = {x: -543, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 11){
-        newposition = {x: -560, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 12){
-        newposition = {x: -570, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 13){
-        newposition = {x: -580, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 14){
-        newposition = {x: -595, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 15){
-        newposition = {x: -610, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 16){
-        newposition = {x: -625, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 17){
-        newposition = {x: -640, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 18){
-        newposition = {x: -655, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 19){
-        newposition = {x: -670, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 20){
-        newposition = {x: -685, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 21){
-        newposition = {x: -700, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 22){
-        newposition = {x: -705, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 23){
-        newposition = {x: -720, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 24){
-        newposition = {x: -735, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 25){
-        newposition = {x: -750, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 26){
-        newposition = {x: -755, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 27){
-        newposition = {x: -765, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 28){
-        newposition = {x: -770, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 29){
-        newposition = {x: -780, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 30){
-        newposition = {x: -790, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 31){
-        newposition = {x: -805, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 32){
-        newposition = {x: -815, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 33){
-        newposition = {x: -820, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 34){
-        newposition = {x: -835, y: 15, z: 0};
-      }else if(WidthSetterLengthtHail == 35){
-        newposition = {x: -850, y: 15, z:0};
-      }
-    }else if(cameraDirection.x < -0.9){
-      direction = 'right';
-      newposition = {x: FrontWall1 + 555, y: 15, z: FrontWall / 2};
-      newrotation = {x: 0, y: Math.PI / 2, z: 0};
-      if(WidthSetterLengthtHail == 10){
-        newposition = {x: 488, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 11){
-        newposition = {x: 505, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 12){
-        newposition = {x: 515, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 13){
-        newposition = {x: 525, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 14){
-        newposition = {x: 540, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 15){
-        newposition = {x: 555, y: 15, z: 0}; //610
-      }else if(WidthSetterLengthtHail == 16){
-        newposition = {x: 570, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 17){
-        newposition = {x: 585, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 18){
-        newposition = {x: 600, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 19){
-        newposition = {x: 615, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 20){
-        newposition = {x: 630, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 21){
-        newposition = {x: 645, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 22){
-        newposition = {x: 650, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 23){
-        newposition = {x: 675, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 24){
-        newposition = {x: 690, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 25){
-        newposition = {x: 705, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 26){
-        newposition = {x: 710, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 27){
-        newposition = {x: 720, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 28){
-        newposition = {x: 725, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 29){
-        newposition = {x: 730, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 30){
-        newposition = {x: 740, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 31){
-        newposition = {x: 755, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 32){
-        newposition = {x: 765, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 33){
-        newposition = {x: 770, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 34){
-        newposition = {x: 785, y: 15, z: 0}; 
-      }else if(WidthSetterLengthtHail == 35){
-        newposition = {x: 800, y: 15, z:0}; 
-      }
-    }
-
-    if(newposition === undefined){
-      return;
-    }
-           if (e.getAttribute("type")== "gate_full") {
-
-      Gates.push({ no: Math.random() * 500, 
-        object: gate1.scene.clone(), 
-        second_object: gate_half_glass.scene.clone(),
-        third_object: gate_full_glass.scene.clone(),
-        direction: direction, 
-        index: Math.floor(Math.random() * 1000),
-        newposition: newposition, 
-        newrotation: newrotation,
-        elementPositionToSub: elementPositionToSub,
-        elementPositionToSubSides: elementPositionToSubSides,
-        ConstructionPosY: ConstructionPosY,
-        type: 'gate', 
-        scale: [10, 10, .1], 
-        x:  PolozenieGate1, 
-        z: DoorPosXX, 
-        rotate: DoorRotZ,  
-        obj: GateType, 
-        scaleModelX: 40, 
-        ScaleModelY: 40, 
-        itemAdditionalX: 0,
-        itemAdditionalY: 0, 
-        scaleX: 400, 
-        scaleY: 600,
-        scaleXDragModel: 0, 
-        scaleYDragModel: 85,
-        GlassType: 'none'
-       }) 
-      setGates([...Gates]) 
-
-    } else if (e.getAttribute("type") == "gate_half_glass") {
-
-      Gates.push({ no: Math.random() * 500, 
-        direction: direction, 
-        newposition: newposition, 
-        newrotation: newrotation,
-        elementPositionToSub: elementPositionToSub,
-        ConstructionPosY: ConstructionPosY,
-        index: Math.floor(Math.random() * 1000),
-        elementPositionToSubSides: elementPositionToSubSides,
-        object: gate1.scene.clone(), 
-        second_object: gate_half_glass.scene.clone(),
-        third_object: gate_full_glass.scene.clone(),
-        type: 'gate', scale: [10, 10, .1], 
-        x:  PolozenieGate1, 
-        z: DoorPosXX, 
-        rotate: DoorRotZ,  
-        obj: GateType, 
-        scaleModelX: 40, 
-        ScaleModelY: 40, 
-        itemAdditionalX: 0,
-        itemAdditionalY: 0, 
-        scaleX: 400, 
-        scaleY: 600,
-        scaleXDragModel: 0, 
-        scaleYDragModel: 85,
-        GlassType: 'half'
-       }) 
-      setGates([...Gates]) 
-      
-
-    } else if (e.getAttribute("type") == "gate_glass") {
-
-      Gates.push({ no: Math.random() * 500, 
-        object: gate1.scene.clone(), 
-        second_object: gate_half_glass.scene.clone(),
-        third_object: gate_full_glass.scene.clone(),
-        direction: direction, 
-        newposition: newposition, 
-        newrotation: newrotation,
-        ConstructionPosY: ConstructionPosY,
-        index: Math.floor(Math.random() * 1000),
-        elementPositionToSub: elementPositionToSub,
-        elementPositionToSubSides: elementPositionToSubSides,
-        type: 'gate', scale: [10, 10, .1], 
-        x:  PolozenieGate1, 
-        z: DoorPosXX, 
-        rotate: DoorRotZ,  
-        obj: GateType, 
-        scaleModelX: 40, 
-        ScaleModelY: 40, 
-        itemAdditionalX: 0,
-        itemAdditionalY: 0, 
-        scaleX: 400, 
-        scaleY: 600,
-        scaleXDragModel: 0, 
-        scaleYDragModel: 85,
-        GlassType: 'full'
-       }) 
-      setGates([...Gates]) 
-
-    } 
-  }
   
   const FilteredWindowData1 = Windows.filter((item) => item.obj == "1_window" && item.orient == 'front')
   const FilteredWindowData2 = Windows.filter((item) => item.obj == "2_window" && item.orient == 'front')
@@ -3846,33 +3597,323 @@ setWindows([...Windows])
 
 /* window 4 */
 
-} 
- 
-const gate1 = useLoader(GLTFLoader, "gates/full_gate.glb", (loader) => {
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.preload()
-  dracoLoader.setDecoderPath("/draco-gltf/");
-  loader.setDRACOLoader(dracoLoader);
-})  
-const gate_half_glass = useLoader(GLTFLoader, "gates/gate_half_glass.glb", (loader) => {
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.preload()
-  dracoLoader.setDecoderPath("/draco-gltf/");
-  loader.setDRACOLoader(dracoLoader);
-})  
-const gate_full_glass = useLoader(GLTFLoader, "gates/gate_full_glass.glb", (loader) => {
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.preload()
-  dracoLoader.setDecoderPath("/draco-gltf/");
-  loader.setDRACOLoader(dracoLoader);
-})  
-const hole = useLoader(GLTFLoader, "holes/full_gate.glb", (loader) => {
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.preload()
-  dracoLoader.setDecoderPath("/draco-gltf/");
-  loader.setDRACOLoader(dracoLoader);
-})  
-hole.scene.children[0].children[1].children[0].children[0].visible = false 
+}  
+
+const [GateModelOne, setGateModelOne] = useState(null)
+const [GateHalfGlassModelOne, setGateHalfGlassModelOne] = useState(null)
+const [GateFullGlassModelOne, setGateFullGlassModelOne] = useState(null)
+const [HoleModel, setHoleModel] = useState(null) 
+
+console.log(GateModelOne)
+console.log(GateHalfGlassModelOne)
+console.log(GateFullGlassModelOne)
+
+useEffect(() => {
+  if (LoadTest == 5) {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco-gltf/");
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load('gates/full_gate.glb', (gltf) => {
+      setGateModelOne(gltf.scene);
+    });
+  }
+}, [LoadTest]);  
+
+useEffect(() => {
+  if (LoadTest == 5) {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco-gltf/");
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load('gates/gate_half_glass.glb', (gltf) => {
+      setGateHalfGlassModelOne(gltf.scene);
+    });
+  }
+}, [LoadTest]); 
+
+useEffect(() => {
+  if (LoadTest == 5) {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco-gltf/");
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load('gates/gate_full_glass.glb', (gltf) => {
+      setGateFullGlassModelOne(gltf.scene);
+    });
+  }
+}, [LoadTest]); 
+
+useEffect(() => {
+  if (LoadTest == 5) {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco-gltf/");
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load('holes/full_gate.glb', (gltf) => {
+      setHoleModel(gltf.scene);
+    });
+  }
+}, [LoadTest]);
+
+if(HoleModel != null) {
+
+HoleModel.children[0].children[1].children[0].children[0].visible = false 
+
+}
+
+function AddGate(e) {  
+  const cameraDirection = new THREE.Vector3(0, 0, -1);
+  cameraDirection.applyQuaternion(camera.quaternion);
+  let direction, newposition, newrotation;
+  if(cameraDirection.z > 0.9){
+    direction = 'back';
+    newrotation = {x: 0, y: Math.PI, z: 0};
+    if(_.inRange(RangeSetterLengthtHail, 0, 20)){
+      newposition = {x: 0, y: 15, z: FrontWall - 45};
+    }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
+      newposition = {x: 0, y: 15, z: FrontWall - 45};
+    }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
+      newposition = {x: 0, y: 15, z: FrontWall - 40};
+    }else if(_.inRange(RangeSetterLengthtHail, 41, 53)){
+      newposition = {x: 0, y: 15, z: FrontWall - 35};
+    }else if(_.inRange(RangeSetterLengthtHail, 53, 66)){
+      newposition = {x: 0, y: 15, z: FrontWall - 35};
+    }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
+      newposition = {x: 0, y: 15, z: FrontWall - 35};
+    }
+  }else if(cameraDirection.z < -0.9){
+    direction = 'front';
+    newrotation = {x: 0, y: 0, z: 0};
+    if(_.inRange(RangeSetterLengthtHail, 0, 20)){
+      newposition = {x: 0, y: 15, z: FrontWall + 15};
+    }else if(_.inRange(RangeSetterLengthtHail, 20, 29)){
+      newposition = {x: 0, y: 15, z: FrontWall + 17};
+    }else if(_.inRange(RangeSetterLengthtHail, 30, 41)){
+      newposition = {x: 0, y: 15, z: FrontWall + 22};
+    }else if(_.inRange(RangeSetterLengthtHail, 41, 53)){
+      newposition = {x: 0, y: 15, z: FrontWall + 25};
+    }else if(_.inRange(RangeSetterLengthtHail, 53, 66)){
+      newposition = {x: 0, y: 15, z: FrontWall + 32};
+    }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
+      newposition = {x: 0, y: 15, z: FrontWall + 35};
+    }
+  }else if(cameraDirection.x > 0.9){
+    direction = 'left';
+    newrotation = {x: 0, y: -Math.PI / 2, z: 0};
+    if(WidthSetterLengthtHail == 10){
+      newposition = {x: -543, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 11){
+      newposition = {x: -560, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 12){
+      newposition = {x: -570, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 13){
+      newposition = {x: -580, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 14){
+      newposition = {x: -595, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 15){
+      newposition = {x: -610, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 16){
+      newposition = {x: -625, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 17){
+      newposition = {x: -640, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 18){
+      newposition = {x: -655, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 19){
+      newposition = {x: -670, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 20){
+      newposition = {x: -685, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 21){
+      newposition = {x: -700, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 22){
+      newposition = {x: -705, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 23){
+      newposition = {x: -720, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 24){
+      newposition = {x: -735, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 25){
+      newposition = {x: -750, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 26){
+      newposition = {x: -755, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 27){
+      newposition = {x: -765, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 28){
+      newposition = {x: -770, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 29){
+      newposition = {x: -780, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 30){
+      newposition = {x: -790, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 31){
+      newposition = {x: -805, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 32){
+      newposition = {x: -815, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 33){
+      newposition = {x: -820, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 34){
+      newposition = {x: -835, y: 15, z: 0};
+    }else if(WidthSetterLengthtHail == 35){
+      newposition = {x: -850, y: 15, z:0};
+    }
+  }else if(cameraDirection.x < -0.9){
+    direction = 'right';
+    newposition = {x: FrontWall1 + 555, y: 15, z: FrontWall / 2};
+    newrotation = {x: 0, y: Math.PI / 2, z: 0};
+    if(WidthSetterLengthtHail == 10){
+      newposition = {x: 488, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 11){
+      newposition = {x: 505, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 12){
+      newposition = {x: 515, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 13){
+      newposition = {x: 525, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 14){
+      newposition = {x: 540, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 15){
+      newposition = {x: 555, y: 15, z: 0}; //610
+    }else if(WidthSetterLengthtHail == 16){
+      newposition = {x: 570, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 17){
+      newposition = {x: 585, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 18){
+      newposition = {x: 600, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 19){
+      newposition = {x: 615, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 20){
+      newposition = {x: 630, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 21){
+      newposition = {x: 645, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 22){
+      newposition = {x: 650, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 23){
+      newposition = {x: 675, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 24){
+      newposition = {x: 690, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 25){
+      newposition = {x: 705, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 26){
+      newposition = {x: 710, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 27){
+      newposition = {x: 720, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 28){
+      newposition = {x: 725, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 29){
+      newposition = {x: 730, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 30){
+      newposition = {x: 740, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 31){
+      newposition = {x: 755, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 32){
+      newposition = {x: 765, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 33){
+      newposition = {x: 770, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 34){
+      newposition = {x: 785, y: 15, z: 0}; 
+    }else if(WidthSetterLengthtHail == 35){
+      newposition = {x: 800, y: 15, z:0}; 
+    }
+  }
+
+  if(newposition === undefined){
+    return;
+  }
+         if (e.getAttribute("type")== "gate_full") {
+
+    Gates.push({ no: Math.random() * 500, 
+      object: GateModelOne.clone(), 
+      second_object: GateHalfGlassModelOne.clone(),
+      third_object: GateFullGlassModelOne.clone(),
+      direction: direction, 
+      index: Math.floor(Math.random() * 1000),
+      newposition: newposition, 
+      newrotation: newrotation,
+      elementPositionToSub: elementPositionToSub,
+      elementPositionToSubSides: elementPositionToSubSides,
+      ConstructionPosY: ConstructionPosY,
+      type: 'gate', 
+      scale: [10, 10, .1], 
+      x:  PolozenieGate1, 
+      z: DoorPosXX, 
+      rotate: DoorRotZ,  
+      obj: GateType, 
+      scaleModelX: 40, 
+      ScaleModelY: 40, 
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleX: 400, 
+      scaleY: 600,
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85,
+      GlassType: 'none'
+     }) 
+    setGates([...Gates]) 
+
+  } else if (e.getAttribute("type") == "gate_half_glass") {
+
+    Gates.push({ no: Math.random() * 500, 
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      elementPositionToSub: elementPositionToSub,
+      ConstructionPosY: ConstructionPosY,
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSubSides: elementPositionToSubSides,
+      object: GateModelOne.clone(), 
+      second_object: GateHalfGlassModelOne.clone(),
+      third_object: GateFullGlassModelOne.clone(),
+      type: 'gate', scale: [10, 10, .1], 
+      x:  PolozenieGate1, 
+      z: DoorPosXX, 
+      rotate: DoorRotZ,  
+      obj: GateType, 
+      scaleModelX: 40, 
+      ScaleModelY: 40, 
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleX: 400, 
+      scaleY: 600,
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85,
+      GlassType: 'half'
+     }) 
+    setGates([...Gates]) 
+    
+
+  } else if (e.getAttribute("type") == "gate_glass") {
+
+    Gates.push({ no: Math.random() * 500, 
+      object: GateModelOne.clone(), 
+      second_object: GateHalfGlassModelOne.clone(),
+      third_object: GateFullGlassModelOne.clone(),
+      direction: direction, 
+      newposition: newposition, 
+      newrotation: newrotation,
+      ConstructionPosY: ConstructionPosY,
+      index: Math.floor(Math.random() * 1000),
+      elementPositionToSub: elementPositionToSub,
+      elementPositionToSubSides: elementPositionToSubSides,
+      type: 'gate', scale: [10, 10, .1], 
+      x:  PolozenieGate1, 
+      z: DoorPosXX, 
+      rotate: DoorRotZ,  
+      obj: GateType, 
+      scaleModelX: 40, 
+      ScaleModelY: 40, 
+      itemAdditionalX: 0,
+      itemAdditionalY: 0, 
+      scaleX: 400, 
+      scaleY: 600,
+      scaleXDragModel: 0, 
+      scaleYDragModel: 85,
+      GlassType: 'full'
+     }) 
+    setGates([...Gates]) 
+
+  } 
+}
 
 const ModelsAll = React.memo(() => { 
 
@@ -4479,7 +4520,6 @@ const BetterCam = () => {
       const minDistance = -1100;
       const maxZoom = 2;
       const minZoom = 0.5;
- 
 
     useFrame(() => {
       controlsRef.current.update();
@@ -64107,17 +64147,29 @@ useEffect(() => {
 
 const draggableRef = useRef(null);
 
-const window_1 = useLoader(GLTFLoader, "window_models/1_windows/1_windows.glb", (loader) => {
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.preload()
-  dracoLoader.setDecoderPath("/draco-gltf/");
-  loader.setDRACOLoader(dracoLoader);
-});
-const window_1_front_ = window_1.scene.clone(); 
+const [WindowOneModel, setWindowOneModel] = useState(null) 
 
-const window_1_back_ = window_1.scene.clone();
-const window_1_left_ = window_1.scene.clone();
-const window_1_right_ = window_1.scene.clone();
+useEffect(() => {
+  if (LoadTest == 5) {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/draco-gltf/");
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load('window_models/1_windows/1_windows.glb', (gltf) => {
+      setWindowOneModel(gltf.scene);
+    });
+  }
+}, [LoadTest]); 
+
+let window_1_front_,  window_1_back_, window_1_left_ ,window_1_right_
+
+if (WindowOneModel != null ) {
+ 
+window_1_front_ = WindowOneModel.clone(); 
+window_1_back_ = WindowOneModel.clone();
+window_1_left_ = WindowOneModel.clone();
+window_1_right_ = WindowOneModel.clone();
 
 window_1_front_.scale.x = 25;
 window_1_front_.scale.y = 25;
@@ -64150,18 +64202,33 @@ window_1_right_.rotation.y = -Math.PI/2;
 
 window_1_back_.rotation.y = Math.PI/1;
 
-window_1.scene.rotation.y = -Math.PI/ 1;
+WindowOneModel.rotation.y = -Math.PI/ 1;
 
-  const window_2 = useLoader(GLTFLoader, "window_models/2_windows/2_windows.glb", (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.preload()
-    dracoLoader.setDecoderPath("/draco-gltf/");
-    loader.setDRACOLoader(dracoLoader);
-  })
-  const window_2_front_ = window_2.scene.clone()
-  const window_2_back_ = window_2.scene.clone()
-  const window_2_left_ = window_2.scene.clone()
-  const window_2_right_ = window_2.scene.clone()
+}
+
+const [WindowSecModel, setWindowSecModel] = useState(null)  
+  
+  useEffect(() => {
+    if (LoadTest == 5) {
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("/draco-gltf/");
+      loader.setDRACOLoader(dracoLoader);
+  
+      loader.load('window_models/2_windows/2_windows.glb', (gltf) => {
+        setWindowSecModel(gltf.scene);
+      });
+    }
+  }, [LoadTest]); 
+
+  let window_2_front_,  window_2_back_, window_2_left_ ,window_2_right_
+
+  if(WindowSecModel != null) {
+
+  window_2_front_ = WindowSecModel.clone()
+  window_2_back_ = WindowSecModel.clone()
+  window_2_left_ = WindowSecModel.clone()
+  window_2_right_ = WindowSecModel.clone()
 
   window_2_front_.scale.x = 19.5
   window_2_front_.scale.y = 19.85
@@ -64193,19 +64260,34 @@ window_1.scene.rotation.y = -Math.PI/ 1;
   window_2_right_.rotation.y = -Math.PI/2
 
   window_2_back_.rotation.y = Math.PI/-1  
+
+  }
  
   /* */
 
-  const window_3 = useLoader(GLTFLoader, "window_models/3_windows/3_windows.glb", (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.preload()
-    dracoLoader.setDecoderPath("/draco-gltf/");
-    loader.setDRACOLoader(dracoLoader);
-  }) 
-  const window_3_front_ = window_3.scene.clone()
-  const window_3_back_ = window_3.scene.clone()
-  const window_3_left_ = window_3.scene.clone()
-  const window_3_right_ = window_3.scene.clone()
+  const [WindowThirdModel, setWindowThirdModel] = useState(null) 
+    
+  useEffect(() => {
+    if (LoadTest == 5) {
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("/draco-gltf/");
+      loader.setDRACOLoader(dracoLoader);
+  
+      loader.load('window_models/3_windows/3_windows.glb', (gltf) => {
+        setWindowThirdModel(gltf.scene);
+      });
+    }
+  }, [LoadTest]); 
+
+  let window_3_front_,  window_3_back_, window_3_left_ ,window_3_right_
+
+  if(WindowThirdModel != null) {
+   
+  window_3_front_ = WindowThirdModel.clone()
+  window_3_back_ = WindowThirdModel.clone()
+  window_3_left_ = WindowThirdModel.clone()
+  window_3_right_ = WindowThirdModel.clone()
 
   window_3_front_.scale.x = 30
   window_3_front_.scale.y = 20
@@ -64239,21 +64321,35 @@ window_1.scene.rotation.y = -Math.PI/ 1;
   window_3_right_.rotation.z = Math.PI/2
   window_3_back_.rotation.y = Math.PI/1
 
-  window_3.scene.rotation.x = -Math.PI/ 2
- 
+  WindowThirdModel.rotation.x = -Math.PI/ 2
+
+  } 
 
   /* */ 
 
-  const window_4 = useLoader(GLTFLoader, "window_models/4_windows/4_windows.glb", (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.preload()
-    dracoLoader.setDecoderPath("/draco-gltf/");
-    loader.setDRACOLoader(dracoLoader);
-  }) 
-  const window_4_front_ = window_4.scene.clone()
-  const window_4_back_ = window_4.scene.clone()
-  const window_4_left_ = window_4.scene.clone()
-  const window_4_right_ = window_4.scene.clone()
+  const [WindowFourthModel, setWindowFourthModel] = useState(null) 
+    
+  useEffect(() => {
+    if (LoadTest == 5) {
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("/draco-gltf/");
+      loader.setDRACOLoader(dracoLoader);
+  
+      loader.load('window_models/4_windows/4_windows.glb', (gltf) => {
+        setWindowFourthModel(gltf.scene);
+      });
+    }
+  }, [LoadTest]);  
+
+  let window_4_front_,  window_4_back_, window_4_left_ ,window_4_right_
+  
+  if(WindowFourthModel != null) {
+
+  window_4_front_ = WindowFourthModel.clone()
+  window_4_back_ = WindowFourthModel.clone()
+  window_4_left_ = WindowFourthModel.clone()
+  window_4_right_ = WindowFourthModel.clone()
 
   
   window_4_back_.position.z = ModelPosBack - 1.2
@@ -64262,7 +64358,7 @@ window_1.scene.rotation.y = -Math.PI/ 1;
 
   window_4_left_.rotation.y = Math.PI/ 2
   window_4_right_.rotation.y = -Math.PI/2 
-  window_1_back_.rotation.y = Math.PI/1
+ 
 
   window_4_front_.scale.x = 30
   window_4_front_.scale.y = 20
@@ -64274,6 +64370,7 @@ window_1.scene.rotation.y = -Math.PI/ 1;
     
   window_4_front_.rotation.y = -Math.PI/ 270
 
+  } 
 
    /* doors */ 
   
@@ -64362,37 +64459,49 @@ window_1.scene.rotation.y = -Math.PI/ 1;
    
  
    /* */
- 
+   
+          if(GateModelOne != null) {
   
-           gate1.scene.scale.x = 40
-           gate1.scene.scale.y = 40
-           gate1.scene.scale.z = 114
+           GateModelOne.scale.x = 40
+           GateModelOne.scale.y = 40
+           GateModelOne.scale.z = 114
  
-           gate1.scene.position.x = 50
-           gate1.scene.position.y = 0
-           gate1.scene.position.z = ModelPosFront4 - 20.55
+           GateModelOne.position.x = 50
+           GateModelOne.position.y = 0
+           GateModelOne.position.z = ModelPosFront4 - 20.55
  
-           gate1.scene.rotation.y = Math.PI/1
+           GateModelOne.rotation.y = Math.PI/1
+
+          }
+
+           if(GateHalfGlassModelOne != null) {
            
-           gate_half_glass.scene.scale.x = 40
-           gate_half_glass.scene.scale.y = 40
-           gate_half_glass.scene.scale.z = 114
+           GateHalfGlassModelOne.scale.x = 40
+           GateHalfGlassModelOne.scale.y = 40
+           GateHalfGlassModelOne.scale.z = 114
  
-           gate_half_glass.scene.position.x = 50
-           gate_half_glass.scene.position.y = 0
-           gate_half_glass.scene.position.z = ModelPosFront4 - 20.55
+           GateHalfGlassModelOne.position.x = 50
+           GateHalfGlassModelOne.position.y = 0
+           GateHalfGlassModelOne.position.z = ModelPosFront4 - 20.55
  
-           gate_half_glass.scene.rotation.y = Math.PI/1
+           GateHalfGlassModelOne.rotation.y = Math.PI/1
+
+           }
+
+
+           if(GateFullGlassModelOne != null) {
  
-           gate_full_glass.scene.scale.x = 40
-           gate_full_glass.scene.scale.y = 40
-           gate_full_glass.scene.scale.z = 114
+           GateFullGlassModelOne.scale.x = 40
+           GateFullGlassModelOne.scale.y = 40
+           GateFullGlassModelOne.scale.z = 114
  
-           gate_full_glass.scene.position.x = 50
-           gate_full_glass.scene.position.y = 0
-           gate_full_glass.scene.position.z = ModelPosFront4 - 20.55
+           GateFullGlassModelOne.position.x = 50
+           GateFullGlassModelOne.position.y = 0
+           GateFullGlassModelOne.position.z = ModelPosFront4 - 20.55
  
-           gate_full_glass.scene.rotation.y = Math.PI/1
+           GateFullGlassModelOne.rotation.y = Math.PI/1
+
+           }
  
            /* stairs */
  
@@ -66306,6 +66415,7 @@ useEffect(() => {
                 return (<DraggableHole frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={hole.x} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} OtworColor={OtworColor} type={hole.type} elementPositionToSub={hole.elementPositionToSub} elementPositionToSubSides={hole.elementPositionToSubSides} key={hole.index} handleDeleteHole={handleDeleteHole} index={hole.index} ModelPos={ModelPos} direction={hole.direction} newposition={hole.newposition} hole={hole.object} newrotation={hole.newrotation} setCameraMovement={setCameraMovement}/>)
               })}
               <Hail 
+              HoleModel={HoleModel}
                 RangeSetterLengthtHail={RangeSetterLengthtHail}
                 setAllConnctionPositions={setAllConnctionPositions}
                 InsideColor={InsideColor}
@@ -66434,11 +66544,11 @@ useEffect(() => {
                 ModelPosRight1={ModelPosRight1}
                 FilteredHolesRight={FilteredHolesRight}
                 Holes={Holes}
-                hole={hole}
+                
                 WallWithModifiedUV={WallWithModifiedUV}
                 WallWithoutModifiedUV={WallWithoutModifiedUV}
                 UVChangeAngleFixer={UVChangeAngleFixer}
-                gate1={gate1}
+           
                 UVSsett2={UVSsett2}
                 TextureRepeating={TextureRepeating}
                 modifiedUV1={modifiedUV1}

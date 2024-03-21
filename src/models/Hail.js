@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { Canvas, useThree, useLoader,  useFrame } from "@react-three/fiber";
  
 const Hail = React.memo(({
+    HoleModel,
     RangeSetterLengthtHail,
     setAllConnctionPositions,
     InsideColor,
@@ -1577,7 +1578,7 @@ attach={'uv'}
 <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
 <boxBufferGeometry args={[.235, item.ScaleModelY, item.scaleModelX]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> 
+<primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> 
 </mesh>
 ))}
 
@@ -1667,7 +1668,7 @@ attach={'uv'}
     <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
 <boxBufferGeometry args={[.235, item.ScaleModelY, item.scaleModelX]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> : null}
 </mesh> 
 ))}</mesh>
 
@@ -1722,7 +1723,7 @@ attach={'uv'}
     <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
 <boxBufferGeometry args={[.235, item.ScaleModelY, item.scaleModelX]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive>
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> : null}
 </mesh>
 ))}
 
@@ -1797,7 +1798,7 @@ attach={'uv'}
     <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
 <boxBufferGeometry args={[.235, item.ScaleModelY, item.scaleModelX]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> : null}
 </mesh>
 ))}
 
@@ -1868,7 +1869,7 @@ attach={'uv'}
     <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
 <boxBufferGeometry args={[.235, item.ScaleModelY, item.scaleModelX]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> : null}
 </mesh>
 ))}
 
@@ -1958,7 +1959,7 @@ attach={'uv'}
 <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
 <boxBufferGeometry args={[.235, item.ScaleModelY, item.scaleModelX]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  item.OffsetFrameAdditional]} scale={[ item.InteriorHoleX, item.InteriorHoleY, 7.5]}></primitive> : null}
 </mesh>
 ))}
 
@@ -2029,7 +2030,7 @@ attach={'uv'}
             <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
             <boxBufferGeometry args={[.235, 3, 2.7]}  />
             <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-            <primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> 
+            {HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> : null}
             </mesh>
       
 
@@ -2134,7 +2135,7 @@ attach={'uv'}
             <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
             <boxBufferGeometry args={[.235, 3, 2.7]}  />
             <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-            <primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> 
+            {HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> : null} 
             </mesh>
       
 
@@ -2186,7 +2187,7 @@ needsUpdate={true}
 <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
 <boxBufferGeometry args={[.235, 3, 2.7]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> : null}
 </mesh>
 
 
@@ -2276,7 +2277,7 @@ needsUpdate={true}
 <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
 <boxBufferGeometry args={[.235, 3, 2.7]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> : null}
 </mesh>
 
 
@@ -2343,7 +2344,7 @@ needsUpdate={true}
 <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
 <boxBufferGeometry args={[.235, 3, 2.7]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> : null}
 </mesh>
 
 
@@ -2448,7 +2449,7 @@ needsUpdate={true}
 <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
 <boxBufferGeometry args={[.235, 3, 2.7]}  />
 <meshBasicMaterial color={0xffffff} side={THREE.DoubleSide} opacity={0} transparent={true} />
-<primitive renderOrder={0} object={hole.scene.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> 
+{HoleModel != null ? <primitive renderOrder={0} object={HoleModel.clone()} rotation={[0, -Math.PI/2, 0]} position={[  -39.115,    -2,  -2.25]} scale={[1.1, 1.8, 7.5]}></primitive> : null}
 </mesh>
 
 
