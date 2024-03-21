@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture';
-import { useThree } from "@react-three/fiber";
+import { useLoader, useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
 import { Box3, Vector3 } from 'three';
 
@@ -13,6 +13,22 @@ const DraggableWindow = React.memo((props) =>  {
 
     console.log(props)
 
+    //const texture = useLoader(THREE.TextureLoader, "doors/2/textures/all_white.jpg");
+
+    //props.SingleDoorModel.children[0].children[0].children[0].children[0].children[0].material.map = texture;
+    //props.SingleDoorModel.children[0].children[0].children[0].children[0].children[1].material.map = texture;
+
+    //props.SingleDoorModel.scale.x = .3
+    //props.SingleDoorModel.scale.y = .3
+    //props.SingleDoorModel.scale.z = .2
+
+    //props.SingleDoorModel.position.z = props.ModelPosFront1 + .5
+    //props.SingleDoorModel.position.x = -35 + props.DoorPosZ 
+
+    //props.SingleDoorModel.position.z = .5
+    //props.SingleDoorModel.position.x = -35 
+
+    //props.SingleDoorModel.rotation.y = -Math.PI/ 1060
 
    // let transparentArgs, transparentPosition, glassRotation
 

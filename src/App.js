@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
 import { Environment, Shadow } from "@react-three/drei";
 import { Euler, MathUtils, Box3 } from 'three';
+import { Html, Stats } from "@react-three/drei";
 import Modal from './Modal';
 import Draggable from 'react-draggable';
 
@@ -112,6 +113,14 @@ const App = React.memo(() => {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID 
 };*/
+
+const [LoadTest, setLoadTest] = useState(0)
+
+function LoaderTester() { 
+  setLoadTest(5) 
+}
+
+setTimeout(LoaderTester, 1500)
 
 const [cameraMovement, setCameraMovement] = useState(true);
 const [camera, setCamera] = useState();
@@ -645,6 +654,21 @@ const [backSideBool, setBackSideBool] = useState(true);
 const [leftSideBool, setLeftSideBool] = useState(true);
 const [rightSideBool, setRightSideBool] = useState(true);
 
+const upSideMat = useRef()
+const frontSideMat = useRef()
+const backSideMat = useRef()
+const leftSideMat = useRef()
+const rigthSideMat = useRef()
+
+if(upSideMat.current != undefined) {
+  upSideMat.current.transparent = true
+}
+
+//upSideMat.current.transparent = true
+//frontSideMat.current.transparent = true
+//leftSideMat.current.transparent = true
+//rigthSideMat.current.transparent = true
+
 const [swietlicScaleRange, setSwietlicScaleRange] = useState(0);
 const [hailDimensions, setHailDimensions] = useState();
 
@@ -1115,7 +1139,6 @@ overflow:visible;
   /* addons */ 
 
   const draco = new DRACOLoader()
-
   const loader = new GLTFLoader()
   loader.setDRACOLoader(draco)
   
@@ -1374,43 +1397,96 @@ const modifiedUV1 = new Float32Array([
   const [Windows, setWindows] = useState([])  
   const [Gates, setGates] = useState([])
 
-  const [Holes, setHoles] = useState([])
+  const [Holes, setHoles] = useState([]) 
 
-    const single_door = useLoader(GLTFLoader, 'doors/2/scene.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    })
-    const single_door_with_glass = useLoader(GLTFLoader, 'doors/door_with_glass/door_with_glass.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    })
-    const door_with_glass_full = useLoader(GLTFLoader, 'doors/door_with_glass_full/door_with_glass_full.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    })
-    const double_doors = useLoader(GLTFLoader, 'doors/1/scene.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    }) 
-    const double_door_with_full_glass = useLoader(GLTFLoader, 'doors/double_door_with_full_glass/door_with_glass_full.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    }) 
-    const double_door_with_glass = useLoader(GLTFLoader, 'doors/double_door_with_glass/double_door_with_glass.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    })  
+    const [SingleDoorModel, setSingleDoorModel] = useState(null)
+    const [SingleDoorWithGlassModel, setSingleDoorWithGlass] = useState(null)
+    const [SingleDoorWithGlassFullModel, setSingleDoorWithGlassFullModel] = useState(null)
+    const [DoubleDoorsModel, setDoubleDoorsModel] = useState(null)
+    const [DoubleDoorsWithGlassModel, setDoubleDoorsWithGlassModel] = useState(null)
+    const [DoubleDoorsWithFullGlassModel, setDoubleDoorsWithFullGlassModel] = useState(null) 
+
+    /* single door properties */ 
+
+    /* single door properties */
+
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('doors/2/scene.glb', (gltf) => {
+          setSingleDoorModel(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('doors/door_with_glass/door_with_glass.glb', (gltf) => {
+          setSingleDoorWithGlass(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('doors/door_with_glass_full/door_with_glass_full.glb', (gltf) => {
+          setSingleDoorWithGlassFullModel(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('doors/1/scene.glb', (gltf) => {
+          setDoubleDoorsModel(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('doors/double_door_with_full_glass/door_with_glass_full.glb', (gltf) => {
+          setDoubleDoorsWithGlassModel(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('doors/double_door_with_glass/double_door_with_glass.glb', (gltf) => {
+          setDoubleDoorsWithFullGlassModel(gltf.scene);
+        }); 
+      }
+    }, [LoadTest]);  
     
   /* filtered doors */
 
@@ -1450,33 +1526,57 @@ const modifiedUV1 = new Float32Array([
 
    /* antresola */
 
-   const stairs1 = useLoader(GLTFLoader, 'stairs/stairs1.glb', (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.preload()
-    dracoLoader.setDecoderPath("/draco-gltf/");
-    loader.setDRACOLoader(dracoLoader);
-  })  
-   const stairs2 = useLoader(GLTFLoader, 'stairs/stairs2.glb', (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.preload()
-    dracoLoader.setDecoderPath("/draco-gltf/");
-    loader.setDRACOLoader(dracoLoader);
-  }) 
-   const antresolaStairsInside = useMemo(() => stairs1.scene.clone())
-   const antresolaStairsInsideBack = useMemo(() => stairs1.scene.clone())
+   const [AntresolaModel, setAntresolaModel] = useState(null) 
+   const [StairsOneModel, setStairsOneModel] = useState(null) 
+   const [StairsSecModel, setStairsSecModel] = useState(null)   
+
+  useEffect(() => {
+    if (LoadTest == 5) {
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("/draco-gltf/");
+      loader.setDRACOLoader(dracoLoader);
+
+      loader.load('stairs/stairs1.glb', (gltf) => {
+        setStairsOneModel(gltf.scene);
+      });
+    }
+  }, [LoadTest]);
+
+  useEffect(() => {
+    if (LoadTest == 5) {
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("/draco-gltf/");
+      loader.setDRACOLoader(dracoLoader);
+
+      loader.load('stairs/stairs2.glb', (gltf) => {
+        setStairsSecModel(gltf.scene);
+      });
+    }
+  }, [LoadTest]);
+
+   //const antresolaStairsInside = useMemo(() => StairsOneModel.clone())
+   ///const antresolaStairsInsideBack = useMemo(() => StairsOneModel.clone())
 
    let StairsAntre = useRef()
    let StairsAntreB = useRef()
 
    const [isAntresolaPrzod, setIsAntresolaPrzod] = useState(false)
-   const [isAntresolaTyl, setIsAntresolaTyl] = useState(false) 
+   const [isAntresolaTyl, setIsAntresolaTyl] = useState(false)   
 
-   const antresola = useLoader(GLTFLoader, 'antresole/antresola1.glb', (loader) => {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.preload()
-    dracoLoader.setDecoderPath("/draco-gltf/");
-    loader.setDRACOLoader(dracoLoader);
-  })  
+  useEffect(() => {
+    if (LoadTest == 5) {
+      const loader = new GLTFLoader();
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath("/draco-gltf/");
+      loader.setDRACOLoader(dracoLoader);
+
+      loader.load('antresole/antresola1.glb', (gltf) => {
+        setAntresolaModel(gltf.scene);
+      });
+    }
+  }, [LoadTest]);
 
    const [AntresolaFrontPartMoveZ, setAntresolaFrontPartMoveZ] = useState(370)
    const [AntresolaFrontPartScaleZ, setAntresolaFrontPartScaleZ] = useState(-3.603)
@@ -1948,17 +2048,21 @@ const modifiedUV1 = new Float32Array([
 
     }
 
-    antresola.scene.children[0].children[0].children[11].position.y = AntresolaFrontPartMoveZ
-    antresola.scene.children[0].children[0].children[8].scale.z = AntresolaFrontPartScale1Z
-    antresola.scene.children[0].children[0].children[9].scale.z = AntresolaFrontPartScale1Z
-    antresola.scene.children[0].children[0].children[7].scale.z = AntresolaFrontPartScaleZ
-    antresola.scene.children[0].children[0].children[6].scale.z = AntresolaFrontPartScaleZ
-    antresola.scene.children[0].children[0].children[5].scale.z = AntresolaFrontPartScaleZ 
-    antresola.scene.children[0].children[0].children[1].scale.z = AntresolaFrontPartScaleZ
-    antresola.scene.children[0].children[0].children[3].scale.z = AntresolaFrontPartScaleZ
-    antresola.scene.children[0].children[0].children[4].scale.z = AntresolaFrontPartScaleZ
-    antresola.scene.children[0].children[0].children[10].scale.z = AntresolaFrontPartScale1Z
-    antresola.scene.children[0].children[0].children[2].scale.z = AntresolaFrontPartScaleZ
+    if(AntresolaModel != null) {
+
+    AntresolaModel.children[0].children[0].children[11].position.y = AntresolaFrontPartMoveZ
+    AntresolaModel.children[0].children[0].children[8].scale.z = AntresolaFrontPartScale1Z
+    AntresolaModel.children[0].children[0].children[9].scale.z = AntresolaFrontPartScale1Z
+    AntresolaModel.children[0].children[0].children[7].scale.z = AntresolaFrontPartScaleZ
+    AntresolaModel.children[0].children[0].children[6].scale.z = AntresolaFrontPartScaleZ
+    AntresolaModel.children[0].children[0].children[5].scale.z = AntresolaFrontPartScaleZ 
+    AntresolaModel.children[0].children[0].children[1].scale.z = AntresolaFrontPartScaleZ
+    AntresolaModel.children[0].children[0].children[3].scale.z = AntresolaFrontPartScaleZ
+    AntresolaModel.children[0].children[0].children[4].scale.z = AntresolaFrontPartScaleZ
+    AntresolaModel.children[0].children[0].children[10].scale.z = AntresolaFrontPartScale1Z
+    AntresolaModel.children[0].children[0].children[2].scale.z = AntresolaFrontPartScaleZ
+
+    }
 
    // left top leg = antresola.scene.children[0].children[0].children[37].children[1]
    // left bottom leg = antresola.scene.children[0].children[0].children[11].children[2]
@@ -1988,65 +2092,67 @@ const modifiedUV1 = new Float32Array([
 
    //console.log(antresola.scene.children[0].children[0].children[37])
 
-   antresola.scene.getObjectByName('3DGeom-159').visible = false
-   antresola.scene.getObjectByName('3DGeom-160').visible = false
-   antresola.scene.getObjectByName('3DGeom-161').visible = false
+   if (AntresolaModel != null) {
+
+   AntresolaModel.getObjectByName('3DGeom-159').visible = false
+   AntresolaModel.getObjectByName('3DGeom-160').visible = false
+   AntresolaModel.getObjectByName('3DGeom-161').visible = false
    //antresola.scene.getObjectByName('3DGeom-162').visible = false
    //antresola.scene.getObjectByName('3DGeom-162_1').visible = false
    //antresola.scene.getObjectByName('3DGeom-162_2').visible = false
-   antresola.scene.getObjectByName('3DGeom-177').visible = false
-   antresola.scene.getObjectByName('3DGeom-178').visible = false
-   antresola.scene.getObjectByName('3DGeom-179').visible = false
-   antresola.scene.getObjectByName('3DGeom-180').visible = false 
-   antresola.scene.getObjectByName('3DGeom-36001').visible = false
-   antresola.scene.getObjectByName('3DGeom-36003').visible = false
-   antresola.scene.getObjectByName('3DGeom-36002').visible = false
-   antresola.scene.getObjectByName('3DGeom-36004').visible = false
-   antresola.scene.getObjectByName('3DGeom-36005').visible = false
-   antresola.scene.getObjectByName('3DGeom-36006').visible = false
-   antresola.scene.getObjectByName('3DGeom-36007').visible = false
-   antresola.scene.getObjectByName('3DGeom-36008').visible = false
-   antresola.scene.getObjectByName('3DGeom-36009').visible = false
-   antresola.scene.getObjectByName('3DGeom-36010').visible = false
-   antresola.scene.getObjectByName('3DGeom-36011').visible = false
-   antresola.scene.getObjectByName('3DGeom-36012').visible = false
-   antresola.scene.getObjectByName('3DGeom-36013').visible = false
-   antresola.scene.getObjectByName('3DGeom-36014').visible = false
-   antresola.scene.getObjectByName('3DGeom-36015').visible = false
-   antresola.scene.getObjectByName('3DGeom-36016').visible = false
-   antresola.scene.getObjectByName('3DGeom-36017').visible = false
-   antresola.scene.getObjectByName('3DGeom-36018').visible = false
-   antresola.scene.getObjectByName('3DGeom-36019').visible = false
-   antresola.scene.getObjectByName('3DGeom-36020').visible = false
-   antresola.scene.getObjectByName('3DGeom-36021').visible = false
-   antresola.scene.getObjectByName('3DGeom-36022').visible = false
-   antresola.scene.getObjectByName('3DGeom-36023').visible = false
-   antresola.scene.getObjectByName('3DGeom-36024').visible = false
-   antresola.scene.getObjectByName('3DGeom-36025').visible = false
-   antresola.scene.getObjectByName('3DGeom-36026').visible = false
-   antresola.scene.getObjectByName('3DGeom-36027').visible = false
-   antresola.scene.getObjectByName('3DGeom-36028').visible = false
-   antresola.scene.getObjectByName('3DGeom-36029').visible = false
-   antresola.scene.getObjectByName('3DGeom-36030').visible = false
-   antresola.scene.getObjectByName('3DGeom-36031').visible = false
-   antresola.scene.getObjectByName('3DGeom-36032').visible = false
-   antresola.scene.getObjectByName('3DGeom-36033').visible = false
-   antresola.scene.getObjectByName('3DGeom-36034').visible = false
-   antresola.scene.getObjectByName('3DGeom-36035').visible = false
-   antresola.scene.getObjectByName('3DGeom-36036').visible = false
-   antresola.scene.getObjectByName('3DGeom-36037').visible = false 
-   antresola.scene.getObjectByName('3DGeom-21').visible = false
-   antresola.scene.getObjectByName('3DGeom-21001').visible = false
-   antresola.scene.getObjectByName('3DGeom-21002').visible = false
-   antresola.scene.getObjectByName('3DGeom-21003').visible = false
-   antresola.scene.getObjectByName('3DGeom-21004').visible = false
-   antresola.scene.getObjectByName('3DGeom-21005').visible = false
-   antresola.scene.getObjectByName('3DGeom-21006').visible = false
-   antresola.scene.getObjectByName('3DGeom-21007').visible = false
-   antresola.scene.getObjectByName('3DGeom-21008').visible = false
-   antresola.scene.getObjectByName('3DGeom-21009').visible = false
+   AntresolaModel.getObjectByName('3DGeom-177').visible = false
+   AntresolaModel.getObjectByName('3DGeom-178').visible = false
+   AntresolaModel.getObjectByName('3DGeom-179').visible = false
+   AntresolaModel.getObjectByName('3DGeom-180').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-36001').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36003').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36002').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36004').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36005').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36006').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36007').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36008').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36009').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36010').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36011').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36012').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36013').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36014').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36015').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36016').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36017').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36018').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36019').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36020').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36021').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36022').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36023').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36024').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36025').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36026').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36027').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36028').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36029').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36030').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36031').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36032').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36033').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36034').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36035').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36036').visible = false
+   AntresolaModel.getObjectByName('3DGeom-36037').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-21').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21001').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21002').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21003').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21004').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21005').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21006').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21007').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21008').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21009').visible = false
    //antresola.scene.getObjectByName('3DGeom-21010').visible = false
-   antresola.scene.getObjectByName('3DGeom-21011').visible = false
+   AntresolaModel.getObjectByName('3DGeom-21011').visible = false
   //  antresola.scene.getObjectByName('3DGeom-21012').visible = false
   //  antresola.scene.getObjectByName('3DGeom-21013').visible = false
   //  antresola.scene.getObjectByName('3DGeom-21014').visible = false
@@ -2055,12 +2161,14 @@ const modifiedUV1 = new Float32Array([
   //  antresola.scene.getObjectByName('3DGeom-21017').visible = false
   //  antresola.scene.getObjectByName('3DGeom-21018').visible = false 
    //antresola.scene.getObjectByName('3DGeom-21018').visible = false 
-   antresola.scene.getObjectByName('3DGeom-21019').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-21019').visible = false 
    //antresola.scene.getObjectByName('3DGeom-21020').visible = false 
-   antresola.scene.getObjectByName('3DGeom-21021').visible = false 
-   antresola.scene.getObjectByName('3DGeom-31').visible = false 
-   antresola.scene.getObjectByName('3DGeom-31001').visible = false 
-   antresola.scene.getObjectByName('3DGeom-31002').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-21021').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-31').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-31001').visible = false 
+   AntresolaModel.getObjectByName('3DGeom-31002').visible = false 
+
+   }
    
    /* antresola */
 
@@ -2088,21 +2196,38 @@ const modifiedUV1 = new Float32Array([
 
           }  
     
-    } 
+    }  
+    const [SwietlikModel, setSwietlikModel] = useState()
+    const [SwietlikSecModel, setSwietlikSecModel] = useState() 
+    
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('swietliki/swietlik1.glb', (gltf) => {
+          setSwietlikModel(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+    
+    //SwietlikSecModel 
 
-    const swietlik = useLoader(GLTFLoader, 'swietliki/swietlik1.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    })  
-    const swietlik2 = useLoader(GLTFLoader, 'roof_1swietlik/roof1_swietlik.glb', (loader) => {
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.preload()
-      dracoLoader.setDecoderPath("/draco-gltf/");
-      loader.setDRACOLoader(dracoLoader);
-    })  
-    const swietlik1 = useMemo(() => swietlik.scene.clone())
+    useEffect(() => {
+      if (LoadTest == 5) {
+        const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco-gltf/");
+        loader.setDRACOLoader(dracoLoader);
+  
+        loader.load('roof_1swietlik/roof1_swietlik.glb', (gltf) => {
+          setSwietlikSecModel(gltf.scene);
+        });
+      }
+    }, [LoadTest]);
+   
 
     /* swietliki */
 
@@ -2285,7 +2410,7 @@ const modifiedUV1 = new Float32Array([
 
       if(e.getAttribute("type") == "outside") {
         setSingleStairNumber(SingleStairNumber + 1)
-        Stairs.push({ no: SingleStairNumber, index: Math.floor(Math.random() * 1000), object: stairs1.scene.clone(), door: single_door.scene.clone(), direction: direction, newposition: newposition, newrotation: newrotation, x: PolozenieStairs, z:  134.6, rotate: 0, type: "stairs1", env: 'outside'  }) 
+        Stairs.push({ no: SingleStairNumber, index: Math.floor(Math.random() * 1000), object:StairsOneModel.clone(), door: SingleDoorModel.clone(), direction: direction, newposition: newposition, newrotation: newrotation, x: PolozenieStairs, z:  134.6, rotate: 0, type: "stairs1", env: 'outside'  }) 
         setStairs([...Stairs]) 
       } else if (e.getAttribute("type") == "inside") {
         setSingleStairNumber(SingleStairNumber + 1)
@@ -2457,7 +2582,7 @@ const modifiedUV1 = new Float32Array([
     }
       if(e.getAttribute("type") == "outside") {
         setSingleStairNumber(SingleStairNumber + 1)
-        Stairs.push({ no: SingleStairNumber, x: -40, z: PolozenieStairs2, index: Math.floor(Math.random() * 1000), door: single_door.scene.clone(), object: stairs2.scene.clone(), direction: direction, newposition: newposition, newrotation: newrotation, rotate: 0, type: "stairs2", env: 'outside' }) 
+        Stairs.push({ no: SingleStairNumber, x: -40, z: PolozenieStairs2, index: Math.floor(Math.random() * 1000), door: SingleDoorModel.clone(), object: StairsSecModel.clone(), direction: direction, newposition: newposition, newrotation: newrotation, rotate: 0, type: "stairs2", env: 'outside' }) 
         setStairs([...Stairs]) 
       } else if (e.getAttribute("type") == "inside") {
         setSingleStairNumber(SingleStairNumber + 1)
@@ -2631,44 +2756,44 @@ const modifiedUV1 = new Float32Array([
   
          if (e.getAttribute("type") == "singleDoor") {
       
-    Doors.push({ object: single_door.scene.clone(), second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), ConstructionPosY: ConstructionPosY, index: Math.floor(Math.random() * 1000), type: 'door', scale: [.3, .3, .1], elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
+    Doors.push({ object: SingleDoorModel.clone(), second_object: SingleDoorWithGlassModel.clone(), third_object: SingleDoorWithGlassFullModel.clone(), ConstructionPosY: ConstructionPosY, index: Math.floor(Math.random() * 1000), type: 'door', scale: [.3, .3, .1], elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, direction: direction, newposition: newposition, newrotation: newrotation, no:  Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
     setDoors([...Doors])
      
   } else if (e.getAttribute("type") == "door_full1") {
     
-    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
+    Doors.push({ object: SingleDoorModel.clone(), ConstructionPosY: ConstructionPosY, second_object: SingleDoorWithGlassModel.clone(), third_object: SingleDoorWithGlassFullModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
    setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_glass1") {
      
-    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'lewo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'full', x_2d: 0 })  
+    Doors.push({ object: SingleDoorModel.clone(), ConstructionPosY: ConstructionPosY, second_object: SingleDoorWithGlassModel.clone(), third_object: SingleDoorWithGlassFullModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'lewo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'full', x_2d: 0 })  
     setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_half_glass1") {
     
-    Doors.push({ object: single_door.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: single_door_with_glass.scene.clone(), third_object: door_with_glass_full.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'prawo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'half', x_2d: 0 })  
+    Doors.push({ object: SingleDoorModel.clone(), ConstructionPosY: ConstructionPosY, second_object: SingleDoorWithGlassModel.clone(), third_object: SingleDoorWithGlassFullModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, orientation: 'prawo', type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "singleDoor", orient: 'front', GlassType: 'half', x_2d: 0 })  
     setDoors([...Doors])
   }  
   
   //
 
     else if (e.getAttribute("type") == "DoubleDoor") { 
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no:Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'front', x_2d: 0 })  
+    Doors.push({ object: DoubleDoorsModel.clone(), ConstructionPosY: ConstructionPosY, second_object: DoubleDoorsWithGlassModel.clone(), third_object: DoubleDoorsWithFullGlassModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no:Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj: "DoubleDoor", orient: 'front', x_2d: 0 })  
    setDoors([...Doors])
  
   } else if (e.getAttribute("type") == "door_full2") {
      
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
+    Doors.push({ object: DoubleDoorsModel.clone(), ConstructionPosY: ConstructionPosY, second_object: DoubleDoorsWithGlassModel.clone(), third_object: DoubleDoorsWithFullGlassModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'none', x_2d: 0 })  
     setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_glass2") {
  
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'full', x_2d: 0 })  
+    Doors.push({ object: DoubleDoorsModel.clone(), ConstructionPosY: ConstructionPosY, second_object: DoubleDoorsWithGlassModel.clone(), third_object: DoubleDoorsWithFullGlassModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'full', x_2d: 0 })  
     setDoors([...Doors])
 
   } else if (e.getAttribute("type") == "door_half_glass2") {
  
-    Doors.push({ object: double_doors.scene.clone(), ConstructionPosY: ConstructionPosY, second_object: double_door_with_full_glass.scene.clone(), third_object: double_door_with_glass.scene.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'half', x_2d: 0 })  
+    Doors.push({ object: DoubleDoorsModel.clone(), ConstructionPosY: ConstructionPosY, second_object: DoubleDoorsWithGlassModel.clone(), third_object: DoubleDoorsWithFullGlassModel.clone(), index: Math.floor(Math.random() * 1000), elementPositionToSub: elementPositionToSub, elementPositionToSubSides: elementPositionToSubSides, type: 'door', scale: [.3, .3, .1], direction: direction, newposition: newposition, newrotation: newrotation, no: Math.random() * 500, x:  0, z: DoorPosXX, rotate: DoorRotZ,  obj:  "DoubleDoor", orient: 'front', GlassType: 'half', x_2d: 0 })  
     setDoors([...Doors])
 
   } 
@@ -3143,13 +3268,13 @@ const modifiedUV1 = new Float32Array([
   const FilteredWindowData3RIGHT = Windows.filter((item) => item.obj == "3_window" && item.orient == 'right') 
   const FilteredWindowData4RIGHT = Windows.filter((item) => item.obj == "4_window" && item.orient == 'right') 
 
-  /* */
+/* */
 
-  const handleDeleteWindow = (idx) => {
+const handleDeleteWindow = (idx) => {
     // Usuń obiekt o danym indeksie z tablicy
     const filtered = Windows.filter((window) => window.index !== idx);
     setWindows(filtered);
-  }; 
+}; 
 
 function AddWindow(e) { 
   const cameraDirection = new THREE.Vector3(0, 0, -1);
@@ -3171,6 +3296,14 @@ function AddWindow(e) {
       }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
         newposition = {x: 0, y: 15, z: FrontWall - 35};
       }
+
+
+ 
+
+
+      
+
+
     }else if(cameraDirection.z < -0.9){
       direction = 'front';
       newrotation = {x: 0, y: 0, z: 0};
@@ -3187,6 +3320,8 @@ function AddWindow(e) {
       }else if(_.inRange(RangeSetterLengthtHail, 66, 76)){
         newposition = {x: 0, y: 15, z: FrontWall + 35};
       }
+     
+
     }else if(cameraDirection.x > 0.9){
       direction = 'left';
       newrotation = {x: 0, y: Math.PI / 2, z: 0};
@@ -3712,7 +3847,7 @@ setWindows([...Windows])
 /* window 4 */
 
 } 
-
+ 
 const gate1 = useLoader(GLTFLoader, "gates/full_gate.glb", (loader) => {
   const dracoLoader = new DRACOLoader();
   dracoLoader.preload()
@@ -3744,10 +3879,23 @@ const ModelsAll = React.memo(() => {
  
           /* stairs */ 
 
-          swietlik.scene.children[0].children[1].children[0].children[0].visible = false
+          if(SwietlikModel != null) {
 
-          swietlik1.children[0].children[1].children[0].children[1].position.z = -14.5
-          swietlik1.children[0].children[1].children[0].children[1].scale.z = 2.6
+            SwietlikModel.children[0].children[1].children[0].children[0].visible = false
+
+          }
+
+          if(SwietlikModel != null) {
+
+            
+            
+            SwietlikModel.children[0].children[1].children[0].children[1].position.z = -14.5
+            SwietlikModel.children[0].children[1].children[0].children[1].scale.z = 2.6
+
+  
+            }
+
+   
 
           
 
@@ -3756,7 +3904,8 @@ const ModelsAll = React.memo(() => {
   
   return <group position={[0, 7.45, 0]}>
     <group visible={Roof2 == true ? isSwietlik : false} position={[0, 0, 0]} rotation={[0, Math.PI/2, 0]}>
-      <primitive object={swietlik.scene} scale={[10 + swietlikScale, 5, 10 + swietlikWidth]} rotation={[.05, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof1PosY + 73   - FundamentParamY, -13 + swietlikWidth + (swietlikWidth >= 6 ? 5 : 0)]}>
+
+        {SwietlikModel != null ? <primitive object={SwietlikModel} scale={[10 + swietlikScale, 5, 10 + swietlikWidth]} rotation={[.05, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof1PosY + 73   - FundamentParamY, -13 + swietlikWidth + (swietlikWidth >= 6 ? 5 : 0)]}>
         <mesh position={[9, 0, -1.9]} rotation={[Math.PI / 2, 0, 0]}>
           <planeBufferGeometry attach="geometry" args={[18.1, 3.5, 1]} />
           <meshStandardMaterial color={'#8fa9c8'} side={THREE.DoubleSide} transparent={true} opacity={0.5}/>
@@ -3769,13 +3918,15 @@ const ModelsAll = React.memo(() => {
           <shapeGeometry/>
           <meshStandardMaterial color="rgba(0, 0, 0, 0.2)"/>
         </mesh>  : '')} */}
-      </primitive>
+      </primitive> : null}
+
+      
     </group>
   {/* świetlik  połaciowy */}
     {SwietlikiJednospadowy.map(item => <>
       
       <group visible={Roof1 == true || Roof3 == true ? true : false} position={[55, (Roof3 == true ? -28.2 : -12.2), item.x + -50.5]} rotation={[0, Math.PI/2, 0]}>
-      <primitive object={swietlik2.scene.clone()} scale={[140, 80, 140]} rotation={[-4.35 + -PurlinRot + PurlinRotParam + PurlinRootAnother, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY - .5 + Purlin1_5PosY - 3.75 - FundamentParamY/2.1, -16.5]}>
+      {SwietlikSecModel != null ? <primitive object={SwietlikSecModel.clone()} scale={[140, 80, 140]} rotation={[-4.35 + -PurlinRot + PurlinRotParam + PurlinRootAnother, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY - .5 + Purlin1_5PosY - 3.75 - FundamentParamY/2.1, -16.5]}>
       <mesh position={[0.29, 0.43, -0.4]} rotation={[-Math.PI / 4, 0, 0]}>
           <planeBufferGeometry attach="geometry" args={[0.605, 1.2, 1]} />
           <meshStandardMaterial side={THREE.DoubleSide} color={'#8fa9c8'} transparent={true} opacity={0.5}/>
@@ -3796,12 +3947,12 @@ const ModelsAll = React.memo(() => {
         <shapeGeometry/>
         <meshStandardMaterial color="rgba(0, 0, 0, 0.2)"/>
       </mesh>  */}
-      </primitive>
+      </primitive> : null}
       </group>
 
     </>)}
     <group visible={false} position={[55, (Roof3 == true ? -28.2 : -12.2), -50.5]} rotation={[0, Math.PI/2, 0]}>
-    <primitive object={swietlik2.scene.clone()} scale={[140, 80, 140]} rotation={[-4.35 + -PurlinRot + PurlinRotParam + PurlinRootAnother, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY - .5 + Purlin1_5PosY - 4.5, -16.5]}>
+    {SwietlikSecModel != null ? <primitive object={SwietlikSecModel.clone()} scale={[140, 80, 140]} rotation={[-4.35 + -PurlinRot + PurlinRotParam + PurlinRootAnother, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY - .5 + Purlin1_5PosY - 4.5, -16.5]}>
     <mesh position={[2, 0.85, -5.2]} rotation={[0, Math.PI / 2, 0]}>
         <planeBufferGeometry attach="geometry" args={[2.4, 2.1, 1]} />
         <meshStandardMaterial side={THREE.DoubleSide} transparent={true} opacity={0.5}/>
@@ -3822,23 +3973,34 @@ const ModelsAll = React.memo(() => {
       <shapeGeometry/>
       <meshStandardMaterial color="rgba(0, 0, 0, 0.2)"/>
     </mesh>  */}
-    </primitive>
+    </primitive> : null}
     </group>
     <group visible={Roof2 == true ? isSwietlik : false} position={[0, roof2ZdobienieAngle + 6.5 - FundamentParamY -110.5, 0]} rotation={[0, Math.PI/2, 0]}>
-      <primitive object={swietlik1} scale={[10 + swietlikScale, 8, 10 + swietlikWidth]} rotation={[0, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY + 123.5, -16.5 + swietlikWidth + (swietlikWidth >= 6 ? 5 : 0)]}>
+      
+
+      {SwietlikModel != null ? <primitive object={SwietlikModel} scale={[10 + swietlikScale, 8, 10 + swietlikWidth]} rotation={[0, 0, 0]} position={[-69.5 - swietlikScale * 10, Roof2PosY + 123.5, -16.5 + swietlikWidth + (swietlikWidth >= 6 ? 5 : 0)]}>
         
-      </primitive>
+        </primitive> : null}
+
+      
     </group>
       {/* && ActualHailWidth == 24 */}
-    <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaTyl == false ? isAntresolaPrzod : false} position={[0, 0, 0]} rotation={[0, 0, 0]}>
-      <primitive object={antresola.scene} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 25, 4.9, ModelPosBack + 528]}></primitive>
-      <primitive object={antresolaStairsInside.clone()} ref={StairsAntre} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionBack, 9.25, StairsFrontAntreMoveZ]} rotation={[0, Math.PI/2, 0]}/>
+
+    {AntresolaModel != null && StairsOneModel != null ? <group>
+
+      <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaTyl == false ? isAntresolaPrzod : false} position={[0, 0, 0]} rotation={[0, 0, 0]}>
+      <primitive object={AntresolaModel} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 25, 4.9, ModelPosBack + 528]}></primitive>
+      <primitive object={StairsOneModel.clone()} ref={StairsAntre} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionBack, 9.25, StairsFrontAntreMoveZ]} rotation={[0, Math.PI/2, 0]}/>
     </group>
       {/* && ActualHailWidth == 24 */}
     <group visible={RangeSetterLengthtHail >= 20 && ActualHeight > 4 && isAntresolaPrzod == false ? isAntresolaTyl : false} position={[0, 0, 0]} rotation={[0, Math.PI, 0]}>
-      <primitive object={antresola.scene.clone()} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 90, 4.9, -ModelPosFront1 + 529 ]}></primitive>
-      <primitive object={antresolaStairsInsideBack.clone()} ref={StairsAntreB} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam]} rotation={[0,Math.PI/2,0]}/>
+      <primitive object={AntresolaModel.clone()} scale={[ActualHailWidth + sub, 28, 38.5]} position={[ModelPosLeft1 + 90, 4.9, -ModelPosFront1 + 529 ]}></primitive>
+      <primitive object={StairsOneModel.clone()} ref={StairsAntreB} scale={[26.5, 26.5, stairsWidth]} position={[ModelPosLeft1 + stairsPositionFront, 8.5, -StairsFrontAntreMoveZ + 160 + AntresolaBackFixParam]} rotation={[0,Math.PI/2,0]}/>
     </group> 
+
+      </group>: null}
+
+    
   </group>
 })
  
@@ -3980,34 +4142,364 @@ purlin1_3.getObjectByName('mesh_0').material.color.r = 0.6176
 
    /* addons */
 
+ 
+
+
+ 
+
+   const controlsRef = useRef();
+   const informationTrans = useRef();
+ 
+   const [NewArrCam, setNewArrCam] = useState('[]')
+
+ 
+
+
+
+
+  /* const BetterCam = () => {
+
+    
+    const [BoolArr, setBoolArr] = useState([true, true, false, false, true])
+
+    
+   
+      const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+       
+        camera,
+        const { camera, gl, invalidate } = useThree();
+         
+          const maxDistance = 1200;
+          const minDistance = -1100;
+          const maxZoom = 2;
+          const minZoom = 0.5;
+        
+        useEffect(() => {
+            const controls = controlsRef.current;
+            const onCameraChange = async() => {
+              /// Tutaj można zaktualizować stan lub propsy z nową pozycją kamery
+              const euler = new Euler().setFromQuaternion(camera.quaternion, 'YXZ'); // 'YXZ' jest często używaną kolejnością do kontroli kamery FP
+              // Konwertuj radiany na stopnie dla łatwiejszej interpretacji
+              const angles = {
+                x: MathUtils.radToDeg(euler.x),
+                y: MathUtils.radToDeg(euler.y),
+                z: MathUtils.radToDeg(euler.z),
+              };
+  
+             
+      
+              if(angles.x < -35){
+                //setUpSideBool(true);
+                //setBackSideBool(false);
+                //setFrontSideBool(false);
+                //setLeftSideBool(false);
+                //setRightSideBool(false);
+                setBoolArr([true, false, false, false, false])
+  
+                //upSideMat.current.transparent = true
+  
+  
+                upSideMat.current.transparent = true
+                backSideMat.current.transparent = true
+                frontSideMat.current.transparent = true
+                leftSideMat.current.transparent = true
+                rigthSideMat.current.transparent = true
+                
+                 
+              }
+      
+              // Analizuj kąty, aby zrozumieć orientację
+              if (angles.y > -45 && angles.y < 45) {
+                //setUpSideBool(false)
+                //setBackSideBool(false);
+                //setFrontSideBool(true);
+                //setLeftSideBool(false);
+                ///setRightSideBool(false);
+  
+                /*upSideMat.current.transparent = false
+                backSideMat.current.transparent = false
+                frontSideMat.current.transparent = true
+                leftSideMat.current.transparent = false
+                rigthSideMat.current.transparent = false 
+  
+                setBoolArr([false, false, true, false, false])
+  
+                 
+                 
+  
+              } else if (angles.y > 45 && angles.y < 135) {
+                //setUpSideBool(false)
+                //setBackSideBool(false);
+                //setLeftSideBool(false);
+                //setFrontSideBool(false);
+                //setRightSideBool(true);
+  
+                /*upSideMat.current.transparent = false
+                backSideMat.current.transparent = false
+                frontSideMat.current.transparent = false
+                leftSideMat.current.transparent = false
+                rigthSideMat.current.transparent = true 
+  
+                setBoolArr([false, false, false, false, true])
+                
+                
+  
+              } else if ((angles.y > 135 && angles.y <= 180) || (angles.y < -135 && angles.y >= -180)) {
+               //setUpSideBool(false)
+                //setLeftSideBool(false);
+                //setBackSideBool(true);
+                //setFrontSideBool(false);
+                //setRightSideBool(false);
+  
+  
+                /*upSideMat.current.transparent = false
+                backSideMat.current.transparent = true
+                frontSideMat.current.transparent = false
+                leftSideMat.current.transparent = false
+                rigthSideMat.current.transparent = false 
+  
+                setBoolArr([false, false, true, false, false])
+  
+                
+                 
+              } else if (angles.y > -135 && angles.y < -45) {
+                //setUpSideBool(false)
+                //setLeftSideBool(true);
+                //setRightSideBool(false);
+                //setFrontSideBool(false);
+                //setBackSideBool(false);
+  
+                /*upSideMat.current.transparent = false
+                backSideMat.current.transparent = true
+                frontSideMat.current.transparent = false
+                leftSideMat.current.transparent = true
+                rigthSideMat.current.transparent = false 
+  
+  
+                setBoolArr([false, true, false, false, false])
+  
+                 
+                
+  
+              }
+      
+              if(hailDimensions.containsPoint(camera.position)){
+                ///setLeftSideBool(true);
+                //setRightSideBool(true);
+                //setFrontSideBool(true);
+                //setBackSideBool(true);
+  
+  
+               
+  
+                setBoolArr([true, true, true, true, true])
+  
+                 
+                 
+              }
+      
+              invalidate();
+           };
+      
+            controls.addEventListener('change', onCameraChange);
+      
+            return () => {
+              controls.removeEventListener('change', onCameraChange);
+            };
+        });
+        
+        useFrame(() => {
+          controlsRef.current.update();
+
+            //upSideMat.current.update()
+            //backSideMat.current.update()
+            //frontSideMat.current.update()
+            //leftSideMat.current.update()
+            //rigthSideMat.current.update()
+
+            
+
+          let cameraPositionY = Math.max(Math.min(camera.position.y, 800), 1)
+          const cameraPositionX = Math.max( Math.min(camera.position.x, maxDistance), minDistance );
+          const cameraPositionZ = Math.max(Math.min(camera.position.z, maxDistance), minDistance );
+          const cameraZoom = Math.max(Math.min(camera.zoom, maxZoom), minZoom );
+          camera.position.set(cameraPositionX, cameraPositionY, cameraPositionZ);
+
+          
+
+         
+
+          controlsRef.current.addEventListener('change', () => {
+
+            //upSideMat.current.transparent = BoolArr[0]
+            ///backSideMat.current.transparent = BoolArr[1]
+            //frontSideMat.current.transparent = BoolArr[2]
+            //leftSideMat.current.transparent = BoolArr[3]
+            //rigthSideMat.current.transparent = BoolArr[4]
+
+            if(controlsRef.current !== null)
+              if(controlsRef.current.object.position.y < 4.3){
+                controlsRef.current.object.position.y = 4.3;
+              }
+          })
+        });
+    
+      
+
+
+            if (
+              upSideMat.current != undefined &&
+              backSideMat.current != undefined &&
+              frontSideMat.current != undefined &&
+              leftSideMat.current != undefined &&
+              rigthSideMat.current != undefined
+              ) {
+              //upSideMat.current.transparent = BoolArr[0]
+              //backSideMat.current.transparent = BoolArr[1]
+              //frontSideMat.current.transparent = BoolArr[2]
+              //leftSideMat.current.transparent = BoolArr[3]
+              //rigthSideMat.current.transparent = BoolArr[4]
+            } else {
+              
+            }
+
+        console.log(upSideMat.current ? upSideMat.current.transparent : '')
+        console.log(backSideMat.current ? upSideMat.current.transparent : '')
+        console.log(frontSideMat.current ? upSideMat.current.transparent : '')
+        console.log(leftSideMat.current ? upSideMat.current.transparent : '')
+        console.log(rigthSideMat.current ? upSideMat.current.transparent : '')
+
+        return ( <> 
+          <OrbitControls
+           arr={BoolArr}
+     
+            ref={controlsRef}
+            args={[camera, gl.domElement]}
+            maxDistance={maxDistance}  
+            minDistance={minDistance}
+            minPolarAngle={Math.PI / 24}  
+            maxPolarAngle={Math.PI / 2} 
+            zoomSpeed={3}
+            enableRotate={cameraMovement}
+          />
+
+           
+          
+        
+          </>
+        ) 
+             
+    }   */
+ 
+    //console.log(controlsRef.current == undefined ? '' : controlsRef.current.arr)
+
+    const TransparentChanger = () => {
+
+      
+
+
+      if(controlsRef.current != undefined) {
+        
+        //setNewArrCam()
+
+        console.log(informationTrans.current)
+
+      } else {
+
+      }
+
+      /*if(controlsRef.current != undefined) {
+        setUpSideBool(controlsRef.current.bll[0])
+        setLeftSideBool(controlsRef.current.bll[1]);
+        setRightSideBool(controlsRef.current.bll[2]);
+        setFrontSideBool(controlsRef.current.bll[3]);
+        setBackSideBool(controlsRef.current.bll[4]);
+      } else {
+
+      }*/
+
+    
+
+       
+        
+
+    }
+
+    TransparentChanger()
+
+
+    /*
+    
+     if (
+            upSideMat.current != undefined &&
+            backSideMat.current != undefined &&
+            frontSideMat.current != undefined &&
+            leftSideMat.current != undefined &&
+            rigthSideMat.current != undefined
+            ) {
+            upSideMat.current.transparent = true
+            backSideMat.current.transparent = true
+            frontSideMat.current.transparent = true
+            leftSideMat.current.transparent = true
+            rigthSideMat.current.transparent = true
+          } else {
+            
+          } 
+
+    */
+
+
+    /*if (
+      upSideMat.current != undefined &&
+      backSideMat.current != undefined &&
+      frontSideMat.current != undefined &&
+      leftSideMat.current != undefined &&
+      rigthSideMat.current != undefined
+      ) {
+      upSideMat.current.transparent = true
+      backSideMat.current.transparent = true
+      frontSideMat.current.transparent = true
+      leftSideMat.current.transparent = true
+      rigthSideMat.current.transparent = true
+    } else {
+      
+    } */
+
+
 const BetterCam = () => {
 
+  // camera,
+  const { camera, gl, invalidate } = useThree();
+
+ 
 //    const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-    const controlsRef = useRef();
-    // camera,
-    const { camera, gl, invalidate } = useThree();
+    const controlsRef = useRef(); 
      
       const maxDistance = 1200;
       const minDistance = -1100;
       const maxZoom = 2;
       const minZoom = 0.5;
-    
-    
+ 
+
     useFrame(() => {
       controlsRef.current.update();
+
       let cameraPositionY = Math.max(Math.min(camera.position.y, 800), 1)
       const cameraPositionX = Math.max( Math.min(camera.position.x, maxDistance), minDistance );
       const cameraPositionZ = Math.max(Math.min(camera.position.z, maxDistance), minDistance );
       const cameraZoom = Math.max(Math.min(camera.zoom, maxZoom), minZoom );
       camera.position.set(cameraPositionX, cameraPositionY, cameraPositionZ);
       controlsRef.current.addEventListener('change', () => {
+
+        
+
         if(controlsRef.current !== null)
           if(controlsRef.current.object.position.y < 4.3){
             controlsRef.current.object.position.y = 4.3;
           }
-      })
+      }) 
     });
- 
+
     useEffect(() => {
       const controls = controlsRef.current;
       const onCameraChange = async() => {
@@ -4072,8 +4564,10 @@ const BetterCam = () => {
       };
     }, [controlsRef.current]);
 
+
     return (
       <OrbitControls
+         
         ref={controlsRef}
         args={[camera, gl.domElement]}
         maxDistance={maxDistance}  
@@ -4086,9 +4580,15 @@ const BetterCam = () => {
     )
     
     
-}  
+} 
+
+
+
 
    /* addons */
+
+   
+ 
 
 const [MenuVisible, setMenuVisible] = useState('none')
 const [MenuVisible_check, setMenuVisible_check] = useState(1)
@@ -63777,58 +64277,89 @@ window_1.scene.rotation.y = -Math.PI/ 1;
 
    /* doors */ 
   
-   const texture = useLoader(THREE.TextureLoader, "doors/2/textures/all_white.jpg");
+   const texture = useLoader(THREE.TextureLoader, "doors/2/textures/all_white.jpg"); 
+
+   if(SingleDoorModel != null) {
+
+    SingleDoorModel.children[0].children[0].children[0].children[0].children[0].material.map = texture;
+    SingleDoorModel.children[0].children[0].children[0].children[0].children[1].material.map = texture;
+    //SingleDoorWithGlassModel.children[0].children[0].children[0].children[0].children[0].material.map = texture;
+    //SingleDoorWithGlassModel.children[0].children[0].children[0].children[0].children[0].material.map = texture;
+    //SingleDoorWithGlassFullModel.children[0].children[0].children[0].children[0].children[1].material.map = texture;
+    //SingleDoorWithGlassFullModel.children[0].children[0].children[0].children[0].children[1].material.map = texture;
+
+   } 
+
+   if(DoubleDoorsModel != null) {
+
+    DoubleDoorsModel.scale.x = 30
+    DoubleDoorsModel.scale.y = 30
+    DoubleDoorsModel.scale.z = 30
   
-   single_door.scene.children[0].children[0].children[0].children[0].children[0].material.map = texture;
-   single_door.scene.children[0].children[0].children[0].children[0].children[1].material.map = texture;
-   double_doors.scene.scale.x = 30
-   double_doors.scene.scale.y = 30
-   double_doors.scene.scale.z = 30
+    DoubleDoorsModel.position.z = ModelPosFront1
+    DoubleDoorsModel.position.x = -60 + DoorPosZ 
+
+   } 
+
+   if(DoubleDoorsWithGlassModel != null) {
+
+   DoubleDoorsWithGlassModel.scale.x = 30
+   DoubleDoorsWithGlassModel.scale.y = 30
+   DoubleDoorsWithGlassModel.scale.z = 30
  
-   double_doors.scene.position.z = ModelPosFront1
-   double_doors.scene.position.x = -60 + DoorPosZ 
+   DoubleDoorsWithGlassModel.position.z = ModelPosFront1
+   DoubleDoorsWithGlassModel.position.x = -60 + DoorPosZ 
+
+   } 
+
+   if(DoubleDoorsWithFullGlassModel != null) {
  
-   double_door_with_full_glass.scene.scale.x = 30
-   double_door_with_full_glass.scene.scale.y = 30
-   double_door_with_full_glass.scene.scale.z = 30
+   DoubleDoorsWithFullGlassModel.scale.x = 30
+   DoubleDoorsWithFullGlassModel.scale.y = 30
+   DoubleDoorsWithFullGlassModel.scale.z = 30
  
-   double_door_with_full_glass.scene.position.z = ModelPosFront1
-   double_door_with_full_glass.scene.position.x = -60 + DoorPosZ 
+   DoubleDoorsWithFullGlassModel.position.z = ModelPosFront1
+   DoubleDoorsWithFullGlassModel.position.x = -60 + DoorPosZ 
  
-   double_door_with_glass.scene.scale.x = 30
-   double_door_with_glass.scene.scale.y = 30
-   double_door_with_glass.scene.scale.z = 30
+   } 
+
+   if(SingleDoorModel != null && SingleDoorWithGlassModel != null && SingleDoorWithGlassFullModel != null) {
+
+    //SingleDoorModel.children[0].children[0].children[0].children[0].children[0].material.map = texture;
+    //SingleDoorModel.children[0].children[0].children[0].children[0].children[1].material.map = texture;
+
+    SingleDoorModel.scale.x = .3
+    SingleDoorModel.scale.y = .3
+    SingleDoorModel.scale.z = .2
  
-   double_door_with_glass.scene.position.z = ModelPosFront1
-   double_door_with_glass.scene.position.x = -60 + DoorPosZ 
+    SingleDoorModel.position.z = ModelPosFront1 + .5
+    SingleDoorModel.position.x = -35 + DoorPosZ 
+
+    SingleDoorWithGlassModel.scale.x = .3
+    SingleDoorWithGlassModel.scale.y = .3
+    SingleDoorWithGlassModel.scale.z = .2
+
+    SingleDoorWithGlassModel.position.z = ModelPosFront1 + .5
+    SingleDoorWithGlassModel.position.x = -35 + DoorPosZ 
+
+    SingleDoorWithGlassFullModel.scale.x = .3
+    SingleDoorWithGlassFullModel.scale.y = .3
+    SingleDoorWithGlassFullModel.scale.z = .2
+
+    SingleDoorWithGlassFullModel.position.z = ModelPosFront1 + .5
+    SingleDoorWithGlassFullModel.position.x = -35 + DoorPosZ 
  
-   single_door.scene.scale.x = .3
-   single_door.scene.scale.y = .3
-   single_door.scene.scale.z = .2
+     
+
+
+
  
-   single_door.scene.position.z = ModelPosFront1 + .5
-   single_door.scene.position.x = -35 + DoorPosZ 
- 
-   single_door_with_glass.scene.scale.x = .3
-   single_door_with_glass.scene.scale.y = .3
-   single_door_with_glass.scene.scale.z = .2
- 
-   single_door_with_glass.scene.position.z = ModelPosFront1 + .5
-   single_door_with_glass.scene.position.x = -35 + DoorPosZ
+
+
   
-   door_with_glass_full.scene.scale.x = .3
-   door_with_glass_full.scene.scale.y = .3
-   door_with_glass_full.scene.scale.z = .2
- 
-   door_with_glass_full.scene.position.z = ModelPosFront1 + .5
-   door_with_glass_full.scene.position.x = -35 + DoorPosZ
- 
-    
-   single_door.scene.rotation.y = -Math.PI/ 1060
-  
-   single_door_with_glass.scene.rotation.y = -Math.PI/ 1060
- 
-   single_door_with_glass.scene.rotation.y = -Math.PI/ 1060  
+
+   }
+   
  
    /* */
  
@@ -64696,7 +65227,8 @@ console.log(fulloption)
  <div className="label_down">
    <span>{translation[SettedLanguage].menu_3_7_2}</span></div>
    <ul class="dropdown">
-            <li onClick={() => {setIsAntresolaPrzod(false); setIsAntresolaTyl(true)  
+            <li onClick={() => {setIsAntresolaPrzod(false); setIsAntresolaTyl(true);
+            toast.info('Dodano antresolę wewnątrz - hali sprawdź środek hali')
 
             // setFrames([
             //   {no: 0, pos: -345.5, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0},
@@ -64719,7 +65251,7 @@ console.log(fulloption)
 
             }}><a>{translation[SettedLanguage].menu_3_7_4}</a></li>
             <li onClick={() => {setIsAntresolaPrzod(true); setIsAntresolaTyl(false) 
-            
+            toast.info('Dodano antresolę wewnątrz - hali sprawdź środek hali')
             // setFrames([
             //   {no: 0, pos: -345.5, OffsetXX :0, OffSetXX1: 0, frameRoofLast: 0},
             //   {no: 1, pos: -180.5, x1lamele: 10,  frameRoofLast: 0}, 
@@ -65171,8 +65703,7 @@ setTwoDView5('none')
  
 THREE.ColorManagement.enabled = true
 
-/* optimalization things */
-
+/* optimalization things */ 
 
 const cursorRef = useRef()
 
@@ -65187,8 +65718,7 @@ useEffect(() => {
   
   })
 
-}, [])
-
+}, []) 
 
   return (
     
@@ -65492,14 +66022,15 @@ useEffect(() => {
         <div className='NewCursor' ref={cursorRef}>
           <img className="imgItselfCur" src={CursorImg}></img>
         </div>
+        {/*<button onClick={LoaderTester}>test</button>*/}
         <div id="docoption" style={{ height: '80vh', width: '500px', position: 'fixed', background: 'white', zIndex: -32, overflow: 'scroll', display: 'none' }}></div>
- 
-          <Suspense fallback={<SuspenseLoading/>}>
+          
+          {LoadTest == 5 ? <Suspense fallback={<SuspenseLoading/>}>
           <Canvas performance={{ min: 0.5 }} sRGB shadowMap={{ type: THREE.PCFSoftShadowMap }} gl={{ preserveDrawingBuffer: true, pixelRatio: [1, 2] }} onCreated={({ gl, camera, scene }) => { gl.domElement.style.touchAction = 'none';setCamera(camera); setScene(scene)}}
           shadows shadowMapAutoUpdate frameloop="demand" camera={{ fov: 75, position: CameraAngles, far: 10000, near: .5,   }}> 
           <Environment files="new_skybox/flower_road_4k.hdr" background />
           <Shadow opacity={1}/>
-          <BetterCam/>
+          <BetterCam  />
           {/*<OrbitControls/>*/}
           {/*<DownloadThing/>*/}
           <ambientLight intensity={.15}/> 
@@ -65700,6 +66231,9 @@ useEffect(() => {
                   ModelPos = ModelPosRight1;
                 }
                 return (<DraggableDoubleDoor 
+                  DoubleDoorsWithGlassModel={DoubleDoorsWithGlassModel}
+                  DoubleDoorsWithFullGlassModel={DoubleDoorsWithFullGlassModel}
+                  
                   Doors={Doors}
                   setDoors={setDoors}
                   filteredData={filteredData}
@@ -65997,10 +66531,17 @@ useEffect(() => {
                 widthWalls2={widthWalls2}
                 FrontWall1={FrontWall1}
                 FrontWall1param={FrontWall1param}
+                upSideMat={upSideMat}
+                frontSideMat={frontSideMat}
+                backSideMat={backSideMat}
+                leftSideMat={leftSideMat}
+                rigthSideMat={rigthSideMat}
               />
               {/* {HideGrass == true ? <Grass/> : null}   */}
           </Canvas>
-          </Suspense>
+          </Suspense> : <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: '100vh', width: '100vw', background: 'white'}}>
+       <img src={Loader}></img>
+    </div> }
       </div>
       <div className="sidebar">
       <div className='container-full'>

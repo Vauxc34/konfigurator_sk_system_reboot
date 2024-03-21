@@ -10,6 +10,11 @@ const Hail = React.memo(({
     camera,
     upSideBool,
     frontSideBool,
+    upSideMat,
+    frontSideMat,
+    backSideMat,
+    leftSideMat,
+    rigthSideMat,
     backSideBool,
     leftSideBool,
     rightSideBool,
@@ -1656,7 +1661,7 @@ itemSize={1}
 attach={'uv'}
 />
 </bufferGeometry>
-<meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor} map={texture} metalness={2.35} alphaTest={0.5} transparent={rightSideBool} />
+<meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor} map={texture} metalness={2.35} alphaTest={0.5} ref={rigthSideMat} transparent={rightSideBool} />
 
 {FilteredHolesRight.map((item) => (       
     <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
@@ -1947,7 +1952,7 @@ itemSize={1}
 attach={'uv'}
 />
 </bufferGeometry>
-<meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor}  map={texture} metalness={2.35}   alphaTest={0.5}   transparent={rightSideBool} />
+<meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor}  map={texture} metalness={2.35}   alphaTest={0.5} ref={rigthSideMat}   transparent={rightSideBool} />
 
 {FilteredHolesRight.map((item) => (       
 <mesh renderOrder={0} position={[HolesPosRight, 0, item.x + 1.365]}>
@@ -2124,7 +2129,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor} metalness={2.35}   map={texture}  alphaTest={0.5} transparent={leftSideBool}  />
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor} metalness={2.35}   map={texture}  alphaTest={0.5} ref={leftSideMat} transparent={leftSideBool} />
                  
             <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
             <boxBufferGeometry args={[.235, 3, 2.7]}  />
@@ -2438,7 +2443,7 @@ needsUpdate={true}
     attach={'uv'}
 />
 </bufferGeometry>
-<meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor} metalness={2.35}   map={texture}  alphaTest={0.5} transparent={leftSideBool}  />
+<meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} color={InsideColor} metalness={2.35}   map={texture}  alphaTest={0.5} ref={leftSideMat} transparent={leftSideBool} />
  
 <mesh visible={false} renderOrder={0} rotation={[0, -Math.PI/1, 0]} position={[-7.2, 0, 0]}>
 <boxBufferGeometry args={[.235, 3, 2.7]}  />
@@ -2605,7 +2610,7 @@ needsUpdate={true}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0}  map={textureWall} metalness={2.35}  color={InsideColor} alphaTest={0.5} transparent={frontSideBool} />
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0}  map={textureWall} metalness={2.35}  color={InsideColor} alphaTest={0.5} ref={frontSideMat} transparent={frontSideBool}  />
             </mesh>  
 
             <mesh renderOrder={1}  receiveShadow castShadow  visible={WallWithoutModifiedUV}  scale={30} position={[27, 32.9, -128]}  rotation={[-Math.PI / 2, 1.57, 7.8525]}>
@@ -2877,7 +2882,7 @@ needsUpdate={true}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0}  map={textureWall} metalness={2.35} color={InsideColor} alphaTest={0.5} transparent={frontSideBool} />
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0}  map={textureWall} metalness={2.35} color={InsideColor} alphaTest={0.5} ref={frontSideMat} transparent={frontSideBool} />
            
             </mesh> 
 
@@ -3038,7 +3043,7 @@ needsUpdate={true}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} map={textureWall} metalness={2.35} color={InsideColor} alphaTest={0.5} transparent={backSideBool}/>
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0} map={textureWall} metalness={2.35} color={InsideColor} alphaTest={0.5} ref={backSideMat} transparent={backSideBool} />
             </mesh>
 
             <mesh renderOrder={1}  receiveShadow castShadow  visible={WallWithoutModifiedUV}  scale={30} position={[27, 33.185, -128]}  rotation={[-Math.PI / 2, 1.57, 7.8525]}>
@@ -3312,7 +3317,7 @@ needsUpdate={true}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0}  map={textureWall} metalness={2.35}  color={InsideColor} alphaTest={0.5} transparent={backSideBool}/>
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} envMap={null} envMapIntensity={0}  map={textureWall} metalness={2.35}  color={InsideColor} alphaTest={0.5} ref={backSideMat}  transparent={backSideBool}/>
             </mesh> 
 
             </group>
@@ -15675,7 +15680,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial metalness={.1} reflectivity={.8} color={RoofColor} map={roofTexture_} alphaTest={0.4} transparent={upSideBool} />
+                <meshStandardMaterial metalness={.1} reflectivity={.8} color={RoofColor} map={roofTexture_} alphaTest={0.4} ref={upSideMat} transparent={upSideBool} />
             </mesh>  
             <mesh renderOrder={1} receivedShadow castShadow scale={30} position={[30.2, Roof1PosY - 1, -70.8]}  rotation={[-Math.PI / 1, 3.1415, 7.8525]}>
                 <bufferGeometry>
@@ -15712,7 +15717,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial metalness={.1} reflectivity={.8} map={roofTexture_} alphaTest={0.4} transparent={upSideBool} />
+                <meshStandardMaterial metalness={.1} reflectivity={.8} map={roofTexture_} alphaTest={0.4}  ref={upSideMat} transparent={upSideBool} />
             </mesh>  
 
             </group> 
@@ -15753,7 +15758,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial metalness={0.1} reflectivity={.8} shadowSide={THREE.DoubleSide} color={RoofColor} map={roofTexture_} alphaTest={0.4} transparent={upSideBool}/>
+                <meshStandardMaterial metalness={0.1} reflectivity={.8} shadowSide={THREE.DoubleSide} color={RoofColor} map={roofTexture_} alphaTest={0.4}  ref={upSideMat} transparent={upSideBool}/>
             </mesh>
             <mesh renderOrder={1} scale={[30, 30, 29.4]} castShadow receiveShadow position={[30.2, 55 - 1, -70.8]}  rotation={[-Math.PI / 1, 3.1415, 7.8525]}>
                 <bufferGeometry>
@@ -15790,7 +15795,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial metalness={0.1} reflectivity={.8} shadowSide={THREE.DoubleSide} map={roofTexture_} alphaTest={0.4} transparent={upSideBool}  />
+                <meshStandardMaterial metalness={0.1} reflectivity={.8} shadowSide={THREE.DoubleSide} map={roofTexture_} alphaTest={0.4}  ref={upSideMat} transparent={upSideBool}  />
             </mesh>
     
             <mesh renderOrder={1} scale={[29.9, 30, 29.94]} castShadow receiveShadow position={[30, 55, -70.8]}  rotation={[-Math.PI / 1, 3.1415, 7.8525]}>
@@ -15828,7 +15833,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} metalness={.1} reflectivity={.8} color={RoofColor} map={roofTexture_} alphaTest={0.4} transparent={upSideBool}/>
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} metalness={.1} reflectivity={.8} color={RoofColor} map={roofTexture_} alphaTest={0.4}  ref={upSideMat}  transparent={upSideBool} />
             </mesh>
             <mesh renderOrder={1} scale={[29.9, 30, 29.94]} castShadow receiveShadow position={[30, 55 - 1, -70.8]} rotation={[-Math.PI / 1, 3.1415, 7.8525]}>
                 <bufferGeometry>
@@ -15865,7 +15870,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} metalness={.1} reflectivity={.8} map={roofTexture_} alphaTest={0.4} transparent={upSideBool} />
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} metalness={.1} reflectivity={.8} map={roofTexture_} alphaTest={0.4}  ref={upSideMat} transparent={upSideBool} />
             </mesh>
             {/* attyka 2 */ }
 
@@ -16376,7 +16381,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial metalness={.1} reflectivity={.8} color={RoofColor} map={roofTexture_} alphaTest={0.4} transparent={upSideBool}/>
+                <meshStandardMaterial metalness={.1} reflectivity={.8} color={RoofColor} map={roofTexture_} alphaTest={0.4}  ref={upSideMat} transparent={upSideBool}/>
             </mesh> 
 
             <mesh renderOrder={1} receivedShadow castShadow scale={[30, 29.9, 29.85]} position={[30.5, -5 - 1, -70.3]}  rotation={[-Math.PI / 1, 3.1415, 7.8525]}>
@@ -16414,7 +16419,7 @@ attach={'uv'}
                     attach={'uv'}
                 />
                 </bufferGeometry>
-                <meshStandardMaterial shadowSide={THREE.DoubleSide} metalness={.1} reflectivity={.8} map={roofTexture_} alphaTest={0.4} transparent={upSideBool}/>
+                <meshStandardMaterial shadowSide={THREE.DoubleSide} metalness={.1} reflectivity={.8} map={roofTexture_} alphaTest={0.4}  ref={upSideMat} transparent={upSideBool}/>
             </mesh> 
 
             </group>
