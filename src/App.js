@@ -1144,10 +1144,11 @@ overflow:visible;
   
    /* front pos */ 
 
-  const [GateType, setGateType] = useState("gate_normal") 
-
+  const [GateType, setGateType] = useState("gate_normal")  
   const [ModelPosFront, setModelPositionFront] = useState(120.95)
   const [ModelPosFront1, setModelPositionFront1] = useState(121.5) //121.5
+  const [HolePosFixerSide, setHolePosFixerSide] = useState(.158)
+  const [HolePosFixerBF, setHolePosFixerBF] = useState(.971)
   const [ModelPosFront2, setModelPositionFront2] = useState(123)
   const [ModelPosFront3, setModelPositionFront3] = useState(123.5)
   const [ModelPosFront4, setModelPositionFront4] = useState(-449.05)
@@ -1396,7 +1397,6 @@ const modifiedUV1 = new Float32Array([
   const [Doors, setDoors] = useState([])  
   const [Windows, setWindows] = useState([])  
   const [Gates, setGates] = useState([])
-
   const [Holes, setHoles] = useState([]) 
 
     const [SingleDoorModel, setSingleDoorModel] = useState(null)
@@ -3654,17 +3654,13 @@ useEffect(() => {
     dracoLoader.setDecoderPath("/draco-gltf/");
     loader.setDRACOLoader(dracoLoader);
 
-    loader.load('holes/full_gate.glb', (gltf) => {
+    loader.load('gates/hole.glb', (gltf) => {
       setHoleModel(gltf.scene);
     });
   }
-}, [LoadTest]);
+}, [LoadTest]);  
 
-if(HoleModel != null) {
-
-HoleModel.children[0].children[1].children[0].children[0].visible = false 
-
-}
+ 
 
 function AddGate(e) {  
   const cameraDirection = new THREE.Vector3(0, 0, -1);
@@ -66412,7 +66408,7 @@ useEffect(() => {
                   //hole.object.children[0].children[1].position.y = -3.96
                 }
 
-                return (<DraggableHole frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={hole.x} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} OtworColor={OtworColor} type={hole.type} elementPositionToSub={hole.elementPositionToSub} elementPositionToSubSides={hole.elementPositionToSubSides} key={hole.index} handleDeleteHole={handleDeleteHole} index={hole.index} ModelPos={ModelPos} direction={hole.direction} newposition={hole.newposition} hole={hole.object} newrotation={hole.newrotation} setCameraMovement={setCameraMovement}/>)
+                return (<DraggableHole HolePosFixerSide={HolePosFixerSide} HolePosFixerBF={HolePosFixerBF} frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={hole.x} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} OtworColor={OtworColor} type={hole.type} elementPositionToSub={hole.elementPositionToSub} elementPositionToSubSides={hole.elementPositionToSubSides} key={hole.index} handleDeleteHole={handleDeleteHole} index={hole.index} ModelPos={ModelPos} direction={hole.direction} newposition={hole.newposition} hole={hole.object} newrotation={hole.newrotation} setCameraMovement={setCameraMovement}/>)
               })}
               <Hail 
               HoleModel={HoleModel}
@@ -66544,7 +66540,7 @@ useEffect(() => {
                 ModelPosRight1={ModelPosRight1}
                 FilteredHolesRight={FilteredHolesRight}
                 Holes={Holes}
-                
+                ModelPosFront4={ModelPosFront4}
                 WallWithModifiedUV={WallWithModifiedUV}
                 WallWithoutModifiedUV={WallWithoutModifiedUV}
                 UVChangeAngleFixer={UVChangeAngleFixer}

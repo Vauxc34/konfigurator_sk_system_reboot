@@ -4,15 +4,39 @@ import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture';
 import { useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
+import { folder, useControls } from 'leva'
 import { Vector3 } from 'three';
 
-const DraggableHole = React.memo((props) => { 
+const DraggableHole = React.memo((props) => {  
 
+    props.hole.children[6].children[0].children[0].children[0].visible = false
+    //props.hole.children[0].children[1].children[0].children[0].visible = false 
 
+    console.log(props.hole.children[6].children[0].children[0].children[0].visible)
 
+    /*const { front_, back_, left_, right_, left_trans, right_trans, left___, right___, scl_left, LeftRight__ar, back_pos, trans_z_front, trans_z_back, trans_z_right, trans_z_left, pos_fix, pos_fix2 } = useControls('TRANS', {
 
+        change: folder({
+            front_: -2.6195 , //right/back z - .15 // 
+            back_: -2.622,
+            left_: -2.01,
+            right_: -2.6245, 
+            left_trans: -5.24,
+            right_trans: -5.24,
+            left___:2.035, 
+            right___:2.035,
+            scl_left: .5,
+            LeftRight__ar: [2, 2.3, -4.7],
+            back_pos:-4.7,
+            trans_z_left: -5.205,
+            trans_z_right: -5.255,
+            trans_z_front: -4.64,
+            trans_z_back: -4.64,
+            pos_fix: -3, 
+            pos_fix2: 3
+        })
 
-    //props.hole.children[0].children[1].position.y = 3.935
+    })*/
 
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
@@ -22,9 +46,9 @@ const DraggableHole = React.memo((props) => {
     }else if(props.direction === 'left' || props.direction === 'right' ){
         sub = props.elementPositionToSubSides;
     }
-    const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos - 5] : [props.ModelPos, props.newposition.y, props.newposition.z]));
+    const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
-    const [scale, setScale] = useState([40, 40, 65]);
+    const [scale, setScale] = useState([46, 46, 114]);
     const [show, setShow] = useState(false);
     const typeArray = ['none', 'half', 'full'];
     const [typeIdx, setTypeIdx] = useState(typeArray.indexOf(props.glassType));
@@ -32,45 +56,47 @@ const DraggableHole = React.memo((props) => {
     const [LeftCorner, setLeftCorner] = useState(-188.2)
     const [RightCorner, setRightCorner] = useState(194.1)
     const [deletedColor, setDeletedColor] = useState(false);
-    const [activeDraggable, setActiveDraggable] = useState();
-
+    const [activeDraggable, setActiveDraggable] = useState(); 
     
-           if (props.direction === 'front') {
-        props.hole.children[0].position.z = -3.935
+    if (props.direction === 'front') {
+        props.hole.children[6].position.z = -.5715
+        props.hole.children[6].scale.y = .5 
     } else if (props.direction === 'back') {
-        props.hole.children[0].position.z = -3.945
+        props.hole.children[6].position.z = -.615
+        props.hole.children[6].scale.y = .5 
     } else if (props.direction === 'left') {
-        props.hole.children[0].position.z = -3.9535
+        props.hole.children[6].position.z = .5335
+        props.hole.children[6].scale.y = .6
     } else if (props.direction === 'right') {
-        props.hole.children[0].position.z = -3.96
+        props.hole.children[6].position.z = .0015 
+        props.hole.children[6].scale.y = .5
     }
-
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
-            setActiveDraggable(active)
+            setActiveDraggable(active);
             if(draggable){
                 if(props.direction === 'front'){
                     if(props.frontSideBool){
                         const [, y, z] = position;
-                        setPosition([x / aspect, props.newposition.y, props.ModelPos - (sub + 230) - 8.5]);
+                        setPosition([x / aspect, props.newposition.y + (props.ConstructionPosY - 2), props.ModelPos - sub - 9.5]);
                         props.setCameraMovement(!active);
                     }
                 }else if (props.direction === 'back'){
                     if(props.backSideBool){
                         const [, , z] = position;
-                        setPosition([-x / aspect, props.newposition.y, props.ModelPos + (sub + 230) + 8.5]);
+                        setPosition([-x / aspect, props.newposition.y + (props.ConstructionPosY - 2), props.ModelPos + sub + 9.5]);
                         props.setCameraMovement(!active);
                     }
                 }else if (props.direction === 'left'){
                     if(props.leftSideBool){
                         const [z, , ] = position;
-                        setPosition([props.ModelPos + (sub + 295) + 8.5, props.newposition.y, x / aspect]);
+                        setPosition([props.ModelPos + (sub - 6) + 9.5, props.newposition.y + (props.ConstructionPosY - 2), x / aspect]);
                         props.setCameraMovement(!active);
                     }
                 }else if (props.direction === 'right'){
                     if(props.rightSideBool){
                         const [z, , ] = position;
-                        setPosition([props.ModelPos - (sub + 295) - 8.5, props.newposition.y, -x / aspect]);
+                        setPosition([props.ModelPos - (sub - 6) - 9.5, props.newposition.y + (props.ConstructionPosY - 2), -x / aspect]);
                         props.setCameraMovement(!active);
                     }
                 }
@@ -81,15 +107,15 @@ const DraggableHole = React.memo((props) => {
 
     useEffect(() => {
         if(props.direction === 'front'){
-            setPosition([position[0], position[1], props.ModelPos - (sub + 230)]);
+            setPosition([position[0], props.newposition.y + (props.ConstructionPosY - 2), props.ModelPos - sub - 9.5]);
         }else if(props.direction === 'back'){
-            setPosition([position[0], position[1], props.ModelPos + (sub + 230)]);
+            setPosition([position[0], props.newposition.y + (props.ConstructionPosY - 2), props.ModelPos + sub + 9.5]);
         }else if(props.direction === 'left'){
-            setPosition([props.ModelPos + (sub + 295), position[1], position[2]]);
+            setPosition([props.ModelPos + (sub - 6) + 9.5, props.newposition.y + (props.ConstructionPosY - 2), position[2]]);
         }else if(props.direction === 'right'){
-            setPosition([props.ModelPos - (sub + 295), position[1], position[2]]);
+            setPosition([props.ModelPos - (sub - 6) - 9.5,props.newposition.y + (props.ConstructionPosY - 2), position[2]]);
         }
-    }, [props.ModelPos]);
+    }, [props.ModelPos, props.ConstructionPosY]);
 
     useEffect(() => {
         if(props.direction === 'front' || props.direction === 'back'){
@@ -424,8 +450,7 @@ const DraggableHole = React.memo((props) => {
         document.addEventListener('pointerup', onPointerUp);
     }
 
-    useEffect(() => {
-
+    useEffect(() => {  
 
         const idx = props.OtworColor.indexOf('#') + 1;
         const doorColor = props.OtworColor.slice(idx, props.OtworColor.length);
@@ -434,77 +459,95 @@ const DraggableHole = React.memo((props) => {
             if(LeftCorner > position[0] || RightCorner < position[0] || props.HeightHall < position[1] || -32.5 > position[1]){
                 console.log('element deleted')
                 setDeletedColor(true)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(`0x${doorColor}`)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(`0x${doorColor}`)          
+            
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(0xea8064)                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(0xea8064)                
+                 
                 if(!activeDraggable){
-                    props.handleDeleteHole(props.index);
+                    props.handleDeleteGate(props.index);
                 }
             }else{
                 console.log('element ok')
                 setDeletedColor(false)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0x800080)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0x800080)  
+               
+                    console.log(props.hole)
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(parseInt(`0x${doorColor}`))                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(parseInt(`0x${doorColor}`))     
+             
             }
         }else if(props.direction === 'back'){
-            if(LeftCorner - 85 > position[0] || RightCorner - 150 < position[0] || props.HeightHall < position[1] || -32.5 > position[1]){
+            if(LeftCorner - 30 > position[0] || RightCorner - 105 < position[0] || props.HeightHall < position[1] || -32.5 > position[1]){
                 console.log('element deleted')
                 setDeletedColor(true)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0xea8064)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0xea8064)          
+             
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(0xea8064)                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(0xea8064)                
+                
                 if(!activeDraggable){
-                    props.handleDeleteHole(props.index);
+                    props.handleDeleteGate(props.index);
                 }
             }else{
                 console.log('element ok')
                 setDeletedColor(false)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0xffffff)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0xffffff) 
+              
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(parseInt(`0x${doorColor}`))                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(parseInt(`0x${doorColor}`))     
+                
             }
         }else if(props.direction === 'left'){
-            if(LeftCorner + 155 > position[2] || RightCorner + 82 < position[2] || props.HeightHall < position[1] || -32.5 > position[1]){
+            if(LeftCorner + 105 > position[2] || RightCorner + 35 < position[2] || props.HeightHall < position[1] || -32.5 > position[1]){
                 console.log('element deleted')
                 setDeletedColor(true)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0xea8064)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0xea8064)          
+                 
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(0xea8064)                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(0xea8064)                
+               
                 if(!activeDraggable){
-                    props.handleDeleteHole(props.index);
+                    props.handleDeleteGate(props.index);
                 }
             }else{
                 console.log('element ok')
                 setDeletedColor(false)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0xffffff)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0xffffff) 
+          
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(parseInt(`0x${doorColor}`))                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(parseInt(`0x${doorColor}`))     
+           
             }
         }else if(props.direction === 'right'){
-            if(LeftCorner - 8 > position[2] || RightCorner - 80 < position[2] || props.HeightHall + 10 < position[1] || -32.5 > position[1]){
+            if(LeftCorner + 45 > position[2] || RightCorner - 30 < position[2] || props.HeightHall + 10 < position[1] || -32.5 > position[1]){
                 console.log('element deleted')
                 setDeletedColor(true)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0xea8064)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0xea8064)          
+              
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(0xea8064)                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(0xea8064)                
+          
                 if(!activeDraggable){
-                    props.handleDeleteHole(props.index);
+                    props.handleDeleteGate(props.index);
                 }
             }else{
                 console.log('element ok')
                 setDeletedColor(false)
-                props.hole.children[0].children[1].children[0].children[0].material.color.set(0xffffff)          
-                props.hole.children[0].children[1].children[0].children[1].material.color.set(0xffffff) 
+            
+                    props.hole.children[6].children[0].children[0].children[0].material.color.set(parseInt(`0x${doorColor}`))                 
+                    props.hole.children[6].children[0].children[0].children[1].material.color.set(parseInt(`0x${doorColor}`))     
+                
             }
         }
+
     }, [props.HeightHall, LeftCorner, RightCorner, position, props.gate])
 
 
     // zmiana koloru otworu
 
     useEffect(() => { 
-
         const idx = props.OtworColor.indexOf('#') + 1;
         const doorColor = props.OtworColor.slice(idx, props.OtworColor.length);
-       
-        props.hole.children[0].children[1].children[0].children[0].material.color.set(parseInt(`0x${doorColor}`))          
-        props.hole.children[0].children[1].children[0].children[1].material.color.set(parseInt(`0x${doorColor}`))  
+   
 
-    })
+        props.hole.children[6].children[0].children[0].children[0].material.color.set(parseInt(`0x${doorColor}`))                 
+        props.hole.children[6].children[0].children[0].children[1].material.color.set(parseInt(`0x${doorColor}`))  
+
+    }) 
 
     const modelRef = useRef();
     const [box, setBox] = useState();
@@ -517,30 +560,31 @@ const DraggableHole = React.memo((props) => {
     }, []);
 
     useEffect(() => {
-        if(props.direction === 'front'){
-            
-            setPosition([props.newposition.x + 50 + props.x, props.newposition.y, props.ModelPos - (sub + 230) - 8.5]);
-        }else if(props.direction === 'back'){
-            setPosition([props.newposition.x - 115 - props.x, props.newposition.y, props.ModelPos + (sub + 230) + 8.5]);
-        }else if(props.direction === 'left'){
-            setPosition([props.ModelPos  + (sub + 295) + 8.5, props.newposition.y, props.newposition.z + 50 + props.x]);
-        }else if(props.direction === 'right'){
-            setPosition([props.ModelPos - (sub + 295) - 8.5, props.newposition.y, props.newposition.z - 115 - props.x]);
+               if(props.direction === 'front'){
+            setPosition([props.newposition.x + props.x, props.newposition.y, props.ModelPos - sub - 9.5]);
+        } else if(props.direction === 'back'){
+            setPosition([props.newposition.x - 67 - props.x, props.newposition.y, props.ModelPos + sub + 9.5]);
+        } else if(props.direction === 'left'){
+            setPosition([props.ModelPos  + (sub - 6) + 9.5, props.newposition.y, props.newposition.z + props.x]);
+        } else if(props.direction === 'right'){
+            setPosition([props.ModelPos - (sub - 6) - 9.5, props.newposition.y, props.newposition.z - 67 - props.x]);
         }
     }, [props.x])
 
     useEffect(() => {
         console.log(props.hole)
+        
         if(props.direction === 'left'){
-            props.hole.children[0].children[1].children[0].children[0].scale.set(1, 1, 3);
-            props.hole.children[0].children[1].children[0].children[1].scale.set(1, 1, 3);
+            props.hole.children[6].children[0].children[0].children[0].scale.set(1, 1, 1);
+            props.hole.children[6].children[0].children[0].children[0].position.set(1, 1, 3);
+            props.hole.children[6].children[0].children[0].children[1].scale.set(1, 1, 3);
         }else{
-            props.hole.children[0].children[1].children[0].children[0].scale.set(1, 1, 3);
-            props.hole.children[0].children[1].children[0].children[1].scale.set(1, 1, 3);
+            props.hole.children[6].children[0].children[0].children[0].scale.set(1, 1, 1);
+            props.hole.children[6].children[0].children[0].children[0].position.set(1, 1, 3);
+            props.hole.children[6].children[0].children[0].children[1].scale.set(1, 1, 3);
         }
-    }, [typeIdx])
 
- 
+    }, [typeIdx]) 
 
     return (
         <>
@@ -562,43 +606,44 @@ const DraggableHole = React.memo((props) => {
             {...bind()}
         >
             <primitive ref={modelRef} object={props.hole} scale={scale} rotation={[0, Math.PI, 0]}>
-            <group>
-                {(show ? <group name={'Group'} position={(props.direction === 'front' ? [0.8, 2.02, -9.23] : props.direction === 'back' ? [0.8, 2.02, -9.23] : props.direction === 'left' ? [0.8, 2.02, -9.275]  :  [0.8, 2.02, -9.275])} rotation={(props.direction === 'front' ? [0, Math.PI, 0.8] : props.direction === 'back' ? [0, -Math.PI, 0.8] : [0, Math.PI, 0.8])} onClick={() => props.handleDeleteHole(props.index)}>
-                <mesh>
-                    <circleBufferGeometry args={[0.15, 32]} /> {/* Ustaw odpowiednią średnicę i ilość segmentów */}
-                    <meshBasicMaterial colorManagement={true} linear={false} color="red" />
-                </mesh>
-                <mesh>
-                    <boxBufferGeometry args={[0.03, 0.2, 0.01]} />
-                    <meshBasicMaterial colorManagement={true} linear={false} color="white" />
-                </mesh>
-                <mesh>
-                    <boxBufferGeometry args={[0.2, 0.03, 0.01]} />
-                    <meshBasicMaterial colorManagement={true} linear={false} color="white" />
-                </mesh>
-            </group> : '')}
+            <group> 
+
+            {(show ? <group renderOrder={1} name={'Group'} position={(props.direction === 'front' ? [0.8, 2.02, -3.3] : props.direction === 'back' ? [0.8, 2.02, -3.3] : [0.8, 2.02, -2.7])} rotation={[0, Math.PI, 0.8]} onClick={() => props.handleDeleteHole(props.index)}>
+                    <mesh>
+                        <circleBufferGeometry args={[0.15, 32]} /> {/* Ustaw odpowiednią średnicę i ilość segmentów */}
+                        <meshBasicMaterial colorManagement={true} linear={false} color="red" />
+                    </mesh>
+                    <mesh>
+                        <boxBufferGeometry args={[0.03, 0.2, 0.01]} />
+                        <meshBasicMaterial colorManagement={true} linear={false}color="white" />
+                    </mesh>
+                    <mesh>
+                        <boxBufferGeometry args={[0.2, 0.03, 0.01]} />
+                        <meshBasicMaterial colorManagement={true} linear={false} color="white" />
+                    </mesh>
+                </group> : '')}
 
             {(show ? 
-            <mesh 
-                onPointerDown={(e) => {changeYScale(e)}}
-                onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}}
-                scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={(props.direction === 'front' ? [2, 2.3, -9.23] : props.direction === 'back' ? [2, 2.3, -9.24] : props.direction === 'left' || props.direction === 'right' ? [2, 2.3, -9.27] : [2, 2.3, -9.23])}
-            >
-                <shapeGeometry/>
-                <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
-            </mesh> 
+                <mesh 
+                    onPointerDown={(e) => {changeYScale(e)}}
+                    onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}}
+                    scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI] : (props.direction === 'left' ? [Math.PI, 0, Math.PI] : [Math.PI, 0, Math.PI]))} position={props.direction === 'front' ? [2, 2.3, -3.3] : props.direction === 'back' ? [2, 2.3, -3.3] : [2, 2.3, -2.7]}
+                >
+                    <shapeGeometry/>
+                    <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
+                </mesh> 
             : '')}
 
             {(show ? 
-            <mesh onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' ? [0.5, 1, -9.23] : props.direction === 'back' ? [0.5, 1, -9.24] : props.direction === 'left' || props.direction === 'right' ? [0.5, 1, -9.27] : [0.5, 1, -9.23])}>
-                <shapeGeometry/>
-                <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
-            </mesh> 
+                <mesh onPointerDown={(e) => {changeXScale(e)}} onPointerLeave={() => {setDraggable(true); props.setCameraMovement(!props.cameraMovement);}} scale={[0.6, 0.3, 0.5]} rotation={(props.direction === 'front' || props.direction === 'back' ? [Math.PI, 0, Math.PI / 2] : (props.direction === 'left' ? [Math.PI, 0, Math.PI / 2] : [Math.PI, 0, Math.PI / 2]))} position={(props.direction === 'front' ? [0.5, 1, -3.3] : props.direction === 'back' ? [0.5, 1, -3.3] : [0.5, 1, -2.7])}>
+                    <shapeGeometry/>
+                    <meshBasicMaterial colorManagement={true} linear={false} color="rgba(0, 0, 0, 0.2)"/>
+                </mesh> 
             : '')}
 
             {/* transparent element */}
-            <mesh position={[2, 0.85, (props.direction === 'left' ? -9.2 : props.direction === 'right' ? -9.23 : props.direction === 'front' ? -9.2 : props.direction === 'back' ? -9.21 : -9.21)]} rotation={[0, 0, 0]}>
-                <boxBufferGeometry attach="geometry" args={[2.4, 2.1, props.direction === 'left' ? 0.09 : 0.06]} />
+            <mesh position={[props.direction === 'front' ? 2 : props.direction === 'back' ? 2 : props.direction === 'left' ? 2 : props.direction === 'right' ? 2 : 2.035, 0.85, props.direction === 'front' ? -3.19 : props.direction === 'back' ? -3.23 : props.direction === 'right' ?  -2.61  : props.direction === 'left' ?  -2.61:  -5.235 ]} rotation={[0, 0, 0]}>
+                <boxBufferGeometry attach="geometry" args={[2.35, 2.1, .065]} />
                 <meshBasicMaterial colorManagement={true} linear={false} color={deletedColor ? '#ea8064' : ''} side={THREE.DoubleSide} transparent={true} opacity={0}/>
             </mesh>
             </group>
