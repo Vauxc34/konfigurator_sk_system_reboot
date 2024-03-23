@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Environment, Shadow } from "@react-three/drei";
 import { Euler, MathUtils, Box3 } from 'three';
 import { Html, Stats } from "@react-three/drei";
+import { folder, useControls } from 'leva'
 import Modal from './Modal';
 import Draggable from 'react-draggable';
 
@@ -2960,6 +2961,7 @@ const modifiedUV1 = new Float32Array([
       index: Math.floor(Math.random() * 1000),
       elementPositionToSub: elementPositionToSub, 
       elementPositionToSubSides: elementPositionToSubSides, 
+      ConstructionPosY: ConstructionPosY,
       direction: direction, 
       newposition: newposition, 
       newrotation: newrotation,
@@ -3604,9 +3606,7 @@ const [GateHalfGlassModelOne, setGateHalfGlassModelOne] = useState(null)
 const [GateFullGlassModelOne, setGateFullGlassModelOne] = useState(null)
 const [HoleModel, setHoleModel] = useState(null) 
 
-console.log(GateModelOne)
-console.log(GateHalfGlassModelOne)
-console.log(GateFullGlassModelOne)
+ 
 
 useEffect(() => {
   if (LoadTest == 5) {
@@ -3659,6 +3659,19 @@ useEffect(() => {
     });
   }
 }, [LoadTest]);  
+
+/*const { addMeasu } = useControls('TRANS', {
+
+  change: folder({
+      addMeasu: 208.05 , //right/back z - .15 // 
+
+  })
+
+}) */
+
+if(HoleModel !=  null) {
+  HoleModel.position.z = ModelPosFront4 + 208.95
+}
 
  
 
@@ -66362,7 +66375,36 @@ useEffect(() => {
                 }else if(gate.direction === 'right'){
                   ModelPos = ModelPosRight1;
                 }
-                return (<DraggableGate frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={gate.x} third_object={gate.third_object} gate_half_glass={gate.second_object} BramaColor={BramaColor} BramaColorObrobka={BramaColorObrobka} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} key={gate.index} handleDeleteGate={handleDeleteGate} elementPositionToSubSides={gate.elementPositionToSubSides} elementPositionToSub={gate.elementPositionToSub} index={gate.index} ModelPos={ModelPos} glassType={gate.GlassType} scaleX={gate.ScaleModelX} scaleY={gate.ScaleModelY} direction={gate.direction} newposition={gate.newposition} newrotation={gate.newrotation} gate={gate.object} setCameraMovement={setCameraMovement} scale={gate.scale} type={gate.type}/>)
+                return (<DraggableGate 
+                  frontSideBool={frontSideBool} 
+                  backSideBool={backSideBool} 
+                  leftSideBool={leftSideBool} 
+                  rightSideBool={rightSideBool} 
+                  x={gate.x} 
+                  third_object={gate.third_object} 
+                  gate_half_glass={gate.second_object} 
+                  BramaColor={BramaColor} 
+                  BramaColorObrobka={BramaColorObrobka} 
+                  RangeSetterLengthtHail={RangeSetterLengthtHail} 
+                  WidthSetterLengthtHail={WidthSetterLengthtHail} 
+                  ConstructionPosY={ConstructionPosY} 
+                  HeightHall={HeightHall} 
+                  key={gate.index} 
+                  handleDeleteGate={handleDeleteGate} 
+                  elementPositionToSubSides={gate.elementPositionToSubSides} 
+                  elementPositionToSub={gate.elementPositionToSub} 
+                  index={gate.index} 
+                  ModelPos={ModelPos} 
+                  glassType={gate.GlassType} 
+                  scaleX={gate.ScaleModelX} 
+                  scaleY={gate.ScaleModelY} 
+                  direction={gate.direction} 
+                  newposition={gate.newposition} 
+                  newrotation={gate.newrotation} 
+                  gate={gate.object} 
+                  setCameraMovement={setCameraMovement} 
+                  scale={gate.scale} 
+                  type={gate.type}/>)
               })}
               {FilteredStairs1Array.map((stair) => {
                 let ModelPos;
@@ -66408,7 +66450,30 @@ useEffect(() => {
                   //hole.object.children[0].children[1].position.y = -3.96
                 }
 
-                return (<DraggableHole HolePosFixerSide={HolePosFixerSide} HolePosFixerBF={HolePosFixerBF} frontSideBool={frontSideBool} backSideBool={backSideBool} leftSideBool={leftSideBool} rightSideBool={rightSideBool} x={hole.x} RangeSetterLengthtHail={RangeSetterLengthtHail} WidthSetterLengthtHail={WidthSetterLengthtHail} ConstructionPosY={ConstructionPosY} HeightHall={HeightHall} OtworColor={OtworColor} type={hole.type} elementPositionToSub={hole.elementPositionToSub} elementPositionToSubSides={hole.elementPositionToSubSides} key={hole.index} handleDeleteHole={handleDeleteHole} index={hole.index} ModelPos={ModelPos} direction={hole.direction} newposition={hole.newposition} hole={hole.object} newrotation={hole.newrotation} setCameraMovement={setCameraMovement}/>)
+                return (<DraggableHole 
+                  HolePosFixerSide={HolePosFixerSide} 
+                  HolePosFixerBF={HolePosFixerBF} 
+                  frontSideBool={frontSideBool} 
+                  backSideBool={backSideBool} 
+                  leftSideBool={leftSideBool} 
+                  rightSideBool={rightSideBool} 
+                  x={hole.x} 
+                  RangeSetterLengthtHail={RangeSetterLengthtHail} 
+                  WidthSetterLengthtHail={WidthSetterLengthtHail} 
+                  ConstructionPosY={ConstructionPosY} 
+                  HeightHall={HeightHall} 
+                  OtworColor={OtworColor} 
+                  type={hole.type} 
+                  elementPositionToSub={hole.elementPositionToSub} 
+                  elementPositionToSubSides={hole.elementPositionToSubSides} 
+                  key={hole.index} 
+                  handleDeleteHole={handleDeleteHole} 
+                  index={hole.index} ModelPos={ModelPos} 
+                  direction={hole.direction} 
+                  newposition={hole.newposition} 
+                  hole={hole.object} 
+                  newrotation={hole.newrotation} 
+                  setCameraMovement={setCameraMovement}/>)
               })}
               <Hail 
               HoleModel={HoleModel}

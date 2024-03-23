@@ -9,10 +9,9 @@ import { Vector3 } from 'three';
 
 const DraggableHole = React.memo((props) => {  
 
-    props.hole.children[6].children[0].children[0].children[0].visible = false
     //props.hole.children[0].children[1].children[0].children[0].visible = false 
 
-    console.log(props.hole.children[6].children[0].children[0].children[0].visible)
+    //console.log(props.hole.children[6].children[0].children[0].children[0].visible)
 
     /*const { front_, back_, left_, right_, left_trans, right_trans, left___, right___, scl_left, LeftRight__ar, back_pos, trans_z_front, trans_z_back, trans_z_right, trans_z_left, pos_fix, pos_fix2 } = useControls('TRANS', {
 
@@ -57,6 +56,8 @@ const DraggableHole = React.memo((props) => {
     const [RightCorner, setRightCorner] = useState(194.1)
     const [deletedColor, setDeletedColor] = useState(false);
     const [activeDraggable, setActiveDraggable] = useState(); 
+
+    props.hole.children[6].children[0].children[0].children[0].visible = false
     
     if (props.direction === 'front') {
         props.hole.children[6].position.z = -.5715
@@ -559,7 +560,7 @@ const DraggableHole = React.memo((props) => {
         }
     }, []);
 
-    useEffect(() => {
+  useEffect(() => {
                if(props.direction === 'front'){
             setPosition([props.newposition.x + props.x, props.newposition.y, props.ModelPos - sub - 9.5]);
         } else if(props.direction === 'back'){
@@ -569,7 +570,7 @@ const DraggableHole = React.memo((props) => {
         } else if(props.direction === 'right'){
             setPosition([props.ModelPos - (sub - 6) - 9.5, props.newposition.y, props.newposition.z - 67 - props.x]);
         }
-    }, [props.x])
+    }, [props.x]) 
 
     useEffect(() => {
         console.log(props.hole)
@@ -588,7 +589,7 @@ const DraggableHole = React.memo((props) => {
 
     return (
         <>
-        {(show ? <MeasureBetweenPoints RangeSetterLengthtHail={props.RangeSetterLengthtHail} ModelPos={props.ModelPos + 70} direction={props.direction} type={props.type} size={props.size} obj={props.obj} windowHeight={props.windowHeight} WidthSetterLengthtHail={props.WidthSetterLengthtHail} box={box} position={position} pointA={new Vector3(LeftCorner, 0, 0)} pointB={new Vector3(RightCorner + 30, 5, 5)}/> : '')}
+        {(show ? <MeasureBetweenPoints RangeSetterLengthtHail={props.RangeSetterLengthtHail} ModelPos={props.ModelPos} direction={props.direction} type={props.type} size={props.size} obj={props.obj} windowHeight={props.windowHeight} WidthSetterLengthtHail={props.WidthSetterLengthtHail} box={box} position={position} pointA={new Vector3(LeftCorner, 0, 0)} pointB={new Vector3(RightCorner + 30, 5, 5)}/> : '')}
         <mesh
             onPointerEnter={(e) => { 
                 const canvas = document.querySelector('canvas'); 
