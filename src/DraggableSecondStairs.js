@@ -4,6 +4,7 @@ import { useSpring, animated } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture';
 import { useThree } from "@react-three/fiber";
 import MeasureBetweenPoints from './MeasureBetweenPoints';
+import { folder, useControls } from 'leva'
 import { Vector3 } from 'three';
 
 const DraggableStairs = React.memo((props) => {
@@ -17,6 +18,54 @@ const DraggableStairs = React.memo((props) => {
     const [RightCorner, setRightCorner] = useState(194.1)
     const [deletedColor, setDeletedColor] = useState(false);
     const [activeDraggable, setActiveDraggable] = useState();
+    
+     /*const {  
+        transparentPosFronX,
+        transparentPosFronY,
+        transparentPosFronZ,
+        transparentScaleFronX,
+        transparentScaleFronY,
+        transparentScaleFronZ,
+        scaleDoor,
+        PosZDoorStairs,
+        ScF,
+        ScB,
+        SpF,
+        SpB
+    } = useControls('TRANS', {    
+        change: folder({ 
+        transparentPosFronX: -0.32,
+        transparentPosFronY: 3.67,
+        transparentPosFronZ: -2.01,
+        transparentScaleFronX: -0.76,
+        transparentScaleFronY: 1.8,
+        transparentScaleFronZ: .14,
+        scaleDoor: .01,
+        PosZDoorStairs: -2.05,
+        ScF:0.00725,
+        ScB:0.00825,
+        SpF:-1.97,
+        SpB:-1.98
+        }) 
+    })*/
+
+    //props.door.position.z = -1.972
+    //props.door.scale.z = 1
+    //console.log(props.door)
+
+           if (props.direction === "front") {
+        props.door.position.z = -2
+        props.door.scale.z = 0.00586
+    } else if (props.direction === "back") {
+        props.door.position.z = -1.99
+        props.door.scale.z = 0.00536
+    } else if (props.direction === "left") {
+        props.door.position.z = -2.0375
+        props.door.scale.z = 0.00825
+    } else if (props.direction === "right") {
+        props.door.scale.z = 0.00466
+        props.door.position.z = -1.9925
+    } 
 
     const bind = useDrag(
         ({ active, offset: [x, y] }) => {
@@ -496,6 +545,23 @@ const DraggableStairs = React.memo((props) => {
                     </mesh>
                 </group> : '')}
             </primitive> 
+
+            {/*
+            
+            -0.76,
+        transparentScaleFronY: 1.8,
+        transparentScaleFronZ: .14,
+
+            */}
+
+                {/* transparent element */}
+                <mesh position={
+                    [ -0.32, 3.67, props.direction === 'left' ? -2.02 : -2.01]
+                    }>
+                    <boxBufferGeometry side={THREE.DoubleSide} attach="geometry" args={[-0.76, 1.8, props.direction === 'left' ? .17 : .14]} />
+                    <meshPhysicalMaterial colorManagement={true} linear={false} side={THREE.DoubleSide} color={deletedColor ? '#ea8064' : "#ffffff"} transparent={true} opacity={0} roughness={0} metalness={0.5} transmission={1} ior={2.33}/>
+                </mesh>
+
         </primitive>
     </mesh>
     </>

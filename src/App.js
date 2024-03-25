@@ -65829,10 +65829,16 @@ useEffect(() => {
 
   document.addEventListener("mousemove", (event) => {
 
+    if(cursorRef.current.clientWidth != undefined && cursorRef.current.clientHeight != undefined ) {
+
     const { clientX, clientY } = event
     const mouseX = clientX - cursorRef.current.clientWidth/2
     const mouseY = clientY - cursorRef.current.clientHeight/2
     cursorRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
+
+    } else {
+      
+    }
   
   })
 

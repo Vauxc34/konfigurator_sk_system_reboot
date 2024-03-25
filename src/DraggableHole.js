@@ -13,26 +13,20 @@ const DraggableHole = React.memo((props) => {
 
     //console.log(props.hole.children[6].children[0].children[0].children[0].visible)
 
-    /*const { front_, back_, left_, right_, left_trans, right_trans, left___, right___, scl_left, LeftRight__ar, back_pos, trans_z_front, trans_z_back, trans_z_right, trans_z_left, pos_fix, pos_fix2 } = useControls('TRANS', {
+    /* const {  
+        YposLeft,
+        YposRight,
+        YposFront,
+        YposBack,
+    } = useControls('TRANS', {
+
+        
 
         change: folder({
-            front_: -2.6195 , //right/back z - .15 // 
-            back_: -2.622,
-            left_: -2.01,
-            right_: -2.6245, 
-            left_trans: -5.24,
-            right_trans: -5.24,
-            left___:2.035, 
-            right___:2.035,
-            scl_left: .5,
-            LeftRight__ar: [2, 2.3, -4.7],
-            back_pos:-4.7,
-            trans_z_left: -5.205,
-            trans_z_right: -5.255,
-            trans_z_front: -4.64,
-            trans_z_back: -4.64,
-            pos_fix: -3, 
-            pos_fix2: 3
+        YposLeft:23,
+        YposRight:23,
+        YposFront:23,
+        YposBack:23,
         })
 
     })*/
@@ -535,9 +529,8 @@ const DraggableHole = React.memo((props) => {
             }
         }
 
-    }, [props.HeightHall, LeftCorner, RightCorner, position, props.gate])
-
-
+    }, [props.HeightHall, LeftCorner, RightCorner, position, props.gate]) 
+    
     // zmiana koloru otworu
 
     useEffect(() => { 

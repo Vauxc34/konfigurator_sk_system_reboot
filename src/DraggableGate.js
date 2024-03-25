@@ -10,11 +10,13 @@ const DraggableWindow = React.memo((props) =>  {
     const { size, viewport } = useThree();
     const aspect = size.width / viewport.width;
     let sub;
+
     if(props.direction === 'back' || props.direction === 'front'){
         sub = props.elementPositionToSub;
     }else if(props.direction === 'left' || props.direction === 'right' ){
         sub = props.elementPositionToSubSides;
     }
+
     const [position, setPosition] = useState((props.direction === 'back' || props.direction === 'front' ? [props.newposition.x, props.newposition.y, props.ModelPos] : [props.ModelPos, props.newposition.y, props.newposition.z]));
     const [rotation, setRotation] = useState([props.newrotation.x, props.newrotation.y, props.newrotation.z]);
     const [scale, setScale] = useState([46, 46, 114]);
@@ -31,7 +33,7 @@ const DraggableWindow = React.memo((props) =>  {
     const [idxX, setIdxX] = useState(6);
     const [idxY, setIdxY] = useState(6);
 
-    console.log(props)
+    //console.log(props)
 
            if (props.direction === 'front') {
         props.gate.children[6].position.z = -2.6195

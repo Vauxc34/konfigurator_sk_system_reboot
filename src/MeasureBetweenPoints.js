@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { Line, Text } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { Vector3 } from 'three';
+import { folder, useControls } from 'leva'
 
 const MeasureBetweenPoints = React.memo(({ idxX, idxY, scaleX, scaleY, ModelPos, direction, modelRef, dltaX, type, size, obj, windowHeight, RangeSetterLengthtHail, WidthSetterLengthtHail, box, position, pointA, pointB }) => {
     // Oblicz odległość
@@ -1473,8 +1474,30 @@ const MeasureBetweenPoints = React.memo(({ idxX, idxY, scaleX, scaleY, ModelPos,
         }
     }, [RangeSetterLengthtHail, WidthSetterLengthtHail, pointA, pointB, position, windowHeight_4, idx, boxse, scaleX, scaleY, idxX, idxY])
 
+
+    /* const {  
+        YposLeft,
+        YposRight,
+        YposFront,
+        YposBack,
+    } = useControls('TRANS', {
+
+        
+
+        change: folder({
+        YposLeft:23,
+        YposRight:23,
+        YposFront:23,
+        YposBack:23,
+        })
+
+    })*/
+
     return (
-        <group position={[(direction === 'back' ? -15 : (direction === 'left' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : ModelPos - 5)) : (direction === 'right' ? (type === 'hole' ? ModelPos - 136 : (type === 'stairs1' ? ModelPos - 150 : (type === 'stairs2' ? ModelPos - 68 : ModelPos + 5))) : -50))), position[1] + 120, (direction === 'back' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : (type === 'hole' ? ModelPos - 72 : ModelPos - 5))) : (direction === 'left' ? 150 : (type === 'stairs1' ? ModelPos - 152 : (type === 'stairs2' ? ModelPos - 68 : (direction === 'right' ? (type === 'hole' ? 175 : (type === 'double_door' ? ModelPos - 110 : ModelPos)) : (type === 'hole' ? ModelPos - 68 : ModelPos))))))]} rotation={[0, (direction === 'back' ? Math.PI + 0.01 : (direction === 'left' ? -Math.PI / 2 + 0.01 : (direction === 'right' ? Math.PI / 2 + 0.01 : 0.01))), -0.007]}>
+        <group position={[
+            (direction === 'back' ? -15 : (direction === 'left' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : ModelPos - 5)) : (direction === 'right' ? (type === 'hole' ? ModelPos - 136 : (type === 'stairs1' ? ModelPos - 150 : (type === 'stairs2' ? ModelPos - 68 : ModelPos + 5))) : -50))), position[1] + 120, (direction === 'back' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : (type === 'hole' ? ModelPos - 72 : ModelPos - 5))) : (direction === 'left' ? 150 : (type === 'stairs1' ? ModelPos - 152 : (type === 'stairs2' ? ModelPos - 68 : (direction === 'right' ? (type === 'hole' ? ModelPos : (type === 'double_door' ? ModelPos - 110 : ModelPos)) : 
+        (type === 'hole' ? ModelPos - 68 : ModelPos)
+        )))))]} rotation={[0, (direction === 'back' ? Math.PI + 0.01 : (direction === 'left' ? -Math.PI / 2 + 0.01 : (direction === 'right' ? Math.PI / 2 + 0.01 : 0.01))), -0.007]}>
             <group position={[0, pstHorizontalLine, 0]}>
             <group rotation={[0, 0, Math.PI / 4]} position={[(direction === 'left' ? pointA.x - 135 : (direction === 'right' ? pointA.x + 250 : pointA.x - 6)), (direction === 'left' ? -3.2 : (direction === 'right' ? -2 : -1.8)), 2] }>
                 <mesh rotation={[0, 0, 0]}>
