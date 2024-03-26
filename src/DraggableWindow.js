@@ -242,7 +242,7 @@ const DraggableWindow = React.memo((props) => {
     
     if (props.direction === 'front' || props.direction === 'back'){
         if(props.obj === '1_window'){
-           circlePosition = [0, 1.7, -0.09];
+           circlePosition = [0, 1.7, -0.13];
            circleRotation = [0, 3.2, 0];
            xRotation = [0, 0, 0];
            subsub = 7.5;

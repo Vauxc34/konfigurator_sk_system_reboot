@@ -39,6 +39,45 @@ const MeasureBetweenPoints = React.memo(({ idxX, idxY, scaleX, scaleY, ModelPos,
         setIdx(newIdx);
     }, [scaleY])
 
+
+    /*const {  
+        transparentPosFronX,
+        transparentPosFronY,
+        transparentPosFronZ,
+        transparentScaleFronX,
+        transparentScaleFronY,
+        transparentScaleFronZ,
+        scaleDoor,
+        PosZDoorStairs,
+        ScF,
+        ScB,
+        SpF,
+        SpB,
+        ModelF,
+        ModelB,
+        ModelR,
+        ModelL
+    } = useControls('TRANS', {    
+        change: folder({ 
+        transparentPosFronX: -0.32,
+        transparentPosFronY: 3.67,
+        transparentPosFronZ: -2.01,
+        transparentScaleFronX: -0.76,
+        transparentScaleFronY: 1.8,
+        transparentScaleFronZ: .14,
+        scaleDoor: .01,
+        PosZDoorStairs: -2.05,
+        ScF:0.00725,
+        ScB:0.00825,
+        SpF:-1.97,
+        SpB:-1.98,
+        ModelF:32,
+        ModelB:32,
+        ModelR:32,
+        ModelL:32,
+        }) 
+    })*/
+
     // Pamiętaj linie i tekst, aby uniknąć niepotrzebnych re-renderów
     const linePoints = useMemo(() => [pointA.toArray(), pointB.toArray()], [pointA, pointB]);
     const labelText = useMemo(() => ((direction === 'left' || direction === 'right' ? RangeSetterLengthtHail * 100 : WidthSetterLengthtHail * 100)), [WidthSetterLengthtHail, RangeSetterLengthtHail])
@@ -1495,8 +1534,9 @@ const MeasureBetweenPoints = React.memo(({ idxX, idxY, scaleX, scaleY, ModelPos,
 
     return (
         <group position={[
-            (direction === 'back' ? -15 : (direction === 'left' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : ModelPos - 5)) : (direction === 'right' ? (type === 'hole' ? ModelPos - 136 : (type === 'stairs1' ? ModelPos - 150 : (type === 'stairs2' ? ModelPos - 68 : ModelPos + 5))) : -50))), position[1] + 120, (direction === 'back' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : (type === 'hole' ? ModelPos - 72 : ModelPos - 5))) : (direction === 'left' ? 150 : (type === 'stairs1' ? ModelPos - 152 : (type === 'stairs2' ? ModelPos - 68 : (direction === 'right' ? (type === 'hole' ? ModelPos : (type === 'double_door' ? ModelPos - 110 : ModelPos)) : 
-        (type === 'hole' ? ModelPos - 68 : ModelPos)
+            (direction === 'back' ? -15 : (direction === 'left' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'hole' ? ModelPos - -70 : (type === 'stairs2' ? ModelPos + 70 : ModelPos - 5))) : (direction === 'right' ? (type === 'hole' ? ModelPos - 136 + 70 : (type === 'stairs1' ? ModelPos - 150 : (type === 'stairs2' ? ModelPos - 68 : ModelPos + 5))) : -50))), position[1] + 120, (direction === 'back' ? (type === 'stairs1' ? ModelPos + 150 : (type === 'stairs2' ? ModelPos + 70 : (type === 'hole' ? ModelPos - 2 : ModelPos - 5))) : (direction === 'left' ? 150 : (type === 'stairs1' ? ModelPos - 152 : (type === 'stairs2' ? ModelPos - 68 : (direction === 'right' ? (type === 'hole' ? ModelPos : (type === 'double_door' ? ModelPos - 110 : ModelPos)) : (direction === 'front' ? ModelPos : (type === 'hole' ? ModelPos + 32 : ModelPos))
+
+            /*(type === 'hole' ? ModelPos - 110 : ModelPos)*/
         )))))]} rotation={[0, (direction === 'back' ? Math.PI + 0.01 : (direction === 'left' ? -Math.PI / 2 + 0.01 : (direction === 'right' ? Math.PI / 2 + 0.01 : 0.01))), -0.007]}>
             <group position={[0, pstHorizontalLine, 0]}>
             <group rotation={[0, 0, Math.PI / 4]} position={[(direction === 'left' ? pointA.x - 135 : (direction === 'right' ? pointA.x + 250 : pointA.x - 6)), (direction === 'left' ? -3.2 : (direction === 'right' ? -2 : -1.8)), 2] }>

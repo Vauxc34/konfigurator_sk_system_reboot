@@ -494,7 +494,7 @@ const DraggableStairs = React.memo((props) =>  {
         }) 
     })*/
 
-    console.log(props)
+    //console.log(props)
 
            if (props.direction === 'front') {
         props.door.position.x = 4.426
